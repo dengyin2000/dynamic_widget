@@ -4,6 +4,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
+* [Install](#install)
 * [Get started](#get-started)
 * [How to implement a WidgetParser](#implement-widgetparser)
 * [Documents](#documents)
@@ -24,10 +25,35 @@ Widget type will be a type property, and widget's properties will be the json pr
 ## Screenshots
 <img src="./img/demo1.gif" width="400">
 
+## Install
+#### 1. Depend on it
+Add this to your package's pubspec.yaml file:
+```
+dependencies:
+  dynamic_widget: ^0.0.1
+```
+
+#### 2. Install it
+You can install packages from the command line:
+
+with Flutter:
+```
+$ flutter packages get
+```
+
+Alternatively, your editor might support `flutter packages get`. Check the docs for your editor to learn more.
+
+#### 3. Import it
+Now in your Dart code, you can use:
+```dart
+import 'package:dynamic_widget/dynamic_widget.dart';
+```
+
 ## Get started
 You should use `DynamicWidgetBuilder().build` method to covert a json string into flutter widget. It will be time-consuming. so you'd better using `FutureBuilder` to build the UI.
 
 ```dart
+import 'package:dynamic_widget/dynamic_widget.dart';
 class PreviewPage extends StatelessWidget{
 
   final String jsonString;
@@ -139,7 +165,7 @@ class DynamicWidgetBuilder{
 
 
 ## Documents
-[Flutter Widgets](WIDGETS.md)
+[Currently support widgets and properties](WIDGETS.md)
 
 ## Setup
 Checkout this project and run deom.
@@ -151,14 +177,10 @@ Checkout this project and run deom.
 Already completed widgets:
 * Container
 * Text & TextSpan
+* Row & Column
 
-You can view [all widgets definition](WIDGETS.md) here.
+You can view [Currently support widgets and properties](WIDGETS.md) here.
 
-## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
-
-## Inspiration
-Add here credits. Project inspired by..., based on...
 
 ## Contact
 Created by [@deng.yin@gmail.com](https://www.jianshu.com/u/efa51344ce61) - feel free to contact me!
