@@ -1,7 +1,7 @@
 name: dynamic_widget
 description: a flutter dynamic widget created from a json string
 version: 0.0.1
-author: deng.yin@gmail.com
+author: Denny Deng<deng.yin@gmail.com>
 homepage: https://github.com/dengyin2000/dynamic_widget
 
 environment:
