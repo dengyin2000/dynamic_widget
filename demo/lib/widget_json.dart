@@ -135,3 +135,38 @@ var row_json =
   ]
 }
 ''';
+
+var column_json =
+'''
+{
+  "type": "Column",
+  "crossAxisAlignment": "start",
+  "mainAxisAlignment": "start",
+  "mainAxisSize": "max",
+  "textBaseline": "alphabetic",
+  "textDirection": "ltr",
+  "verticalDirection": "down",
+  "children":[
+    {
+      "type" : "Text",
+      "data" : "Flutter"
+    },
+    {
+      "type": "RaisedButton",
+      "color": "##FF00FF",
+      "padding": "8,8,8,8",
+      "textColor": "#00FF00",
+      "elevation" : 8.0,
+      "splashColor" : "#00FF00",
+      "child" : {
+        "type": "Text",
+        "data": "Widget"
+      }
+    },
+    {
+      "type" : "Text",
+      "data" : "Demo"
+    }
+  ]
+}
+''';

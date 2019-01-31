@@ -93,6 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           RaisedButton(
+            child: Text("Column"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(column_json)));
+            },
+          ),
+          RaisedButton(
             child: Text("Text"),
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(text_json)));
@@ -110,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(raisedButton_json)));
             },
           ),
+
 
         ],
       )
