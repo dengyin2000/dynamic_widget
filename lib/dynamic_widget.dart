@@ -20,7 +20,9 @@ class DynamicWidgetBuilder{
     RaisedButtonParser(),
     RowWidgetParser(),
     ColumnWidgetParser(),
-    AssetImageWidgetParser()
+    AssetImageWidgetParser(),
+    NetworkImageWidgetParser(),
+    FileImageWidgetParser()
   ];
 
 

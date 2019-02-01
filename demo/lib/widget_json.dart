@@ -184,3 +184,17 @@ var assetImage_json =
 }
 
 ''';
+
+var networkImage_json =
+'''
+{
+  "type": "Container",
+  "color": "#FFFFFF",
+  "alignment": "center",
+  "child": {
+    "type": "NetworkImage",
+    "src": "https://b.appsimg.com/upload/momin/2019/01/23/101/1548249269085.png"
+  }
+}
+
+''';
