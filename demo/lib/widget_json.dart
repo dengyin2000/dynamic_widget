@@ -170,3 +170,17 @@ var column_json =
   ]
 }
 ''';
+
+var assetImage_json =
+'''
+{
+  "type": "Container",
+  "color": "#FFFFFF",
+  "alignment": "center",
+  "child": {
+    "type": "AssetImage",
+    "name": "assets/vip.png"
+  }
+}
+
+''';

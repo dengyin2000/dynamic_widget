@@ -3,6 +3,7 @@ library dynamic_widget;
 
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:flutter/widgets.dart';
@@ -18,7 +19,8 @@ class DynamicWidgetBuilder{
     TextWidgetParser(),
     RaisedButtonParser(),
     RowWidgetParser(),
-    ColumnWidgetParser()
+    ColumnWidgetParser(),
+    AssetImageWidgetParser()
   ];
 
 
