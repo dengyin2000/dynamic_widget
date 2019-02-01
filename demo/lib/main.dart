@@ -128,6 +128,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(networkImage_json)));
             },
           ),
+          RaisedButton(
+            child: Text("Placeholder"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(placeholder_json)));
+            },
+          ),
 
 
         ],

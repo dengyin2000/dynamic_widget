@@ -198,3 +198,20 @@ var networkImage_json =
 }
 
 ''';
+
+var placeholder_json =
+'''
+{
+  "type": "Container",
+  "color": "#FFFFFF",
+  "alignment": "center",
+  "child": {
+    "type": "Placeholder",
+    "color": "#00FF00",
+    "strokeWidth": 6.0,
+    "fallbackWidth": 100.0,
+    "fallbackHeight": 200.0
+  }
+}
+
+''';
