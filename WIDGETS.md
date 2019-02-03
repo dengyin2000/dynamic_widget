@@ -2,13 +2,13 @@
 > Dynamic Widget Manual
 
 ## Table of contents
-* [Container Widget](#container_widget)
-* [Text Widget](#text_widget)
-* [TextSpan](#text_span)
-* [TextStyle](#text_style)
-* [RaisedButton Widget](#raisedButton_widget)
-* [Row Widget](#row_widget)
-* [Column Widget](#column_widget)
+* [Container Widget](#container-widget)
+* [Text Widget](#text-widget)
+* [TextSpan](#text-span)
+* [TextStyle](#text-style)
+* [RaisedButton Widget](#raisedButton-widget)
+* [Row Widget](#row-widget)
+* [Column Widget](#column-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
