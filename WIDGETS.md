@@ -4,8 +4,8 @@
 ## Table of contents
 * [Container Widget](#container-widget)
 * [Text Widget](#text-widget)
-* [TextSpan](#text-span)
-* [TextStyle](#text-style)
+* [TextSpan](#textspan)
+* [TextStyle](#textstyle)
 * [RaisedButton Widget](#raisedButton-widget)
 * [Row Widget](#row-widget)
 * [Column Widget](#column-widget)
