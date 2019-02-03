@@ -76,6 +76,7 @@ Color parseHexColor(String hexColorString){
 
 
 TextStyle parseTextStyle(Map<String, dynamic> map){
+  //TODO: more properties need to be implemented, such as decoration, decorationColor, decorationStyle, wordSpacing and so on.
   String color = map['color'];
   String debugLabel = map['debugLabel'];
   String fontFamily = map['fontFamily'];
