@@ -329,6 +329,8 @@ BoxFit parseBoxFit(String boxFitString){
     case 'scaleDown':
       return BoxFit.scaleDown;
   }
+
+  return null;
 }
 
 ImageRepeat parseImageRepeat(String imageRepeatString){

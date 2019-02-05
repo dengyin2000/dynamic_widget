@@ -6,9 +6,12 @@
 * [Text Widget](#text-widget)
 * [TextSpan](#textspan)
 * [TextStyle](#textstyle)
-* [RaisedButton Widget](#raisedButton-widget)
+* [RaisedButton Widget](#raisedbutton-widget)
 * [Row Widget](#row-widget)
 * [Column Widget](#column-widget)
+* [AssetImage Widget](#assetimage-widget)
+* [NetworkImage Widget](#networkimage-widget)
+* [FileImage Widget](#fileimage-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -100,3 +103,66 @@ Column widget, here to see flutter [Column widget](https://docs.flutter.io/flutt
 | textDirection|Determines the order to lay children out horizontally and how to interpret start and end in the horizontal direction.|String| One of the following string:<br>ltr (default)<br>rtl | |
 | verticalDirection|Determines the order to lay children out vertically and how to interpret start and end in the vertical direction.|String|One of the following string:<br>down (default)<br>up| |
 | children|The widgets below this widget in the tree. |List&#60;TextSpan&#62;| | |
+
+## AssetImage Widget
+AssetImage widget, here to see flutter [Asset Image widget](https://docs.flutter.io/flutter/widgets/Image-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| name|The picture asset name|String||'images/cat.png' |
+| semanticLabel|A Semantic description of the image.  |String|| |
+| excludeFromSemantics|Whether to exclude this image from semantics. |bool|  | |
+| scale||double| | |
+| width|If non-null, require the image to have this width. |double| | |
+| height|If non-null, require the image to have this height.|double| | |
+| color|If non-null, this color is blended with each image pixel using colorBlendMode. |String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
+| blendMode|Used to combine color with this image. |String| enum values, please see enum BlendMode | 'srcIn' |
+| boxFit|How to inscribe the image into the space allocated during layout. |String| enum values, please see enum BoxFit | 'none' |
+| alignment|How to align the image within its bounds.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
+| repeat|How to paint any portions of the layout bounds not covered by the image.|String| enum values, please see enum ImageRepeat, default value is ImageRepeat.noRepeat. | 'noRepeat'|
+| centerSlice|The center slice for a nine-patch image.|String|left,top,right,bottom|"8,10,12,8"|
+| matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
+| gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
+| filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+
+## NetworkImage Widget
+NetworkImage widget, here to see flutter [Network Image widget](https://docs.flutter.io/flutter/widgets/Image-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| src|The picture url|String||'http://www.google.com/logo.png' |
+| semanticLabel|A Semantic description of the image.  |String|| |
+| excludeFromSemantics|Whether to exclude this image from semantics. |bool|  | |
+| scale||double| | |
+| width|If non-null, require the image to have this width. |double| | |
+| height|If non-null, require the image to have this height.|double| | |
+| color|If non-null, this color is blended with each image pixel using colorBlendMode. |String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
+| blendMode|Used to combine color with this image. |String| enum values, please see enum BlendMode | 'srcIn' |
+| boxFit|How to inscribe the image into the space allocated during layout. |String| enum values, please see enum BoxFit | 'none' |
+| alignment|How to align the image within its bounds.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
+| repeat|How to paint any portions of the layout bounds not covered by the image.|String| enum values, please see enum ImageRepeat, default value is ImageRepeat.noRepeat. | 'noRepeat'|
+| centerSlice|The center slice for a nine-patch image.|String|left,top,right,bottom|"8,10,12,8"|
+| matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
+| gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
+| filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+
+## FileImage Widget
+FileImage widget, here to see flutter [File Image widget](https://docs.flutter.io/flutter/widgets/Image-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| filePath|The picture file path|String||'/sdcard/logo.png' |
+| semanticLabel|A Semantic description of the image.  |String|| |
+| excludeFromSemantics|Whether to exclude this image from semantics. |bool|  | |
+| scale||double| | |
+| width|If non-null, require the image to have this width. |double| | |
+| height|If non-null, require the image to have this height.|double| | |
+| color|If non-null, this color is blended with each image pixel using colorBlendMode. |String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
+| blendMode|Used to combine color with this image. |String| enum values, please see enum BlendMode | 'srcIn' |
+| boxFit|How to inscribe the image into the space allocated during layout. |String| enum values, please see enum BoxFit | 'none' |
+| alignment|How to align the image within its bounds.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
+| repeat|How to paint any portions of the layout bounds not covered by the image.|String| enum values, please see enum ImageRepeat, default value is ImageRepeat.noRepeat. | 'noRepeat'|
+| centerSlice|The center slice for a nine-patch image.|String|left,top,right,bottom|"8,10,12,8"|
+| matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
+| gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
+| filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
