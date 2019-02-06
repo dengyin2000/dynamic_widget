@@ -12,6 +12,7 @@
 * [AssetImage Widget](#assetimage-widget)
 * [NetworkImage Widget](#networkimage-widget)
 * [FileImage Widget](#fileimage-widget)
+* [Placeholder Widget](#placeholder-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -166,3 +167,13 @@ FileImage widget, here to see flutter [File Image widget](https://docs.flutter.i
 | matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
 | gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
 | filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+
+## Placeholder Widget
+Placeholder widget, here to see flutter [Placeholder widget](https://docs.flutter.io/flutter/widgets/Placeholder-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| color|The color to draw the placeholder box.|String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
+| strokeWidth|The width of the lines in the placeholder box. |double|| |
+| fallbackWidth|The width to use when the placeholder is in a situation with an unbounded width.|double|  | |
+| fallbackHeight|The height to use when the placeholder is in a situation with an unbounded height. |double| | |
