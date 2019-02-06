@@ -19,7 +19,7 @@ class RowWidgetParser extends WidgetParser{
       textBaseline: map.containsKey('textBaseline') ? parseTextBaseline(map['textBaseline']) : null,
       textDirection: map.containsKey('textDirection') ? parseTextDirection(map['textDirection']) : null,
       verticalDirection: map.containsKey('verticalDirection') ? parseVerticalDirection(map['verticalDirection']) : VerticalDirection.down,
-      children: DynamicWidgetBuilder().buildWidgets(map['children']),
+      children: DynamicWidgetBuilder.buildWidgets(map['children']),
     );
   }
 
@@ -40,7 +40,7 @@ class ColumnWidgetParser extends WidgetParser{
       textBaseline: map.containsKey('textBaseline') ? parseTextBaseline(map['textBaseline']) : null,
       textDirection: map.containsKey('textDirection') ? parseTextDirection(map['textDirection']) : null,
       verticalDirection: map.containsKey('verticalDirection') ? parseVerticalDirection(map['verticalDirection']) : VerticalDirection.down,
-      children: DynamicWidgetBuilder().buildWidgets(map['children']),
+      children: DynamicWidgetBuilder.buildWidgets(map['children']),
     );
   }
 

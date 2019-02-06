@@ -134,6 +134,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(placeholder_json)));
             },
           ),
+          RaisedButton(
+            child: Text("GridView"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridview_json)));
+            },
+          ),
 
 
         ],
@@ -228,6 +234,9 @@ class PreviewPage extends StatelessWidget{
         body: FutureBuilder<Widget>(
           future: _buildWidget(),
           builder: (BuildContext context, AsyncSnapshot<Widget> snapshot){
+            if (snapshot.hasError) {
+              print(snapshot.error);
+            }
             return snapshot.hasData?snapshot.data:Text("Loading...");
           },
         ),

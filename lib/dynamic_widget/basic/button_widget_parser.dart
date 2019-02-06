@@ -21,7 +21,7 @@ class RaisedButtonParser extends WidgetParser{
       padding: map.containsKey('padding') ? parseEdgeInsetsGeometry(map['padding']) : null,
       splashColor : map.containsKey('splashColor') ? parseHexColor(map['splashColor']) : null,
       textColor: map.containsKey('textColor') ? parseHexColor(map['textColor']) : null,
-      child: DynamicWidgetBuilder().buildFromMap(map['child']),
+      child: DynamicWidgetBuilder.buildFromMap(map['child']),
       onPressed: (){},
     );
   }

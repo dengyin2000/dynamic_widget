@@ -7,13 +7,14 @@ import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:logging/logging.dart';
 
 class DynamicWidgetBuilder{
 
-  final Logger log = Logger('DynamicWidget');
+  static final Logger log = Logger('DynamicWidget');
 
   static final parsers = [
     ContainerWidgetParser(),
@@ -24,7 +25,8 @@ class DynamicWidgetBuilder{
     AssetImageWidgetParser(),
     NetworkImageWidgetParser(),
     FileImageWidgetParser(),
-    PlaceholderWidgetParser()
+    PlaceholderWidgetParser(),
+    GridViewWidgetParser()
   ];
 
 
@@ -34,7 +36,7 @@ class DynamicWidgetBuilder{
     return buildFromMap(map);
   }
 
-  Widget buildFromMap(Map<String, dynamic> map){
+  static Widget buildFromMap(Map<String, dynamic> map){
     String widgetName = map['type'];
 
     for (var parser in parsers) {
@@ -47,7 +49,7 @@ class DynamicWidgetBuilder{
     return null;
   }
 
-  List<Widget> buildWidgets(List<dynamic> values){
+  static List<Widget> buildWidgets(List<dynamic> values){
     List<Widget> rt = [];
     for (var value in values) {
       rt.add(buildFromMap(value));
