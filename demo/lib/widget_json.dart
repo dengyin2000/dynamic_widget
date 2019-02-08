@@ -403,3 +403,94 @@ var listview_json =
 }
 
 ''';
+
+var pageview_json =
+'''
+{
+  "type": "PageView",
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    }
+    
+  ]
+}
+
+''';
