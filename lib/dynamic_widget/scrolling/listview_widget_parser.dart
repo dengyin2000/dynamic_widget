@@ -4,10 +4,10 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
-class GridViewWidgetParser extends WidgetParser{
+class ListViewWidgetParser extends WidgetParser{
   @override
   bool forWidget(String widgetName) {
-    return "GridView" == widgetName;
+    return "ListView" == widgetName;
   }
 
   @override
@@ -16,16 +16,13 @@ class GridViewWidgetParser extends WidgetParser{
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
     }
-    return GridView.count(
-      crossAxisCount: map['crossAxisCount'],
+    return ListView(
       scrollDirection: scrollDirection,
       reverse: map.containsKey("reverse")?map['reverse']:false,
       shrinkWrap: map.containsKey("shrinkWrap") ? map["shrinkWrap"]: false,
       cacheExtent: map.containsKey("cacheExtent") ? map["cacheExtent"] : 0.0,
       padding: map.containsKey('padding')?parseEdgeInsetsGeometry(map['padding']) : null,
-      mainAxisSpacing: map.containsKey('mainAxisSpacing') ? map['mainAxisSpacing']:0.0,
-      crossAxisSpacing: map.containsKey('crossAxisSpacing') ? map['crossAxisSpacing']:0.0,
-      childAspectRatio: map.containsKey('childAspectRatio') ? map['childAspectRatio']:1.0,
+      itemExtent:map.containsKey("itemExtent") ? map["itemExtent"] : null,
       children: DynamicWidgetBuilder.buildWidgets(map['children']),
     );
   }

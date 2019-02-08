@@ -8,6 +8,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.da
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:logging/logging.dart';
@@ -26,7 +27,8 @@ class DynamicWidgetBuilder{
     NetworkImageWidgetParser(),
     FileImageWidgetParser(),
     PlaceholderWidgetParser(),
-    GridViewWidgetParser()
+    GridViewWidgetParser(),
+    ListViewWidgetParser()
   ];
 
 
