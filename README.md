@@ -22,6 +22,8 @@
 
 Widget type will be a type property, and widget's properties will be the json properties too. All properties and their values will be almost the same. You can checkout the following document.
 
+[Currently support flutter widgets and properties](WIDGETS.md)
+
 ## Screenshots
 <img src="./img/demo1.gif" width="400">
 
@@ -178,6 +180,21 @@ Already completed widgets:
 * Container
 * Text & TextSpan
 * Row & Column
+* AssetImage
+* NetworkImage
+* FileImage
+* Placeholder
+* GridView
+* ListView
+* PageView
+* Expanded
+* Padding
+* Center
+* Align
+* AspectRatio 
+* FittedBox
+* Baseline
+
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
 
