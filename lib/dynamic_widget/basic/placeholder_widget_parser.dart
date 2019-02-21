@@ -11,7 +11,7 @@ class PlaceholderWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     return Placeholder(
       color: map.containsKey('color') ? parseHexColor(map['color']) : const Color(0xFF455A64),
       strokeWidth: map.containsKey('strokeWidth') ? map['strokeWidth'] : 2.0,

@@ -10,7 +10,7 @@ class TextWidgetParser implements WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     String data = map['data'];
     String textAlignString = map['textAlign'];
     String overflow = map['overflow'];

@@ -91,6 +91,7 @@ var raisedButton_json =
     "textColor": "#00FF00",
     "elevation" : 8.0,
     "splashColor" : "#00FF00",
+    "click_event" : "route://productDetail?goods_id=123",
     "child" : {
       "type": "Text",
       "data": "I am a button"

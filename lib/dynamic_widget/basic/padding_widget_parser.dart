@@ -11,10 +11,10 @@ class PaddingWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     return Padding(
       padding: map.containsKey("padding") ? parseEdgeInsetsGeometry(map["padding"]) : null,
-      child: DynamicWidgetBuilder.buildFromMap(map["child"]),
+      child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
     );
   }
 

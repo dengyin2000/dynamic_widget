@@ -9,7 +9,7 @@ class ContainerWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     Alignment alignment = parseAlignment(map['alignment']);
     Color color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
@@ -17,7 +17,7 @@ class ContainerWidgetParser extends WidgetParser{
     EdgeInsetsGeometry margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry padding = parseEdgeInsetsGeometry(map['padding']);
     Map<String, dynamic> childMap =  map['child'];
-    Widget child = DynamicWidgetBuilder.buildFromMap(childMap);
+    Widget child = DynamicWidgetBuilder.buildFromMap(childMap, listener);
     return Container(
       alignment: alignment,
       padding: padding,

@@ -11,7 +11,7 @@ class ListViewWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
@@ -23,7 +23,7 @@ class ListViewWidgetParser extends WidgetParser{
       cacheExtent: map.containsKey("cacheExtent") ? map["cacheExtent"] : 0.0,
       padding: map.containsKey('padding')?parseEdgeInsetsGeometry(map['padding']) : null,
       itemExtent:map.containsKey("itemExtent") ? map["itemExtent"] : null,
-      children: DynamicWidgetBuilder.buildWidgets(map['children']),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
     );
   }
 

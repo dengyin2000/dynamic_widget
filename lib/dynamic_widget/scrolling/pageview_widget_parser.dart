@@ -9,7 +9,7 @@ class PageViewWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
+  Widget parse(Map<String, dynamic> map, ClickListener listener){
     var scrollDirection = Axis.horizontal;
     if (map.containsKey("scrollDirection")) {
       scrollDirection = map["scrollDirection"];
@@ -18,7 +18,7 @@ class PageViewWidgetParser extends WidgetParser{
       scrollDirection: scrollDirection,
       reverse: map.containsKey("reverse") ? map["reverse"] : false,
       pageSnapping: map.containsKey("pageSnapping") ? map["pageSnapping"] : true,
-      children: DynamicWidgetBuilder.buildWidgets(map['children']),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
     );
   }
 

@@ -48,18 +48,19 @@ class DynamicWidgetBuilder{
   ];
 
 
-  Widget build(String json){
-
+  Widget build(String json, ClickListener listener){
     var map = jsonDecode(json);
-    return buildFromMap(map);
+    ClickListener _listener = listener == null? new NonResponseWidgetClickListener(): listener;
+    var widget = buildFromMap(map, _listener);
+    return widget;
   }
 
-  static Widget buildFromMap(Map<String, dynamic> map){
+  static Widget buildFromMap(Map<String, dynamic> map, ClickListener listener){
     String widgetName = map['type'];
 
     for (var parser in parsers) {
       if (parser.forWidget(widgetName)) {
-        return parser.parse(map);
+        return parser.parse(map, listener);
       }
     }
 
@@ -67,10 +68,10 @@ class DynamicWidgetBuilder{
     return null;
   }
 
-  static List<Widget> buildWidgets(List<dynamic> values){
+  static List<Widget> buildWidgets(List<dynamic> values, ClickListener listener){
     List<Widget> rt = [];
     for (var value in values) {
-      rt.add(buildFromMap(value));
+      rt.add(buildFromMap(value, listener));
     }
     return rt;
   }
@@ -81,7 +82,7 @@ class DynamicWidgetBuilder{
 abstract class WidgetParser{
 
   /// parse the json map into a flutter widget.
-  Widget parse(Map<String, dynamic> map);
+  Widget parse(Map<String, dynamic> map, ClickListener listener);
 
   /// check the matched widget type. for example:
   /// {"type" : "Text", "data" : "Denny"}
@@ -89,4 +90,21 @@ abstract class WidgetParser{
   /// method as "Text" == widgetName, for more details, please see
   /// @TextWidgetParser
   bool forWidget(String widgetName);
+}
+
+abstract class ClickListener{
+
+  void onClicked(String event);
+}
+
+class NonResponseWidgetClickListener implements ClickListener{
+
+  static final Logger log = Logger('NonResponseWidgetClickListener');
+
+  @override
+  void onClicked(String event) {
+    log.info("receiver click event: " + event);
+    print("receiver click event: " + event);
+  }
+
 }

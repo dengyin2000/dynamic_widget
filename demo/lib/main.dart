@@ -263,6 +263,6 @@ class PreviewPage extends StatelessWidget{
 
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString);
+    return DynamicWidgetBuilder().build(jsonString, null);
   }
 }
