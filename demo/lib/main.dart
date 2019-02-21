@@ -263,6 +263,14 @@ class PreviewPage extends StatelessWidget{
 
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString, null);
+    return DynamicWidgetBuilder().build(jsonString, new DefaultClickListener());
   }
+}
+
+class DefaultClickListener implements ClickListener{
+  @override
+  void onClicked(String event) {
+    print("Receive click event: " + event);
+  }
+
 }
