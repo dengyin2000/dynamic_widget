@@ -166,7 +166,7 @@ class DynamicWidgetBuilder{
 ```
 ## How to add a click listener
 Add "click_event" property to your widget json definition. for example:
-```
+```dart
 var raisedButton_json =
 '''
 {
@@ -187,10 +187,11 @@ var raisedButton_json =
   }
 }
 ```
+
 We suggest you'd better to use an URI to define the event, as the exmaple, it's a event for going to a product detail page.
 
 Then, define a ClickListener
-```
+```dart
 class DefaultClickListener implements ClickListener{
   @override
   void onClicked(String event) {
@@ -201,8 +202,7 @@ class DefaultClickListener implements ClickListener{
 ```
 
 Finally, pass the listener to build method.
-
-```
+```dart
   Future<Widget> _buildWidget() async{
 
     return DynamicWidgetBuilder().build(jsonString, new DefaultClickListener());
