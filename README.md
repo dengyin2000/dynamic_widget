@@ -6,7 +6,8 @@
 * [Screenshots](#screenshots)
 * [Install](#install)
 * [Get started](#get-started)
-* [How to implement a WidgetParser](#implement-widgetparser)
+* [How to implement a WidgetParser](#how-to-implement-a-widgetparser)
+* [How to add a click listener](#how-to-add-a-click-listener)
 * [Documents](#documents)
 * [Setup](#setup)
 * [Features](#features)
@@ -82,11 +83,10 @@ class PreviewPage extends StatelessWidget{
 
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString);
+    return DynamicWidgetBuilder().build(jsonString, null);
   }
 }
 ```
-
 ## How to implement a WidgetParser
 1. You need to implement the `WidgetParser` abstract class.
 2. Add new created WidgetParser to `DynamicWidgetBuilder.parsers` list.
@@ -164,7 +164,51 @@ class DynamicWidgetBuilder{
   }
 }
 ```
+## How to add a click listener
+Add "click_event" property to your widget json definition. for example:
+```
+var raisedButton_json =
+'''
+{
+  "type": "Container",
+  "alignment": "center",
+  "child": {
+    "type": "RaisedButton",
+    "color": "##FF00FF",
+    "padding": "8,8,8,8",
+    "textColor": "#00FF00",
+    "elevation" : 8.0,
+    "splashColor" : "#00FF00",
+    "click_event" : "route://productDetail?goods_id=123",
+    "child" : {
+      "type": "Text",
+      "data": "I am a button"
+    }  
+  }
+}
+```
+We suggest you'd better to use an URI to define the event, as the exmaple, it's a event for going to a product detail page.
 
+Then, define a ClickListener
+```
+class DefaultClickListener implements ClickListener{
+  @override
+  void onClicked(String event) {
+    print("Receive click event: " + event);
+  }
+
+}
+```
+
+Finally, pass the listener to build method.
+
+```
+  Future<Widget> _buildWidget() async{
+
+    return DynamicWidgetBuilder().build(jsonString, new DefaultClickListener());
+  }
+```
+  
 
 ## Documents
 [Currently support widgets and properties](WIDGETS.md)
