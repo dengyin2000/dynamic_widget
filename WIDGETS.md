@@ -216,8 +216,8 @@ ListView widget, here to see flutter [ListView widget](https://docs.flutter.io/f
 | padding|The amount of space by which to inset the children.|String|left,top,right,bottom|"8,10,12,8"|
 | itemExtent| If non-null, forces the children to have the given extent in the scroll direction.|double|||
 | pageSize| ListView load more item count for next page|double||this will be append to load more url|
-| loadMoreUrl| When listview scroll to bottom, it will do the request. The response of this url should be a json array of widget|double|||
-| isDemo| used in the demo, if true, will do the fake request|double|||
+| loadMoreUrl| When listview scroll to bottom, it will do the request. The response of this url should be a json array of widget|String|||
+| isDemo| used in the demo, if true, will do the fake request|bool||the default value is false|
 | children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
 
 ## PageView Widget
