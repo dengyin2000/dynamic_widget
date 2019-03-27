@@ -86,6 +86,9 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       var jsonString = _params.isDemo ?  await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), null);
       setState(() {
+        if(buildWidgets.isEmpty) {
+          loadCompleted = true;
+        }
         _items.addAll(buildWidgets);
         isPerformingRequest = false;
       });
@@ -96,7 +99,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
-  } // 是否有请求正在进行
+  }
 
   Widget _buildProgressIndicator() {
     return new Padding(
@@ -115,6 +118,11 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   Widget build(BuildContext context) {
 
     return ListView.builder(
+      scrollDirection: _params.scrollDirection,
+      reverse: _params.reverse,
+      shrinkWrap: _params.shrinkWrap,
+      cacheExtent: _params.cacheExtent,
+      padding: _params.padding,
       itemCount: loadCompleted ? _items.length : _items.length + 1,
       itemBuilder: (context, index) {
         if (index == _items.length) {
@@ -166,7 +174,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
           _params.loadMoreUrl, _items.length, _params.pageSize)));
       var response = await request.close();
       if (response.statusCode == HttpStatus.ok) {
-        var json = await response.transform(Utf8Decoder()).join();
+        var json = await response.transform(utf8.decoder).join();
         return json;
       }
     }catch(exception) {

@@ -164,6 +164,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listview_loadmore_json)));
             },
           ),
+          RaisedButton(
+            child: Text("GridView Auto load more"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridviewloadmore_json)));
+            },
+          ),
 
 
         ],

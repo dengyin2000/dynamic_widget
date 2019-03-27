@@ -635,3 +635,78 @@ var listview_loadmore_json =
 }
 
 ''';
+
+var gridviewloadmore_json =
+'''
+{
+  "type": "GridView",
+  "crossAxisCount": 2,
+  "padding": "10, 10, 10, 10",
+  "mainAxisSpacing": 4.0,
+  "crossAxisSpacing": 4.0,
+  "childAspectRatio": 1.6,
+  "pageSize": 10,
+  "loadMoreUrl": "http://127.0.0.1:8080/list.json",
+  "isDemo": true,
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    }
+    
+  ]
+}
+
+''';
