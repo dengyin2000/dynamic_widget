@@ -540,3 +540,98 @@ var expanded_json =
   ]
 }
 ''';
+
+var listview_loadmore_json =
+'''
+{
+  "type": "ListView",
+  "padding": "10, 10, 10, 10",
+  "pageSize": 10,
+  "loadMoreUrl": "http://127.0.0.1:8080/list.json",
+  "isDemo": true,
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    }
+    
+  ]
+}
+
+''';

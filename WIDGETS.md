@@ -204,6 +204,22 @@ GridView widget, here to see flutter [GridView widget](https://docs.flutter.io/f
 | childAspectRatio| The ratio of the cross-axis to the main-axis extent of each child.|double|||
 | children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
 
+## ListView Widget
+ListView widget, here to see flutter [ListView widget](https://docs.flutter.io/flutter/widgets/ListView-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| scrollDirection|The axis along which the scroll view scrolls. |String|enum values, please see enum Axis, default value is Axis.vertical.| "vertical" |
+| reverse|Whether the scroll view scrolls in the reading direction.|bool| default value is false | |
+| shrinkWrap|Whether the extent of the scroll view in the scrollDirection should be determined by the contents being viewed.|bool| default value is false | |
+| cacheExtent|The viewport has an area before and after the visible area to cache items that are about to become visible when the user scrolls.|double| default value is 0.0 | |
+| padding|The amount of space by which to inset the children.|String|left,top,right,bottom|"8,10,12,8"|
+| itemExtent| If non-null, forces the children to have the given extent in the scroll direction.|double|||
+| pageSize| ListView load more item count for next page|double||this will be append to load more url|
+| loadMoreUrl| When listview scroll to bottom, it will do the request. The response of this url should be a json array of widget|double|||
+| isDemo| used in the demo, if true, will do the fake request|double|||
+| children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
+
 ## PageView Widget
 PageView widget, here to see flutter [PageView widget](https://docs.flutter.io/flutter/widgets/PageView-class.html) definition. Supported json properties:
 

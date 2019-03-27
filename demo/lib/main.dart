@@ -158,6 +158,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(expanded_json)));
             },
           ),
+          RaisedButton(
+            child: Text("ListView Auto load more"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listview_loadmore_json)));
+            },
+          ),
 
 
         ],
