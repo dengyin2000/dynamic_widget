@@ -203,6 +203,9 @@ GridView widget, here to see flutter [GridView widget](https://docs.flutter.io/f
 | crossAxisSpacing| The number of logical pixels between each child along the cross axis.|double|||
 | childAspectRatio| The ratio of the cross-axis to the main-axis extent of each child.|double|||
 | children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
+| pageSize| ListView load more item count for next page|double||this will be append to load more url|
+| loadMoreUrl| When listview scroll to bottom, it will do the request. The response of this url should be a json array of widget|String|||
+| isDemo| used in the demo, if true, will do the fake request|bool||the default value is false|
 
 ## ListView Widget
 ListView widget, here to see flutter [ListView widget](https://docs.flutter.io/flutter/widgets/ListView-class.html) definition. Supported json properties:

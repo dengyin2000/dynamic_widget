@@ -141,31 +141,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-/*    return GridView.builder(
-      scrollDirection: _params.scrollDirection,
-        reverse: _params.reverse,
-        shrinkWrap: _params.shrinkWrap,
-        cacheExtent: _params.cacheExtent,
-        padding: _params.padding,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: _params.crossAxisCount,
-            mainAxisSpacing: _params.mainAxisSpacing,
-            crossAxisSpacing: _params.crossAxisSpacing,
-            childAspectRatio: _params.childAspectRatio
-        ),
-        itemBuilder: (context, index){
-          if (index == _items.length) {
-            return _buildProgressIndicator();
-          } else {
-            return _items[index];
-          }
-        },
-      itemCount: loadCompleted ? _items.length : _items.length + 1,
-      controller: _scrollController,
-    );*/
-
     var footer = _buildProgressIndicator();
-
     var sliverGrid = SliverPadding(
       padding: _params.padding,
       sliver: SliverGrid(
