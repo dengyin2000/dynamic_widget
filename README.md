@@ -26,7 +26,7 @@ Widget type will be a type property, and widget's properties will be the json pr
 [Currently support flutter widgets and properties](WIDGETS.md)
 
 ## Screenshots
-<img src="./img/demo1.gif" width="400">
+<img src="./img/demo1.gif" width="200">
 
 ## Install
 #### 1. Depend on it
