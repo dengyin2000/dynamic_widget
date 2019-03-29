@@ -24,6 +24,7 @@
 * [FittedBox Widget](#fittedbox-widget)
 * [Baseline Widget](#baseline-widget)
 * [Stack Widget](#stack-widget)
+* [Positioned Widget](#positioned-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
