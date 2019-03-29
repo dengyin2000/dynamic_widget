@@ -13,6 +13,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
@@ -45,6 +46,8 @@ class DynamicWidgetBuilder{
     AspectRatioWidgetParser(),
     FittedBoxWidgetParser(),
     BaselineWidgetParser(),
+    StackWidgetParser(),
+    PositionedWidgetParser(),
   ];
 
 

@@ -710,3 +710,27 @@ var gridviewloadmore_json =
 }
 
 ''';
+
+var stack_json =
+'''
+{
+  "type": "Stack",
+  "alignment": "topLeft",
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "Positioned",
+      "top": 50.0,
+      "left": 50.0,
+      "child":{
+        "type": "AssetImage",
+        "name": "assets/vip.png"
+      }
+    }
+  ]
+}
+
+''';

@@ -389,3 +389,34 @@ String getLoadMoreUrl(String url, int currentNo, int pageSize){
   }
   return url;
 }
+
+StackFit parseStackFit(String value){
+  if (value == null)
+    return null;
+
+  switch(value){
+    case 'loose':
+      return StackFit.loose;
+    case 'expand':
+      return StackFit.expand;
+    case 'passthrough':
+      return StackFit.passthrough;
+    default:
+      return StackFit.loose;
+  }
+}
+
+Overflow parseOverflow(String value){
+  if (value == null) {
+    return null;
+  }
+
+  switch(value){
+    case 'visible':
+      return Overflow.visible;
+    case 'clip':
+      return Overflow.clip;
+    default:
+      return Overflow.clip;
+  }
+}

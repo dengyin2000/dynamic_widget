@@ -23,6 +23,7 @@
 * [AspectRatio Widget](#aspectratio-widget)
 * [FittedBox Widget](#fittedbox-widget)
 * [Baseline Widget](#baseline-widget)
+* [Stack Widget](#stack-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -293,4 +294,28 @@ Baseline widget, here to see flutter [Baseline widget](https://docs.flutter.io/f
 | baseline|The number of logical pixels from the top of this box at which to position the child's baseline. |double| | |
 | baselineType|The type of baseline to use for positioning the child. |String|enum values, please see enum TextBaseline, default value is TextBaseline.ideographic.| |
 | child|child widget |Widget|| |
+
+## Stack Widget
+Stack widget, here to see flutter [Stack widget](https://docs.flutter.io/flutter/widgets/Stack-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| alignment|How to align the non-positioned and partially-positioned children in the stack.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
+| fit|How to size the non-positioned children in the stack. |String|enum values, please see enum StackFit, default value is StackFit.loose.| |
+| overflow|Whether overflowing children should be clipped. See Overflow |String|enum values, please see enum Overflow, default value is Overflow.clip.| |
+| textDirection|The text direction with which to resolve alignment. |String|enum values, please see enum TextDirection| |
+| children|list of Widget |List&#60;Widget&#62;|| |
+
+## Positioned Widget
+Positioned widget, here to see flutter [Positioned widget](https://docs.flutter.io/flutter/widgets/Positioned-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| bottom|The distance that the child's bottom edge is inset from the bottom of the stack.|double|  ||
+| height |The child's height.|double|  ||
+| left |The distance that the child's left edge is inset from the left of the stack.|double|  ||
+| right |The distance that the child's right edge is inset from the right of the stack. |double|  ||
+| top|The distance that the child's top edge is inset from the top of the stack. |double|  ||
+| width |The child's width.|double|  ||
+| child|The widget below this widget in the tree.  |Widget|| |
 
