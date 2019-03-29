@@ -17,7 +17,7 @@ class ContainerWidgetParser extends WidgetParser{
     EdgeInsetsGeometry margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry padding = parseEdgeInsetsGeometry(map['padding']);
     Map<String, dynamic> childMap =  map['child'];
-    Widget child = DynamicWidgetBuilder.buildFromMap(childMap, listener);
+    Widget child = childMap == null? null : DynamicWidgetBuilder.buildFromMap(childMap, listener);
     return Container(
       alignment: alignment,
       padding: padding,

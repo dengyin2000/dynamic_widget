@@ -1,7 +1,7 @@
-import 'dart:io';
 import 'package:dynamic_widget/dynamic_widget.dart';
-import 'widget_json.dart';
 import 'package:flutter/material.dart';
+
+import 'widget_json.dart';
 
 void main() => runApp(MyApp());
 
@@ -176,6 +176,18 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(stack_json)));
             },
           ),
+          RaisedButton(
+            child: Text("IndexedStack"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(indexedstack_json)));
+            },
+          ),
+          RaisedButton(
+            child: Text("SizedBox"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(sizedbox_json)));
+            },
+          ),
 
 
         ],
@@ -262,20 +274,22 @@ class PreviewPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text("Preview"),
-        ),
-        body: FutureBuilder<Widget>(
-          future: _buildWidget(),
-          builder: (BuildContext context, AsyncSnapshot<Widget> snapshot){
-            if (snapshot.hasError) {
-              print(snapshot.error);
-            }
-            return snapshot.hasData?snapshot.data:Text("Loading...");
-          },
-        ),
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text("Preview"),
+      ),
+      body: FutureBuilder<Widget>(
+        future: _buildWidget(),
+        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+          }
+          return snapshot.hasData
+              ? SizedBox.expand(child: snapshot.data,)
+              : Text("Loading...");
+        },
+      ),
     );
   }
 

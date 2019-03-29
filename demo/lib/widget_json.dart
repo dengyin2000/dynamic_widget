@@ -734,3 +734,55 @@ var stack_json =
 }
 
 ''';
+
+var indexedstack_json =
+'''
+{
+  "type": "IndexedStack",
+  "alignment": "topLeft",
+  "index": 1,
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "Positioned",
+      "top": 50.0,
+      "left": 50.0,
+      "child":{
+        "type": "AssetImage",
+        "name": "assets/vip.png"
+      }
+    }
+  ]
+}
+
+''';
+
+var sizedbox_json =
+'''
+{
+  "type": "Stack",
+  "alignment": "topLeft",
+  "children":[
+    {
+      "type": "ExpandedSizedBox",
+      "child":{
+        "type":"Container",
+        "color": "#0000FF"
+      }
+    },
+    {
+      "type": "SizedBox",
+      "width": 100.0,
+      "height": 100.0,
+      "child":{
+        "type":"Container",
+        "color": "#CC00FF"
+      }
+    }
+  ]
+}
+
+''';
