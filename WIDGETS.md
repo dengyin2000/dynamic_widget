@@ -25,6 +25,9 @@
 * [Baseline Widget](#baseline-widget)
 * [Stack Widget](#stack-widget)
 * [Positioned Widget](#positioned-widget)
+* [IndexedStack Widget](#indexedstack-widget)
+* [ExpandedSizedBox Widget](#expandedsizedbox-widget)
+* [SizedBox Widget](#sizedbox-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -320,3 +323,28 @@ Positioned widget, here to see flutter [Positioned widget](https://docs.flutter.
 | width |The child's width.|double|  ||
 | child|The widget below this widget in the tree.  |Widget|| |
 
+## IndexedStack Widget
+IndexedStack widget, here to see flutter [IndexedStack widget](https://docs.flutter.io/flutter/widgets/IndexedStack-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| index |The index of the child to show.|int|  ||
+| alignment|How to align the non-positioned and partially-positioned children in the stack.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
+| textDirection|The text direction with which to resolve alignment. |String|enum values, please see enum TextDirection| |
+| children|list of Widget |List&#60;Widget&#62;|| |
+
+## ExpandedSizedBox Widget
+ExpandedSizedBox widget, here to see flutter [ExpandedSizedBox widget](https://docs.flutter.io/flutter/widgets/SizedBox-class.html) definition. It's a shortcut of **SizedBox.expand**. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| child|The widget below this widget in the tree. |Widget|| |
+
+## SizedBox Widget
+SizedBox widget, here to see flutter [SizedBox widget](https://docs.flutter.io/flutter/widgets/SizedBox-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| width |If non-null, requires the child to have exactly this width.|double|  ||
+| height |If non-null, requires the child to have exactly this height.|double|  ||
+| child|The widget below this widget in the tree.  |Widget|| |

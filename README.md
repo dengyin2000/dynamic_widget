@@ -238,6 +238,11 @@ Already completed widgets:
 * AspectRatio 
 * FittedBox
 * Baseline
+* Stack
+* Positioned
+* IndexedStack
+* ExpandedSizedBox
+* SizedBox
 
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
