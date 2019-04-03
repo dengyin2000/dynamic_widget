@@ -11,12 +11,14 @@ import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/opacity_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/sizedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
@@ -53,6 +55,8 @@ class DynamicWidgetBuilder{
     IndexedStackWidgetParser(),
     ExpandedSizedBoxWidgetParser(),
     SizedBoxWidgetParser(),
+    OpacityWidgetParser(),
+    WrapWidgetParser()
   ];
 
 

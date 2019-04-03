@@ -188,6 +188,18 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(sizedbox_json)));
             },
           ),
+          RaisedButton(
+            child: Text("Opacity"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(opacity_json)));
+            },
+          ),
+          RaisedButton(
+            child: Text("Wrap"),
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(wrap_json)));
+            },
+          ),
 
 
         ],

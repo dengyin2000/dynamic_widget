@@ -786,3 +786,104 @@ var sizedbox_json =
 }
 
 ''';
+
+var opacity_json =
+'''
+{
+  "type": "Container",
+  "color": "#FF00FF",
+  "alignment": "center",
+  "child": {
+    "type":"Opacity",
+    "opacity": 0.3,
+    "child":{
+        "type": "Text",
+        "data": "Flutter dynamic widget",
+        "maxLines": 3,
+        "overflow": "ellipsis",
+        "style": {
+          "color": "#00FFFF",
+          "fontSize": 20.0
+        }
+    }
+  }
+}
+''';
+
+var wrap_json =
+'''
+{
+  "type": "Wrap",
+  "spacing" : 8.0,
+  "runSpacing" : 8.0,
+  "alignment":"center", 
+  "runAlignment" : "start",
+  "crossAxisAlignment":"center",
+  "children": [
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "XXL"
+        }  
+      },
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "XL"
+        }  
+      }   
+      ,
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "SSL"
+        }  
+      }   ,
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "L"
+        }  
+      },
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "LLL"
+        }  
+      },
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "GGG"
+        }  
+      },
+    {
+        "type": "RaisedButton",
+        "padding": "8,8,8,8",
+        "splashColor" : "#00FF00",
+        "child" : {
+          "type": "Text",
+          "data": "AAA"
+        }  
+      }             
+  ]
+}
+''';

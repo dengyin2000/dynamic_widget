@@ -420,3 +420,58 @@ Overflow parseOverflow(String value){
       return Overflow.clip;
   }
 }
+
+Axis parseAxis(String axisString){
+  if (axisString == null) {
+    return Axis.horizontal;
+  }
+
+  switch(axisString){
+    case "horizontal":
+      return Axis.horizontal;
+    case "vertical":
+      return Axis.vertical;
+  }
+  return Axis.horizontal;
+}
+
+//WrapAlignment
+WrapAlignment parseWrapAlignment(String wrapAlignmentString){
+  if (wrapAlignmentString == null) {
+    return WrapAlignment.start;
+  }
+
+  switch(wrapAlignmentString){
+    case "start":
+      return WrapAlignment.start;
+    case "end":
+      return WrapAlignment.end;
+    case "center":
+      return WrapAlignment.center;
+    case "spaceBetween":
+      return WrapAlignment.spaceBetween;
+    case "spaceAround":
+      return WrapAlignment.spaceAround;
+    case "spaceEvenly":
+      return WrapAlignment.spaceEvenly;
+  }
+  return WrapAlignment.start;
+}
+
+//WrapCrossAlignment
+WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString){
+  if (wrapCrossAlignmentString == null) {
+    return WrapCrossAlignment.start;
+  }
+
+  switch(wrapCrossAlignmentString){
+    case "start":
+      return WrapCrossAlignment.start;
+    case "end":
+      return WrapCrossAlignment.end;
+    case "center":
+      return WrapCrossAlignment.center;
+  }
+
+  return WrapCrossAlignment.start;
+}
