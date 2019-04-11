@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -47,18 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,121 +73,121 @@ class _MyHomePageState extends State<MyHomePage> {
           RaisedButton(
             child: Text("Container"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(container_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(containerJson)));
             },
           ),
           RaisedButton(
             child: Text("Row"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(row_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(rowJson)));
             },
           ),
           RaisedButton(
             child: Text("Column"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(column_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(columnJson)));
             },
           ),
           RaisedButton(
             child: Text("Text"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(text_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(textJson)));
             },
           ),
           RaisedButton(
             child: Text("TextSpan"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(textSpan_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(textSpanJson)));
             },
           ),
           RaisedButton(
             child: Text("RaisedButton"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(raisedButton_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(raisedButtonJson)));
             },
           ),
           RaisedButton(
             child: Text("Asset Image"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(assetImage_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(assetImageJson)));
             },
           ),
           RaisedButton(
             child: Text("Network Image"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(networkImage_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(networkImageJson)));
             },
           ),
           RaisedButton(
             child: Text("Placeholder"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(placeholder_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(placeholderJson)));
             },
           ),
           RaisedButton(
             child: Text("GridView"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridview_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridviewJson)));
             },
           ),
           RaisedButton(
             child: Text("ListView"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listview_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listviewJson)));
             },
           ),
           RaisedButton(
             child: Text("PageView"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(pageview_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(pageviewJson)));
             },
           ),
           RaisedButton(
             child: Text("Expanded"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(expanded_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(expandedJson)));
             },
           ),
           RaisedButton(
             child: Text("ListView Auto load more"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listview_loadmore_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(listviewLoadmoreJson)));
             },
           ),
           RaisedButton(
             child: Text("GridView Auto load more"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridviewloadmore_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(gridviewloadmoreJson)));
             },
           ),
           RaisedButton(
             child: Text("Stack and Positioned"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(stack_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(stackJson)));
             },
           ),
           RaisedButton(
             child: Text("IndexedStack"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(indexedstack_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(indexedstackJson)));
             },
           ),
           RaisedButton(
             child: Text("SizedBox"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(sizedbox_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(sizedboxJson)));
             },
           ),
           RaisedButton(
             child: Text("Opacity"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(opacity_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(opacityJson)));
             },
           ),
           RaisedButton(
             child: Text("Wrap"),
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(wrap_json)));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>CodeEditorPage(wrapJson)));
             },
           ),
 

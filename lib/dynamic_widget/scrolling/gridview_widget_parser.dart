@@ -1,10 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
 class GridViewWidgetParser extends WidgetParser {
@@ -59,7 +59,7 @@ class GridViewWidgetParser extends WidgetParser {
 }
 
 class GridViewWidget extends StatefulWidget {
-  GridViewParams _params;
+  final GridViewParams _params;
 
   GridViewWidget(this._params);
 

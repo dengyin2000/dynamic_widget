@@ -55,7 +55,6 @@ class TextWidgetParser implements WidgetParser {
 
 class TextSpanParser{
 
-  @override
   TextSpan parse(Map<String, dynamic> map) {
 
     var textSpan = TextSpan(

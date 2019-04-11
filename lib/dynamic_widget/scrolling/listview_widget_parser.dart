@@ -1,9 +1,9 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 
@@ -41,7 +41,7 @@ class ListViewWidgetParser extends WidgetParser {
 
 class ListViewWidget extends StatefulWidget {
 
-  ListViewParams _params;
+  final ListViewParams _params;
 
   ListViewWidget(this._params);
 

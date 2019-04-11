@@ -28,6 +28,8 @@
 * [IndexedStack Widget](#indexedstack-widget)
 * [ExpandedSizedBox Widget](#expandedsizedbox-widget)
 * [SizedBox Widget](#sizedbox-widget)
+* [Opacity Widget](#opacity-widget)
+* [Wrap Widget](#wrap-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -348,3 +350,27 @@ SizedBox widget, here to see flutter [SizedBox widget](https://docs.flutter.io/f
 | width |If non-null, requires the child to have exactly this width.|double|  ||
 | height |If non-null, requires the child to have exactly this height.|double|  ||
 | child|The widget below this widget in the tree.  |Widget|| |
+
+## Opacity Widget
+Opacity widget, here to see flutter [Opacity widget](https://docs.flutter.io/flutter/widgets/Opacity-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| alwaysIncludeSemantics |Whether the semantic information of the children is always included.|bool|  ||
+| opacity |The fraction to scale the child's alpha value.|double|  ||
+| child|The widget below this widget in the tree.  |Widget|| |
+
+## Wrap Widget
+Wrap widget, here to see flutter [Wrap widget](https://docs.flutter.io/flutter/widgets/Wrap-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| alignment |How the children within a run should be placed in the main axis.|String|enum values, please see enum WrapAlignment, default value is WrapAlignment.start. |"start"|
+| crossAxisAlignment |How the children within a run should be aligned relative to each other in the cross axis.|String|enum values, please see enum WrapCrossAlignment, default value is WrapCrossAlignment.start. |"start"|
+| direction |The direction to use as the main axis.|String|enum values, please see enum Axis, default value is Axis.horizontal. |"horizontal"|
+| runAlignment  |How the runs themselves should be placed in the cross axis. |String|enum values, please see enum WrapAlignment, default value is WrapAlignment.start. |"start"|
+| runSpacing |The fraction to scale the child's alpha value.|double|  |0.0|
+| spacing |How much space to place between children in a run in the main axis.|double|  |0.0|
+| textDirection |Determines the order to lay children out horizontally and how to interpret start and end in the horizontal direction.|String|enum values, please see enum TextDirection, default value is null. |null|
+| verticalDirection  |Determines the order to lay children out vertically and how to interpret start and end in the vertical direction. |String|enum values, please see enum VerticalDirection, default value is VerticalDirection.down. |"down"|
+| children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |

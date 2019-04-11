@@ -1,6 +1,6 @@
 
 
-var container_json =
+var containerJson =
 '''
 {
   "type": "Container",
@@ -22,7 +22,7 @@ var container_json =
 
 
 
-var text_json =
+var textJson =
 '''
 {
   "type": "Container",
@@ -42,7 +42,7 @@ var text_json =
 
 ''';
 
-var textSpan_json =
+var textSpanJson =
 '''
 {
   "type": "Container",
@@ -79,7 +79,7 @@ var textSpan_json =
 
 ''';
 
-var raisedButton_json =
+var raisedButtonJson =
 '''
 {
   "type": "Container",
@@ -102,7 +102,7 @@ var raisedButton_json =
 
 ''';
 
-var row_json =
+var rowJson =
 '''
 {
   "type": "Row",
@@ -137,7 +137,7 @@ var row_json =
 }
 ''';
 
-var column_json =
+var columnJson =
 '''
 {
   "type": "Column",
@@ -172,7 +172,7 @@ var column_json =
 }
 ''';
 
-var assetImage_json =
+var assetImageJson =
 '''
 {
   "type": "Container",
@@ -186,7 +186,7 @@ var assetImage_json =
 
 ''';
 
-var networkImage_json =
+var networkImageJson =
 '''
 {
   "type": "Container",
@@ -200,7 +200,7 @@ var networkImage_json =
 
 ''';
 
-var placeholder_json =
+var placeholderJson =
 '''
 {
   "type": "Container",
@@ -217,7 +217,7 @@ var placeholder_json =
 
 ''';
 
-var gridview_json =
+var gridviewJson =
 '''
 {
   "type": "GridView",
@@ -313,7 +313,7 @@ var gridview_json =
 
 ''';
 
-var listview_json =
+var listviewJson =
 '''
 {
   "type": "ListView",
@@ -405,7 +405,7 @@ var listview_json =
 
 ''';
 
-var pageview_json =
+var pageviewJson =
 '''
 {
   "type": "PageView",
@@ -496,7 +496,7 @@ var pageview_json =
 
 ''';
 
-var expanded_json =
+var expandedJson =
 '''
 {
   "type": "Row",
@@ -541,7 +541,7 @@ var expanded_json =
 }
 ''';
 
-var listview_loadmore_json =
+var listviewLoadmoreJson =
 '''
 {
   "type": "ListView",
@@ -636,7 +636,7 @@ var listview_loadmore_json =
 
 ''';
 
-var gridviewloadmore_json =
+var gridviewloadmoreJson =
 '''
 {
   "type": "GridView",
@@ -711,7 +711,7 @@ var gridviewloadmore_json =
 
 ''';
 
-var stack_json =
+var stackJson =
 '''
 {
   "type": "Stack",
@@ -735,7 +735,7 @@ var stack_json =
 
 ''';
 
-var indexedstack_json =
+var indexedstackJson =
 '''
 {
   "type": "IndexedStack",
@@ -760,7 +760,7 @@ var indexedstack_json =
 
 ''';
 
-var sizedbox_json =
+var sizedboxJson =
 '''
 {
   "type": "Stack",
@@ -787,7 +787,7 @@ var sizedbox_json =
 
 ''';
 
-var opacity_json =
+var opacityJson =
 '''
 {
   "type": "Container",
@@ -810,7 +810,7 @@ var opacity_json =
 }
 ''';
 
-var wrap_json =
+var wrapJson =
 '''
 {
   "type": "Wrap",
