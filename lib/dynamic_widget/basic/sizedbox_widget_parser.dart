@@ -16,7 +16,7 @@ class ExpandedSizedBoxWidgetParser extends WidgetParser {
   }
 }
 
-class SizedBoxWidgetParser extends WidgetParser{
+class SizedBoxWidgetParser extends WidgetParser {
   @override
   bool forWidget(String widgetName) {
     return "SizedBox" == widgetName;
@@ -30,5 +30,4 @@ class SizedBoxWidgetParser extends WidgetParser{
       child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
     );
   }
-
 }

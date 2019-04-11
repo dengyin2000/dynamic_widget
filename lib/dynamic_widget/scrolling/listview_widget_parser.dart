@@ -29,18 +29,27 @@ class ListViewWidgetParser extends WidgetParser {
     var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"] : null;
     var children = DynamicWidgetBuilder.buildWidgets(map['children'], listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
-    var loadMoreUrl = map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;
+    var loadMoreUrl =
+        map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;
     var isDemo = map.containsKey("isDemo") ? map["isDemo"] : false;
 
-    var params = new ListViewParams(scrollDirection, reverse, shrinkWrap,
-        cacheExtent, padding, itemExtent, children, pageSize, loadMoreUrl, isDemo);
+    var params = new ListViewParams(
+        scrollDirection,
+        reverse,
+        shrinkWrap,
+        cacheExtent,
+        padding,
+        itemExtent,
+        children,
+        pageSize,
+        loadMoreUrl,
+        isDemo);
 
     return new ListViewWidget(params);
   }
 }
 
 class ListViewWidget extends StatefulWidget {
-
   final ListViewParams _params;
 
   ListViewWidget(this._params);
@@ -60,7 +69,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   //to bottom.
   bool loadCompleted = false;
 
-  _ListViewWidgetState(this._params){
+  _ListViewWidgetState(this._params) {
     if (_params.children != null) {
       _items.addAll(_params.children);
     }
@@ -71,10 +80,12 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     super.initState();
     if (_params.loadMoreUrl == null || _params.loadMoreUrl.isEmpty) {
       loadCompleted = true;
-      return ;
+      return;
     }
     _scrollController.addListener(() {
-      if (!loadCompleted && _scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      if (!loadCompleted &&
+          _scrollController.position.pixels ==
+              _scrollController.position.maxScrollExtent) {
         _getMoreData();
       }
     });
@@ -83,10 +94,11 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo ?  await fakeRequest() : await doRequest();
-      var buildWidgets = DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), null);
+      var jsonString = _params.isDemo ? await fakeRequest() : await doRequest();
+      var buildWidgets =
+          DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), null);
       setState(() {
-        if(buildWidgets.isEmpty) {
+        if (buildWidgets.isEmpty) {
           loadCompleted = true;
         }
         _items.addAll(buildWidgets);
@@ -113,10 +125,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return ListView.builder(
       scrollDirection: _params.scrollDirection,
       reverse: _params.reverse,
@@ -133,7 +143,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       },
       controller: _scrollController,
     );
-
   }
 
   fakeRequest() async {
@@ -167,7 +176,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   }
 
   doRequest() async {
-
     var httpClient = new HttpClient();
     try {
       var request = await httpClient.getUrl(Uri.parse(getLoadMoreUrl(
@@ -177,7 +185,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
         var json = await response.transform(utf8.decoder).join();
         return json;
       }
-    }catch(exception) {
+    } catch (exception) {
       print(exception);
     }
     return "";
@@ -208,6 +216,5 @@ class ListViewParams {
       this.children,
       this.pageSize,
       this.loadMoreUrl,
-      this.isDemo
-      );
+      this.isDemo);
 }

@@ -1,7 +1,4 @@
-
-
-var containerJson =
-'''
+var containerJson = '''
 {
   "type": "Container",
   "color": "#FF00FF",
@@ -20,10 +17,7 @@ var containerJson =
 
 ''';
 
-
-
-var textJson =
-'''
+var textJson = '''
 {
   "type": "Container",
   "color": "#FF00FF",
@@ -42,8 +36,7 @@ var textJson =
 
 ''';
 
-var textSpanJson =
-'''
+var textSpanJson = '''
 {
   "type": "Container",
   "color": "#FF00FF",
@@ -79,8 +72,7 @@ var textSpanJson =
 
 ''';
 
-var raisedButtonJson =
-'''
+var raisedButtonJson = '''
 {
   "type": "Container",
   "alignment": "center",
@@ -102,8 +94,7 @@ var raisedButtonJson =
 
 ''';
 
-var rowJson =
-'''
+var rowJson = '''
 {
   "type": "Row",
   "crossAxisAlignment": "start",
@@ -137,8 +128,7 @@ var rowJson =
 }
 ''';
 
-var columnJson =
-'''
+var columnJson = '''
 {
   "type": "Column",
   "crossAxisAlignment": "start",
@@ -172,8 +162,7 @@ var columnJson =
 }
 ''';
 
-var assetImageJson =
-'''
+var assetImageJson = '''
 {
   "type": "Container",
   "color": "#FFFFFF",
@@ -186,8 +175,7 @@ var assetImageJson =
 
 ''';
 
-var networkImageJson =
-'''
+var networkImageJson = '''
 {
   "type": "Container",
   "color": "#FFFFFF",
@@ -200,8 +188,7 @@ var networkImageJson =
 
 ''';
 
-var placeholderJson =
-'''
+var placeholderJson = '''
 {
   "type": "Container",
   "color": "#FFFFFF",
@@ -217,8 +204,7 @@ var placeholderJson =
 
 ''';
 
-var gridviewJson =
-'''
+var gridviewJson = '''
 {
   "type": "GridView",
   "crossAxisCount": 2,
@@ -313,8 +299,7 @@ var gridviewJson =
 
 ''';
 
-var listviewJson =
-'''
+var listviewJson = '''
 {
   "type": "ListView",
   "padding": "10, 10, 10, 10",
@@ -405,8 +390,7 @@ var listviewJson =
 
 ''';
 
-var pageviewJson =
-'''
+var pageviewJson = '''
 {
   "type": "PageView",
   "children":[
@@ -496,8 +480,7 @@ var pageviewJson =
 
 ''';
 
-var expandedJson =
-'''
+var expandedJson = '''
 {
   "type": "Row",
   "crossAxisAlignment": "start",
@@ -541,8 +524,7 @@ var expandedJson =
 }
 ''';
 
-var listviewLoadmoreJson =
-'''
+var listviewLoadmoreJson = '''
 {
   "type": "ListView",
   "padding": "10, 10, 10, 10",
@@ -636,8 +618,7 @@ var listviewLoadmoreJson =
 
 ''';
 
-var gridviewloadmoreJson =
-'''
+var gridviewloadmoreJson = '''
 {
   "type": "GridView",
   "crossAxisCount": 2,
@@ -711,8 +692,7 @@ var gridviewloadmoreJson =
 
 ''';
 
-var stackJson =
-'''
+var stackJson = '''
 {
   "type": "Stack",
   "alignment": "topLeft",
@@ -735,8 +715,7 @@ var stackJson =
 
 ''';
 
-var indexedstackJson =
-'''
+var indexedstackJson = '''
 {
   "type": "IndexedStack",
   "alignment": "topLeft",
@@ -760,8 +739,7 @@ var indexedstackJson =
 
 ''';
 
-var sizedboxJson =
-'''
+var sizedboxJson = '''
 {
   "type": "Stack",
   "alignment": "topLeft",
@@ -787,8 +765,7 @@ var sizedboxJson =
 
 ''';
 
-var opacityJson =
-'''
+var opacityJson = '''
 {
   "type": "Container",
   "color": "#FF00FF",
@@ -810,8 +787,7 @@ var opacityJson =
 }
 ''';
 
-var wrapJson =
-'''
+var wrapJson = '''
 {
   "type": "Wrap",
   "spacing" : 8.0,

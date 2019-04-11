@@ -2,7 +2,6 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
-
 class TextWidgetParser implements WidgetParser {
   @override
   bool forWidget(String widgetName) {
@@ -10,11 +9,11 @@ class TextWidgetParser implements WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener){
+  Widget parse(Map<String, dynamic> map, ClickListener listener) {
     String data = map['data'];
     String textAlignString = map['textAlign'];
     String overflow = map['overflow'];
-    int maxLines = map['maxLines']== null? 1:map['maxLines'];
+    int maxLines = map['maxLines'] == null ? 1 : map['maxLines'];
     String semanticsLabel = map['semanticsLabel'];
     bool softWrap = map['softWrap'];
     String textDirectionString = map['textDirection'];
@@ -26,7 +25,8 @@ class TextWidgetParser implements WidgetParser {
     }
 
     if (textSpan == null) {
-      return Text(data,
+      return Text(
+        data,
         textAlign: parseTextAlign(textAlignString),
         overflow: parseTextOverflow(overflow),
         maxLines: maxLines,
@@ -36,7 +36,7 @@ class TextWidgetParser implements WidgetParser {
         style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
         textScaleFactor: textScaleFactor,
       );
-    }else{
+    } else {
       return Text.rich(
         textSpan,
         textAlign: parseTextAlign(textAlignString),
@@ -50,18 +50,12 @@ class TextWidgetParser implements WidgetParser {
       );
     }
   }
-
 }
 
-class TextSpanParser{
-
+class TextSpanParser {
   TextSpan parse(Map<String, dynamic> map) {
-
     var textSpan = TextSpan(
-      text: map['text'],
-      style: parseTextStyle(map['style']),
-      children: []
-    );
+        text: map['text'], style: parseTextStyle(map['style']), children: []);
 
     if (map.containsKey('children')) {
       parseChildren(textSpan, map['children']);

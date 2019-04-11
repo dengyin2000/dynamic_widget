@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 
-TextAlign parseTextAlign(String textAlignString){
+TextAlign parseTextAlign(String textAlignString) {
   TextAlign textAlign = TextAlign.left;
-  switch(textAlignString){
+  switch (textAlignString) {
     case "left":
       textAlign = TextAlign.left;
       break;
@@ -29,9 +29,9 @@ TextAlign parseTextAlign(String textAlignString){
   return textAlign;
 }
 
-TextOverflow parseTextOverflow(String textOverflowString){
+TextOverflow parseTextOverflow(String textOverflowString) {
   TextOverflow textOverflow = TextOverflow.ellipsis;
-  switch(textOverflowString){
+  switch (textOverflowString) {
     case "ellipsis":
       textOverflow = TextOverflow.ellipsis;
       break;
@@ -47,9 +47,9 @@ TextOverflow parseTextOverflow(String textOverflowString){
   return textOverflow;
 }
 
-TextDirection parseTextDirection(String textDirectionString){
+TextDirection parseTextDirection(String textDirectionString) {
   TextDirection textDirection = TextDirection.ltr;
-  switch(textDirectionString){
+  switch (textDirectionString) {
     case 'ltr':
       textDirection = TextDirection.ltr;
       break;
@@ -62,7 +62,7 @@ TextDirection parseTextDirection(String textDirectionString){
   return textDirection;
 }
 
-Color parseHexColor(String hexColorString){
+Color parseHexColor(String hexColorString) {
   if (hexColorString == null) {
     return null;
   }
@@ -74,21 +74,26 @@ Color parseHexColor(String hexColorString){
   return Color(colorInt);
 }
 
-
-TextStyle parseTextStyle(Map<String, dynamic> map){
+TextStyle parseTextStyle(Map<String, dynamic> map) {
   //TODO: more properties need to be implemented, such as decoration, decorationColor, decorationStyle, wordSpacing and so on.
   String color = map['color'];
   String debugLabel = map['debugLabel'];
   String fontFamily = map['fontFamily'];
   double fontSize = map['fontSize'];
-  FontStyle fontStyle = 'italic' == map['fontStyle'] ? FontStyle.italic: FontStyle.normal;
+  FontStyle fontStyle =
+      'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
-  return TextStyle(color: parseHexColor(color), debugLabel: debugLabel, fontSize: fontSize, fontFamily: fontFamily, fontStyle: fontStyle);
+  return TextStyle(
+      color: parseHexColor(color),
+      debugLabel: debugLabel,
+      fontSize: fontSize,
+      fontFamily: fontFamily,
+      fontStyle: fontStyle);
 }
 
-Alignment parseAlignment(String alignmentString){
+Alignment parseAlignment(String alignmentString) {
   Alignment alignment = Alignment.topLeft;
-  switch(alignmentString){
+  switch (alignmentString) {
     case 'topLeft':
       alignment = Alignment.topLeft;
       break;
@@ -122,7 +127,7 @@ Alignment parseAlignment(String alignmentString){
 
 const double infinity = 9999999999;
 
-BoxConstraints parseBoxConstraints(Map<String, dynamic> map){
+BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
   double minWidth = 0.0;
   double maxWidth = double.infinity;
   double minHeight = 0.0;
@@ -177,7 +182,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map){
       }
     }
   }
-  
+
   return BoxConstraints(
     minWidth: minWidth,
     maxWidth: maxWidth,
@@ -186,18 +191,22 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map){
   );
 }
 
-EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString){
+EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString) {
   //left,top,right,bottom
-  if (edgeInsetsGeometryString == null || edgeInsetsGeometryString.trim() == '') {
+  if (edgeInsetsGeometryString == null ||
+      edgeInsetsGeometryString.trim() == '') {
     return null;
   }
   var values = edgeInsetsGeometryString.split(",");
-  return EdgeInsets.only(left: double.parse(values[0]), top: double.parse(values[1]), right: double.parse(values[2]), bottom: double.parse(values[3]));
+  return EdgeInsets.only(
+      left: double.parse(values[0]),
+      top: double.parse(values[1]),
+      right: double.parse(values[2]),
+      bottom: double.parse(values[3]));
 }
 
-
-CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString){
-  switch(crossAxisAlignmentString){
+CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
+  switch (crossAxisAlignmentString) {
     case 'start':
       return CrossAxisAlignment.start;
     case 'end':
@@ -212,8 +221,8 @@ CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString){
   return CrossAxisAlignment.center;
 }
 
-MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString){
-  switch(mainAxisAlignmentString){
+MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString) {
+  switch (mainAxisAlignmentString) {
     case 'start':
       return MainAxisAlignment.start;
     case 'end':
@@ -230,19 +239,25 @@ MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString){
   return MainAxisAlignment.start;
 }
 
-MainAxisSize parseMainAxisSize(String mainAxisSizeString) => mainAxisSizeString == 'min' ? MainAxisSize.min : MainAxisSize.max;
+MainAxisSize parseMainAxisSize(String mainAxisSizeString) =>
+    mainAxisSizeString == 'min' ? MainAxisSize.min : MainAxisSize.max;
 
-TextBaseline parseTextBaseline(String parseTextBaselineString) => 'alphabetic' == parseTextBaselineString ? TextBaseline.alphabetic : TextBaseline.ideographic;
+TextBaseline parseTextBaseline(String parseTextBaselineString) =>
+    'alphabetic' == parseTextBaselineString
+        ? TextBaseline.alphabetic
+        : TextBaseline.ideographic;
 
-VerticalDirection parseVerticalDirection(String verticalDirectionString) => 'up' ==verticalDirectionString? VerticalDirection.up : VerticalDirection.down;
+VerticalDirection parseVerticalDirection(String verticalDirectionString) =>
+    'up' == verticalDirectionString
+        ? VerticalDirection.up
+        : VerticalDirection.down;
 
-
-BlendMode parseBlendMode(String blendModeString){
+BlendMode parseBlendMode(String blendModeString) {
   if (blendModeString == null || blendModeString.trim().length == 0) {
     return null;
   }
 
-  switch(blendModeString.trim()){
+  switch (blendModeString.trim()) {
     case 'clear':
       return BlendMode.clear;
     case 'src':
@@ -304,16 +319,15 @@ BlendMode parseBlendMode(String blendModeString){
 
     default:
       return BlendMode.srcIn;
-
   }
 }
 
-BoxFit parseBoxFit(String boxFitString){
+BoxFit parseBoxFit(String boxFitString) {
   if (boxFitString == null) {
     return null;
   }
 
-  switch(boxFitString){
+  switch (boxFitString) {
     case 'fill':
       return BoxFit.fill;
     case 'contain':
@@ -333,12 +347,12 @@ BoxFit parseBoxFit(String boxFitString){
   return null;
 }
 
-ImageRepeat parseImageRepeat(String imageRepeatString){
+ImageRepeat parseImageRepeat(String imageRepeatString) {
   if (imageRepeatString == null) {
     return null;
   }
 
-  switch(imageRepeatString){
+  switch (imageRepeatString) {
     case 'repeat':
       return ImageRepeat.repeat;
     case 'repeatX':
@@ -353,16 +367,17 @@ ImageRepeat parseImageRepeat(String imageRepeatString){
   }
 }
 
-Rect parseRect(String fromLTRBString){
+Rect parseRect(String fromLTRBString) {
   var strings = fromLTRBString.split(',');
-  return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]), double.parse(strings[2]), double.parse(strings[3]));
+  return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]),
+      double.parse(strings[2]), double.parse(strings[3]));
 }
 
-FilterQuality parseFilterQuality(String filterQualityString){
+FilterQuality parseFilterQuality(String filterQualityString) {
   if (filterQualityString == null) {
     return null;
   }
-  switch(filterQualityString){
+  switch (filterQualityString) {
     case 'none':
       return FilterQuality.none;
     case 'low':
@@ -376,25 +391,32 @@ FilterQuality parseFilterQuality(String filterQualityString){
   }
 }
 
-String getLoadMoreUrl(String url, int currentNo, int pageSize){
+String getLoadMoreUrl(String url, int currentNo, int pageSize) {
   if (url == null) {
     return null;
   }
 
   url = url.trim();
   if (url.contains("?")) {
-    url = url + "&startNo=" + currentNo.toString() + "&pageSize=" + pageSize.toString();
-  }else{
-    url = url + "?startNo=" + currentNo.toString() + "&pageSize=" + pageSize.toString();
+    url = url +
+        "&startNo=" +
+        currentNo.toString() +
+        "&pageSize=" +
+        pageSize.toString();
+  } else {
+    url = url +
+        "?startNo=" +
+        currentNo.toString() +
+        "&pageSize=" +
+        pageSize.toString();
   }
   return url;
 }
 
-StackFit parseStackFit(String value){
-  if (value == null)
-    return null;
+StackFit parseStackFit(String value) {
+  if (value == null) return null;
 
-  switch(value){
+  switch (value) {
     case 'loose':
       return StackFit.loose;
     case 'expand':
@@ -406,12 +428,12 @@ StackFit parseStackFit(String value){
   }
 }
 
-Overflow parseOverflow(String value){
+Overflow parseOverflow(String value) {
   if (value == null) {
     return null;
   }
 
-  switch(value){
+  switch (value) {
     case 'visible':
       return Overflow.visible;
     case 'clip':
@@ -421,12 +443,12 @@ Overflow parseOverflow(String value){
   }
 }
 
-Axis parseAxis(String axisString){
+Axis parseAxis(String axisString) {
   if (axisString == null) {
     return Axis.horizontal;
   }
 
-  switch(axisString){
+  switch (axisString) {
     case "horizontal":
       return Axis.horizontal;
     case "vertical":
@@ -436,12 +458,12 @@ Axis parseAxis(String axisString){
 }
 
 //WrapAlignment
-WrapAlignment parseWrapAlignment(String wrapAlignmentString){
+WrapAlignment parseWrapAlignment(String wrapAlignmentString) {
   if (wrapAlignmentString == null) {
     return WrapAlignment.start;
   }
 
-  switch(wrapAlignmentString){
+  switch (wrapAlignmentString) {
     case "start":
       return WrapAlignment.start;
     case "end":
@@ -459,12 +481,12 @@ WrapAlignment parseWrapAlignment(String wrapAlignmentString){
 }
 
 //WrapCrossAlignment
-WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString){
+WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
   if (wrapCrossAlignmentString == null) {
     return WrapCrossAlignment.start;
   }
 
-  switch(wrapCrossAlignmentString){
+  switch (wrapCrossAlignmentString) {
     case "start":
       return WrapCrossAlignment.start;
     case "end":

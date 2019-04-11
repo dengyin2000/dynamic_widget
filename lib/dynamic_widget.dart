@@ -1,6 +1,5 @@
 library dynamic_widget;
 
-
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart';
@@ -26,8 +25,7 @@ import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:logging/logging.dart';
 
-class DynamicWidgetBuilder{
-
+class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
 
   static final parsers = [
@@ -59,16 +57,15 @@ class DynamicWidgetBuilder{
     WrapWidgetParser()
   ];
 
-
-
-  Widget build(String json, ClickListener listener){
+  Widget build(String json, ClickListener listener) {
     var map = jsonDecode(json);
-    ClickListener _listener = listener == null? new NonResponseWidgetClickListener(): listener;
+    ClickListener _listener =
+        listener == null ? new NonResponseWidgetClickListener() : listener;
     var widget = buildFromMap(map, _listener);
     return widget;
   }
 
-  static Widget buildFromMap(Map<String, dynamic> map, ClickListener listener){
+  static Widget buildFromMap(Map<String, dynamic> map, ClickListener listener) {
     String widgetName = map['type'];
 
     for (var parser in parsers) {
@@ -81,7 +78,8 @@ class DynamicWidgetBuilder{
     return null;
   }
 
-  static List<Widget> buildWidgets(List<dynamic> values, ClickListener listener){
+  static List<Widget> buildWidgets(
+      List<dynamic> values, ClickListener listener) {
     List<Widget> rt = [];
     for (var value in values) {
       rt.add(buildFromMap(value, listener));
@@ -90,10 +88,8 @@ class DynamicWidgetBuilder{
   }
 }
 
-
 /// extends this class to make a Flutter widget parser.
-abstract class WidgetParser{
-
+abstract class WidgetParser {
   /// parse the json map into a flutter widget.
   Widget parse(Map<String, dynamic> map, ClickListener listener);
 
@@ -105,13 +101,11 @@ abstract class WidgetParser{
   bool forWidget(String widgetName);
 }
 
-abstract class ClickListener{
-
+abstract class ClickListener {
   void onClicked(String event);
 }
 
-class NonResponseWidgetClickListener implements ClickListener{
-
+class NonResponseWidgetClickListener implements ClickListener {
   static final Logger log = Logger('NonResponseWidgetClickListener');
 
   @override
@@ -119,5 +113,4 @@ class NonResponseWidgetClickListener implements ClickListener{
     log.info("receiver click event: " + event);
     print("receiver click event: " + event);
   }
-
 }
