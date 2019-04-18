@@ -20,7 +20,11 @@ class ContainerWidgetParser extends WidgetParser {
     Widget child = childMap == null
         ? null
         : DynamicWidgetBuilder.buildFromMap(childMap, listener);
-    return Container(
+
+    String clickEvent =
+    map.containsKey("click_event") ? map['click_event'] : "";
+
+    var containerWidget = Container(
       alignment: alignment,
       padding: padding,
       color: color,
@@ -30,5 +34,16 @@ class ContainerWidgetParser extends WidgetParser {
       constraints: constraints,
       child: child,
     );
+
+    if (listener != null && clickEvent!=null) {
+      return GestureDetector(
+        onTap: (){
+          listener.onClicked(clickEvent);
+        },
+        child: containerWidget,
+      );
+    }else {
+      return containerWidget;
+    }
   }
 }

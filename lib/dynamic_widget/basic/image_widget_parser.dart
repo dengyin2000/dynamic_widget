@@ -43,7 +43,11 @@ class AssetImageWidgetParser extends WidgetParser {
     FilterQuality filterQuality = map.containsKey('filterQuality')
         ? parseFilterQuality(map['filterQuality'])
         : FilterQuality.low;
-    return Image.asset(
+
+    String clickEvent =
+    map.containsKey("click_event") ? map['click_event'] : "";
+
+    var widget = Image.asset(
       name,
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
@@ -60,6 +64,15 @@ class AssetImageWidgetParser extends WidgetParser {
       gaplessPlayback: gaplessPlayback,
       filterQuality: filterQuality,
     );
+
+    if (listener!=null && clickEvent != null){
+      return GestureDetector(
+        onTap: (){
+          listener.onClicked(clickEvent);
+        },
+      );
+    }
+    return widget;
   }
 }
 
@@ -101,7 +114,11 @@ class NetworkImageWidgetParser extends WidgetParser {
     FilterQuality filterQuality = map.containsKey('filterQuality')
         ? parseFilterQuality(map['filterQuality'])
         : FilterQuality.low;
-    return Image.network(
+
+    String clickEvent =
+    map.containsKey("click_event") ? map['click_event'] : "";
+
+    var widget = Image.network(
       src,
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
@@ -118,6 +135,15 @@ class NetworkImageWidgetParser extends WidgetParser {
       gaplessPlayback: gaplessPlayback,
       filterQuality: filterQuality,
     );
+
+    if (listener!=null && clickEvent != null){
+      return GestureDetector(
+        onTap: (){
+          listener.onClicked(clickEvent);
+        },
+      );
+    }
+    return widget;
   }
 }
 
@@ -160,7 +186,11 @@ class FileImageWidgetParser extends WidgetParser {
     FilterQuality filterQuality = map.containsKey('filterQuality')
         ? parseFilterQuality(map['filterQuality'])
         : FilterQuality.low;
-    return Image.file(
+
+    String clickEvent =
+    map.containsKey("click_event") ? map['click_event'] : "";
+
+    var widget = Image.file(
       file,
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
@@ -177,5 +207,14 @@ class FileImageWidgetParser extends WidgetParser {
       gaplessPlayback: gaplessPlayback,
       filterQuality: filterQuality,
     );
+
+    if (listener!=null && clickEvent != null){
+      return GestureDetector(
+        onTap: (){
+          listener.onClicked(clickEvent);
+        },
+      );
+    }
+    return widget;
   }
 }
