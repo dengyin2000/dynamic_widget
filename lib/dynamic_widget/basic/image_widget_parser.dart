@@ -65,11 +65,12 @@ class AssetImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener!=null && clickEvent != null){
+    if (listener!=null && (clickEvent != null && clickEvent.isNotEmpty )){
       return GestureDetector(
         onTap: (){
           listener.onClicked(clickEvent);
         },
+        child: widget,
       );
     }
     return widget;
@@ -136,11 +137,12 @@ class NetworkImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener!=null && clickEvent != null){
+    if (listener!=null && (clickEvent != null && clickEvent.isNotEmpty )){
       return GestureDetector(
         onTap: (){
           listener.onClicked(clickEvent);
         },
+        child: widget,
       );
     }
     return widget;
@@ -208,11 +210,12 @@ class FileImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener!=null && clickEvent != null){
+    if (listener!=null && (clickEvent != null && clickEvent.isNotEmpty )){
       return GestureDetector(
         onTap: (){
           listener.onClicked(clickEvent);
         },
+        child: widget,
       );
     }
     return widget;
