@@ -45,6 +45,7 @@ Supported json properties:
 | height|Container height|double|  |200|
 | constraints|Container constraints|BoxConstraints| {"minWidth":100, "maxWidth": 100, "minHeight": 100, "maxHeight": 100}<br> 9999999999 would be the value of **double.infinity** |200|
 | child|The [child] contained by the container.|Widget|  | |
+| click_event|Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. |String|  |"route://productDetail?goods_id=123"|
 
 ## Text Widget
 Text widget, here to see flutter [Text widget](https://docs.flutter.io/flutter/widgets/Text-class.html) definition. Supported json properties:
@@ -95,6 +96,7 @@ RaisedButton widget, here to see flutter [RaisedButton widget](https://docs.flut
 | splashColor|The splash color of the button's InkWell.|String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
 | textColor|The color to use for this button's text.|String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
 | child|The button's label.|Widget| | |
+| click_event|Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. |String|  |"route://productDetail?goods_id=123"|
 
 ## Row Widget
 Row widget, here to see flutter [Row widget](https://docs.flutter.io/flutter/widgets/Row-class.html) definition. Supported json properties:
@@ -142,6 +144,7 @@ AssetImage widget, here to see flutter [Asset Image widget](https://docs.flutter
 | matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
 | gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
 | filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+| click_event|Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. |String|  |"route://productDetail?goods_id=123"|
 
 ## NetworkImage Widget
 NetworkImage widget, here to see flutter [Network Image widget](https://docs.flutter.io/flutter/widgets/Image-class.html) definition. Supported json properties:
@@ -163,6 +166,7 @@ NetworkImage widget, here to see flutter [Network Image widget](https://docs.flu
 | matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
 | gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
 | filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+| click_event|Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. |String|  |"route://productDetail?goods_id=123"|
 
 ## FileImage Widget
 FileImage widget, here to see flutter [File Image widget](https://docs.flutter.io/flutter/widgets/Image-class.html) definition. Supported json properties:
@@ -184,6 +188,7 @@ FileImage widget, here to see flutter [File Image widget](https://docs.flutter.i
 | matchTextDirection|Whether to paint the image in the direction of the TextDirection.|bool| | |
 | gaplessPlayback|Whether to continue showing the old image (true), or briefly show nothing (false), when the image provider changes.|bool| | |
 | filterQuality|Used to set the FilterQuality of the image.|String|enum values, please see enum FilterQuality, default value is FilterQuality.low. |"low"|
+| click_event|Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. |String|  |"route://productDetail?goods_id=123"|
 
 ## Placeholder Widget
 Placeholder widget, here to see flutter [Placeholder widget](https://docs.flutter.io/flutter/widgets/Placeholder-class.html) definition. Supported json properties:
