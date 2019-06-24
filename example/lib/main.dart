@@ -254,6 +254,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => CodeEditorPage(wrapJson)));
               },
             ),
+            RaisedButton(
+              child: Text("ClipRRect"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(cliprrectJson)));
+              },
+            ),
           ],
         ));
   }

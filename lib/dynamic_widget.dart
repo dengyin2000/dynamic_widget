@@ -25,6 +25,8 @@ import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:logging/logging.dart';
 
+import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
+
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
 
@@ -54,7 +56,8 @@ class DynamicWidgetBuilder {
     ExpandedSizedBoxWidgetParser(),
     SizedBoxWidgetParser(),
     OpacityWidgetParser(),
-    WrapWidgetParser()
+    WrapWidgetParser(),
+    ClipRRectWidgetParser()
   ];
 
   Widget build(String json, ClickListener listener) {

@@ -497,3 +497,20 @@ WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
 
   return WrapCrossAlignment.start;
 }
+
+Clip parseClipBehavior(String clipBehaviorString){
+  if (clipBehaviorString == null) {
+    return Clip.antiAlias;
+  }
+  switch(clipBehaviorString) {
+    case "antiAlias":
+      return Clip.antiAlias;
+    case "none":
+      return Clip.none;
+    case "hardEdge":
+      return Clip.hardEdge;
+    case "antiAliasWithSaveLayer":
+      return Clip.antiAliasWithSaveLayer;
+  }
+  return Clip.antiAlias;
+}

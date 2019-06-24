@@ -30,6 +30,7 @@
 * [SizedBox Widget](#sizedbox-widget)
 * [Opacity Widget](#opacity-widget)
 * [Wrap Widget](#wrap-widget)
+* [ClipRRect Widget](#cliprrect-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -379,3 +380,12 @@ Wrap widget, here to see flutter [Wrap widget](https://docs.flutter.io/flutter/w
 | textDirection |Determines the order to lay children out horizontally and how to interpret start and end in the horizontal direction.|String|enum values, please see enum TextDirection, default value is null. |null|
 | verticalDirection  |Determines the order to lay children out vertically and how to interpret start and end in the vertical direction. |String|enum values, please see enum VerticalDirection, default value is VerticalDirection.down. |"down"|
 | children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
+
+## ClipRRect Widget
+ClipRRect, here to see flutter [TextSpan](https://api.flutter.dev/flutter/widgets/ClipRRect-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| borderRadius|The border radius of the rounded corners. |String| |"topLeft,topRight,bottomLeft,bottomRight"|
+| clipBehavior|Controls how to clip (default to "antiAlias")|String|enum values, please see enum Clip, default value is antiAlias. | "hardEdge"|
+| child|The widget below this widget in the tree.  |Widget|| |
