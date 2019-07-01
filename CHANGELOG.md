@@ -10,6 +10,10 @@
 
 * ListView & GridView add "auto load more" feature.
 
+## [1.0.2] - Add more widgets support.
+
+* Add more flutter widgets
+
 ## [1.0.2] - Add click listener and more widgets support.
 
 * Add Click listener support
