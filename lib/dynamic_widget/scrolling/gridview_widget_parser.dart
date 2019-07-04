@@ -202,7 +202,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
           _params.loadMoreUrl, _items.length, _params.pageSize)));
       var response = await request.close();
       if (response.statusCode == HttpStatus.ok) {
-        var json = await response.transform(utf8.decoder).join();
+        var json = await utf8.decoder.bind(response).join();
         return json;
       }
     } catch (exception) {
