@@ -34,7 +34,7 @@ Widget type will be a type property, and widget's properties will be the json pr
 Add this to your package's pubspec.yaml file:
 ```
 dependencies:
-  dynamic_widget: ^0.0.1
+  dynamic_widget: ^0.0.3
 ```
 
 #### 2. Install it
@@ -58,39 +58,43 @@ You should use `DynamicWidgetBuilder().build` method to covert a json string int
 
 ```dart
 import 'package:dynamic_widget/dynamic_widget.dart';
-class PreviewPage extends StatelessWidget{
-
+class PreviewPage extends StatelessWidget {
   final String jsonString;
 
   PreviewPage(this.jsonString);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text("Preview"),
-        ),
-        body: FutureBuilder<Widget>(
-          future: _buildWidget(),
-          builder: (BuildContext context, AsyncSnapshot<Widget> snapshot){
-            return snapshot.hasData?snapshot.data:Text("Loading...");
-          },
-        ),
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text("Preview"),
+      ),
+      body: FutureBuilder<Widget>(
+        future: _buildWidget(context),
+        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+          if (snapshot.hasError) {
+            print(snapshot.error);
+          }
+          return snapshot.hasData
+              ? SizedBox.expand(
+                  child: snapshot.data,
+                )
+              : Text("Loading...");
+        },
+      ),
     );
   }
 
-  Future<Widget> _buildWidget() async{
-
-    return DynamicWidgetBuilder().build(jsonString, null);
+  Future<Widget> _buildWidget(BuildContext context) async {
+    return DynamicWidgetBuilder().build(jsonString, context, new DefaultClickListener());
   }
 }
 ```
 ## How to implement a WidgetParser
 1. You need to implement the `WidgetParser` abstract class.
-2. Add new created WidgetParser to `DynamicWidgetBuilder.parsers` list.
+2. Add new created WidgetParser by `DynamicWidgetBuilder.addParser(WidgetParser parser)` method.
 
 This is a RaisedButton widget parser.
 ```dart
@@ -98,72 +102,50 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 
-class RaisedButtonParser extends WidgetParser{
+class RaisedButtonParser extends WidgetParser {
   @override
   bool forWidget(String widgetName) {
     return "RaisedButton" == widgetName;
   }
 
   @override
-  Widget parse(Map<String, dynamic> map) {
-    return RaisedButton(
-      color: map.containsKey('color') ? parseHexColor(map['color']) : null,
-      disabledColor: map.containsKey('disabledColor') ? parseHexColor(map['disabledColor']) : null,
-      disabledElevation: map.containsKey('disabledElevation') ? map['disabledElevation'] : 0.0,
-      disabledTextColor: map.containsKey('disabledTextColor') ? parseHexColor(map['disabledTextColor']) : null,
-      elevation: map.containsKey('elevation') ? map['elevation'] : 0.0,
-      padding: map.containsKey('padding') ? parseEdgeInsetsGeometry(map['padding']) : null,
-      splashColor : map.containsKey('splashColor') ? parseHexColor(map['splashColor']) : null,
-      textColor: map.containsKey('textColor') ? parseHexColor(map['textColor']) : null,
-      child: DynamicWidgetBuilder().buildFromMap(map['child']),
-      onPressed: (){},
-    );
-  }
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+    String clickEvent =
+        map.containsKey("click_event") ? map['click_event'] : "";
 
+    var raisedButton = RaisedButton(
+      color: map.containsKey('color') ? parseHexColor(map['color']) : null,
+      disabledColor: map.containsKey('disabledColor')
+          ? parseHexColor(map['disabledColor'])
+          : null,
+      disabledElevation:
+          map.containsKey('disabledElevation') ? map['disabledElevation'] : 0.0,
+      disabledTextColor: map.containsKey('disabledTextColor')
+          ? parseHexColor(map['disabledTextColor'])
+          : null,
+      elevation: map.containsKey('elevation') ? map['elevation'] : 0.0,
+      padding: map.containsKey('padding')
+          ? parseEdgeInsetsGeometry(map['padding'])
+          : null,
+      splashColor: map.containsKey('splashColor')
+          ? parseHexColor(map['splashColor'])
+          : null,
+      textColor:
+          map.containsKey('textColor') ? parseHexColor(map['textColor']) : null,
+      child: DynamicWidgetBuilder.buildFromMap(map['child'], buildContext, listener),
+      onPressed: () {
+        listener.onClicked(clickEvent);
+      },
+    );
+
+    return raisedButton;
+  }
 }
 ```
 
 Add it to parsers list.
 ```dart
-class DynamicWidgetBuilder{
-
-  final Logger log = Logger('DynamicWidget');
-
-  static final parsers = [
-    ContainerWidgetParser(),
-    TextWidgetParser(),
-    RaisedButtonParser(),
-    RowWidgetParser()
-  ];
-
-
-  Widget build(String json){
-
-    var map = jsonDecode(json);
-    return buildFromMap(map);
-  }
-
-  Widget buildFromMap(Map<String, dynamic> map){
-    String widgetName = map['type'];
-
-    for (var parser in parsers) {
-      if (parser.forWidget(widgetName)) {
-        return parser.parse(map);
-      }
-    }
-
-    log.warning("Not support type: $widgetName");
-    return null;
-  }
-
-  List<Widget> buildWidgets(List<dynamic> values){
-    List<Widget> rt = [];
-    for (var value in values) {
-      rt.add(buildFromMap(value));
-    }
-    return rt;
-  }
-}
+DynamicWidgetBuilder.addParser(RaisedButtonParser());
 ```
 ## How to add a click listener
 Add "click_event" property to your widget json definition. for example:
@@ -206,7 +188,7 @@ Finally, pass the listener to build method.
 ```dart
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString, new DefaultClickListener());
+    return DynamicWidgetBuilder().build(jsonString, buildContext, new DefaultClickListener());
   }
 ```
   
