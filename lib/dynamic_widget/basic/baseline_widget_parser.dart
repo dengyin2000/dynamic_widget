@@ -8,13 +8,13 @@ class BaselineWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,  ClickListener listener) {
     return Baseline(
       baseline: map["baseline"],
       baselineType: map["baselineType"] == "alphabetic"
           ? TextBaseline.alphabetic
           : TextBaseline.ideographic,
-      child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
+      child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
     );
   }
 }

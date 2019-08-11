@@ -14,7 +14,7 @@ class ListViewWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
@@ -27,7 +27,7 @@ class ListViewWidgetParser extends WidgetParser {
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
     var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"] : null;
-    var children = DynamicWidgetBuilder.buildWidgets(map['children'], listener);
+    var children = DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
     var loadMoreUrl =
         map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;
@@ -45,14 +45,15 @@ class ListViewWidgetParser extends WidgetParser {
         loadMoreUrl,
         isDemo);
 
-    return new ListViewWidget(params);
+    return new ListViewWidget(params, buildContext);
   }
 }
 
 class ListViewWidget extends StatefulWidget {
   final ListViewParams _params;
+  final BuildContext _buildContext;
 
-  ListViewWidget(this._params);
+  ListViewWidget(this._params, this._buildContext);
 
   @override
   _ListViewWidgetState createState() => _ListViewWidgetState(_params);
@@ -96,7 +97,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
       setState(() => isPerformingRequest = true);
       var jsonString = _params.isDemo ? await fakeRequest() : await doRequest();
       var buildWidgets =
-          DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), null);
+          DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
         if (buildWidgets.isEmpty) {
           loadCompleted = true;

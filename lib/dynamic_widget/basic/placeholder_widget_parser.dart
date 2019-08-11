@@ -9,7 +9,7 @@ class PlaceholderWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Placeholder(
       color: map.containsKey('color')
           ? parseHexColor(map['color'])

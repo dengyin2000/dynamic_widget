@@ -12,7 +12,7 @@ class AssetImageWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     String name = map['name'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -84,7 +84,7 @@ class NetworkImageWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     String src = map['src'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -156,7 +156,7 @@ class FileImageWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     String filePath = map['filePath'];
     File file = File(filePath);
     String semanticLabel =

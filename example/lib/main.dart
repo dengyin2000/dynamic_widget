@@ -344,7 +344,7 @@ class PreviewPage extends StatelessWidget {
         title: Text("Preview"),
       ),
       body: FutureBuilder<Widget>(
-        future: _buildWidget(),
+        future: _buildWidget(context),
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.hasError) {
             print(snapshot.error);
@@ -359,8 +359,8 @@ class PreviewPage extends StatelessWidget {
     );
   }
 
-  Future<Widget> _buildWidget() async {
-    return DynamicWidgetBuilder().build(jsonString, new DefaultClickListener());
+  Future<Widget> _buildWidget(BuildContext context) async {
+    return DynamicWidgetBuilder().build(jsonString, context, new DefaultClickListener());
   }
 }
 

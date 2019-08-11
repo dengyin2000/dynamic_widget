@@ -14,7 +14,7 @@ class GridViewWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
@@ -33,7 +33,7 @@ class GridViewWidgetParser extends WidgetParser {
         map.containsKey('crossAxisSpacing') ? map['crossAxisSpacing'] : 0.0;
     double childAspectRatio =
         map.containsKey('childAspectRatio') ? map['childAspectRatio'] : 1.0;
-    var children = DynamicWidgetBuilder.buildWidgets(map['children'], listener);
+    var children = DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener);
 
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
     var loadMoreUrl =
@@ -54,14 +54,16 @@ class GridViewWidgetParser extends WidgetParser {
         pageSize,
         loadMoreUrl,
         isDemo);
-    return GridViewWidget(params);
+    return GridViewWidget(params, buildContext);
   }
 }
 
 class GridViewWidget extends StatefulWidget {
   final GridViewParams _params;
 
-  GridViewWidget(this._params);
+  final BuildContext _buildContext;
+
+  GridViewWidget(this._params, this._buildContext);
 
   @override
   _GridViewWidgetState createState() => _GridViewWidgetState(_params);
@@ -105,7 +107,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
       setState(() => isPerformingRequest = true);
       var jsonString = _params.isDemo ? await fakeRequest() : await doRequest();
       var buildWidgets =
-          DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), null);
+          DynamicWidgetBuilder.buildWidgets(jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
         if (buildWidgets.isEmpty) {
           loadCompleted = true;

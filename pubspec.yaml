@@ -1,6 +1,6 @@
 name: dynamic_widget
 description: You can dynamic update your flutter page with Flutter Dynamic Widget. It's a light json UI protocol, which is very similar with flutter widget code. So you don't need to learn another UI protocol, if you are familiar with flutter widget, you might already know how to write Flutter Dynamic Widget json.
-version: 1.0.2
+version: 1.0.3
 author: Denny Deng<deng.yin@gmail.com>
 homepage: https://github.com/dengyin2000/dynamic_widget
 

@@ -8,10 +8,10 @@ class AspectRatioWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return AspectRatio(
       aspectRatio: map["aspectRatio"],
-      child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
+      child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
     );
   }
 }

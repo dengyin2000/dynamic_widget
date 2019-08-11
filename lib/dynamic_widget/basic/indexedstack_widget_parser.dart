@@ -9,7 +9,7 @@ class IndexedStackWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return IndexedStack(
       index: map.containsKey("index") ? map["index"] : 0,
       alignment: map.containsKey("alignment")
@@ -18,7 +18,7 @@ class IndexedStackWidgetParser extends WidgetParser {
       textDirection: map.containsKey("textDirection")
           ? parseTextDirection(map["textDirection"])
           : null,
-      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener),
     );
   }
 }

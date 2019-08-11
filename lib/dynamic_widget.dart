@@ -30,7 +30,7 @@ import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
 
-  static final parsers = [
+  static final _parsers = [
     ContainerWidgetParser(),
     TextWidgetParser(),
     RaisedButtonParser(),
@@ -60,20 +60,26 @@ class DynamicWidgetBuilder {
     ClipRRectWidgetParser()
   ];
 
-  Widget build(String json, ClickListener listener) {
+  // use this method for adding your custom widget parser
+  static void addParser(WidgetParser parser){
+    log.info("add custom widget parser, make sure you don't overwirte the widget type.");
+    _parsers.add(parser);
+  }
+
+  Widget build(String json, BuildContext buildContext, ClickListener listener) {
     var map = jsonDecode(json);
     ClickListener _listener =
         listener == null ? new NonResponseWidgetClickListener() : listener;
-    var widget = buildFromMap(map, _listener);
+    var widget = buildFromMap(map, buildContext, _listener);
     return widget;
   }
 
-  static Widget buildFromMap(Map<String, dynamic> map, ClickListener listener) {
+  static Widget buildFromMap(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     String widgetName = map['type'];
 
-    for (var parser in parsers) {
+    for (var parser in _parsers) {
       if (parser.forWidget(widgetName)) {
-        return parser.parse(map, listener);
+        return parser.parse(map, buildContext, listener);
       }
     }
 
@@ -82,10 +88,10 @@ class DynamicWidgetBuilder {
   }
 
   static List<Widget> buildWidgets(
-      List<dynamic> values, ClickListener listener) {
+      List<dynamic> values, BuildContext buildContext, ClickListener listener) {
     List<Widget> rt = [];
     for (var value in values) {
-      rt.add(buildFromMap(value, listener));
+      rt.add(buildFromMap(value, buildContext, listener));
     }
     return rt;
   }
@@ -94,7 +100,7 @@ class DynamicWidgetBuilder {
 /// extends this class to make a Flutter widget parser.
 abstract class WidgetParser {
   /// parse the json map into a flutter widget.
-  Widget parse(Map<String, dynamic> map, ClickListener listener);
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener);
 
   /// check the matched widget type. for example:
   /// {"type" : "Text", "data" : "Denny"}

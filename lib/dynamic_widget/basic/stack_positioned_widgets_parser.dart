@@ -9,9 +9,9 @@ class PositionedWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Positioned(
-      child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
+      child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
       top: map.containsKey("top") ? map["top"] : null,
       right: map.containsKey("right") ? map["right"] : null,
       bottom: map.containsKey("bottom") ? map["bottom"] : null,
@@ -29,7 +29,7 @@ class StackWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Stack(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -41,7 +41,7 @@ class StackWidgetParser extends WidgetParser {
       overflow: map.containsKey("overflow")
           ? parseOverflow(map["overflow"])
           : Overflow.clip,
-      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener),
     );
   }
 }

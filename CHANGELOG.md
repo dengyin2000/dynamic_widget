@@ -18,3 +18,7 @@
 
 * Add Click listener support
 * Add more flutter widgets
+
+## [1.0.3] - WidgetParser.parse add BuildContext param.
+
+* WidgetParser.parse add BuildContext param.

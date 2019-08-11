@@ -9,7 +9,7 @@ class RowWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Row(
       crossAxisAlignment: map.containsKey('crossAxisAlignment')
           ? parseCrossAxisAlignment(map['crossAxisAlignment'])
@@ -29,7 +29,7 @@ class RowWidgetParser extends WidgetParser {
       verticalDirection: map.containsKey('verticalDirection')
           ? parseVerticalDirection(map['verticalDirection'])
           : VerticalDirection.down,
-      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener),
     );
   }
 }
@@ -41,7 +41,7 @@ class ColumnWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Column(
       crossAxisAlignment: map.containsKey('crossAxisAlignment')
           ? parseCrossAxisAlignment(map['crossAxisAlignment'])
@@ -61,7 +61,7 @@ class ColumnWidgetParser extends WidgetParser {
       verticalDirection: map.containsKey('verticalDirection')
           ? parseVerticalDirection(map['verticalDirection'])
           : VerticalDirection.down,
-      children: DynamicWidgetBuilder.buildWidgets(map['children'], listener),
+      children: DynamicWidgetBuilder.buildWidgets(map['children'], buildContext, listener),
     );
   }
 }

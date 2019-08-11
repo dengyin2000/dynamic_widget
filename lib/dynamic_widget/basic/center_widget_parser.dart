@@ -8,12 +8,12 @@ class CenterWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
     return Center(
       widthFactor: map.containsKey("widthFactor") ? map["widthFactor"] : null,
       heightFactor:
           map.containsKey("heightFactor") ? map["heightFactor"] : null,
-      child: DynamicWidgetBuilder.buildFromMap(map["child"], listener),
+      child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
     );
   }
 }
