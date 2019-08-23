@@ -62,6 +62,44 @@ TextDirection parseTextDirection(String textDirectionString) {
   return textDirection;
 }
 
+FontWeight parseFontWeight(String textFontWeight) {
+  FontWeight fontWeight = FontWeight.normal;
+  switch (textFontWeight) {
+    case 'w100':
+      fontWeight = FontWeight.w100;
+      break;
+    case 'w200':
+      fontWeight = FontWeight.w200;
+      break;
+    case 'w300':
+      fontWeight = FontWeight.w300;
+    break;
+    case 'normal':
+    case 'w400':
+      fontWeight = FontWeight.w400;
+    break;
+    case 'w500':
+      fontWeight = FontWeight.w500;
+    break;
+    case 'w600':
+      fontWeight = FontWeight.w600;
+    break;
+    case 'bold':
+    case 'w700':
+      fontWeight = FontWeight.w700;
+    break;
+    case 'w800':
+      fontWeight = FontWeight.w800;
+    break;
+    case 'w900':
+      fontWeight = FontWeight.w900;
+    break;
+    default:
+      fontWeight = FontWeight.normal;
+  }
+  return fontWeight;
+}
+
 Color parseHexColor(String hexColorString) {
   if (hexColorString == null) {
     return null;
@@ -80,6 +118,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   String debugLabel = map['debugLabel'];
   String fontFamily = map['fontFamily'];
   double fontSize = map['fontSize'];
+  String fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
@@ -88,7 +127,9 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
       debugLabel: debugLabel,
       fontSize: fontSize,
       fontFamily: fontFamily,
-      fontStyle: fontStyle);
+      fontStyle: fontStyle,
+      fontWeight: parseFontWeight(fontWeight),
+  );
 }
 
 Alignment parseAlignment(String alignmentString) {

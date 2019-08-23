@@ -29,7 +29,8 @@ var textJson = '''
     "overflow": "ellipsis",
     "style": {
       "color": "#00FFFF",
-      "fontSize": 20.0
+      "fontSize": 20.0,
+      "fontWeight": "bold"
     }
   }
 }
