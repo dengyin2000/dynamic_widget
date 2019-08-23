@@ -51,6 +51,7 @@ var textSpanJson = '''
         "color": "#00FFFF",
         "fontSize": 26.0
       },
+      "recognizer": "route://productDetail?goods_id=123",
       "children": [
         {
           "text": " dynamic",

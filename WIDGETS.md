@@ -68,6 +68,7 @@ TextSpan, here to see flutter [TextSpan](https://docs.flutter.io/flutter/paintin
 
 | property        | definition   | type  | value  | sample |
 | ---| ---| ---   | ---| ---|
+| recognizer |Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. Currently only supports TapGestureRecognizer |String|  |"route://productDetail?goods_id=123"|
 | text|The text contained in the span.|String| |"I am a text"|
 | style|The style to apply to the text and the children.|TextStyle| | {"color": "#00FFFF", "fontSize": 26.0}|
 | children|Additional spans to include as children. |List&#60;TextSpan&#62;| | |
