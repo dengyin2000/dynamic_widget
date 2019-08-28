@@ -80,6 +80,7 @@ TextStyle, here to see flutter [TextStyle](https://docs.flutter.io/flutter/paint
 | ---| ---| ---   | ---| ---|
 | color|The color to use when painting the text.|String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
 | debugLabel|A human-readable description of this text style. |String| |  |
+| decoration|The name of the decoration. |String| One of the following string: none (default)<br>lineThrough<br>overline<br>underline | "underline" |
 | fontFamily|The name of the font to use when painting the text (e.g., Roboto). If the font is defined in a package, this will be prefixed with 'packages/package_name/' (e.g. 'packages/cool_fonts/Roboto'). The prefixing is done by the constructor when the package argument is provided.|String| | |
 | fontSize|The size of glyphs (in logical pixels) to use when painting the text. |double| |  |
 | fontStyle|The typeface variant to use when drawing the letters (e.g., italics). |String|One of the following string: italic (default)<br> normal | "italic" |

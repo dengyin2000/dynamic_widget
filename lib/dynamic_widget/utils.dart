@@ -47,6 +47,25 @@ TextOverflow parseTextOverflow(String textOverflowString) {
   return textOverflow;
 }
 
+TextDecoration parseTextDecoration(String textDecorationString) {
+  TextDecoration textDecoration = TextDecoration.none;
+  switch (textDecorationString) {
+    case "lineThrough":
+      textDecoration = TextDecoration.lineThrough;
+      break;
+    case "overline":
+      textDecoration = TextDecoration.overline;
+      break;
+    case "underline":
+      textDecoration = TextDecoration.underline;
+      break;
+    case "none":
+    default:
+      textDecoration = TextDecoration.none;
+  }
+  return textDecoration;
+}
+
 TextDirection parseTextDirection(String textDirectionString) {
   TextDirection textDirection = TextDirection.ltr;
   switch (textDirectionString) {
@@ -113,9 +132,10 @@ Color parseHexColor(String hexColorString) {
 }
 
 TextStyle parseTextStyle(Map<String, dynamic> map) {
-  //TODO: more properties need to be implemented, such as decoration, decorationColor, decorationStyle, wordSpacing and so on.
+  //TODO: more properties need to be implemented, such as decorationColor, decorationStyle, wordSpacing and so on.
   String color = map['color'];
   String debugLabel = map['debugLabel'];
+  String decoration = map['decoration'];
   String fontFamily = map['fontFamily'];
   double fontSize = map['fontSize'];
   String fontWeight = map['fontWeight'];
@@ -125,6 +145,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   return TextStyle(
       color: parseHexColor(color),
       debugLabel: debugLabel,
+      decoration: parseTextDecoration(decoration),
       fontSize: fontSize,
       fontFamily: fontFamily,
       fontStyle: fontStyle,

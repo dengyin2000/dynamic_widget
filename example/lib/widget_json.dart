@@ -30,7 +30,8 @@ var textJson = '''
     "style": {
       "color": "#00FFFF",
       "fontSize": 20.0,
-      "fontWeight": "bold"
+      "fontWeight": "bold",
+      "decoration": "underline"
     }
   }
 }
