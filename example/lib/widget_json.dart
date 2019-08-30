@@ -29,7 +29,9 @@ var textJson = '''
     "overflow": "ellipsis",
     "style": {
       "color": "#00FFFF",
-      "fontSize": 20.0
+      "fontSize": 20.0,
+      "fontWeight": "bold",
+      "decoration": "underline"
     }
   }
 }
@@ -50,6 +52,7 @@ var textSpanJson = '''
         "color": "#00FFFF",
         "fontSize": 26.0
       },
+      "recognizer": "route://productDetail?goods_id=123",
       "children": [
         {
           "text": " dynamic",

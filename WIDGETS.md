@@ -68,6 +68,7 @@ TextSpan, here to see flutter [TextSpan](https://docs.flutter.io/flutter/paintin
 
 | property        | definition   | type  | value  | sample |
 | ---| ---| ---   | ---| ---|
+| recognizer |Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page. Currently only supports TapGestureRecognizer |String|  |"route://productDetail?goods_id=123"|
 | text|The text contained in the span.|String| |"I am a text"|
 | style|The style to apply to the text and the children.|TextStyle| | {"color": "#00FFFF", "fontSize": 26.0}|
 | children|Additional spans to include as children. |List&#60;TextSpan&#62;| | |
@@ -79,9 +80,11 @@ TextStyle, here to see flutter [TextStyle](https://docs.flutter.io/flutter/paint
 | ---| ---| ---   | ---| ---|
 | color|The color to use when painting the text.|String|"#AARRGGBB" or "#RRGGBB"|"#FF00FF"<br>"#00FF00FF"|
 | debugLabel|A human-readable description of this text style. |String| |  |
+| decoration|The name of the decoration. |String| One of the following string: none (default)<br>lineThrough<br>overline<br>underline | "underline" |
 | fontFamily|The name of the font to use when painting the text (e.g., Roboto). If the font is defined in a package, this will be prefixed with 'packages/package_name/' (e.g. 'packages/cool_fonts/Roboto'). The prefixing is done by the constructor when the package argument is provided.|String| | |
 | fontSize|The size of glyphs (in logical pixels) to use when painting the text. |double| |  |
 | fontStyle|The typeface variant to use when drawing the letters (e.g., italics). |String|One of the following string: italic (default)<br> normal | "italic" |
+| fontWeight|The typeface thickness to use when painting the text (e.g., bold). |String|One of the following string: w100<br> w200<br> w300<br> w400<br> w500<br> w600<br> w700<br> w800<br> w900<br> normal (default)<br> bold | "bold" |
 
 ## RaisedButton Widget
 RaisedButton widget, here to see flutter [RaisedButton widget](https://docs.flutter.io/flutter/widgets/Text-class.html) definition. Supported json properties:

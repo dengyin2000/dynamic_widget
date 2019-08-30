@@ -47,6 +47,25 @@ TextOverflow parseTextOverflow(String textOverflowString) {
   return textOverflow;
 }
 
+TextDecoration parseTextDecoration(String textDecorationString) {
+  TextDecoration textDecoration = TextDecoration.none;
+  switch (textDecorationString) {
+    case "lineThrough":
+      textDecoration = TextDecoration.lineThrough;
+      break;
+    case "overline":
+      textDecoration = TextDecoration.overline;
+      break;
+    case "underline":
+      textDecoration = TextDecoration.underline;
+      break;
+    case "none":
+    default:
+      textDecoration = TextDecoration.none;
+  }
+  return textDecoration;
+}
+
 TextDirection parseTextDirection(String textDirectionString) {
   TextDirection textDirection = TextDirection.ltr;
   switch (textDirectionString) {
@@ -62,6 +81,44 @@ TextDirection parseTextDirection(String textDirectionString) {
   return textDirection;
 }
 
+FontWeight parseFontWeight(String textFontWeight) {
+  FontWeight fontWeight = FontWeight.normal;
+  switch (textFontWeight) {
+    case 'w100':
+      fontWeight = FontWeight.w100;
+      break;
+    case 'w200':
+      fontWeight = FontWeight.w200;
+      break;
+    case 'w300':
+      fontWeight = FontWeight.w300;
+    break;
+    case 'normal':
+    case 'w400':
+      fontWeight = FontWeight.w400;
+    break;
+    case 'w500':
+      fontWeight = FontWeight.w500;
+    break;
+    case 'w600':
+      fontWeight = FontWeight.w600;
+    break;
+    case 'bold':
+    case 'w700':
+      fontWeight = FontWeight.w700;
+    break;
+    case 'w800':
+      fontWeight = FontWeight.w800;
+    break;
+    case 'w900':
+      fontWeight = FontWeight.w900;
+    break;
+    default:
+      fontWeight = FontWeight.normal;
+  }
+  return fontWeight;
+}
+
 Color parseHexColor(String hexColorString) {
   if (hexColorString == null) {
     return null;
@@ -75,20 +132,25 @@ Color parseHexColor(String hexColorString) {
 }
 
 TextStyle parseTextStyle(Map<String, dynamic> map) {
-  //TODO: more properties need to be implemented, such as decoration, decorationColor, decorationStyle, wordSpacing and so on.
+  //TODO: more properties need to be implemented, such as decorationColor, decorationStyle, wordSpacing and so on.
   String color = map['color'];
   String debugLabel = map['debugLabel'];
+  String decoration = map['decoration'];
   String fontFamily = map['fontFamily'];
   double fontSize = map['fontSize'];
+  String fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
   return TextStyle(
       color: parseHexColor(color),
       debugLabel: debugLabel,
+      decoration: parseTextDecoration(decoration),
       fontSize: fontSize,
       fontFamily: fontFamily,
-      fontStyle: fontStyle);
+      fontStyle: fontStyle,
+      fontWeight: parseFontWeight(fontWeight),
+  );
 }
 
 Alignment parseAlignment(String alignmentString) {

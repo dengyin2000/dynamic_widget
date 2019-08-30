@@ -228,10 +228,10 @@ Already completed widgets:
 You can view [Currently support widgets and properties](WIDGETS.md) here.
 
 ## Setup
-Checkout this project and run deom.
+Checkout this project and run demo.
 
 ## Code Examples
-Checkout this project and run deom.
+Checkout this project and run demo.
 
 ## Contact
 Created by [@deng.yin@gmail.com](https://www.jianshu.com/u/efa51344ce61) - feel free to contact me!
