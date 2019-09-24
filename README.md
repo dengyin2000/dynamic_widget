@@ -234,4 +234,4 @@ Checkout this project and run demo.
 Checkout this project and run demo.
 
 ## Contact
-Created by [@deng.yin@gmail.com](https://www.jianshu.com/u/efa51344ce61) - feel free to contact me!
+Created by [@deng.yin@gmail.com](https://www.jianshu.com/u/efa51344ce61) - feel free to contact me
