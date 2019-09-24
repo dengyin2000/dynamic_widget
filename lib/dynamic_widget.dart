@@ -38,7 +38,6 @@ class DynamicWidgetBuilder {
     ColumnWidgetParser(),
     AssetImageWidgetParser(),
     NetworkImageWidgetParser(),
-    FileImageWidgetParser(),
     PlaceholderWidgetParser(),
     GridViewWidgetParser(),
     ListViewWidgetParser(),
