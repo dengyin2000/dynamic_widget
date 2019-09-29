@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import 'package:http/http.dart' as http;
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
@@ -198,17 +198,15 @@ class _GridViewWidgetState extends State<GridViewWidget> {
   }
 
   doRequest() async {
-    var httpClient = new HttpClient();
+    // Await the http get response, then decode the json-formatted responce.
     try {
-      var request = await httpClient.getUrl(Uri.parse(getLoadMoreUrl(
+      var response = await http.get(Uri.parse(getLoadMoreUrl(
           _params.loadMoreUrl, _items.length, _params.pageSize)));
-      var response = await request.close();
-      if (response.statusCode == HttpStatus.ok) {
-        var json = await utf8.decoder.bind(response).join();
-        return json;
+      if (response.statusCode == 200) {
+        return response.body;
       }
-    } catch (exception) {
-      print(exception);
+    } on Exception catch (e) {
+      print(e);
     }
     return "";
   }

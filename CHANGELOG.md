@@ -22,3 +22,7 @@
 ## [1.0.3] - WidgetParser.parse add BuildContext param.
 
 * WidgetParser.parse add BuildContext param.
+
+## [1.0.4] - Support web application
+
+* Support web application
