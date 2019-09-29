@@ -92,27 +92,27 @@ FontWeight parseFontWeight(String textFontWeight) {
       break;
     case 'w300':
       fontWeight = FontWeight.w300;
-    break;
+      break;
     case 'normal':
     case 'w400':
       fontWeight = FontWeight.w400;
-    break;
+      break;
     case 'w500':
       fontWeight = FontWeight.w500;
-    break;
+      break;
     case 'w600':
       fontWeight = FontWeight.w600;
-    break;
+      break;
     case 'bold':
     case 'w700':
       fontWeight = FontWeight.w700;
-    break;
+      break;
     case 'w800':
       fontWeight = FontWeight.w800;
-    break;
+      break;
     case 'w900':
       fontWeight = FontWeight.w900;
-    break;
+      break;
     default:
       fontWeight = FontWeight.normal;
   }
@@ -143,13 +143,13 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
   return TextStyle(
-      color: parseHexColor(color),
-      debugLabel: debugLabel,
-      decoration: parseTextDecoration(decoration),
-      fontSize: fontSize,
-      fontFamily: fontFamily,
-      fontStyle: fontStyle,
-      fontWeight: parseFontWeight(fontWeight),
+    color: parseHexColor(color),
+    debugLabel: debugLabel,
+    decoration: parseTextDecoration(decoration),
+    fontSize: fontSize,
+    fontFamily: fontFamily,
+    fontStyle: fontStyle,
+    fontWeight: parseFontWeight(fontWeight),
   );
 }
 
@@ -560,11 +560,11 @@ WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
   return WrapCrossAlignment.start;
 }
 
-Clip parseClipBehavior(String clipBehaviorString){
+Clip parseClipBehavior(String clipBehaviorString) {
   if (clipBehaviorString == null) {
     return Clip.antiAlias;
   }
-  switch(clipBehaviorString) {
+  switch (clipBehaviorString) {
     case "antiAlias":
       return Clip.antiAlias;
     case "none":

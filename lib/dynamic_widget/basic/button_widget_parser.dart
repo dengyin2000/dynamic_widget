@@ -9,7 +9,8 @@ class RaisedButtonParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener) {
     String clickEvent =
         map.containsKey("click_event") ? map['click_event'] : "";
 
@@ -32,7 +33,8 @@ class RaisedButtonParser extends WidgetParser {
           : null,
       textColor:
           map.containsKey('textColor') ? parseHexColor(map['textColor']) : null,
-      child: DynamicWidgetBuilder.buildFromMap(map['child'], buildContext, listener),
+      child: DynamicWidgetBuilder.buildFromMap(
+          map['child'], buildContext, listener),
       onPressed: () {
         listener.onClicked(clickEvent);
       },

@@ -9,7 +9,8 @@ class AlignWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener) {
     return Align(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -17,7 +18,8 @@ class AlignWidgetParser extends WidgetParser {
       widthFactor: map.containsKey("widthFactor") ? map["widthFactor"] : null,
       heightFactor:
           map.containsKey("heightFactor") ? map["heightFactor"] : null,
-      child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
+      child: DynamicWidgetBuilder.buildFromMap(
+          map["child"], buildContext, listener),
     );
   }
 }

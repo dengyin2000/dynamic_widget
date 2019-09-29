@@ -60,8 +60,9 @@ class DynamicWidgetBuilder {
   ];
 
   // use this method for adding your custom widget parser
-  static void addParser(WidgetParser parser){
-    log.info("add custom widget parser, make sure you don't overwirte the widget type.");
+  static void addParser(WidgetParser parser) {
+    log.info(
+        "add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
   }
 
@@ -73,7 +74,8 @@ class DynamicWidgetBuilder {
     return widget;
   }
 
-  static Widget buildFromMap(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  static Widget buildFromMap(Map<String, dynamic> map,
+      BuildContext buildContext, ClickListener listener) {
     String widgetName = map['type'];
 
     for (var parser in _parsers) {
@@ -99,7 +101,8 @@ class DynamicWidgetBuilder {
 /// extends this class to make a Flutter widget parser.
 abstract class WidgetParser {
   /// parse the json map into a flutter widget.
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener);
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener);
 
   /// check the matched widget type. for example:
   /// {"type" : "Text", "data" : "Denny"}

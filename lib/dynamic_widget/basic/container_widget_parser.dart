@@ -9,7 +9,8 @@ class ContainerWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener) {
     Alignment alignment = parseAlignment(map['alignment']);
     Color color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
@@ -22,7 +23,7 @@ class ContainerWidgetParser extends WidgetParser {
         : DynamicWidgetBuilder.buildFromMap(childMap, buildContext, listener);
 
     String clickEvent =
-    map.containsKey("click_event") ? map['click_event'] : "";
+        map.containsKey("click_event") ? map['click_event'] : "";
 
     var containerWidget = Container(
       alignment: alignment,
@@ -35,14 +36,14 @@ class ContainerWidgetParser extends WidgetParser {
       child: child,
     );
 
-    if (listener != null && clickEvent!=null) {
+    if (listener != null && clickEvent != null) {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           listener.onClicked(clickEvent);
         },
         child: containerWidget,
       );
-    }else {
+    } else {
       return containerWidget;
     }
   }

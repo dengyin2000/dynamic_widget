@@ -11,7 +11,8 @@ class AssetImageWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener) {
     String name = map['name'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -44,7 +45,7 @@ class AssetImageWidgetParser extends WidgetParser {
         : FilterQuality.low;
 
     String clickEvent =
-    map.containsKey("click_event") ? map['click_event'] : "";
+        map.containsKey("click_event") ? map['click_event'] : "";
 
     var widget = Image.asset(
       name,
@@ -64,9 +65,9 @@ class AssetImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener!=null && (clickEvent != null && clickEvent.isNotEmpty )){
+    if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           listener.onClicked(clickEvent);
         },
         child: widget,
@@ -83,7 +84,8 @@ class NetworkImageWidgetParser extends WidgetParser {
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener listener) {
     String src = map['src'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -116,7 +118,7 @@ class NetworkImageWidgetParser extends WidgetParser {
         : FilterQuality.low;
 
     String clickEvent =
-    map.containsKey("click_event") ? map['click_event'] : "";
+        map.containsKey("click_event") ? map['click_event'] : "";
 
     var widget = Image.network(
       src,
@@ -136,9 +138,9 @@ class NetworkImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener!=null && (clickEvent != null && clickEvent.isNotEmpty )){
+    if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           listener.onClicked(clickEvent);
         },
         child: widget,
@@ -147,4 +149,3 @@ class NetworkImageWidgetParser extends WidgetParser {
     return widget;
   }
 }
-
