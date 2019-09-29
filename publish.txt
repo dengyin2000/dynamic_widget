@@ -1,4 +1,10 @@
+//mac linux
 export http_proxy="127.0.0.1:8888"
 export https_proxy="127.0.0.1:8888"
+
+//windows
+set http_proxy=http://127.0.0.1:8888
+set https_proxy=http://127.0.0.1:8888
+
 flutter packages pub publish --dry-run
 flutter packages pub publish
