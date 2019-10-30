@@ -15,7 +15,7 @@ class GridViewWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
@@ -35,7 +35,7 @@ class GridViewWidgetParser extends WidgetParser {
     double childAspectRatio =
         map.containsKey('childAspectRatio') ? map['childAspectRatio'] : 1.0;
     var children = DynamicWidgetBuilder.buildWidgets(
-        map['children'], buildContext, listener);
+        map['children'], buildContext, widgetParserCompanion);
 
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
     var loadMoreUrl =

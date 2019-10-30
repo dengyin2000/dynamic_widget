@@ -15,7 +15,7 @@ class ListViewWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
       scrollDirection = Axis.horizontal;
@@ -29,7 +29,7 @@ class ListViewWidgetParser extends WidgetParser {
         : null;
     var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"] : null;
     var children = DynamicWidgetBuilder.buildWidgets(
-        map['children'], buildContext, listener);
+        map['children'], buildContext, widgetParserCompanion);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
     var loadMoreUrl =
         map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;

@@ -9,14 +9,14 @@ class OpacityWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return Opacity(
       opacity: map["opacity"],
       alwaysIncludeSemantics: map.containsKey("alwaysIncludeSemantics")
           ? map["alwaysIncludeSemantics"]
           : false,
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, widgetParserCompanion),
     );
   }
 }

@@ -9,10 +9,10 @@ class ExpandedWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return Expanded(
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, widgetParserCompanion),
       flex: map.containsKey("flex") ? map["flex"] : 1,
     );
   }

@@ -11,7 +11,7 @@ class TextWidgetParser implements WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     String data = map['data'];
     String textAlignString = map['textAlign'];
     String overflow = map['overflow'];
@@ -23,7 +23,7 @@ class TextWidgetParser implements WidgetParser {
     var textSpan;
     var textSpanParser = TextSpanParser();
     if (map.containsKey("textSpan")) {
-      textSpan = textSpanParser.parse(map['textSpan'], listener);
+      textSpan = textSpanParser.parse(map['textSpan'], widgetParserCompanion);
     }
 
     if (textSpan == null) {
@@ -55,28 +55,28 @@ class TextWidgetParser implements WidgetParser {
 }
 
 class TextSpanParser {
-  TextSpan parse(Map<String, dynamic> map, ClickListener listener) {
+  TextSpan parse(Map<String, dynamic> map, WidgetParserCompanion widgetParserCompanion) {
     String clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],
         style: parseTextStyle(map['style']),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
-            listener.onClicked(clickEvent);
+            widgetParserCompanion.clickListener.onClicked(clickEvent);
           },
         children: []);
 
     if (map.containsKey('children')) {
-      parseChildren(textSpan, map['children'], listener);
+      parseChildren(textSpan, map['children'], widgetParserCompanion);
     }
 
     return textSpan;
   }
 
   void parseChildren(
-      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener listener) {
+      TextSpan textSpan, List<dynamic> childrenSpan, WidgetParserCompanion widgetParserCompanion) {
     for (var childmap in childrenSpan) {
-      textSpan.children.add(parse(childmap, listener));
+      textSpan.children.add(parse(childmap, widgetParserCompanion));
     }
   }
 }

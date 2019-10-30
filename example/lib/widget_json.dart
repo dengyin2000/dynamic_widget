@@ -886,3 +886,11 @@ var cliprrectJson = '''
   }
 }
 ''';
+
+var textFieldJson = '''
+{
+  "id": "text_field_test",
+  "type": "TextField",
+  "textColor": "#00FF00"
+}
+''';

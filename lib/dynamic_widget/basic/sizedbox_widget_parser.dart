@@ -10,10 +10,10 @@ class ExpandedSizedBoxWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return SizedBox.expand(
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, widgetParserCompanion),
     );
   }
 }
@@ -26,12 +26,12 @@ class SizedBoxWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return SizedBox(
       width: map["width"],
       height: map["height"],
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, widgetParserCompanion),
     );
   }
 }
