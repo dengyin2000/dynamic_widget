@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart';
 
 TextAlign parseTextAlign(String textAlignString) {
-  TextAlign textAlign = TextAlign.left;
+  //left the system decide
+  TextAlign textAlign = TextAlign.start;
   switch (textAlignString) {
     case "left":
       textAlign = TextAlign.left;
@@ -24,7 +25,7 @@ TextAlign parseTextAlign(String textAlignString) {
       textAlign = TextAlign.end;
       break;
     default:
-      textAlign = TextAlign.left;
+      textAlign = TextAlign.start;
   }
   return textAlign;
 }
