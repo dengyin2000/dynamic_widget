@@ -12,7 +12,7 @@ TextAlign parseTextAlign(String textAlignString) {
       textAlign = TextAlign.right;
       break;
     case "center":
-      textAlign = TextAlign.right;
+      textAlign = TextAlign.center;
       break;
     case "justify":
       textAlign = TextAlign.justify;
