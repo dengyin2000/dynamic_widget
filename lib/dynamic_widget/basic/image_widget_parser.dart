@@ -12,7 +12,7 @@ class AssetImageWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     String name = map['name'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -65,10 +65,10 @@ class AssetImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
+    if (widgetParserCompanion.clickListener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
         onTap: () {
-          listener.onClicked(clickEvent);
+          widgetParserCompanion.clickListener.onClicked(clickEvent);
         },
         child: widget,
       );
@@ -85,7 +85,7 @@ class NetworkImageWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     String src = map['src'];
     String semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -138,10 +138,10 @@ class NetworkImageWidgetParser extends WidgetParser {
       filterQuality: filterQuality,
     );
 
-    if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
+    if (widgetParserCompanion.clickListener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
         onTap: () {
-          listener.onClicked(clickEvent);
+          widgetParserCompanion.clickListener.onClicked(clickEvent);
         },
         child: widget,
       );

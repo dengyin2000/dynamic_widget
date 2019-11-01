@@ -1,5 +1,5 @@
-import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
+import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class PositionedWidgetParser extends WidgetParser {
@@ -10,10 +10,10 @@ class PositionedWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return Positioned(
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, widgetParserCompanion),
       top: map.containsKey("top") ? map["top"] : null,
       right: map.containsKey("right") ? map["right"] : null,
       bottom: map.containsKey("bottom") ? map["bottom"] : null,
@@ -32,7 +32,7 @@ class StackWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return Stack(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -45,7 +45,7 @@ class StackWidgetParser extends WidgetParser {
           ? parseOverflow(map["overflow"])
           : Overflow.clip,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
+          map['children'], buildContext, widgetParserCompanion),
     );
   }
 }

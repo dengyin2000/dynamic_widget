@@ -1,8 +1,19 @@
-.DS_Store
-.dart_tool/
+# IntelliJ related
+.idea/
 
+# Visual Studio Code related
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.flutter-plugins
 .packages
+.pub-cache/
 .pub/
+/build/
+pubspec.lock
+
 
 build/
 ios/.generated/

@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:collection';
+import 'dart:convert';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
@@ -263,6 +265,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => CodeEditorPage(cliprrectJson)));
               },
             ),
+            RaisedButton(
+              child: Text("TextField"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(textFieldJson)));
+              },
+            ),
           ],
         ));
   }
@@ -332,6 +343,7 @@ class _CodeEditorPageState extends State<CodeEditorPage> {
 
 class PreviewPage extends StatelessWidget {
   final String jsonString;
+  final Map<String, TextEditingController> textEditingControllers = HashMap();
 
   PreviewPage(this.jsonString);
 
@@ -360,8 +372,16 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder()
-        .build(jsonString, context, new DefaultClickListener());
+    WidgetParserCompanion companion = WidgetParserCompanion();
+    companion.clickListener = new DefaultClickListener();
+    companion.onTextChange = (String id, String text) {
+      print("TextField id: $id, text $text");
+    };
+    companion.textEditingController = textEditingControllers;
+    var finalLayout = DynamicWidgetBuilder()
+        .build(jsonString, context, companion);
+    print("TextEditingController size ${textEditingControllers.length}");
+    return finalLayout;
   }
 }
 

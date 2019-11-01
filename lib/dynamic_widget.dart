@@ -1,5 +1,7 @@
 library dynamic_widget;
 
+import 'dart:convert';
+
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart';
@@ -22,10 +24,10 @@ import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.d
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:convert';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
+import 'dynamic_widget/basic/text_field_widget_parser.dart';
 
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
@@ -56,7 +58,8 @@ class DynamicWidgetBuilder {
     SizedBoxWidgetParser(),
     OpacityWidgetParser(),
     WrapWidgetParser(),
-    ClipRRectWidgetParser()
+    ClipRRectWidgetParser(),
+    TextFieldWidgetParser()
   ];
 
   // use this method for adding your custom widget parser
@@ -66,33 +69,34 @@ class DynamicWidgetBuilder {
     _parsers.add(parser);
   }
 
-  Widget build(String json, BuildContext buildContext, ClickListener listener) {
+  Widget build(String json, BuildContext buildContext, WidgetParserCompanion widgetParserCompanion) {
+    print("print widget 2");
     var map = jsonDecode(json);
-    ClickListener _listener =
-        listener == null ? new NonResponseWidgetClickListener() : listener;
-    var widget = buildFromMap(map, buildContext, _listener);
+    if(widgetParserCompanion == null) widgetParserCompanion = WidgetParserCompanion();
+    widgetParserCompanion.clickListener =
+        widgetParserCompanion.clickListener == null ? new NonResponseWidgetClickListener() : widgetParserCompanion.clickListener;
+    var widget = buildFromMap(map, buildContext, widgetParserCompanion);
     return widget;
   }
 
   static Widget buildFromMap(Map<String, dynamic> map,
-      BuildContext buildContext, ClickListener listener) {
+      BuildContext buildContext, WidgetParserCompanion widgetParserCompanion) {
     String widgetName = map['type'];
 
     for (var parser in _parsers) {
       if (parser.forWidget(widgetName)) {
-        return parser.parse(map, buildContext, listener);
+        return parser.parse(map, buildContext, widgetParserCompanion);
       }
     }
-
     log.warning("Not support type: $widgetName");
     return null;
   }
 
   static List<Widget> buildWidgets(
-      List<dynamic> values, BuildContext buildContext, ClickListener listener) {
+      List<dynamic> values, BuildContext buildContext, WidgetParserCompanion widgetParserCompanion) {
     List<Widget> rt = [];
     for (var value in values) {
-      rt.add(buildFromMap(value, buildContext, listener));
+      rt.add(buildFromMap(value, buildContext, widgetParserCompanion));
     }
     return rt;
   }
@@ -102,7 +106,7 @@ class DynamicWidgetBuilder {
 abstract class WidgetParser {
   /// parse the json map into a flutter widget.
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener);
+      WidgetParserCompanion widgetParserCompanion);
 
   /// check the matched widget type. for example:
   /// {"type" : "Text", "data" : "Denny"}
@@ -116,6 +120,10 @@ abstract class ClickListener {
   void onClicked(String event);
 }
 
+abstract class OnTextChangeListener {
+  void onTextChange(String textFieldId, String text);
+}
+
 class NonResponseWidgetClickListener implements ClickListener {
   static final Logger log = Logger('NonResponseWidgetClickListener');
 
@@ -124,4 +132,10 @@ class NonResponseWidgetClickListener implements ClickListener {
     log.info("receiver click event: " + event);
     print("receiver click event: " + event);
   }
+}
+
+class WidgetParserCompanion {
+  ClickListener clickListener;
+  Function(String,String) onTextChange;
+  Map<String, TextEditingController> textEditingController;
 }

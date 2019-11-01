@@ -10,7 +10,7 @@ class WrapWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      WidgetParserCompanion widgetParserCompanion) {
     return Wrap(
       direction: map.containsKey("direction")
           ? parseAxis(map["direction"])
@@ -33,7 +33,7 @@ class WrapWidgetParser extends WidgetParser {
           ? parseVerticalDirection(map["verticalDirection"])
           : VerticalDirection.down,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
+          map['children'], buildContext, widgetParserCompanion),
     );
   }
 }
