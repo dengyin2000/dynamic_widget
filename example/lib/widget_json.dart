@@ -886,3 +886,25 @@ var cliprrectJson = '''
   }
 }
 ''';
+
+var safeareaJson = '''
+{
+  "type": "SafeArea",
+  "child":{
+      "type":"Center",
+        "child": {
+            "type":"ClipRRect",
+            "borderRadius":"10,20,30,40",
+            "child":{
+            "type": "SizedBox",
+            "width": 100.0,
+            "height": 100.0,
+            "child":{
+                "type":"Container",
+                "color": "#CC00FF"
+            }
+            }
+        }
+  }
+}
+''';

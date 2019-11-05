@@ -263,6 +263,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => CodeEditorPage(cliprrectJson)));
               },
             ),
+            RaisedButton(
+              child: Text("SafeArea"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(safeareaJson)));
+              },
+            ),
           ],
         ));
   }

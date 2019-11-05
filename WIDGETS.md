@@ -31,6 +31,7 @@
 * [Opacity Widget](#opacity-widget)
 * [Wrap Widget](#wrap-widget)
 * [ClipRRect Widget](#cliprrect-widget)
+* [SafeArea Widget](#safearea-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -391,4 +392,16 @@ ClipRRect, here to see flutter [TextSpan](https://api.flutter.dev/flutter/widget
 | ---| ---| ---   | ---| ---|
 | borderRadius|The border radius of the rounded corners. |String| |"topLeft,topRight,bottomLeft,bottomRight"|
 | clipBehavior|Controls how to clip (default to "antiAlias")|String|enum values, please see enum Clip, default value is antiAlias. | "hardEdge"|
+| child|The widget below this widget in the tree.  |Widget|| |
+
+## SafeArea Widget
+SafeArea, here to see flutter [SafeArea](https://api.flutter.dev/flutter/widgets/SafeArea-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| bottom |Whether to avoid system intrusions on the bottom side of the screen.|bool| true or false, default is true|true|
+| right |Whether to avoid system intrusions on the right.|bool| true or false, default is true|true|
+| top |Whether to avoid system intrusions at the top of the screen, typically the system status bar.|bool| true or false, default is true|true|
+| left |Whether to avoid system intrusions on the left.|bool| true or false, default is true|true|
+| minimum |This minimum padding to apply.|String|left,top,right,bottom|"8,10,12,8"|
 | child|The widget below this widget in the tree.  |Widget|| |
