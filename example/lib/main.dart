@@ -272,6 +272,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (context) => CodeEditorPage(safeareaJson)));
               },
             ),
+            RaisedButton(
+              child: Text("ListTile"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(listTileJson)));
+              },
+            ),
           ],
         ));
   }

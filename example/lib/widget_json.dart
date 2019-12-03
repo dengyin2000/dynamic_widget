@@ -908,3 +908,285 @@ var safeareaJson = '''
   }
 }
 ''';
+
+
+var listTileJson = '''
+{
+  "type": "ListView",
+  "padding": "10, 10, 10, 10",
+  "pageSize": 10,
+  "children":[
+    {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    },
+        {
+      "type": "ListTile",
+      "leading": {
+        "type":"Text",
+        "data":"Leading text"
+      },
+      "title":{
+        "type":"Text",
+        "data":"Title text"
+      },
+      "subtitle":{
+        "type":"Text",
+        "data":"Subtitle text"
+      } 
+    }
+  ]
+}
+
+''';

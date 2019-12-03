@@ -32,6 +32,7 @@
 * [Wrap Widget](#wrap-widget)
 * [ClipRRect Widget](#cliprrect-widget)
 * [SafeArea Widget](#safearea-widget)
+* [ListTile Widget](#listtile-widget)
 
 ## Container Widget
 Container widget, here to see flutter [Container widget](https://docs.flutter.io/flutter/widgets/Container-class.html) definition.
@@ -405,3 +406,19 @@ SafeArea, here to see flutter [SafeArea](https://api.flutter.dev/flutter/widgets
 | left |Whether to avoid system intrusions on the left.|bool| true or false, default is true|true|
 | minimum |This minimum padding to apply.|String|left,top,right,bottom|"8,10,12,8"|
 | child|The widget below this widget in the tree.  |Widget|| |
+
+## ListTile Widget
+ListTile, here to see flutter [ListTile](https://api.flutter.dev/flutter/material/ListTile-class.html) definition. Supported json properties:
+
+| property        | definition   | type  | value  | sample |
+| ---| ---| ---   | ---| ---|
+| contentPadding |The tile's internal padding.|String| left,top,right,bottom|"8,10,12,8"|
+| dense |Whether this list tile is part of a vertically dense list.|bool| true or false, default is false|true|
+| enabled |Whether this list tile is interactive.|bool| true or false, default is true|true|
+| isThreeLine |Whether this list tile is intended to display three lines of text.|bool| true or false, default is false|true|
+| leading |A widget to display before the title.|Widget|||
+| tapEvent |tap event  |String||route://goToProductDetail|
+| selected |If this tile is also enabled then icons and text are rendered with the same color.|bool| true or false, default is false|true|
+| subtitle |Additional content displayed below the title.|Widget|||
+| title |The primary content of the list tile.|Widget|||
+| trailing |A widget to display after the title.|Widget|||

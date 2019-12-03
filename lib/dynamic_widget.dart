@@ -10,6 +10,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/listtile_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/opacity_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
@@ -58,7 +59,8 @@ class DynamicWidgetBuilder {
     OpacityWidgetParser(),
     WrapWidgetParser(),
     ClipRRectWidgetParser(),
-    SafeAreaWidgetParser()
+    SafeAreaWidgetParser(),
+    ListTileWidgetParser()
   ];
 
   // use this method for adding your custom widget parser
