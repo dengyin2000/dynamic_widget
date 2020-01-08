@@ -26,3 +26,16 @@
 ## [1.0.4] - Support web application
 
 * Support web application
+
+## [1.0.5] - fix bugs
+
+* fix bugs
+
+## [1.0.6] - Add SafeArea and ListTile widgets.
+
+* Add SafeArea and ListTile widgets
+
+
+
+
+
