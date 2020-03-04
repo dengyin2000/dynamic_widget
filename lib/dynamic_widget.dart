@@ -21,6 +21,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_par
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
@@ -60,6 +61,7 @@ class DynamicWidgetBuilder {
     SizedBoxWidgetParser(),
     OpacityWidgetParser(),
     WrapWidgetParser(),
+    DropCapTextParser(),
     ClipRRectWidgetParser(),
     SafeAreaWidgetParser(),
     ListTileWidgetParser()
@@ -67,8 +69,7 @@ class DynamicWidgetBuilder {
 
   // use this method for adding your custom widget parser
   static void addParser(WidgetParser parser) {
-    log.info(
-        "add custom widget parser, make sure you don't overwirte the widget type.");
+    log.info("add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
   }
 
