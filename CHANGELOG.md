@@ -35,6 +35,11 @@
 
 * Add SafeArea and ListTile widgets
 
+## [2.0.0] - Thanks [@mrjacobphillips](https://github.com/mrjacobphillips) for contributing "SelectableText"、"Icon" and "DropCapText" widgets.
+
+* Add "SelectableText"、"Icon" and "DropCapText" widgets.
+* Fix "Text" widget's maxLines default value.
+
 
 
 
