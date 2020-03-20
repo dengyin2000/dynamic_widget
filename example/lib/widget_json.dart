@@ -131,45 +131,57 @@ var iconJson = '''
 
 var dropCapTextJson = '''
 {
-   "type":"Column",
-   "children":[
+  "type": "ListView",
+  "padding": "10, 10, 10, 10",
+  "children":[
       {
-         "type":"DropCapText",
-         "selectable":true,
-         "data":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Fermentum odio eu feugiat pretium. Lacinia quis vel eros donec ac. At elementum eu facilisis sed odio morbi quis commodo odio. Augue lacus viverra vitae congue eu consequat ac felis. Blandit aliquam etiam erat velit. Morbi tincidunt augue interdum velit euismod. Sed libero enim sed faucibus turpis. Sagittis eu volutpat odio facilisis. Ultricies mi eget mauris pharetra et ultrices neque. Urna cursus eget nunc scelerisque viverra. Orci phasellus egestas tellus rutrum tellus. Et magnis dis parturient montes nascetur ridiculus mus. Arcu cursus vitae congue mauris rhoncus aenean. Varius morbi enim nunc faucibus. Semper eget duis at tellus at urna condimentum mattis. Massa sapien faucibus et molestie ac feugiat sed. Convallis aenean et tortor at risus. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Vulputate odio ut enim blandit. Velit ut tortor pretium viverra suspendisse. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tincidunt ornare massa eget egestas purus viverra accumsan in. Non consectetur a erat nam at lectus urna duis convallis. Et magnis dis parturient montes nascetur ridiculus mus mauris. Elit eget gravida cum sociis natoque. Sit amet consectetur adipiscing elit ut aliquam purus sit amet. Fringilla urna porttitor rhoncus dolor purus non. Dui accumsan sit amet nulla facilisi morbi tempus. Tellus in hac habitasse platea dictumst vestibulum. Ultricies integer quis auctor elit sed vulputate mi sit amet.",
-         "style":{
-            "fontSize":18.1
-         }
+         "type":"Column",
+         "children":[
+            {
+               "type":"DropCapText",
+               "selectable":true,
+               "data":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Fermentum odio eu feugiat pretium. Lacinia quis vel eros donec ac. At elementum eu facilisis sed odio morbi quis commodo odio. Augue lacus viverra vitae congue eu consequat ac felis. Blandit aliquam etiam erat velit. Morbi tincidunt augue interdum velit euismod. Sed libero enim sed faucibus turpis. Sagittis eu volutpat odio facilisis. Ultricies mi eget mauris pharetra et ultrices neque. Urna cursus eget nunc scelerisque viverra. Orci phasellus egestas tellus rutrum tellus. Et magnis dis parturient montes nascetur ridiculus mus. Arcu cursus vitae congue mauris rhoncus aenean. Varius morbi enim nunc faucibus. Semper eget duis at tellus at urna condimentum mattis. Massa sapien faucibus et molestie ac feugiat sed. Convallis aenean et tortor at risus. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Vulputate odio ut enim blandit. Velit ut tortor pretium viverra suspendisse. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tincidunt ornare massa eget egestas purus viverra accumsan in. Non consectetur a erat nam at lectus urna duis convallis. Et magnis dis parturient montes nascetur ridiculus mus mauris. Elit eget gravida cum sociis natoque. Sit amet consectetur adipiscing elit ut aliquam purus sit amet. Fringilla urna porttitor rhoncus dolor purus non. Dui accumsan sit amet nulla facilisi morbi tempus. Tellus in hac habitasse platea dictumst vestibulum. Ultricies integer quis auctor elit sed vulputate mi sit amet.",
+               "style":{
+                  "fontSize":18.1
+               }
+            }
+         ]
       }
-   ]
+  ]
 }
 ''';
 
 var dropCapTextImageJson = '''
 {
-   "type":"Column",
-   "children":[
-      {
-         "type":"DropCapText",
-         "selectable":true,
-         "data":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Fermentum odio eu feugiat pretium. Lacinia quis vel eros donec ac. At elementum eu facilisis sed odio morbi quis commodo odio. Augue lacus viverra vitae congue eu consequat ac felis. Blandit aliquam etiam erat velit. Morbi tincidunt augue interdum velit euismod. Sed libero enim sed faucibus turpis. Sagittis eu volutpat odio facilisis. Ultricies mi eget mauris pharetra et ultrices neque. Urna cursus eget nunc scelerisque viverra. Orci phasellus egestas tellus rutrum tellus. Et magnis dis parturient montes nascetur ridiculus mus. Arcu cursus vitae congue mauris rhoncus aenean. Varius morbi enim nunc faucibus. Semper eget duis at tellus at urna condimentum mattis. Massa sapien faucibus et molestie ac feugiat sed. Convallis aenean et tortor at risus. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Vulputate odio ut enim blandit. Velit ut tortor pretium viverra suspendisse. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tincidunt ornare massa eget egestas purus viverra accumsan in. Non consectetur a erat nam at lectus urna duis convallis. Et magnis dis parturient montes nascetur ridiculus mus mauris. Elit eget gravida cum sociis natoque. Sit amet consectetur adipiscing elit ut aliquam purus sit amet. Fringilla urna porttitor rhoncus dolor purus non. Dui accumsan sit amet nulla facilisi morbi tempus. Tellus in hac habitasse platea dictumst vestibulum. Ultricies integer quis auctor elit sed vulputate mi sit amet.",
-         "style":{
-            "fontSize":18.1
-         },
-         "dropCapPadding":"0,0,16.1,0",
-		     "dropCapPosition":"start",
-         "dropCap":{
-            "width":216.1,
-            "height":162.1,
-            "child":{
-               "type":"NetworkImage",
-               "src":"https://b.appsimg.com/upload/momin/2019/01/23/101/1548249269085.png",
-               "click_event" : "route://productDetail?goods_id=123"
-            }
-         }
-      }
-   ]
-}
+  "type": "ListView",
+  "padding": "10, 10, 10, 10",
+  "children":[
+    {
+       "type":"Column",
+       "children":[
+          {
+             "type":"DropCapText",
+             "selectable":true,
+             "data":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Fermentum odio eu feugiat pretium. Lacinia quis vel eros donec ac. At elementum eu facilisis sed odio morbi quis commodo odio. Augue lacus viverra vitae congue eu consequat ac felis. Blandit aliquam etiam erat velit. Morbi tincidunt augue interdum velit euismod. Sed libero enim sed faucibus turpis. Sagittis eu volutpat odio facilisis. Ultricies mi eget mauris pharetra et ultrices neque. Urna cursus eget nunc scelerisque viverra. Orci phasellus egestas tellus rutrum tellus. Et magnis dis parturient montes nascetur ridiculus mus. Arcu cursus vitae congue mauris rhoncus aenean. Varius morbi enim nunc faucibus. Semper eget duis at tellus at urna condimentum mattis. Massa sapien faucibus et molestie ac feugiat sed. Convallis aenean et tortor at risus. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Vulputate odio ut enim blandit. Velit ut tortor pretium viverra suspendisse. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tincidunt ornare massa eget egestas purus viverra accumsan in. Non consectetur a erat nam at lectus urna duis convallis. Et magnis dis parturient montes nascetur ridiculus mus mauris. Elit eget gravida cum sociis natoque. Sit amet consectetur adipiscing elit ut aliquam purus sit amet. Fringilla urna porttitor rhoncus dolor purus non. Dui accumsan sit amet nulla facilisi morbi tempus. Tellus in hac habitasse platea dictumst vestibulum. Ultricies integer quis auctor elit sed vulputate mi sit amet.",
+             "style":{
+                "fontSize":18.1
+             },
+             "dropCapPadding":"0,0,16.1,0",
+             "dropCapPosition":"start",
+             "dropCap":{
+                "width":216.1,
+                "height":162.1,
+                "child":{
+                   "type":"NetworkImage",
+                   "src":"https://b.appsimg.com/upload/momin/2019/01/23/101/1548249269085.png",
+                   "click_event" : "route://productDetail?goods_id=123"
+                }
+             }
+          }
+       ]
+    }
+  ]
+}      
 ''';
 
 var raisedButtonJson = '''
