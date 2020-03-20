@@ -16,7 +16,7 @@ class SelectableTextWidgetParser implements WidgetParser {
     String textAlignString = map['textAlign'];
     int maxLines = map['maxLines'];
     String textDirectionString = map['textDirection'];
-    double textScaleFactor = map['textScaleFactor'];
+//    double textScaleFactor = map['textScaleFactor'];
     var textSpan;
     var textSpanParser = SelectableTextSpanParser();
     if (map.containsKey("textSpan")) {
@@ -30,7 +30,7 @@ class SelectableTextWidgetParser implements WidgetParser {
         maxLines: maxLines,
         textDirection: parseTextDirection(textDirectionString),
         style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
+//        textScaleFactor: textScaleFactor,
       );
     } else {
       return SelectableText.rich(
@@ -39,7 +39,7 @@ class SelectableTextWidgetParser implements WidgetParser {
         maxLines: maxLines,
         textDirection: parseTextDirection(textDirectionString),
         style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
+//        textScaleFactor: textScaleFactor,
       );
     }
   }
