@@ -459,7 +459,7 @@ DropCapText,  Supported json properties:
 | style|The style to apply to the text and the children.|TextStyle| | {"color": "#00FFFF", "fontSize": 26.0}|
 | dropCapStyle|The drop cap letter style|TextStyle| | {"color": "#00FFFF", "fontSize": 26.0}|
 | textAlign|How the text should be aligned horizontally.|String|One of the following string:<br>left (default)<br>right<br>center<br>justify<br>start<br>end|"left"|
-| dropCap|The drop cap |Widget | {&quot;width&quot;:216.1,&quot;height&quot;:162.1,&quot;child&quot;:{&quot;type&quot;:&quot;NetworkImage&quot;,&quot;src&quot;:&quot;https://b.appsimg.com/upload/momin/2019/01/23/101/1548249269085.png&quot;,&quot;click_event&quot; : &quot;route://productDetail?goods_id=123&quot;}}|
+| dropCap|The drop cap |Widget | {&quot;width&quot;:216.1,&quot;height&quot;:162.1,&quot;child&quot;:{&quot;type&quot;:&quot;NetworkImage&quot;,&quot;src&quot;:&quot;https://b.appsimg.com/upload/momin/2019/01/23/101/1548249269085.png &quot;,&quot;click_event&quot; : &quot;route://productDetail?goods_id=123&quot;}}|
 | dropCapStyle|The drop cap padding|String|left,top,right,bottom|"8,10,12,8"|
 | dropCapChars|The drop cap chars length|int||1|
 | forceNoDescent|forceNoDescent|bool|||
