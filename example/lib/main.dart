@@ -414,7 +414,7 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder()
+    return DynamicWidgetBuilder
         .build(jsonString, context, new DefaultClickListener());
   }
 }

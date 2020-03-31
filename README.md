@@ -90,7 +90,7 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder().build(jsonString, context, new DefaultClickListener());
+    return DynamicWidgetBuilder.build(jsonString, context, new DefaultClickListener());
   }
 }
 ```
@@ -106,9 +106,7 @@ import 'package:flutter/material.dart';
 
 class RaisedButtonParser extends WidgetParser {
   @override
-  bool forWidget(String widgetName) {
-    return "RaisedButton" == widgetName;
-  }
+  String get widgetName => "RaisedButton";
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
@@ -190,7 +188,7 @@ Finally, pass the listener to build method.
 ```dart
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString, buildContext, new DefaultClickListener());
+    return DynamicWidgetBuilder.build(jsonString, buildContext, new DefaultClickListener());
   }
 ```
   

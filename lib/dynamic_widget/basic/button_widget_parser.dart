@@ -3,10 +3,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/material.dart';
 
 class RaisedButtonParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "RaisedButton" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -42,4 +38,7 @@ class RaisedButtonParser extends WidgetParser {
 
     return raisedButton;
   }
+
+  @override
+  String get widgetName => "RaisedButton";
 }

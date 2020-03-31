@@ -4,10 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SelectableTextWidgetParser implements WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "SelectableText" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -43,6 +39,9 @@ class SelectableTextWidgetParser implements WidgetParser {
       );
     }
   }
+
+  @override
+  String get widgetName => "SelectableText";
 }
 
 class SelectableTextSpanParser {

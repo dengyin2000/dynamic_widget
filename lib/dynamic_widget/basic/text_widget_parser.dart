@@ -4,10 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
 class TextWidgetParser implements WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "Text" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -52,6 +48,9 @@ class TextWidgetParser implements WidgetParser {
       );
     }
   }
+
+  @override
+  String get widgetName => "Text";
 }
 
 class TextSpanParser {

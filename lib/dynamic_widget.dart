@@ -69,13 +69,28 @@ class DynamicWidgetBuilder {
     ListTileWidgetParser()
   ];
 
+  static final _widgetNameParserMap = <String, WidgetParser>{};
+
+  static bool _defaultParserInited = false;
+
   // use this method for adding your custom widget parser
   static void addParser(WidgetParser parser) {
     log.info("add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
+    _widgetNameParserMap[parser.widgetName] = parser;
   }
 
-  Widget build(String json, BuildContext buildContext, ClickListener listener) {
+  static void initDefaultParsersIfNess(){
+    if (!_defaultParserInited){
+      for (var parser in _parsers) {
+        _widgetNameParserMap[parser.widgetName] = parser;
+      }
+      _defaultParserInited = true;
+    }
+  }
+
+  static Widget build(String json, BuildContext buildContext, ClickListener listener) {
+    initDefaultParsersIfNess();
     var map = jsonDecode(json);
     ClickListener _listener =
         listener == null ? new NonResponseWidgetClickListener() : listener;
@@ -86,13 +101,10 @@ class DynamicWidgetBuilder {
   static Widget buildFromMap(Map<String, dynamic> map,
       BuildContext buildContext, ClickListener listener) {
     String widgetName = map['type'];
-
-    for (var parser in _parsers) {
-      if (parser.forWidget(widgetName)) {
-        return parser.parse(map, buildContext, listener);
-      }
+    var parser = _widgetNameParserMap[widgetName];
+    if (parser != null) {
+      return parser.parse(map, buildContext, listener);
     }
-
     log.warning("Not support type: $widgetName");
     return null;
   }
@@ -113,12 +125,12 @@ abstract class WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener);
 
-  /// check the matched widget type. for example:
+  /// the widget type name for example:
   /// {"type" : "Text", "data" : "Denny"}
   /// if you want to make a flutter Text widget, you should implement this
-  /// method as "Text" == widgetName, for more details, please see
+  /// method return "Text", for more details, please see
   /// @TextWidgetParser
-  bool forWidget(String widgetName);
+  String get widgetName;
 }
 
 abstract class ClickListener {

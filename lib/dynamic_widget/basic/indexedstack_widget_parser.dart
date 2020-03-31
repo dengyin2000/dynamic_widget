@@ -3,10 +3,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
 class IndexedStackWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "IndexedStack" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -23,4 +19,7 @@ class IndexedStackWidgetParser extends WidgetParser {
           map['children'], buildContext, listener),
     );
   }
+
+  @override
+  String get widgetName => "IndexedStack";
 }

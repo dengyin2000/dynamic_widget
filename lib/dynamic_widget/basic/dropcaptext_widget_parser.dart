@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 
 class DropCapTextParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "DropCapText" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -31,4 +27,7 @@ class DropCapTextParser extends WidgetParser {
       dropCapPosition: map.containsKey('dropCapPosition') ? parseDropCapPosition(map['dropCapPosition']) : null,
     );
   }
+
+  @override
+  String get widgetName => "DropCapText";
 }

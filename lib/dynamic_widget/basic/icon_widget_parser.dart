@@ -4,10 +4,6 @@ import 'package:dynamic_widget/dynamic_widget/icons_helper.dart';
 import 'package:flutter/material.dart';
 
 class IconWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "Icon" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -20,4 +16,7 @@ class IconWidgetParser extends WidgetParser {
       textDirection: map.containsKey('textDirection') ? parseTextDirection(map['textDirection']) : null,
     );
   }
+
+  @override
+  String get widgetName => "Icon";
 }
