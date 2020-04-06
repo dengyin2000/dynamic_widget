@@ -17,7 +17,7 @@ class GridViewWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     var scrollDirection = Axis.vertical;
-    if (map.containsKey("scrollDirection") && "horizontal" == map[""]) {
+    if (map.containsKey("scrollDirection") && "horizontal" == map["scrollDirection"]) {
       scrollDirection = Axis.horizontal;
     }
     int crossAxisCount = map['crossAxisCount'];
