@@ -5,10 +5,6 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class AssetImageWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "AssetImage" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -75,13 +71,12 @@ class AssetImageWidgetParser extends WidgetParser {
     }
     return widget;
   }
+
+  @override
+  String get widgetName => "AssetImage";
 }
 
 class NetworkImageWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "NetworkImage" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -148,4 +143,7 @@ class NetworkImageWidgetParser extends WidgetParser {
     }
     return widget;
   }
+
+  @override
+  String get widgetName => "NetworkImage";
 }

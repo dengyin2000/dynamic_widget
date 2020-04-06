@@ -1,10 +1,10 @@
 name: dynamic_widget
 description: A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is very similar with flutter widget code。
-version: 1.0.6
+version: 2.0.0
 homepage: https://github.com/dengyin2000/dynamic_widget
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.5.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,6 +13,8 @@ dependencies:
   logging: ^0.11.3+2
 
   http: ^0.12.0+2
+
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:

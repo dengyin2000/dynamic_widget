@@ -4,10 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
 class SafeAreaWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "SafeArea" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -33,4 +29,7 @@ class SafeAreaWidgetParser extends WidgetParser {
           map["child"], buildContext, listener),
     );
   }
+
+  @override
+  String get widgetName => "SafeArea";
 }

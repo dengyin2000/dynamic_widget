@@ -3,10 +3,6 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class ClipRRectWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "ClipRRect" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -28,4 +24,7 @@ class ClipRRectWidgetParser extends WidgetParser {
           map["child"], buildContext, listener),
     );
   }
+
+  @override
+  String get widgetName => "ClipRRect";
 }

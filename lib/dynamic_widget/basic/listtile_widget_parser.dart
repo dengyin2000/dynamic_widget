@@ -6,10 +6,6 @@ import 'package:flutter/widgets.dart';
 import '../utils.dart';
 
 class ListTileWidgetParser extends WidgetParser{
-  @override
-  bool forWidget(String widgetName) {
-    return "ListTile" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
@@ -41,5 +37,8 @@ class ListTileWidgetParser extends WidgetParser{
       selected: selected,
     );
   }
+
+  @override
+  String get widgetName => "ListTile";
 
 }

@@ -20,7 +20,7 @@
 
 ## General info
 
-> I work for an e-commerce company. We need to build flexible pages. So we define a light UI protocol, and implement on Android and iOS. We can dynamic update App UIs by pushing a json file. With this ability, we can do some UI A/B testing without publishing App to app store. Flutter allows you to build beautiful native apps on iOS and Android from a single codebase, it can allow you to build web app later. Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bugs faster. But it still build native app, the UIs can't be dynamic updated. If you want to modify the UIs, you need to publish the updated app to app store. With this project, you can build your UIs from a json string, which is the UI protocal. The json string is very similar with the Flutter widget dart code. All widget type and widget properties are the same. 
+> I work for an e-commerce company. We need to build flexible pages. So we define a light UI protocol, and implement on Android and iOS. We can dynamic update App UIs by pushing a json file. With this ability, we can do some UI A/B testing without publishing App to app store. Flutter allows you to build beautiful native apps on iOS and Android from a single codebase, it can allow you to build web app later. Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bugs faster. But it still build native app, the UIs can't be dynamic updated. If you want to modify the UIs, you need to publish the updated app to app store. With this project, you can build your UIs from a json string, which is the UI protocol. The json string is very similar with the Flutter widget dart code. All widget type and widget properties are the same.
     
 <img src="./img/Sample.png" width="800">
 
@@ -90,7 +90,7 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder().build(jsonString, context, new DefaultClickListener());
+    return DynamicWidgetBuilder.build(jsonString, context, new DefaultClickListener());
   }
 }
 ```
@@ -106,9 +106,7 @@ import 'package:flutter/material.dart';
 
 class RaisedButtonParser extends WidgetParser {
   @override
-  bool forWidget(String widgetName) {
-    return "RaisedButton" == widgetName;
-  }
+  String get widgetName => "RaisedButton";
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
@@ -190,7 +188,7 @@ Finally, pass the listener to build method.
 ```dart
   Future<Widget> _buildWidget() async{
 
-    return DynamicWidgetBuilder().build(jsonString, buildContext, new DefaultClickListener());
+    return DynamicWidgetBuilder.build(jsonString, buildContext, new DefaultClickListener());
   }
 ```
   
@@ -227,6 +225,9 @@ Already completed widgets:
 * [Wrap](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#wrap-widget)
 * [ClipRRect](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#cliprrect-widget)
 * [SafeArea](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#safearea-widget)
+* [SelectableText](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#selectabletext-widget)
+* [Icon](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#icon-widget)
+* [DropCapText](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#dropcaptext-widget)
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
 

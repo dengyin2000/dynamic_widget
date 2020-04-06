@@ -8,10 +8,6 @@ import 'package:flutter/widgets.dart';
 import 'dart:convert';
 
 class ListViewWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "ListView" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -49,6 +45,9 @@ class ListViewWidgetParser extends WidgetParser {
 
     return new ListViewWidget(params, buildContext);
   }
+
+  @override
+  String get widgetName => "ListView";
 }
 
 class ListViewWidget extends StatefulWidget {

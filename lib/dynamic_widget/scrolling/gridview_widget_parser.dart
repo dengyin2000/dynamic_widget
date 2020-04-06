@@ -8,10 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class GridViewWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "GridView" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -58,6 +54,9 @@ class GridViewWidgetParser extends WidgetParser {
         isDemo);
     return GridViewWidget(params, buildContext);
   }
+
+  @override
+  String get widgetName => "GridView";
 }
 
 class GridViewWidget extends StatefulWidget {

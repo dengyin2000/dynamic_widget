@@ -106,12 +106,48 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RaisedButton(
+              child: Text("SelectableText"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(selectableTextJson)));
+              },
+            ),
+            RaisedButton(
               child: Text("TextSpan"),
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => CodeEditorPage(textSpanJson)));
+              },
+            ),
+            RaisedButton(
+              child: Text("Icon"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(iconJson)));
+              },
+            ),
+            RaisedButton(
+              child: Text("DropCapText"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(dropCapTextJson)));
+              },
+            ),
+            RaisedButton(
+              child: Text("DropCapText with Image"),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(dropCapTextImageJson)));
               },
             ),
             RaisedButton(
@@ -378,7 +414,7 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder()
+    return DynamicWidgetBuilder
         .build(jsonString, context, new DefaultClickListener());
   }
 }

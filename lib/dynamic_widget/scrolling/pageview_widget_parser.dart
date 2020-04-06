@@ -2,10 +2,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
 class PageViewWidgetParser extends WidgetParser {
-  @override
-  bool forWidget(String widgetName) {
-    return "PageView" == widgetName;
-  }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
@@ -23,4 +19,7 @@ class PageViewWidgetParser extends WidgetParser {
           map['children'], buildContext, listener),
     );
   }
+
+  @override
+  String get widgetName => "PageView";
 }
