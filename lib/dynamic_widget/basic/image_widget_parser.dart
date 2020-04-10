@@ -5,7 +5,6 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class AssetImageWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
@@ -77,7 +76,6 @@ class AssetImageWidgetParser extends WidgetParser {
 }
 
 class NetworkImageWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {

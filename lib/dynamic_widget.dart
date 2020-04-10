@@ -1,13 +1,17 @@
 library dynamic_widget;
 
+import 'dart:convert';
+
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/center_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/icon_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/listtile_widget_parser.dart';
@@ -16,18 +20,15 @@ import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/safearea_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/sizedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
-import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
-import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
-import 'package:dynamic_widget/dynamic_widget/basic/icon_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:convert';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
@@ -75,13 +76,14 @@ class DynamicWidgetBuilder {
 
   // use this method for adding your custom widget parser
   static void addParser(WidgetParser parser) {
-    log.info("add custom widget parser, make sure you don't overwirte the widget type.");
+    log.info(
+        "add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
     _widgetNameParserMap[parser.widgetName] = parser;
   }
 
-  static void initDefaultParsersIfNess(){
-    if (!_defaultParserInited){
+  static void initDefaultParsersIfNess() {
+    if (!_defaultParserInited) {
       for (var parser in _parsers) {
         _widgetNameParserMap[parser.widgetName] = parser;
       }
@@ -89,7 +91,8 @@ class DynamicWidgetBuilder {
     }
   }
 
-  static Widget build(String json, BuildContext buildContext, ClickListener listener) {
+  static Widget build(
+      String json, BuildContext buildContext, ClickListener listener) {
     initDefaultParsersIfNess();
     var map = jsonDecode(json);
     ClickListener _listener =

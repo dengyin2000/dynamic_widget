@@ -1,10 +1,8 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
 class SafeAreaWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {

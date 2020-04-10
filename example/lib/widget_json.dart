@@ -1018,7 +1018,6 @@ var safeareaJson = '''
 }
 ''';
 
-
 var listTileJson = '''
 {
   "type": "ListView",

@@ -111,7 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(selectableTextJson)));
+                        builder: (context) =>
+                            CodeEditorPage(selectableTextJson)));
               },
             ),
             RaisedButton(
@@ -147,7 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(dropCapTextImageJson)));
+                        builder: (context) =>
+                            CodeEditorPage(dropCapTextImageJson)));
               },
             ),
             RaisedButton(
@@ -324,6 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class CodeEditorPage extends StatefulWidget {
   final String jsonString;
+
   CodeEditorPage(this.jsonString);
 
   @override
@@ -414,8 +417,8 @@ class PreviewPage extends StatelessWidget {
   }
 
   Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder
-        .build(jsonString, context, new DefaultClickListener());
+    return DynamicWidgetBuilder.build(
+        jsonString, context, new DefaultClickListener());
   }
 }
 

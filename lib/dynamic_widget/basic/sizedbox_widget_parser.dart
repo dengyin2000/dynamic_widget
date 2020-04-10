@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 
 //Creates a box that will become as large as its parent allows.
 class ExpandedSizedBoxWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
@@ -18,7 +17,6 @@ class ExpandedSizedBoxWidgetParser extends WidgetParser {
 }
 
 class SizedBoxWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
