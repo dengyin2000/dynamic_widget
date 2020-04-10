@@ -40,6 +40,11 @@
 * Add "SelectableText"、"Icon" and "DropCapText" widgets.
 * Fix "Text" widget's maxLines default value.
 
+## [2.0.1] - increase parsing performance, and bugfix.
+
+* Use map to find WidgetParser, increase parsing performance.
+* fix ListView, GridView and PageView scrollDirection property.
+
 
 
 
