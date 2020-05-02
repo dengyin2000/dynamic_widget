@@ -1,19 +1,19 @@
 import 'dart:async';
-import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class ListViewWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     var scrollDirection = Axis.vertical;
-    if (map.containsKey("scrollDirection") && "horizontal" == map["scrollDirection"]) {
+    if (map.containsKey("scrollDirection") &&
+        "horizontal" == map["scrollDirection"]) {
       scrollDirection = Axis.horizontal;
     }
 
@@ -203,6 +203,7 @@ class ListViewParams {
 
   int pageSize;
   String loadMoreUrl;
+
   //use for demo, if true, it will do the fake request.
   bool isDemo;
 

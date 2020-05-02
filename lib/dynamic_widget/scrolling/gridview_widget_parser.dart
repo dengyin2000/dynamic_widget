@@ -1,19 +1,19 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 
 class GridViewWidgetParser extends WidgetParser {
-
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     var scrollDirection = Axis.vertical;
-    if (map.containsKey("scrollDirection") && "horizontal" == map["scrollDirection"]) {
+    if (map.containsKey("scrollDirection") &&
+        "horizontal" == map["scrollDirection"]) {
       scrollDirection = Axis.horizontal;
     }
     int crossAxisCount = map['crossAxisCount'];

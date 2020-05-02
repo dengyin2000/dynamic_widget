@@ -1,7 +1,8 @@
 import 'dart:ui';
-import 'package:flutter/widgets.dart';
+
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
+import 'package:flutter/widgets.dart';
 
 TextAlign parseTextAlign(String textAlignString) {
   //left the system decide
@@ -611,10 +612,12 @@ DropCapPosition parseDropCapPosition(String value) {
   }
 }
 
-DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
+    ClickListener listener) {
   return DropCap(
     width: map['width'],
     height: map['height'],
-    child: DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
+    child:
+        DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );
 }

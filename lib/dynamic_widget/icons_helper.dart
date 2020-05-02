@@ -851,7 +851,7 @@ const Map<String, IconData> IconsMap = <String, IconData>{
   'shutter_speed': Icons.shutter_speed,
   'signal_cellular_4_bar': Icons.signal_cellular_4_bar,
   'signal_cellular_connected_no_internet_4_bar':
-  Icons.signal_cellular_connected_no_internet_4_bar,
+      Icons.signal_cellular_connected_no_internet_4_bar,
   'signal_cellular_no_sim': Icons.signal_cellular_no_sim,
   'signal_cellular_null': Icons.signal_cellular_null,
   'signal_cellular_off': Icons.signal_cellular_off,
@@ -1069,7 +1069,7 @@ const Map<String, IconData> FontAwesomeIconsMap = <String, IconData>{
   'amazonPay': FontAwesomeIcons.amazonPay,
   'ambulance': FontAwesomeIcons.ambulance,
   'americanSignLanguageInterpreting':
-  FontAwesomeIcons.americanSignLanguageInterpreting,
+      FontAwesomeIcons.americanSignLanguageInterpreting,
   'amilia': FontAwesomeIcons.amilia,
   'anchor': FontAwesomeIcons.anchor,
   'android': FontAwesomeIcons.android,
