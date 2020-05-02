@@ -390,7 +390,7 @@ Wrap widget, here to see flutter [Wrap widget](https://docs.flutter.io/flutter/w
 | children|The widgets below this widget in the tree. |List&#60;Widget&#62;| | |
 
 ## ClipRRect Widget
-ClipRRect, here to see flutter [TextSpan](https://api.flutter.dev/flutter/widgets/ClipRRect-class.html) definition. Supported json properties:
+ClipRRect, here to see flutter [ClipRRect](https://api.flutter.dev/flutter/widgets/ClipRRect-class.html) definition. Supported json properties:
 
 | property        | definition   | type  | value  | sample |
 | ---| ---| ---   | ---| ---|
