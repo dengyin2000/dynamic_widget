@@ -45,6 +45,15 @@
 * Use map to find WidgetParser, increase parsing performance.
 * fix ListView, GridView and PageView scrollDirection property.
 
+## [2.0.2] - bugfix.
+
+* Bugfix
+
+## [2.0.3] - Upgrade android projects, and migrate androidx
+
+* ## Upgrading pre 1.12 Android projects, https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects
+* Migrate Androidx
+
 
 
 
