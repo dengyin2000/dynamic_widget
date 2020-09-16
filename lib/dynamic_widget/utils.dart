@@ -493,18 +493,18 @@ StackFit parseStackFit(String value) {
   }
 }
 
-Overflow parseOverflow(String value) {
+Clip parseClip(String value) {
   if (value == null) {
     return null;
   }
 
   switch (value) {
     case 'visible':
-      return Overflow.visible;
+      return Clip.none;
     case 'clip':
-      return Overflow.clip;
+      return Clip.hardEdge;
     default:
-      return Overflow.clip;
+      return Clip.hardEdge;
   }
 }
 
