@@ -34,9 +34,9 @@ class StackWidgetParser extends WidgetParser {
           ? parseTextDirection(map["textDirection"])
           : null,
       fit: map.containsKey("fit") ? parseStackFit(map["fit"]) : StackFit.loose,
-      overflow: map.containsKey("overflow")
-          ? parseOverflow(map["overflow"])
-          : Overflow.clip,
+      clipBehavior: map.containsKey("clipBehavior")
+          ? parseClip(map["clipBehavior"])
+          : Clip.hardEdge,
       children: DynamicWidgetBuilder.buildWidgets(
           map['children'], buildContext, listener),
     );
