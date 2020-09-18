@@ -499,10 +499,14 @@ Clip parseClip(String value) {
   }
 
   switch (value) {
-    case 'visible':
+    case 'none':
       return Clip.none;
-    case 'clip':
+    case 'hardEdge':
       return Clip.hardEdge;
+    case 'antiAlias':
+      return Clip.antiAlias;
+    case 'antiAliasWithSaveLayer':
+      return Clip.antiAliasWithSaveLayer;
     default:
       return Clip.hardEdge;
   }

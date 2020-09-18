@@ -322,7 +322,7 @@ Stack widget, here to see flutter [Stack widget](https://docs.flutter.io/flutter
 | ---| ---| ---   | ---| ---|
 | alignment|How to align the non-positioned and partially-positioned children in the stack.|String|enum values, please see enum Alignment, default value is Alignment.center. |"center"|
 | fit|How to size the non-positioned children in the stack. |String|enum values, please see enum StackFit, default value is StackFit.loose.| |
-| overflow|Whether overflowing children should be clipped. See Overflow |String|enum values, please see enum Overflow, default value is Overflow.clip.| |
+| clipBehavior|The content will be clipped (or not) according to this option. |String|enum values, please see enum Clip, default value is Clip.hardEdge.| |
 | textDirection|The text direction with which to resolve alignment. |String|enum values, please see enum TextDirection| |
 | children|list of Widget |List&#60;Widget&#62;|| |
 
