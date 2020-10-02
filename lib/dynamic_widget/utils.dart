@@ -140,7 +140,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   String debugLabel = map['debugLabel'];
   String decoration = map['decoration'];
   String fontFamily = map['fontFamily'];
-  double fontSize = map['fontSize'];
+  double fontSize = (map['fontSize'] as num)?.toDouble();
   String fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
