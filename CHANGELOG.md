@@ -54,6 +54,11 @@
 * ## Upgrading pre 1.12 Android projects, https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects
 * Migrate Androidx
 
+## [2.0.4] - Fixed font_awesome_flutter compile error.
+
+* Fixed font_awesome_flutter compile error. please see https://github.com/dengyin2000/dynamic_widget/issues/45
+
+
 
 
 
