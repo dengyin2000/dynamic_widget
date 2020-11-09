@@ -625,3 +625,41 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
         DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );
 }
+
+String exportAlignment(Alignment alignment){
+  if (alignment == null) {
+    return "center";
+  }
+  if (alignment == Alignment.center) {
+    return "center";
+  }
+  if (alignment == Alignment.bottomRight) {
+    return "bottomRight";
+  }
+  if (alignment == Alignment.bottomCenter) {
+    return "bottomCenter";
+  }
+  if (alignment == Alignment.bottomLeft) {
+    return "bottomLeft";
+  }
+  if (alignment == Alignment.centerLeft) {
+    return "centerLeft";
+  }
+  if (alignment == Alignment.centerRight) {
+    return "centerRight";
+  }
+  if (alignment == Alignment.topCenter) {
+    return "topCenter";
+  }
+  if (alignment == Alignment.topLeft) {
+    return "topLeft";
+  }
+  if (alignment == Alignment.topRight) {
+    return "topRight";
+  }
+  if (alignment == Alignment.bottomRight) {
+    return "bottomRight";
+  }
+
+  return "center";
+}

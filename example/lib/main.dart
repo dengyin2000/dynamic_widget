@@ -57,270 +57,275 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
-        ),
-        body: GridView.count(
-          mainAxisSpacing: 10,
-          crossAxisCount: 3,
-          padding: EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          children: <Widget>[
-            RaisedButton(
-              child: Text("Container"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(containerJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Row"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(rowJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Column"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(columnJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Text"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(textJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("SelectableText"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(selectableTextJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("TextSpan"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(textSpanJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Icon"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(iconJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("DropCapText"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(dropCapTextJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("DropCapText with Image"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(dropCapTextImageJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("RaisedButton"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(raisedButtonJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Asset Image"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(assetImageJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Network Image"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(networkImageJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Placeholder"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(placeholderJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("GridView"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(gridviewJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("ListView"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(listviewJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("PageView"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(pageviewJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Expanded"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(expandedJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("ListView Auto load more"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(listviewLoadmoreJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("GridView Auto load more"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(gridviewloadmoreJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Stack and Positioned"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(stackJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("IndexedStack"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(indexedstackJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("SizedBox"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(sizedboxJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Opacity"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(opacityJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("Wrap"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(wrapJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("ClipRRect"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(cliprrectJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("SafeArea"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(safeareaJson)));
-              },
-            ),
-            RaisedButton(
-              child: Text("ListTile"),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(listTileJson)));
-              },
-            ),
-          ],
-        ));
+    return DynamicWidgetJsonBuilder(
+      child: Scaffold(
+          appBar: AppBar(
+            // Here we take the value from the MyHomePage object that was created by
+            // the App.build method, and use it to set our appbar title.
+            title: Text(widget.title),
+          ),
+          body: GridView.count(
+            mainAxisSpacing: 10,
+            crossAxisCount: 3,
+            padding: EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Container"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(containerJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Row"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(rowJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Column"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(columnJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Text"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(textJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("SelectableText"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(selectableTextJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("TextSpan"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(textSpanJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Icon"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(iconJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("DropCapText"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(dropCapTextJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("DropCapText with Image"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(dropCapTextImageJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("RaisedButton"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(raisedButtonJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Asset Image"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(assetImageJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Network Image"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(networkImageJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Placeholder"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(placeholderJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("GridView"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(gridviewJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("ListView"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(listviewJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("PageView"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(pageviewJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Expanded"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(expandedJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("ListView Auto load more"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(listviewLoadmoreJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("GridView Auto load more"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(gridviewloadmoreJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Stack and Positioned"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(stackJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("IndexedStack"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(indexedstackJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("SizedBox"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(sizedboxJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Opacity"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(opacityJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Wrap"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(wrapJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("ClipRRect"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(cliprrectJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("SafeArea"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(safeareaJson)));
+                },
+              ),
+              RaisedButton(
+                child: Text("ListTile"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CodeEditorPage(listTileJson)));
+                },
+              ),
+            ],
+          )),
+    );
   }
 }
 
@@ -426,5 +431,37 @@ class DefaultClickListener implements ClickListener {
   @override
   void onClicked(String event) {
     print("Receive click event: " + event);
+  }
+}
+
+class DynamicWidgetJsonBuilder extends StatelessWidget {
+  Widget child;
+
+  GlobalKey globalKey = GlobalKey();
+
+  DynamicWidgetJsonBuilder({
+    Key key,
+    Widget child,
+  }) : super(key: key) {
+    this.child = child;
+    Future.delayed(Duration(seconds: 10), () {
+      exportJson();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      key: globalKey,
+      child: child,
+    );
+  }
+
+  void exportJson() {
+    globalKey.currentContext.visitChildElements((element) {
+      var scaffold = element.widget as Scaffold;
+
+      print("exportJson: ${scaffold.body.runtimeType}");
+    });
   }
 }

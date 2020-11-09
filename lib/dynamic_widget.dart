@@ -72,6 +72,8 @@ class DynamicWidgetBuilder {
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
 
+  static final _widgetRuntimeParserMap = <Type, WidgetParser>{};
+
   static bool _defaultParserInited = false;
 
   // use this method for adding your custom widget parser
@@ -80,12 +82,14 @@ class DynamicWidgetBuilder {
         "add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
     _widgetNameParserMap[parser.widgetName] = parser;
+    _widgetRuntimeParserMap[parser.widgetType] = parser;
   }
 
   static void initDefaultParsersIfNess() {
     if (!_defaultParserInited) {
       for (var parser in _parsers) {
         _widgetNameParserMap[parser.widgetName] = parser;
+        _widgetRuntimeParserMap[parser.widgetType] = parser;
       }
       _defaultParserInited = true;
     }
@@ -103,20 +107,41 @@ class DynamicWidgetBuilder {
 
   static Widget buildFromMap(Map<String, dynamic> map,
       BuildContext buildContext, ClickListener listener) {
+    initDefaultParsersIfNess();
     String widgetName = map['type'];
     var parser = _widgetNameParserMap[widgetName];
     if (parser != null) {
       return parser.parse(map, buildContext, listener);
     }
-    log.warning("Not support type: $widgetName");
+    log.warning("Not support parser type: $widgetName");
     return null;
   }
 
   static List<Widget> buildWidgets(
       List<dynamic> values, BuildContext buildContext, ClickListener listener) {
+    initDefaultParsersIfNess();
     List<Widget> rt = [];
     for (var value in values) {
       rt.add(buildFromMap(value, buildContext, listener));
+    }
+    return rt;
+  }
+
+  static Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    initDefaultParsersIfNess();
+    var parser = _widgetNameParserMap[widget.runtimeType];
+    if (parser!=null) {
+      return parser.export(widget, buildContext);
+    }
+    log.warning("Not support parser type: ${widget.runtimeType}");
+    return null;
+  }
+
+  static List<Map<String, dynamic>> exportWidgets(List<Widget> widgets, BuildContext buildContext) {
+    initDefaultParsersIfNess();
+    List<Map<String, dynamic>> rt = [];
+    for (var widget in widgets) {
+      rt.add(export(widget, buildContext));
     }
     return rt;
   }
@@ -134,6 +159,12 @@ abstract class WidgetParser {
   /// method return "Text", for more details, please see
   /// @TextWidgetParser
   String get widgetName;
+
+  /// export the runtime widget to json
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext);
+
+  /// match current widget
+  Type get widgetType;
 }
 
 abstract class ClickListener {
