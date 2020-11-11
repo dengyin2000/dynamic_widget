@@ -34,7 +34,7 @@ class AlignWidgetParser extends WidgetParser {
   }
 
   @override
-  Type get widgetType => Align().runtimeType;
+  Type get widgetType => Align;
 
 
 }

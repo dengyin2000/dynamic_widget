@@ -32,6 +32,29 @@ TextAlign parseTextAlign(String textAlignString) {
   return textAlign;
 }
 
+String exportTextAlign(TextAlign textAlign){
+  String rt = "start";
+  if (textAlign == TextAlign.left){
+    rt = "left";
+  }
+  if (textAlign == TextAlign.right){
+    rt = "right";
+  }
+  if (textAlign == TextAlign.center){
+    rt = "center";
+  }
+  if (textAlign == TextAlign.justify){
+    rt = "justify";
+  }
+  if (textAlign == TextAlign.start){
+    rt = "start";
+  }
+  if (textAlign == TextAlign.end){
+    rt = "end";
+  }
+  return rt;
+}
+
 TextOverflow parseTextOverflow(String textOverflowString) {
   TextOverflow textOverflow = TextOverflow.ellipsis;
   switch (textOverflowString) {
@@ -67,6 +90,23 @@ TextDecoration parseTextDecoration(String textDecorationString) {
       textDecoration = TextDecoration.none;
   }
   return textDecoration;
+}
+
+String exportTextDecoration(TextDecoration decoration){
+  var rt = "none";
+  if (decoration == TextDecoration.lineThrough) {
+    rt = "lineThrough";
+  }
+
+  if (decoration == TextDecoration.overline) {
+    rt = "overline";
+  }
+
+  if (decoration == TextDecoration.underline) {
+    rt = "underline";
+  }
+
+  return rt;
 }
 
 TextDirection parseTextDirection(String textDirectionString) {
@@ -122,6 +162,38 @@ FontWeight parseFontWeight(String textFontWeight) {
   return fontWeight;
 }
 
+String exportFontWeight(FontWeight fontWeight){
+  String rt = "normal";
+  if (fontWeight == FontWeight.w100) {
+    rt = "w100";
+  }
+  if (fontWeight == FontWeight.w200) {
+    rt = "w200";
+  }
+  if (fontWeight == FontWeight.w300) {
+    rt = "w300";
+  }
+  if (fontWeight == FontWeight.w400) {
+    rt = "w400";
+  }
+  if (fontWeight == FontWeight.w500) {
+    rt = "w500";
+  }
+  if (fontWeight == FontWeight.w600) {
+    rt = "w600";
+  }
+  if (fontWeight == FontWeight.w700) {
+    rt = "w700";
+  }
+  if (fontWeight == FontWeight.w800) {
+    rt = "w800";
+  }
+  if (fontWeight == FontWeight.w900) {
+    rt = "w900";
+  }
+  return rt;
+}
+
 Color parseHexColor(String hexColorString) {
   if (hexColorString == null) {
     return null;
@@ -154,6 +226,22 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
     fontStyle: fontStyle,
     fontWeight: parseFontWeight(fontWeight),
   );
+}
+
+Map<String, dynamic> exportTextStyle(TextStyle textStyle){
+  if (textStyle == null) {
+    return null;
+  }
+
+  return <String, dynamic>{
+    "color": textStyle.color !=null? textStyle.color.value.toRadixString(16) : null,
+    "debugLabel": textStyle.debugLabel,
+    "decoration": exportTextDecoration(textStyle.decoration),
+    "fontSize": textStyle.fontSize,
+    "fontFamily": textStyle.fontFamily,
+    "fontStyle": FontStyle.italic == textStyle.fontStyle? "italic" : "normal",
+    "fontWeight": exportFontWeight(textStyle.fontWeight),
+  };
 }
 
 Alignment parseAlignment(String alignmentString) {
@@ -269,6 +357,7 @@ EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString) {
       right: double.parse(values[2]),
       bottom: double.parse(values[3]));
 }
+
 
 CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
   switch (crossAxisAlignmentString) {
@@ -584,6 +673,26 @@ Clip parseClipBehavior(String clipBehaviorString) {
   return Clip.antiAlias;
 }
 
+String exportClipBehavior(Clip clip){
+  if (clip == null) {
+    return "antiAlias";
+  }
+
+  if (clip == Clip.antiAliasWithSaveLayer) {
+    return "antiAliasWithSaveLayer";
+  }
+
+  if (clip == Clip.hardEdge) {
+    return "hardEdge";
+  }
+
+  if (clip == Clip.none) {
+    return "none";
+  }
+
+  return "antiAlias";
+}
+
 DropCapMode parseDropCapMode(String value) {
   if (value == null) {
     return null;
@@ -598,6 +707,25 @@ DropCapMode parseDropCapMode(String value) {
       return DropCapMode.aside;
     default:
       return DropCapMode.inside;
+  }
+}
+
+String exportDropCapMod(DropCapMode mode){
+  if (mode == null) {
+    return null;
+  }
+
+  switch(mode){
+    case DropCapMode.inside:
+      return "inside";
+    case DropCapMode.baseline:
+      return "baseline";
+    case DropCapMode.aside:
+      return "aside";
+    case DropCapMode.upwards:
+      return "upwards";
+    default:
+      return "inside";
   }
 }
 
@@ -624,6 +752,14 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
     child:
         DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );
+}
+
+Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext){
+  return <String, dynamic>{
+    "width": dropCap.width,
+    "height": dropCap.height,
+    "child": DynamicWidgetBuilder.export(dropCap.child, buildContext),
+  };
 }
 
 String exportAlignment(Alignment alignment){

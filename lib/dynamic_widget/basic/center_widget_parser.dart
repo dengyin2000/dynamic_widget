@@ -16,4 +16,17 @@ class CenterWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "Center";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as Center;
+    return <String, dynamic>{
+      "widthFactor": realWidget.widthFactor,
+      "heightFactor": realWidget.heightFactor,
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
+    };
+  }
+
+  @override
+  Type get widgetType => Center;
 }

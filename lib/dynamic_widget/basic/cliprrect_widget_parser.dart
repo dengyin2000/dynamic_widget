@@ -26,4 +26,19 @@ class ClipRRectWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "ClipRRect";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as ClipRRect;
+    var borderRadius = realWidget.borderRadius;
+    return <String, dynamic>{
+      "borderRadius": "${borderRadius.topLeft},${borderRadius.topRight},${borderRadius.bottomLeft},${borderRadius.bottomRight}",
+      "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
+    };
+
+  }
+
+  @override
+  Type get widgetType => ClipRect;
 }

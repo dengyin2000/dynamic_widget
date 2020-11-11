@@ -40,4 +40,26 @@ class RaisedButtonParser extends WidgetParser {
 
   @override
   String get widgetName => "RaisedButton";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as RaisedButton;
+    var padding = realWidget.padding as EdgeInsets;
+
+    return <String, dynamic>{
+      "color": realWidget.color != null ? realWidget.color.value.toRadixString(16):null,
+      "disabledColor" : realWidget.disabledColor !=null? realWidget.disabledColor.value.toRadixString(16):null,
+      "disabledElevation": realWidget.disabledElevation,
+      "disabledTextColor": realWidget.disabledTextColor!=null ?realWidget.disabledTextColor.value.toRadixString(16):null,
+      "elevation": realWidget.elevation,
+      "padding": padding !=null ? "${padding.left},${padding.top},${padding.right},${padding.bottom}" : null,
+      "splashColor": realWidget.splashColor!=null ? realWidget.splashColor.value.toRadixString(16) : null,
+      "textColor": realWidget.textColor!=null?realWidget.textColor.value.toRadixString(16):null,
+      "child":DynamicWidgetBuilder.export(realWidget.child, buildContext)
+
+    };
+  }
+
+  @override
+  Type get widgetType => RaisedButton;
 }
