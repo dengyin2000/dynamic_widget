@@ -40,6 +40,21 @@ IconData getIconGuessFavorMaterial({String name}) {
   }
 }
 
+String exportIconGuessFavorMaterial(IconData iconData){
+  for(var entry in IconsMap.entries){
+    if (entry.value == iconData){
+      return entry.key;
+    }
+  }
+
+  for(var entry in FontAwesomeIconsMap.entries){
+    if (entry.value == iconData){
+      return entry.key;
+    }
+  }
+  return "android";
+}
+
 // Kinda self explanatory, no?
 IconData getMaterialIcon({String name}) {
   return IconsMap[name];

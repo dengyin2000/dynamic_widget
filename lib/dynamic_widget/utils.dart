@@ -73,6 +73,18 @@ TextOverflow parseTextOverflow(String textOverflowString) {
   return textOverflow;
 }
 
+String exportTextOverflow(TextOverflow textOverflow){
+  String rt = "ellipsis";
+  if (textOverflow == TextOverflow.clip){
+    rt = "clip";
+  }
+
+  if (textOverflow == TextOverflow.fade){
+    rt = "fade";
+  }
+  return rt;
+}
+
 TextDecoration parseTextDecoration(String textDecorationString) {
   TextDecoration textDecoration = TextDecoration.none;
   switch (textDecorationString) {
@@ -122,6 +134,14 @@ TextDirection parseTextDirection(String textDirectionString) {
       textDirection = TextDirection.ltr;
   }
   return textDirection;
+}
+
+String exportTextDirection(TextDirection textDirection){
+  String rt = "ltr";
+  if (textDirection == TextDirection.rtl){
+    rt = "rtl";
+  }
+  return rt;
 }
 
 FontWeight parseFontWeight(String textFontWeight) {
@@ -406,6 +426,103 @@ VerticalDirection parseVerticalDirection(String verticalDirectionString) =>
         ? VerticalDirection.up
         : VerticalDirection.down;
 
+String exportBlendMode(BlendMode blendMode){
+  if (blendMode == null) {
+    return null;
+  }
+  String rt = "srcIn";
+  if (blendMode == BlendMode.clear){
+    rt = "clear";
+  }
+  if (blendMode == BlendMode.src){
+    rt = "src";
+  }
+  if (blendMode == BlendMode.dst){
+    rt = "dst";
+  }
+  if (blendMode == BlendMode.srcOver){
+    rt = "srcOver";
+  }
+  if (blendMode == BlendMode.dstOver){
+    rt = "dstOver";
+  }
+  if (blendMode == BlendMode.srcIn){
+    rt = "srcIn";
+  }
+  if (blendMode == BlendMode.dstIn){
+    rt = "dstIn";
+  }
+  if (blendMode == BlendMode.srcOut){
+    rt = "srcOut";
+  }
+  if (blendMode == BlendMode.dstOut){
+    rt = "dstOut";
+  }
+  if (blendMode == BlendMode.srcATop){
+    rt = "srcATop";
+  }
+  if (blendMode == BlendMode.dstATop){
+    rt = "dstATop";
+  }
+  if (blendMode == BlendMode.xor){
+    rt = "xor";
+  }
+  if (blendMode == BlendMode.plus){
+    rt = "plus";
+  }
+  if (blendMode == BlendMode.modulate){
+    rt = "modulate";
+  }
+  if (blendMode == BlendMode.screen){
+    rt = "screen";
+  }
+  if (blendMode == BlendMode.overlay){
+    rt = "overlay";
+  }
+  if (blendMode == BlendMode.darken){
+    rt = "darken";
+  }
+  if (blendMode == BlendMode.lighten){
+    rt = "lighten";
+  }
+  if (blendMode == BlendMode.colorDodge){
+    rt = "colorDodge";
+  }
+  if (blendMode == BlendMode.colorBurn){
+    rt = "colorBurn";
+  }
+  if (blendMode == BlendMode.hardLight){
+    rt = "hardLight";
+  }
+  if (blendMode == BlendMode.softLight){
+    rt = "softLight";
+  }
+  if (blendMode == BlendMode.difference){
+    rt = "difference";
+  }
+  if (blendMode == BlendMode.exclusion){
+    rt = "exclusion";
+  }
+  if (blendMode == BlendMode.multiply){
+    rt = "multiply";
+  }
+  if (blendMode == BlendMode.hue){
+    rt = "hue";
+  }
+  if (blendMode == BlendMode.saturation){
+    rt = "saturation";
+  }
+  if (blendMode == BlendMode.color){
+    rt = "color";
+  }
+  if (blendMode == BlendMode.luminosity){
+    rt = "luminosity";
+  }
+
+  return rt;
+
+}
+
 BlendMode parseBlendMode(String blendModeString) {
   if (blendModeString == null || blendModeString.trim().length == 0) {
     return null;
@@ -501,6 +618,29 @@ BoxFit parseBoxFit(String boxFitString) {
   return null;
 }
 
+String exportBoxFit(BoxFit boxFit){
+  String rt = "contain";
+  if (boxFit == BoxFit.fill){
+    rt = "fill";
+  }
+  if (boxFit == BoxFit.cover){
+    rt = "cover";
+  }
+  if (boxFit == BoxFit.fitWidth){
+    rt = "fitWidth";
+  }
+  if (boxFit == BoxFit.fitHeight){
+    rt = "fitHeight";
+  }
+  if (boxFit == BoxFit.none){
+    rt = "none";
+  }
+  if (boxFit == BoxFit.scaleDown){
+    rt = "scaleDown";
+  }
+  return rt;
+}
+
 ImageRepeat parseImageRepeat(String imageRepeatString) {
   if (imageRepeatString == null) {
     return null;
@@ -521,10 +661,31 @@ ImageRepeat parseImageRepeat(String imageRepeatString) {
   }
 }
 
+String exportImageRepeat(ImageRepeat imageRepeat){
+  if (imageRepeat==null) {
+    return null;
+  }
+  String rt = "noRepeat";
+  if (imageRepeat == ImageRepeat.repeat){
+    rt = "repeat";
+  }
+  if (imageRepeat == ImageRepeat.repeatX){
+    rt = "repeatX";
+  }
+  if (imageRepeat == ImageRepeat.repeatY){
+    rt = "repeatY";
+  }
+  return rt;
+}
+
 Rect parseRect(String fromLTRBString) {
   var strings = fromLTRBString.split(',');
   return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]),
       double.parse(strings[2]), double.parse(strings[3]));
+}
+
+String exportRect(Rect rect){
+  return "${rect.left},${rect.top},${rect.right},${rect.bottom}";
 }
 
 FilterQuality parseFilterQuality(String filterQualityString) {
@@ -543,6 +704,26 @@ FilterQuality parseFilterQuality(String filterQualityString) {
     default:
       return FilterQuality.low;
   }
+}
+
+String exportFilterQuality(FilterQuality filterQuality){
+  if (filterQuality==null) {
+    return null;
+  }
+  String rt = "low";
+  if (filterQuality == FilterQuality.none){
+    rt = "none";
+  }
+  if (filterQuality == FilterQuality.low){
+    rt = "low";
+  }
+  if (filterQuality == FilterQuality.medium){
+    rt = "medium";
+  }
+  if (filterQuality == FilterQuality.high){
+    rt = "high";
+  }
+  return rt;
 }
 
 String getLoadMoreUrl(String url, int currentNo, int pageSize) {
@@ -742,6 +923,14 @@ DropCapPosition parseDropCapPosition(String value) {
     default:
       return DropCapPosition.start;
   }
+}
+
+String exportDropCapPosition(DropCapPosition dropCapPosition){
+  String rt = "start";
+  if (dropCapPosition == DropCapPosition.end){
+    rt = "end";
+  }
+  return rt;
 }
 
 DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,

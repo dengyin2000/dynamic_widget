@@ -32,6 +32,7 @@ class ClipRRectWidgetParser extends WidgetParser {
     var realWidget = widget as ClipRRect;
     var borderRadius = realWidget.borderRadius;
     return <String, dynamic>{
+      "type": widgetName,
       "borderRadius": "${borderRadius.topLeft},${borderRadius.topRight},${borderRadius.bottomLeft},${borderRadius.bottomRight}",
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)

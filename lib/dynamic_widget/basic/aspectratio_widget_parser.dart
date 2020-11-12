@@ -19,6 +19,7 @@ class AspectRatioWidgetParser extends WidgetParser {
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     var realWidget = widget as AspectRatio;
     return <String, dynamic>{
+      "type": widgetName,
       "aspectRatio": realWidget.aspectRatio,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };

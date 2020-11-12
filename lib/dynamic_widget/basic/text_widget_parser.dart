@@ -50,6 +50,22 @@ class TextWidgetParser implements WidgetParser {
 
   @override
   String get widgetName => "Text";
+
+  @override
+  Map<String, > export(Widget widget, BuildContext buildContext) {
+    // TODO: implement export
+    throw UnimplementedError();
+  }
+
+  @override
+  bool matchWidgetForExport(Widget widget) {
+    // TODO: implement matchWidgetForExport
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement widgetType
+  Type get widgetType => throw UnimplementedError();
 }
 
 class TextSpanParser {

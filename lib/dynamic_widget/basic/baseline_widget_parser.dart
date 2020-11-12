@@ -22,6 +22,7 @@ class BaselineWidgetParser extends WidgetParser {
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     var realWidget = widget as Baseline;
     return <String, dynamic>{
+      "type": widgetName,
       "baseline": realWidget.baseline,
       "baselineType" : realWidget.baselineType == TextBaseline.alphabetic ? "alphabetic":"ideographic",
       "child":DynamicWidgetBuilder.export(realWidget.child, buildContext)

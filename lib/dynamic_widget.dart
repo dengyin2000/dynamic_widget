@@ -72,8 +72,6 @@ class DynamicWidgetBuilder {
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
 
-  static final _widgetRuntimeParserMap = <Type, WidgetParser>{};
-
   static bool _defaultParserInited = false;
 
   // use this method for adding your custom widget parser
@@ -82,14 +80,12 @@ class DynamicWidgetBuilder {
         "add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
     _widgetNameParserMap[parser.widgetName] = parser;
-    _widgetRuntimeParserMap[parser.widgetType] = parser;
   }
 
   static void initDefaultParsersIfNess() {
     if (!_defaultParserInited) {
       for (var parser in _parsers) {
         _widgetNameParserMap[parser.widgetName] = parser;
-        _widgetRuntimeParserMap[parser.widgetType] = parser;
       }
       _defaultParserInited = true;
     }
@@ -129,11 +125,11 @@ class DynamicWidgetBuilder {
 
   static Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     initDefaultParsersIfNess();
-    var parser = _widgetNameParserMap[widget.runtimeType];
+    var parser = _findMatchedWidgetParserForExport(widget);
     if (parser!=null) {
       return parser.export(widget, buildContext);
     }
-    log.warning("Not support parser type: ${widget.runtimeType}");
+    log.warning("Can't find WidgetParser for Type ${widget.runtimeType} to export.");
     return null;
   }
 
@@ -144,6 +140,15 @@ class DynamicWidgetBuilder {
       rt.add(export(widget, buildContext));
     }
     return rt;
+  }
+
+  static WidgetParser _findMatchedWidgetParserForExport(Widget widget){
+    for (var parser in _parsers) {
+      if (parser.matchWidgetForExport(widget)){
+        return parser;
+      }
+    }
+    return null;
   }
 }
 
@@ -165,6 +170,8 @@ abstract class WidgetParser {
 
   /// match current widget
   Type get widgetType;
+
+  bool matchWidgetForExport(Widget widget) => widget.runtimeType == widgetType;
 }
 
 abstract class ClickListener {

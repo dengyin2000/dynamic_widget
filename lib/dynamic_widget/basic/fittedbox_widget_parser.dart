@@ -18,4 +18,18 @@ class FittedBoxWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "FittedBox";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as FittedBox;
+    return <String, dynamic>{
+      "type": widgetName,
+      "alignment": realWidget.alignment != null? exportAlignment(realWidget.alignment):null,
+      "fit": realWidget.fit!=null? exportBoxFit(realWidget.fit):BoxFit.contain,
+      "child": DynamicWidgetBuilder.export(realWidget, buildContext)
+    };
+  }
+
+  @override
+  Type get widgetType => FittedBox;
 }

@@ -52,6 +52,7 @@ class ContainerWidgetParser extends WidgetParser {
     var padding = realWidget.padding as EdgeInsets;
     var margin = realWidget.margin as EdgeInsets;
     return <String, dynamic>{
+      "type": widgetName,
       "alignment": realWidget.alignment !=null ? exportAlignment(realWidget.alignment) : null,
       "padding" : padding!=null? "${padding.left},${padding.top},${padding.right},${padding.bottom}":null,
       "color": realWidget.color!=null ? realWidget.color.value.toRadixString(16) : null,

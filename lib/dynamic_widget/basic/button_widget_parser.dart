@@ -47,6 +47,7 @@ class RaisedButtonParser extends WidgetParser {
     var padding = realWidget.padding as EdgeInsets;
 
     return <String, dynamic>{
+      "type": widgetName,
       "color": realWidget.color != null ? realWidget.color.value.toRadixString(16):null,
       "disabledColor" : realWidget.disabledColor !=null? realWidget.disabledColor.value.toRadixString(16):null,
       "disabledElevation": realWidget.disabledElevation,

@@ -54,4 +54,25 @@ class ListTileWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "ListTile";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as ListTile;
+    var contentPadding = realWidget.contentPadding as EdgeInsets;
+    return <String, dynamic>{
+      "type":widgetName,
+      "isThreeLine": realWidget.isThreeLine,
+      "leading": realWidget.leading!=null? DynamicWidgetBuilder.export(realWidget.leading, buildContext):null,
+      "title": realWidget.title!=null? DynamicWidgetBuilder.export(realWidget.title, buildContext):null,
+      "subtitle": realWidget.subtitle!=null? DynamicWidgetBuilder.export(realWidget.subtitle, buildContext):null,
+      "trailing": realWidget.trailing!=null? DynamicWidgetBuilder.export(realWidget.trailing, buildContext):null,
+      "dense": realWidget.dense,
+      "contentPadding": contentPadding!=null? "${contentPadding.left},${contentPadding.top},${contentPadding.right},${contentPadding.bottom}":null,
+      "enabled": realWidget.enabled,
+      "selected": realWidget.selected
+    };
+  }
+
+  @override
+  Type get widgetType => ListTile;
 }

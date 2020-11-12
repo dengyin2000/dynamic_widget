@@ -23,4 +23,20 @@ class IconWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "Icon";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as Icon;
+    return <String, dynamic>{
+      "type": widgetName,
+      "data": exportIconGuessFavorMaterial(realWidget.icon),
+      "size": realWidget.size,
+      "color": realWidget.color!=null?realWidget.color.value.toRadixString(16):null,
+      "semanticLabel": realWidget.semanticLabel,
+      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
+    };
+  }
+
+  @override
+  Type get widgetType => Icon;
 }

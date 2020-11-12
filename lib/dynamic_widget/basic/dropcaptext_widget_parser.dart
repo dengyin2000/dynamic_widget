@@ -55,6 +55,7 @@ class DropCapTextParser extends WidgetParser {
     var realWidget = widget as DropCapText;
     var dropCapPadding = realWidget.dropCapPadding as EdgeInsets;
     return <String, dynamic>{
+      "type": widgetName,
       "data": realWidget.data,
       "selectable": realWidget.selectable,
       "mode": exportDropCapMod(realWidget.mode),
@@ -63,6 +64,13 @@ class DropCapTextParser extends WidgetParser {
       "textAlign": exportTextAlign(realWidget.textAlign),
       "dropCap": exportDropCap(realWidget.dropCap, buildContext),
       "dropCapPadding": dropCapPadding != null? "${dropCapPadding.left},${dropCapPadding.top},${dropCapPadding.right},${dropCapPadding.bottom}":null,
+      "dropCapChars": realWidget.dropCapChars,
+      "forceNoDescent": realWidget.forceNoDescent,
+      "parseInlineMarkdown": realWidget.parseInlineMarkdown,
+      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
+      "overflow": realWidget.overflow!=null? exportTextOverflow(realWidget.overflow):null,
+      "maxLines": realWidget.maxLines,
+      "dropCapPosition":realWidget.dropCapPosition!=null? exportDropCapPosition(realWidget.dropCapPosition):null
     };
   }
 

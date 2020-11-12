@@ -20,4 +20,19 @@ class PlaceholderWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "Placeholder";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget =  widget as Placeholder;
+    return <String, dynamic>{
+      "type": widgetName,
+      "color": realWidget.color!=null?realWidget.color.value.toRadixString(16):"0xFF455A64",
+      "strokeWidth":realWidget.strokeWidth,
+      "fallbackWidth":realWidget.fallbackWidth,
+      "fallbackHeight":realWidget.fallbackHeight
+    };
+  }
+
+  @override
+  Type get widgetType => Placeholder;
 }

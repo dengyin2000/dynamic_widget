@@ -73,6 +73,104 @@ class AssetImageWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "AssetImage";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    if (_isMatchAssetImageType(widget)){
+      var realWidget = widget as Image;
+      AssetImage assetImage;
+      if (realWidget.image is AssetImage){
+        assetImage = realWidget.image;
+      }else if (realWidget.image is ResizeImage) {
+        var t = realWidget.image as ResizeImage;
+        assetImage = t.imageProvider as AssetImage;
+
+      }
+      return <String, dynamic>{
+        "name": assetImage.assetName,
+        "semanticLabel": realWidget.semanticLabel,
+        "width": realWidget.width,
+        "height": realWidget.height,
+        "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
+        "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
+        "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
+        "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
+        "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
+        "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+        "matchTextDirection": realWidget.matchTextDirection,
+        "gaplessPlayback": realWidget.gaplessPlayback,
+        "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+      };
+    }
+
+    if (_isMatchExactAssetImageType(widget)){
+      var realWidget = widget as Image;
+      ExactAssetImage exactAssetImage;
+      if (realWidget.image is ExactAssetImage){
+        exactAssetImage = realWidget.image;
+      }else if (realWidget.image is ResizeImage) {
+        var t = realWidget.image as ResizeImage;
+        exactAssetImage = t.imageProvider as ExactAssetImage;
+
+      }
+      return <String, dynamic>{
+        "type": widgetName,
+        "name": exactAssetImage.assetName,
+        "semanticLabel": realWidget.semanticLabel,
+        "scale": exactAssetImage.scale,
+        "width": realWidget.width,
+        "height": realWidget.height,
+        "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
+        "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
+        "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
+        "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
+        "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
+        "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+        "matchTextDirection": realWidget.matchTextDirection,
+        "gaplessPlayback": realWidget.gaplessPlayback,
+        "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+      };
+    }
+
+    return null;
+  }
+
+  @override
+  Type get widgetType => AssetImage;
+
+  bool _isMatchAssetImageType(Widget widget) {
+    if (widget is Image) {
+      if (widget.image is AssetImage) {
+        return true;
+      }
+      if (widget.image is ResizeImage){
+        var resizeImage = widget.image as ResizeImage;
+        return resizeImage.imageProvider is AssetImage;
+      }
+    }
+    return false;
+  }
+
+  bool _isMatchExactAssetImageType(Widget widget) {
+    if (widget is Image) {
+      if (widget.image is ExactAssetImage) {
+        return true;
+      }
+      if (widget.image is ResizeImage){
+        var resizeImage = widget.image as ResizeImage;
+        return resizeImage.imageProvider is ExactAssetImage;
+      }
+    }
+    return false;
+  }
+
+
+
+  @override
+  bool matchWidgetForExport(Widget widget) => _isMatchAssetImageType(widget)
+      || _isMatchExactAssetImageType(widget);
+
+
 }
 
 class NetworkImageWidgetParser extends WidgetParser {
@@ -144,4 +242,50 @@ class NetworkImageWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "NetworkImage";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as Image;
+    NetworkImage networkImage;
+    if (realWidget.image is NetworkImage){
+      networkImage = realWidget.image;
+    }else if (realWidget.image is ResizeImage) {
+      var t = realWidget.image as ResizeImage;
+      networkImage = t.imageProvider as NetworkImage;
+
+    }
+    return <String, dynamic>{
+      "type": widgetName,
+      "src": networkImage.url,
+      "semanticLabel": realWidget.semanticLabel,
+      "width": realWidget.width,
+      "height": realWidget.height,
+      "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
+      "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
+      "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
+      "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
+      "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
+      "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+      "matchTextDirection": realWidget.matchTextDirection,
+      "gaplessPlayback": realWidget.gaplessPlayback,
+      "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+    };
+  }
+
+  @override
+  Type get widgetType => NetworkImage;
+
+  @override
+  bool matchWidgetForExport(Widget widget) {
+    if (widget is Image){
+      if (widget.image is NetworkImage) {
+        return true;
+      }
+      if (widget.image is ResizeImage){
+        var t = widget.image as ResizeImage;
+        return t.imageProvider is NetworkImage;
+      }
+    }
+    return false;
+  }
 }
