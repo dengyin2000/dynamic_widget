@@ -7,6 +7,8 @@
 
 **From 1.0.4 version, it supports flutter web application.**
 
+**From 3.0.0 version, it supports exporting your flutter code to json code. please check [How to write the json code](#how-to-write-the-json-code)**
+
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -14,6 +16,7 @@
 * [Get started](#get-started)
 * [How to implement a WidgetParser](#how-to-implement-a-widgetparser)
 * [How to add a click listener](#how-to-add-a-click-listener)
+* [How to write the json code](#how-to-write-the-json-code)
 * [Widget Documents](#widget-documents)
 * [Setup](#setup)
 * [Contact](#contact)
@@ -191,7 +194,80 @@ Finally, pass the listener to build method.
     return DynamicWidgetBuilder.build(jsonString, buildContext, new DefaultClickListener());
   }
 ```
-  
+
+## How to write the json code
+You don't need to write the json code by hand, you can export your flutter code to json code efficiently with DynamicWidgetJsonExportor widget. You just need to wrap your flutter code with DynamicWidgetJsonExportor widget, then invoke its `exportJsonString()` method, look at following example, click the "export" button, it will find the DynamicWidgetJsonExportor widget, and export its child to json code efficiently. 
+
+```dart
+class _JSONExporterState extends State<JSONExporter> {
+  GlobalKey key = GlobalKey();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text("export example"),
+      ),
+      body: Builder(
+        builder: (context) => Column(
+          children: [
+            Expanded(
+              child: DynamicWidgetJsonExportor(
+                key: key,
+                child: Container(
+                  child: GridViewWidget(
+                      GridViewParams(
+                          mainAxisSpacing: 2.0,
+                          crossAxisSpacing: 2.0,
+                          crossAxisCount: 2,
+                          childAspectRatio: 1.6,
+                          padding: EdgeInsets.all(10.0),
+                          pageSize: 10,
+                          children: [
+                            ListTile(
+                              leading: Text("Leading text"),
+                              title: Text("title"),
+                              subtitle: Text("subtitle"),
+                            ),
+                            ListTile(
+                              leading: Text("Leading text"),
+                              title: Text("title"),
+                              subtitle: Text("subtitle"),
+                            )
+                          ]),
+                      context),
+                ),
+              ),
+            ),
+            RaisedButton(
+              child: Text("Export"),
+              onPressed: () {
+                var exportor = key.currentWidget as DynamicWidgetJsonExportor;
+                var exportJsonString = exportor.exportJsonString();
+                Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("json string was exported to editor page.")));
+                Future.delayed(Duration(seconds: 3), (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(exportJsonString)));
+                });
+              },
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+You can use whatever your favorite IDE to build the UI, then use DynamicWidgetJsonExportor to export to json code. For detail, please check the Dynamic Widget Demo source code.
+
+<img src="./img/export.gif" width="320">
+
 
 ## Widget Documents
 Already completed widgets:

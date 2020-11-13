@@ -58,6 +58,11 @@
 
 * Fixed font_awesome_flutter compile error. please see https://github.com/dengyin2000/dynamic_widget/issues/45
 
+## [3.0.0] - Add DynamicWidgetJsonExportor Widget
+
+* Add DynamicWidgetJsonExportor Widget, which supports exporting your flutter code to json string.
+
+
 
 
 
