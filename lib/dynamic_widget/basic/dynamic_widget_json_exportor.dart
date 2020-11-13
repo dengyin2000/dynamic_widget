@@ -1,22 +1,31 @@
+import 'dart:convert';
+
+import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
-class DynamicWidgetJsonBuilder extends StatelessWidget {
+class DynamicWidgetJsonExportor extends StatelessWidget {
+  final Widget child;
 
-  Widget child;
+  final GlobalKey globalKey = GlobalKey();
 
-
-  DynamicWidgetJsonBuilder({
+  DynamicWidgetJsonExportor({this.child,
     Key key,
-    Widget child,
-  }) :
-    this.child = child, super(key: key);
+  }) : super(key: key) ;
 
   @override
   Widget build(BuildContext context) {
-    context.visitChildElements((element) {
-      var widget = element.widget;
-      print(widget.runtimeType);
+    return Container(
+      key: globalKey,
+      child: child,
+    );
+  }
+
+  String exportJsonString() {
+    String rt = "failed to export";
+    globalKey.currentContext.visitChildElements((element) {
+      var container = element.widget as Container;
+      rt = jsonEncode(DynamicWidgetBuilder.export(container.child, null));
     });
-    return child;
+    return rt;
   }
 }

@@ -52,20 +52,46 @@ class TextWidgetParser implements WidgetParser {
   String get widgetName => "Text";
 
   @override
-  Map<String, > export(Widget widget, BuildContext buildContext) {
-    // TODO: implement export
-    throw UnimplementedError();
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as Text;
+    if (realWidget.textSpan == null) {
+      return <String, dynamic>{
+        "type": "Text",
+        "data": realWidget.data,
+        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):"start",
+        "overflow": realWidget.overflow != null? exportTextOverflow(realWidget.overflow):"ellipsis",
+        "maxLines": realWidget.maxLines,
+        "semanticsLabel": realWidget.semanticsLabel,
+        "softWrap": realWidget.softWrap,
+        "textDirection":exportTextDirection(realWidget.textDirection),
+        "style": exportTextStyle(realWidget.style),
+        "textScaleFactor": realWidget.textScaleFactor
+      };
+    }else{
+      var parser = TextSpanParser();
+      return <String, dynamic>{
+        "type": "Text",
+        "textSpan": parser.export(realWidget.textSpan),
+        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):"start",
+        "overflow": realWidget.overflow != null? exportTextOverflow(realWidget.overflow):"ellipsis",
+        "maxLines": realWidget.maxLines,
+        "semanticsLabel": realWidget.semanticsLabel,
+        "softWrap": realWidget.softWrap,
+        "textDirection":exportTextDirection(realWidget.textDirection),
+        "style": exportTextStyle(realWidget.style),
+        "textScaleFactor": realWidget.textScaleFactor
+      };
+    }
+
   }
 
   @override
-  bool matchWidgetForExport(Widget widget) {
-    // TODO: implement matchWidgetForExport
-    throw UnimplementedError();
-  }
+  Type get widgetType => Text;
 
   @override
-  // TODO: implement widgetType
-  Type get widgetType => throw UnimplementedError();
+  bool matchWidgetForExport(Widget widget) => widget is Text;
+
+
 }
 
 class TextSpanParser {
@@ -87,10 +113,29 @@ class TextSpanParser {
     return textSpan;
   }
 
+  Map<String, dynamic> export(TextSpan textSpan){
+    return <String, dynamic>{
+      "text": textSpan.text,
+      "style": exportTextStyle(textSpan.style),
+      "children": exportChildren(textSpan)
+    };
+  }
+
+
   void parseChildren(
       TextSpan textSpan, List<dynamic> childrenSpan, ClickListener listener) {
     for (var childmap in childrenSpan) {
       textSpan.children.add(parse(childmap, listener));
     }
+  }
+
+  List<Map<String, dynamic>> exportChildren(TextSpan textSpan){
+    List<Map<String, dynamic>> rt = [];
+    if (textSpan.children!=null && textSpan.children.isNotEmpty) {
+      for (var span in textSpan.children) {
+        rt.add(export(span));
+      }
+    }
+    return rt;
   }
 }

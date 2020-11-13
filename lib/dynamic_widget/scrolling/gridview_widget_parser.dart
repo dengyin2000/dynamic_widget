@@ -39,24 +39,54 @@ class GridViewWidgetParser extends WidgetParser {
     var isDemo = map.containsKey("isDemo") ? map["isDemo"] : false;
 
     GridViewParams params = GridViewParams(
-        crossAxisCount,
-        scrollDirection,
-        reverse,
-        shrinkWrap,
-        cacheExtent,
-        padding,
-        mainAxisSpacing,
-        crossAxisSpacing,
-        childAspectRatio,
-        children,
-        pageSize,
-        loadMoreUrl,
-        isDemo);
+        crossAxisCount:crossAxisCount,
+        scrollDirection:scrollDirection,
+        reverse:reverse,
+        shrinkWrap:shrinkWrap,
+        cacheExtent:cacheExtent,
+        padding:padding,
+        mainAxisSpacing:mainAxisSpacing,
+        crossAxisSpacing:crossAxisSpacing,
+        childAspectRatio:childAspectRatio,
+        children:children,
+        pageSize:pageSize,
+        loadMoreUrl:loadMoreUrl,
+        isDemo:isDemo);
     return GridViewWidget(params, buildContext);
   }
 
   @override
   String get widgetName => "GridView";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget  =  widget as GridViewWidget;
+    String scrollDirection = "vertical";
+    if (realWidget._params.scrollDirection == Axis.horizontal) {
+      scrollDirection = "horizontal";
+    }
+
+    var padding = realWidget._params.padding as EdgeInsets;
+    return <String, dynamic>{
+      "type": "GridView",
+      "scrollDirection": scrollDirection,
+      "crossAxisCount": realWidget._params.crossAxisCount,
+      "reverse": realWidget._params.reverse??false,
+      "shrinkWrap": realWidget._params.shrinkWrap??false,
+      "cacheExtent": realWidget._params.cacheExtent??0.0,
+      "padding": padding!=null? "${padding.left},${padding.top},${padding.right},${padding.bottom}":null,
+      "mainAxisSpacing": realWidget._params.mainAxisSpacing??0.0,
+      "crossAxisSpacing": realWidget._params.crossAxisSpacing??0.0,
+      "childAspectRatio": realWidget._params.childAspectRatio??1.0,
+      "pageSize": realWidget._params.pageSize??10,
+      "loadMoreUrl": realWidget._params.loadMoreUrl?? null,
+      "isDemo": realWidget._params.isDemo??false,
+      "children": DynamicWidgetBuilder.exportWidgets(realWidget._params.children, buildContext)
+    };
+  }
+
+  @override
+  Type get widgetType => GridViewWidget;
 }
 
 class GridViewWidget extends StatefulWidget {
@@ -165,9 +195,9 @@ class _GridViewWidgetState extends State<GridViewWidget> {
     return new CustomScrollView(
       slivers: <Widget>[sliverGrid, footer],
       controller: _scrollController,
-      scrollDirection: _params.scrollDirection,
-      reverse: _params.reverse,
-      shrinkWrap: _params.shrinkWrap,
+      scrollDirection: _params.scrollDirection??Axis.vertical,
+      reverse: _params.reverse??false,
+      shrinkWrap: _params.shrinkWrap??false,
       cacheExtent: _params.cacheExtent,
     );
   }
@@ -231,7 +261,7 @@ class GridViewParams {
   //use for demo, if true, it will do the fake request.
   bool isDemo;
 
-  GridViewParams(
+  GridViewParams({
       this.crossAxisCount,
       this.scrollDirection,
       this.reverse,
@@ -244,5 +274,5 @@ class GridViewParams {
       this.children,
       this.pageSize,
       this.loadMoreUrl,
-      this.isDemo);
+      this.isDemo});
 }

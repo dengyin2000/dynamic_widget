@@ -104,7 +104,13 @@ class DynamicWidgetBuilder {
   static Widget buildFromMap(Map<String, dynamic> map,
       BuildContext buildContext, ClickListener listener) {
     initDefaultParsersIfNess();
+    if (map == null) {
+      return null;
+    }
     String widgetName = map['type'];
+    if (widgetName == null) {
+      return null;
+    }
     var parser = _widgetNameParserMap[widgetName];
     if (parser != null) {
       return parser.parse(map, buildContext, listener);

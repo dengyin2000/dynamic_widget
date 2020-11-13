@@ -34,4 +34,24 @@ class WrapWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "Wrap";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as Wrap;
+    return <String, dynamic>{
+      "type": "Wrap",
+      "direction": realWidget.direction == Axis.horizontal? "horizontal": "vertical",
+      "alignment": exportWrapAlignment(realWidget.alignment),
+      "spacing": realWidget.spacing,
+      "runAlignment": exportWrapAlignment(realWidget.runAlignment),
+      "runSpacing": realWidget.runSpacing,
+      "crossAxisAlignment": exportWrapCrossAlignment(realWidget.crossAxisAlignment),
+      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
+      "verticalDirection": realWidget.verticalDirection == VerticalDirection.up? "up": "down",
+      "children": DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext)
+    };
+  }
+
+  @override
+  Type get widgetType => Wrap;
 }

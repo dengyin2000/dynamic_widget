@@ -30,4 +30,23 @@ class SafeAreaWidgetParser extends WidgetParser {
 
   @override
   String get widgetName => "SafeArea";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as SafeArea;
+    var minimum = realWidget.minimum;
+    return <String, dynamic>{
+      "type": "SafeArea",
+      "left": realWidget.left,
+      "right": realWidget.right,
+      "top": realWidget.top,
+      "bottom": realWidget.bottom,
+      "minimum": minimum!=null? "${minimum.left},${minimum.top},${minimum.right},${minimum.bottom}":null,
+      "maintainBottomViewPadding": realWidget.maintainBottomViewPadding,
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
+    };
+  }
+
+  @override
+  Type get widgetType => SafeArea;
 }

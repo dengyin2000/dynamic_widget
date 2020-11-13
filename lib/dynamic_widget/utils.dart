@@ -227,6 +227,9 @@ Color parseHexColor(String hexColorString) {
 }
 
 TextStyle parseTextStyle(Map<String, dynamic> map) {
+  if (map == null) {
+    return null;
+  }
   //TODO: more properties need to be implemented, such as decorationColor, decorationStyle, wordSpacing and so on.
   String color = map['color'];
   String debugLabel = map['debugLabel'];
@@ -395,6 +398,27 @@ CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
   return CrossAxisAlignment.center;
 }
 
+String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment){
+  String rt = "center";
+  if (crossAxisAlignment == CrossAxisAlignment.start){
+    rt = "start";
+  }
+  if (crossAxisAlignment == CrossAxisAlignment.end){
+    rt = "end";
+  }
+  if (crossAxisAlignment == CrossAxisAlignment.center){
+    rt = "center";
+  }
+  if (crossAxisAlignment == CrossAxisAlignment.stretch){
+    rt = "stretch";
+  }
+  if (crossAxisAlignment == CrossAxisAlignment.baseline){
+    rt = "baseline";
+  }
+
+  return rt;
+}
+
 MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString) {
   switch (mainAxisAlignmentString) {
     case 'start':
@@ -411,6 +435,22 @@ MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString) {
       return MainAxisAlignment.spaceEvenly;
   }
   return MainAxisAlignment.start;
+}
+
+String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment){
+  String rt = "start";
+  if (mainAxisAlignment == MainAxisAlignment.end) {
+    rt = "end";
+  }else if (mainAxisAlignment == MainAxisAlignment.center) {
+    rt = "center";
+  }else if (mainAxisAlignment == MainAxisAlignment.spaceBetween) {
+    rt = "spaceBetween";
+  }else if (mainAxisAlignment == MainAxisAlignment.spaceAround) {
+    rt = "spaceAround";
+  }else if (mainAxisAlignment == MainAxisAlignment.spaceEvenly) {
+    rt = "spaceEvenly";
+  }
+  return rt;
 }
 
 MainAxisSize parseMainAxisSize(String mainAxisSizeString) =>
@@ -763,6 +803,16 @@ StackFit parseStackFit(String value) {
   }
 }
 
+String exportStackFit(StackFit stackFit){
+  String rt = "loose";
+  if (stackFit == StackFit.expand){
+    rt = "expand";
+  }else if (stackFit == StackFit.passthrough){
+    rt = "passthrough";
+  }
+  return rt;
+}
+
 Clip parseClip(String value) {
   if (value == null) {
     return null;
@@ -780,6 +830,20 @@ Clip parseClip(String value) {
     default:
       return Clip.hardEdge;
   }
+}
+
+String exportClip(Clip clip){
+  String rt = "hardEdge";
+  if (clip == Clip.none){
+    rt = "none";
+  }else if (clip == Clip.hardEdge){
+    rt = "hardEdge";
+  }else if (clip == Clip.antiAlias){
+    rt = "antiAlias";
+  }else if (clip == Clip.antiAliasWithSaveLayer){
+    rt = "antiAliasWithSaveLayer";
+  }
+  return rt;
 }
 
 Axis parseAxis(String axisString) {
@@ -819,6 +883,22 @@ WrapAlignment parseWrapAlignment(String wrapAlignmentString) {
   return WrapAlignment.start;
 }
 
+String exportWrapAlignment(WrapAlignment wrapAlignment){
+  String rt = "start";
+  if (wrapAlignment == WrapAlignment.end){
+    rt = "end";
+  }else if (wrapAlignment == WrapAlignment.center){
+    rt = "center";
+  }else if (wrapAlignment == WrapAlignment.spaceBetween){
+    rt = "spaceBetween";
+  }else if (wrapAlignment == WrapAlignment.spaceAround){
+    rt = "spaceAround";
+  }else if (wrapAlignment == WrapAlignment.spaceEvenly){
+    rt = "spaceEvenly";
+  }
+  return rt;
+}
+
 //WrapCrossAlignment
 WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
   if (wrapCrossAlignmentString == null) {
@@ -835,6 +915,16 @@ WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
   }
 
   return WrapCrossAlignment.start;
+}
+
+String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment){
+  String rt = "start";
+  if (wrapCrossAlignment == WrapCrossAlignment.end){
+    rt = "end";
+  }else if (wrapCrossAlignment == WrapCrossAlignment.center){
+    rt = "center";
+  }
+  return rt;
 }
 
 Clip parseClipBehavior(String clipBehaviorString) {

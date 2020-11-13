@@ -41,6 +41,38 @@ class SelectableTextWidgetParser implements WidgetParser {
 
   @override
   String get widgetName => "SelectableText";
+
+  @override
+  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+    var realWidget = widget as SelectableText;
+    if (realWidget.textSpan == null) {
+      return <String, dynamic>{
+        "type": "SelectableText",
+        "data": realWidget.data,
+        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):TextAlign.start,
+        "maxLines": realWidget.maxLines,
+        "textDirection":exportTextDirection(realWidget.textDirection),
+        "style": exportTextStyle(realWidget.style),
+      };
+    }else {
+      var parser = SelectableTextSpanParser();
+      return <String, dynamic>{
+        "type": "SelectableText",
+        "textSpan": parser.export(realWidget.textSpan),
+        "textAlign": realWidget.textAlign != null ? exportTextAlign(
+            realWidget.textAlign) : TextAlign.start,
+        "maxLines": realWidget.maxLines,
+        "textDirection": exportTextDirection(realWidget.textDirection),
+        "style": exportTextStyle(realWidget.style),
+      };
+    }
+  }
+
+  @override
+  bool matchWidgetForExport(Widget widget) => widget is SelectableText;
+
+  @override
+  Type get widgetType => SelectableText;
 }
 
 class SelectableTextSpanParser {
@@ -67,5 +99,23 @@ class SelectableTextSpanParser {
     for (var childmap in childrenSpan) {
       textSpan.children.add(parse(childmap, listener));
     }
+  }
+
+  Map<String, dynamic> export(TextSpan textSpan){
+    return <String, dynamic>{
+      "text": textSpan.text,
+      "style": exportTextStyle(textSpan.style),
+      "children": exportChildren(textSpan)
+    };
+  }
+
+  List<Map<String, dynamic>> exportChildren(TextSpan textSpan){
+    List<Map<String, dynamic>> rt = [];
+    if (textSpan.children!=null && textSpan.children.isNotEmpty) {
+      for (var span in textSpan.children) {
+        rt.add(export(span));
+      }
+    }
+    return rt;
   }
 }
