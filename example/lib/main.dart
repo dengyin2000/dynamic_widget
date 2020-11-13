@@ -520,11 +520,13 @@ class _JSONExporterState extends State<JSONExporter> {
                 var exportJsonString = exportor.exportJsonString();
                 Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text("json string was exported to editor page.")));
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CodeEditorPage(exportJsonString)));
+                Future.delayed(Duration(seconds: 3), (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CodeEditorPage(exportJsonString)));
+                });
               },
             )
           ],
