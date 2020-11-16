@@ -87,6 +87,7 @@ class AssetImageWidgetParser extends WidgetParser {
 
       }
       return <String, dynamic>{
+        "type": widgetName,
         "name": assetImage.assetName,
         "semanticLabel": realWidget.semanticLabel,
         "width": realWidget.width,

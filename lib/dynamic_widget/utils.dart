@@ -719,6 +719,9 @@ String exportImageRepeat(ImageRepeat imageRepeat){
 }
 
 Rect parseRect(String fromLTRBString) {
+  if (fromLTRBString == null) {
+    return null;
+  }
   var strings = fromLTRBString.split(',');
   return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]),
       double.parse(strings[2]), double.parse(strings[3]));
