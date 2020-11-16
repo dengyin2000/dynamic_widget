@@ -62,6 +62,10 @@
 
 * Add DynamicWidgetJsonExportor Widget, which supports exporting your flutter code to json string.
 
+## [3.0.1] - Fix bugs
+
+* Fix some export bugs.
+
 
 
 
