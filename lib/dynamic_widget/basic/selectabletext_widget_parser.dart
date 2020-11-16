@@ -49,7 +49,7 @@ class SelectableTextWidgetParser implements WidgetParser {
       return <String, dynamic>{
         "type": "SelectableText",
         "data": realWidget.data,
-        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):TextAlign.start,
+        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):"start",
         "maxLines": realWidget.maxLines,
         "textDirection":exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),
@@ -60,7 +60,7 @@ class SelectableTextWidgetParser implements WidgetParser {
         "type": "SelectableText",
         "textSpan": parser.export(realWidget.textSpan),
         "textAlign": realWidget.textAlign != null ? exportTextAlign(
-            realWidget.textAlign) : TextAlign.start,
+            realWidget.textAlign) : "start",
         "maxLines": realWidget.maxLines,
         "textDirection": exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),

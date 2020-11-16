@@ -66,9 +66,9 @@ class DropCapTextParser extends WidgetParser {
       "dropCapPadding": dropCapPadding != null? "${dropCapPadding.left},${dropCapPadding.top},${dropCapPadding.right},${dropCapPadding.bottom}":null,
       "dropCapChars": realWidget.dropCapChars,
       "forceNoDescent": realWidget.forceNoDescent,
-      "parseInlineMarkdown": realWidget.parseInlineMarkdown,
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
-      "overflow": realWidget.overflow!=null? exportTextOverflow(realWidget.overflow):null,
+      "parseInlineMarkdown": realWidget.parseInlineMarkdown != null ? realWidget.parseInlineMarkdown:false,
+      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):"ltr",
+      "overflow": realWidget.overflow!=null? exportTextOverflow(realWidget.overflow):"clip",
       "maxLines": realWidget.maxLines,
       "dropCapPosition":realWidget.dropCapPosition!=null? exportDropCapPosition(realWidget.dropCapPosition):null
     };

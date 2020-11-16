@@ -1025,6 +1025,9 @@ String exportDropCapPosition(DropCapPosition dropCapPosition){
 
 DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
     ClickListener listener) {
+  if (map==null) {
+    return null;
+  }
   return DropCap(
     width: map['width'],
     height: map['height'],
@@ -1034,6 +1037,9 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
 }
 
 Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext){
+  if (dropCap == null) {
+    return null;
+  }
   return <String, dynamic>{
     "width": dropCap.width,
     "height": dropCap.height,

@@ -23,8 +23,7 @@ class DynamicWidgetJsonExportor extends StatelessWidget {
   String exportJsonString() {
     String rt = "failed to export";
     globalKey.currentContext.visitChildElements((element) {
-      var container = element.widget as Container;
-      rt = jsonEncode(DynamicWidgetBuilder.export(container.child, null));
+      rt = jsonEncode(DynamicWidgetBuilder.export(element.widget, null));
     });
     return rt;
   }

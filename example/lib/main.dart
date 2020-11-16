@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:demo/widget_json.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dynamic_widget_json_exportor.dart';
+import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -476,40 +479,26 @@ class _JSONExporterState extends State<JSONExporter> {
 
   @override
   Widget build(BuildContext context) {
+    ListViewParams params = ListViewParams();
+    params.padding = EdgeInsets.all(10.0);
+    params.children = [
+      DropCapText(selectable: true, data: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac turpis egestas maecenas pharetra convallis posuere morbi leo. Fermentum odio eu feugiat pretium. Lacinia quis vel eros donec ac. At elementum eu facilisis sed odio morbi quis commodo odio. Augue lacus viverra vitae congue eu consequat ac felis. Blandit aliquam etiam erat velit. Morbi tincidunt augue interdum velit euismod. Sed libero enim sed faucibus turpis. Sagittis eu volutpat odio facilisis. Ultricies mi eget mauris pharetra et ultrices neque. Urna cursus eget nunc scelerisque viverra. Orci phasellus egestas tellus rutrum tellus. Et magnis dis parturient montes nascetur ridiculus mus. Arcu cursus vitae congue mauris rhoncus aenean. Varius morbi enim nunc faucibus. Semper eget duis at tellus at urna condimentum mattis. Massa sapien faucibus et molestie ac feugiat sed. Convallis aenean et tortor at risus. Massa ultricies mi quis hendrerit dolor magna eget est lorem. Vulputate odio ut enim blandit. Velit ut tortor pretium viverra suspendisse. Lacus laoreet non curabitur gravida arcu ac tortor dignissim convallis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tincidunt ornare massa eget egestas purus viverra accumsan in. Non consectetur a erat nam at lectus urna duis convallis. Et magnis dis parturient montes nascetur ridiculus mus mauris. Elit eget gravida cum sociis natoque. Sit amet consectetur adipiscing elit ut aliquam purus sit amet. Fringilla urna porttitor rhoncus dolor purus non. Dui accumsan sit amet nulla facilisi morbi tempus. Tellus in hac habitasse platea dictumst vestibulum. Ultricies integer quis auctor elit sed vulputate mi sit amet.", style: TextStyle(fontSize: 18.1),)
+    ];
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text("export example"),
       ),
+
       body: Builder(
         builder: (context) => Column(
           children: [
             Expanded(
               child: DynamicWidgetJsonExportor(
                 key: key,
-                child: Container(
-                  child: GridViewWidget(
-                      GridViewParams(
-                          mainAxisSpacing: 2.0,
-                          crossAxisSpacing: 2.0,
-                          crossAxisCount: 2,
-                          childAspectRatio: 1.6,
-                          padding: EdgeInsets.all(10.0),
-                          pageSize: 10,
-                          children: [
-                            ListTile(
-                              leading: Text("Leading text"),
-                              title: Text("title"),
-                              subtitle: Text("subtitle"),
-                            ),
-                            ListTile(
-                              leading: Text("Leading text"),
-                              title: Text("title"),
-                              subtitle: Text("subtitle"),
-                            )
-                          ]),
-                      context),
+                child: ListViewWidget(
+                  params, context
                 ),
               ),
             ),
