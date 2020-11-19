@@ -41,5 +41,5 @@ class ClipRRectWidgetParser extends WidgetParser {
   }
 
   @override
-  Type get widgetType => ClipRect;
+  Type get widgetType => ClipRRect;
 }
