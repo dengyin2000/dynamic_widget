@@ -21,7 +21,7 @@ class ExpandedWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": widgetName,
       "flex": realWidget.flex,
-      "child": DynamicWidgetBuilder.export(realWidget, buildContext)
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }
 
