@@ -66,14 +66,9 @@ class ContainerWidgetParser extends WidgetParser {
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
-      "width":
-          constraints != null && constraints.minWidth == constraints.maxWidth
-              ? constraints.minWidth
-              : null,
-      "height":
-          constraints != null && constraints.minHeight == constraints.maxHeight
-              ? constraints.minHeight
-              : null,
+      "constraints": constraints!= null
+          ? exportConstraints(constraints)
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

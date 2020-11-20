@@ -32,24 +32,24 @@ TextAlign parseTextAlign(String textAlignString) {
   return textAlign;
 }
 
-String exportTextAlign(TextAlign textAlign){
+String exportTextAlign(TextAlign textAlign) {
   String rt = "start";
-  if (textAlign == TextAlign.left){
+  if (textAlign == TextAlign.left) {
     rt = "left";
   }
-  if (textAlign == TextAlign.right){
+  if (textAlign == TextAlign.right) {
     rt = "right";
   }
-  if (textAlign == TextAlign.center){
+  if (textAlign == TextAlign.center) {
     rt = "center";
   }
-  if (textAlign == TextAlign.justify){
+  if (textAlign == TextAlign.justify) {
     rt = "justify";
   }
-  if (textAlign == TextAlign.start){
+  if (textAlign == TextAlign.start) {
     rt = "start";
   }
-  if (textAlign == TextAlign.end){
+  if (textAlign == TextAlign.end) {
     rt = "end";
   }
   return rt;
@@ -73,13 +73,13 @@ TextOverflow parseTextOverflow(String textOverflowString) {
   return textOverflow;
 }
 
-String exportTextOverflow(TextOverflow textOverflow){
+String exportTextOverflow(TextOverflow textOverflow) {
   String rt = "ellipsis";
-  if (textOverflow == TextOverflow.clip){
+  if (textOverflow == TextOverflow.clip) {
     rt = "clip";
   }
 
-  if (textOverflow == TextOverflow.fade){
+  if (textOverflow == TextOverflow.fade) {
     rt = "fade";
   }
   return rt;
@@ -104,7 +104,7 @@ TextDecoration parseTextDecoration(String textDecorationString) {
   return textDecoration;
 }
 
-String exportTextDecoration(TextDecoration decoration){
+String exportTextDecoration(TextDecoration decoration) {
   var rt = "none";
   if (decoration == TextDecoration.lineThrough) {
     rt = "lineThrough";
@@ -136,9 +136,9 @@ TextDirection parseTextDirection(String textDirectionString) {
   return textDirection;
 }
 
-String exportTextDirection(TextDirection textDirection){
+String exportTextDirection(TextDirection textDirection) {
   String rt = "ltr";
-  if (textDirection == TextDirection.rtl){
+  if (textDirection == TextDirection.rtl) {
     rt = "rtl";
   }
   return rt;
@@ -182,7 +182,7 @@ FontWeight parseFontWeight(String textFontWeight) {
   return fontWeight;
 }
 
-String exportFontWeight(FontWeight fontWeight){
+String exportFontWeight(FontWeight fontWeight) {
   String rt = "normal";
   if (fontWeight == FontWeight.w100) {
     rt = "w100";
@@ -251,18 +251,20 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   );
 }
 
-Map<String, dynamic> exportTextStyle(TextStyle textStyle){
+Map<String, dynamic> exportTextStyle(TextStyle textStyle) {
   if (textStyle == null) {
     return null;
   }
 
   return <String, dynamic>{
-    "color": textStyle.color !=null? textStyle.color.value.toRadixString(16) : null,
+    "color": textStyle.color != null
+        ? textStyle.color.value.toRadixString(16)
+        : null,
     "debugLabel": textStyle.debugLabel,
     "decoration": exportTextDecoration(textStyle.decoration),
     "fontSize": textStyle.fontSize,
     "fontFamily": textStyle.fontFamily,
-    "fontStyle": FontStyle.italic == textStyle.fontStyle? "italic" : "normal",
+    "fontStyle": FontStyle.italic == textStyle.fontStyle ? "italic" : "normal",
     "fontWeight": exportFontWeight(textStyle.fontWeight),
   };
 }
@@ -381,7 +383,6 @@ EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString) {
       bottom: double.parse(values[3]));
 }
 
-
 CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
   switch (crossAxisAlignmentString) {
     case 'start':
@@ -398,21 +399,21 @@ CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
   return CrossAxisAlignment.center;
 }
 
-String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment){
+String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment) {
   String rt = "center";
-  if (crossAxisAlignment == CrossAxisAlignment.start){
+  if (crossAxisAlignment == CrossAxisAlignment.start) {
     rt = "start";
   }
-  if (crossAxisAlignment == CrossAxisAlignment.end){
+  if (crossAxisAlignment == CrossAxisAlignment.end) {
     rt = "end";
   }
-  if (crossAxisAlignment == CrossAxisAlignment.center){
+  if (crossAxisAlignment == CrossAxisAlignment.center) {
     rt = "center";
   }
-  if (crossAxisAlignment == CrossAxisAlignment.stretch){
+  if (crossAxisAlignment == CrossAxisAlignment.stretch) {
     rt = "stretch";
   }
-  if (crossAxisAlignment == CrossAxisAlignment.baseline){
+  if (crossAxisAlignment == CrossAxisAlignment.baseline) {
     rt = "baseline";
   }
 
@@ -437,17 +438,17 @@ MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString) {
   return MainAxisAlignment.start;
 }
 
-String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment){
+String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment) {
   String rt = "start";
   if (mainAxisAlignment == MainAxisAlignment.end) {
     rt = "end";
-  }else if (mainAxisAlignment == MainAxisAlignment.center) {
+  } else if (mainAxisAlignment == MainAxisAlignment.center) {
     rt = "center";
-  }else if (mainAxisAlignment == MainAxisAlignment.spaceBetween) {
+  } else if (mainAxisAlignment == MainAxisAlignment.spaceBetween) {
     rt = "spaceBetween";
-  }else if (mainAxisAlignment == MainAxisAlignment.spaceAround) {
+  } else if (mainAxisAlignment == MainAxisAlignment.spaceAround) {
     rt = "spaceAround";
-  }else if (mainAxisAlignment == MainAxisAlignment.spaceEvenly) {
+  } else if (mainAxisAlignment == MainAxisAlignment.spaceEvenly) {
     rt = "spaceEvenly";
   }
   return rt;
@@ -466,101 +467,100 @@ VerticalDirection parseVerticalDirection(String verticalDirectionString) =>
         ? VerticalDirection.up
         : VerticalDirection.down;
 
-String exportBlendMode(BlendMode blendMode){
+String exportBlendMode(BlendMode blendMode) {
   if (blendMode == null) {
     return null;
   }
   String rt = "srcIn";
-  if (blendMode == BlendMode.clear){
+  if (blendMode == BlendMode.clear) {
     rt = "clear";
   }
-  if (blendMode == BlendMode.src){
+  if (blendMode == BlendMode.src) {
     rt = "src";
   }
-  if (blendMode == BlendMode.dst){
+  if (blendMode == BlendMode.dst) {
     rt = "dst";
   }
-  if (blendMode == BlendMode.srcOver){
+  if (blendMode == BlendMode.srcOver) {
     rt = "srcOver";
   }
-  if (blendMode == BlendMode.dstOver){
+  if (blendMode == BlendMode.dstOver) {
     rt = "dstOver";
   }
-  if (blendMode == BlendMode.srcIn){
+  if (blendMode == BlendMode.srcIn) {
     rt = "srcIn";
   }
-  if (blendMode == BlendMode.dstIn){
+  if (blendMode == BlendMode.dstIn) {
     rt = "dstIn";
   }
-  if (blendMode == BlendMode.srcOut){
+  if (blendMode == BlendMode.srcOut) {
     rt = "srcOut";
   }
-  if (blendMode == BlendMode.dstOut){
+  if (blendMode == BlendMode.dstOut) {
     rt = "dstOut";
   }
-  if (blendMode == BlendMode.srcATop){
+  if (blendMode == BlendMode.srcATop) {
     rt = "srcATop";
   }
-  if (blendMode == BlendMode.dstATop){
+  if (blendMode == BlendMode.dstATop) {
     rt = "dstATop";
   }
-  if (blendMode == BlendMode.xor){
+  if (blendMode == BlendMode.xor) {
     rt = "xor";
   }
-  if (blendMode == BlendMode.plus){
+  if (blendMode == BlendMode.plus) {
     rt = "plus";
   }
-  if (blendMode == BlendMode.modulate){
+  if (blendMode == BlendMode.modulate) {
     rt = "modulate";
   }
-  if (blendMode == BlendMode.screen){
+  if (blendMode == BlendMode.screen) {
     rt = "screen";
   }
-  if (blendMode == BlendMode.overlay){
+  if (blendMode == BlendMode.overlay) {
     rt = "overlay";
   }
-  if (blendMode == BlendMode.darken){
+  if (blendMode == BlendMode.darken) {
     rt = "darken";
   }
-  if (blendMode == BlendMode.lighten){
+  if (blendMode == BlendMode.lighten) {
     rt = "lighten";
   }
-  if (blendMode == BlendMode.colorDodge){
+  if (blendMode == BlendMode.colorDodge) {
     rt = "colorDodge";
   }
-  if (blendMode == BlendMode.colorBurn){
+  if (blendMode == BlendMode.colorBurn) {
     rt = "colorBurn";
   }
-  if (blendMode == BlendMode.hardLight){
+  if (blendMode == BlendMode.hardLight) {
     rt = "hardLight";
   }
-  if (blendMode == BlendMode.softLight){
+  if (blendMode == BlendMode.softLight) {
     rt = "softLight";
   }
-  if (blendMode == BlendMode.difference){
+  if (blendMode == BlendMode.difference) {
     rt = "difference";
   }
-  if (blendMode == BlendMode.exclusion){
+  if (blendMode == BlendMode.exclusion) {
     rt = "exclusion";
   }
-  if (blendMode == BlendMode.multiply){
+  if (blendMode == BlendMode.multiply) {
     rt = "multiply";
   }
-  if (blendMode == BlendMode.hue){
+  if (blendMode == BlendMode.hue) {
     rt = "hue";
   }
-  if (blendMode == BlendMode.saturation){
+  if (blendMode == BlendMode.saturation) {
     rt = "saturation";
   }
-  if (blendMode == BlendMode.color){
+  if (blendMode == BlendMode.color) {
     rt = "color";
   }
-  if (blendMode == BlendMode.luminosity){
+  if (blendMode == BlendMode.luminosity) {
     rt = "luminosity";
   }
 
   return rt;
-
 }
 
 BlendMode parseBlendMode(String blendModeString) {
@@ -658,24 +658,24 @@ BoxFit parseBoxFit(String boxFitString) {
   return null;
 }
 
-String exportBoxFit(BoxFit boxFit){
+String exportBoxFit(BoxFit boxFit) {
   String rt = "contain";
-  if (boxFit == BoxFit.fill){
+  if (boxFit == BoxFit.fill) {
     rt = "fill";
   }
-  if (boxFit == BoxFit.cover){
+  if (boxFit == BoxFit.cover) {
     rt = "cover";
   }
-  if (boxFit == BoxFit.fitWidth){
+  if (boxFit == BoxFit.fitWidth) {
     rt = "fitWidth";
   }
-  if (boxFit == BoxFit.fitHeight){
+  if (boxFit == BoxFit.fitHeight) {
     rt = "fitHeight";
   }
-  if (boxFit == BoxFit.none){
+  if (boxFit == BoxFit.none) {
     rt = "none";
   }
-  if (boxFit == BoxFit.scaleDown){
+  if (boxFit == BoxFit.scaleDown) {
     rt = "scaleDown";
   }
   return rt;
@@ -701,18 +701,18 @@ ImageRepeat parseImageRepeat(String imageRepeatString) {
   }
 }
 
-String exportImageRepeat(ImageRepeat imageRepeat){
-  if (imageRepeat==null) {
+String exportImageRepeat(ImageRepeat imageRepeat) {
+  if (imageRepeat == null) {
     return null;
   }
   String rt = "noRepeat";
-  if (imageRepeat == ImageRepeat.repeat){
+  if (imageRepeat == ImageRepeat.repeat) {
     rt = "repeat";
   }
-  if (imageRepeat == ImageRepeat.repeatX){
+  if (imageRepeat == ImageRepeat.repeatX) {
     rt = "repeatX";
   }
-  if (imageRepeat == ImageRepeat.repeatY){
+  if (imageRepeat == ImageRepeat.repeatY) {
     rt = "repeatY";
   }
   return rt;
@@ -727,7 +727,7 @@ Rect parseRect(String fromLTRBString) {
       double.parse(strings[2]), double.parse(strings[3]));
 }
 
-String exportRect(Rect rect){
+String exportRect(Rect rect) {
   return "${rect.left},${rect.top},${rect.right},${rect.bottom}";
 }
 
@@ -749,21 +749,21 @@ FilterQuality parseFilterQuality(String filterQualityString) {
   }
 }
 
-String exportFilterQuality(FilterQuality filterQuality){
-  if (filterQuality==null) {
+String exportFilterQuality(FilterQuality filterQuality) {
+  if (filterQuality == null) {
     return null;
   }
   String rt = "low";
-  if (filterQuality == FilterQuality.none){
+  if (filterQuality == FilterQuality.none) {
     rt = "none";
   }
-  if (filterQuality == FilterQuality.low){
+  if (filterQuality == FilterQuality.low) {
     rt = "low";
   }
-  if (filterQuality == FilterQuality.medium){
+  if (filterQuality == FilterQuality.medium) {
     rt = "medium";
   }
-  if (filterQuality == FilterQuality.high){
+  if (filterQuality == FilterQuality.high) {
     rt = "high";
   }
   return rt;
@@ -806,11 +806,11 @@ StackFit parseStackFit(String value) {
   }
 }
 
-String exportStackFit(StackFit stackFit){
+String exportStackFit(StackFit stackFit) {
   String rt = "loose";
-  if (stackFit == StackFit.expand){
+  if (stackFit == StackFit.expand) {
     rt = "expand";
-  }else if (stackFit == StackFit.passthrough){
+  } else if (stackFit == StackFit.passthrough) {
     rt = "passthrough";
   }
   return rt;
@@ -835,15 +835,15 @@ Clip parseClip(String value) {
   }
 }
 
-String exportClip(Clip clip){
+String exportClip(Clip clip) {
   String rt = "hardEdge";
-  if (clip == Clip.none){
+  if (clip == Clip.none) {
     rt = "none";
-  }else if (clip == Clip.hardEdge){
+  } else if (clip == Clip.hardEdge) {
     rt = "hardEdge";
-  }else if (clip == Clip.antiAlias){
+  } else if (clip == Clip.antiAlias) {
     rt = "antiAlias";
-  }else if (clip == Clip.antiAliasWithSaveLayer){
+  } else if (clip == Clip.antiAliasWithSaveLayer) {
     rt = "antiAliasWithSaveLayer";
   }
   return rt;
@@ -886,17 +886,17 @@ WrapAlignment parseWrapAlignment(String wrapAlignmentString) {
   return WrapAlignment.start;
 }
 
-String exportWrapAlignment(WrapAlignment wrapAlignment){
+String exportWrapAlignment(WrapAlignment wrapAlignment) {
   String rt = "start";
-  if (wrapAlignment == WrapAlignment.end){
+  if (wrapAlignment == WrapAlignment.end) {
     rt = "end";
-  }else if (wrapAlignment == WrapAlignment.center){
+  } else if (wrapAlignment == WrapAlignment.center) {
     rt = "center";
-  }else if (wrapAlignment == WrapAlignment.spaceBetween){
+  } else if (wrapAlignment == WrapAlignment.spaceBetween) {
     rt = "spaceBetween";
-  }else if (wrapAlignment == WrapAlignment.spaceAround){
+  } else if (wrapAlignment == WrapAlignment.spaceAround) {
     rt = "spaceAround";
-  }else if (wrapAlignment == WrapAlignment.spaceEvenly){
+  } else if (wrapAlignment == WrapAlignment.spaceEvenly) {
     rt = "spaceEvenly";
   }
   return rt;
@@ -920,11 +920,11 @@ WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
   return WrapCrossAlignment.start;
 }
 
-String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment){
+String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment) {
   String rt = "start";
-  if (wrapCrossAlignment == WrapCrossAlignment.end){
+  if (wrapCrossAlignment == WrapCrossAlignment.end) {
     rt = "end";
-  }else if (wrapCrossAlignment == WrapCrossAlignment.center){
+  } else if (wrapCrossAlignment == WrapCrossAlignment.center) {
     rt = "center";
   }
   return rt;
@@ -947,7 +947,7 @@ Clip parseClipBehavior(String clipBehaviorString) {
   return Clip.antiAlias;
 }
 
-String exportClipBehavior(Clip clip){
+String exportClipBehavior(Clip clip) {
   if (clip == null) {
     return "antiAlias";
   }
@@ -984,12 +984,12 @@ DropCapMode parseDropCapMode(String value) {
   }
 }
 
-String exportDropCapMod(DropCapMode mode){
+String exportDropCapMod(DropCapMode mode) {
   if (mode == null) {
     return null;
   }
 
-  switch(mode){
+  switch (mode) {
     case DropCapMode.inside:
       return "inside";
     case DropCapMode.baseline:
@@ -1018,9 +1018,9 @@ DropCapPosition parseDropCapPosition(String value) {
   }
 }
 
-String exportDropCapPosition(DropCapPosition dropCapPosition){
+String exportDropCapPosition(DropCapPosition dropCapPosition) {
   String rt = "start";
-  if (dropCapPosition == DropCapPosition.end){
+  if (dropCapPosition == DropCapPosition.end) {
     rt = "end";
   }
   return rt;
@@ -1028,7 +1028,7 @@ String exportDropCapPosition(DropCapPosition dropCapPosition){
 
 DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
     ClickListener listener) {
-  if (map==null) {
+  if (map == null) {
     return null;
   }
   return DropCap(
@@ -1039,7 +1039,7 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
   );
 }
 
-Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext){
+Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext) {
   if (dropCap == null) {
     return null;
   }
@@ -1050,7 +1050,7 @@ Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext){
   };
 }
 
-String exportAlignment(Alignment alignment){
+String exportAlignment(Alignment alignment) {
   if (alignment == null) {
     return "center";
   }
@@ -1086,4 +1086,13 @@ String exportAlignment(Alignment alignment){
   }
 
   return "center";
+}
+
+Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
+  return {
+    'minWidth': constraints.minWidth,
+    'maxWidth': constraints.maxWidth,
+    'minHeight': constraints.minHeight,
+    'maxHeight': constraints.maxHeight,
+  };
 }
