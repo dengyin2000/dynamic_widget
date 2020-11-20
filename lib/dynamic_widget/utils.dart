@@ -235,7 +235,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   String debugLabel = map['debugLabel'];
   String decoration = map['decoration'];
   String fontFamily = map['fontFamily'];
-  double fontSize = map['fontSize'];
+  double fontSize = map['fontSize']?.toDouble();
   String fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
@@ -311,7 +311,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
 
   if (map != null) {
     if (map.containsKey('minWidth')) {
-      var minWidthValue = map['minWidth'];
+      var minWidthValue = map['minWidth']?.toDouble();
 
       if (minWidthValue != null) {
         if (minWidthValue >= infinity) {
@@ -323,7 +323,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
     }
 
     if (map.containsKey('maxWidth')) {
-      var maxWidthValue = map['maxWidth'];
+      var maxWidthValue = map['maxWidth']?.toDouble();
 
       if (maxWidthValue != null) {
         if (maxWidthValue >= infinity) {
@@ -335,7 +335,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
     }
 
     if (map.containsKey('minHeight')) {
-      var minHeightValue = map['minHeight'];
+      var minHeightValue = map['minHeight']?.toDouble();
 
       if (minHeightValue != null) {
         if (minHeightValue >= infinity) {
@@ -347,7 +347,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
     }
 
     if (map.containsKey('maxHeight')) {
-      var maxHeightValue = map['maxHeight'];
+      var maxHeightValue = map['maxHeight']?.toDouble();
 
       if (maxHeightValue != null) {
         if (maxHeightValue >= infinity) {
@@ -1032,8 +1032,8 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
     return null;
   }
   return DropCap(
-    width: map['width'],
-    height: map['height'],
+    width: map['width']?.toDouble(),
+    height: map['height']?.toDouble(),
     child:
         DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );

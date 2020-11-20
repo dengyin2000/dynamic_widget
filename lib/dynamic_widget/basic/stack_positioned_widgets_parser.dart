@@ -9,12 +9,12 @@ class PositionedWidgetParser extends WidgetParser {
     return Positioned(
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
-      top: map.containsKey("top") ? map["top"] : null,
-      right: map.containsKey("right") ? map["right"] : null,
-      bottom: map.containsKey("bottom") ? map["bottom"] : null,
-      left: map.containsKey("left") ? map["left"] : null,
-      width: map.containsKey("width") ? map["width"] : null,
-      height: map.containsKey("height") ? map["height"] : null,
+      top: map.containsKey("top") ? map["top"]?.toDouble() : null,
+      right: map.containsKey("right") ? map["right"]?.toDouble() : null,
+      bottom: map.containsKey("bottom") ? map["bottom"]?.toDouble() : null,
+      left: map.containsKey("left") ? map["left"]?.toDouble() : null,
+      width: map.containsKey("width") ? map["width"]?.toDouble() : null,
+      height: map.containsKey("height") ? map["height"]?.toDouble() : null,
     );
   }
 

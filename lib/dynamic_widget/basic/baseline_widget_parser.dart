@@ -6,7 +6,7 @@ class BaselineWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     return Baseline(
-      baseline: map["baseline"],
+      baseline: map["baseline"]?.toDouble(),
       baselineType: map["baselineType"] == "alphabetic"
           ? TextBaseline.alphabetic
           : TextBaseline.ideographic,
@@ -24,8 +24,10 @@ class BaselineWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": widgetName,
       "baseline": realWidget.baseline,
-      "baselineType" : realWidget.baselineType == TextBaseline.alphabetic ? "alphabetic":"ideographic",
-      "child":DynamicWidgetBuilder.export(realWidget.child, buildContext)
+      "baselineType": realWidget.baselineType == TextBaseline.alphabetic
+          ? "alphabetic"
+          : "ideographic",
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }
 

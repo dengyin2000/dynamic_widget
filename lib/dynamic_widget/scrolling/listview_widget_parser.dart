@@ -19,11 +19,11 @@ class ListViewWidgetParser extends WidgetParser {
 
     var reverse = map.containsKey("reverse") ? map['reverse'] : false;
     var shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
-    var cacheExtent = map.containsKey("cacheExtent") ? map["cacheExtent"] : 0.0;
+    var cacheExtent = map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     var padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"] : null;
+    var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
