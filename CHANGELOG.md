@@ -66,6 +66,10 @@
 
 * Fix some export bugs.
 
+## [3.0.2] - Fix bugs
+
+* Some PR merged, fix some bugs.
+
 
 
 
