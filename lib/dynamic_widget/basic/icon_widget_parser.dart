@@ -11,7 +11,7 @@ class IconWidgetParser extends WidgetParser {
       map.containsKey('data')
           ? getIconUsingPrefix(name: map['data'])
           : Icons.android,
-      size: map.containsKey("size") ? map['size'] : null,
+      size: map.containsKey("size") ? map['size']?.toDouble() : null,
       color: map.containsKey('color') ? parseHexColor(map['color']) : null,
       semanticLabel:
           map.containsKey('semanticLabel') ? map['semanticLabel'] : null,
@@ -31,9 +31,13 @@ class IconWidgetParser extends WidgetParser {
       "type": widgetName,
       "data": exportIconGuessFavorMaterial(realWidget.icon),
       "size": realWidget.size,
-      "color": realWidget.color!=null?realWidget.color.value.toRadixString(16):null,
+      "color": realWidget.color != null
+          ? realWidget.color.value.toRadixString(16)
+          : null,
       "semanticLabel": realWidget.semanticLabel,
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
+      "textDirection": realWidget.textDirection != null
+          ? exportTextDirection(realWidget.textDirection)
+          : null,
     };
   }
 

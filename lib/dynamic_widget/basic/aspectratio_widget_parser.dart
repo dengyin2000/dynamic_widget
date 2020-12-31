@@ -6,7 +6,7 @@ class AspectRatioWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     return AspectRatio(
-      aspectRatio: map["aspectRatio"],
+      aspectRatio: map["aspectRatio"]?.toDouble(),
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
     );

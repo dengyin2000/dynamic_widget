@@ -122,11 +122,11 @@ class RaisedButtonParser extends WidgetParser {
           ? parseHexColor(map['disabledColor'])
           : null,
       disabledElevation:
-          map.containsKey('disabledElevation') ? map['disabledElevation'] : 0.0,
+          map.containsKey('disabledElevation') ? map['disabledElevation']?.toDouble() : 0.0,
       disabledTextColor: map.containsKey('disabledTextColor')
           ? parseHexColor(map['disabledTextColor'])
           : null,
-      elevation: map.containsKey('elevation') ? map['elevation'] : 0.0,
+      elevation: map.containsKey('elevation') ? map['elevation']?.toDouble() : 0.0,
       padding: map.containsKey('padding')
           ? parseEdgeInsetsGeometry(map['padding'])
           : null,

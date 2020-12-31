@@ -25,8 +25,8 @@ class ContainerWidgetParser extends WidgetParser {
       padding: padding,
       color: color,
       margin: margin,
-      width: map['width'],
-      height: map['height'],
+      width: map['width']?.toDouble(),
+      height: map['height']?.toDouble(),
       constraints: constraints,
       child: child,
     );
@@ -51,14 +51,24 @@ class ContainerWidgetParser extends WidgetParser {
     var realWidget = widget as Container;
     var padding = realWidget.padding as EdgeInsets;
     var margin = realWidget.margin as EdgeInsets;
+    var constraints = realWidget.constraints;
     return <String, dynamic>{
       "type": widgetName,
-      "alignment": realWidget.alignment !=null ? exportAlignment(realWidget.alignment) : null,
-      "padding" : padding!=null? "${padding.left},${padding.top},${padding.right},${padding.bottom}":null,
-      "color": realWidget.color!=null ? realWidget.color.value.toRadixString(16) : null,
-      "margin": margin != null? "${margin.left},${margin.top},${margin.right},${margin.bottom}":null,
-      //TODO: Container don't expose the width and height properties, so I don't know
-      // how to export width and height properties.
+      "alignment": realWidget.alignment != null
+          ? exportAlignment(realWidget.alignment)
+          : null,
+      "padding": padding != null
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
+          : null,
+      "color": realWidget.color != null
+          ? realWidget.color.value.toRadixString(16)
+          : null,
+      "margin": margin != null
+          ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
+          : null,
+      "constraints": constraints!= null
+          ? exportConstraints(constraints)
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

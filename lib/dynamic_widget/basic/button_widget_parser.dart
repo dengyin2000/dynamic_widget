@@ -14,12 +14,14 @@ class RaisedButtonParser extends WidgetParser {
       disabledColor: map.containsKey('disabledColor')
           ? parseHexColor(map['disabledColor'])
           : null,
-      disabledElevation:
-          map.containsKey('disabledElevation') ? map['disabledElevation'] : 0.0,
+      disabledElevation: map.containsKey('disabledElevation')
+          ? map['disabledElevation']?.toDouble()
+          : 0.0,
       disabledTextColor: map.containsKey('disabledTextColor')
           ? parseHexColor(map['disabledTextColor'])
           : null,
-      elevation: map.containsKey('elevation') ? map['elevation'] : 0.0,
+      elevation:
+          map.containsKey('elevation') ? map['elevation']?.toDouble() : 0.0,
       padding: map.containsKey('padding')
           ? parseEdgeInsetsGeometry(map['padding'])
           : null,
@@ -48,16 +50,27 @@ class RaisedButtonParser extends WidgetParser {
 
     return <String, dynamic>{
       "type": widgetName,
-      "color": realWidget.color != null ? realWidget.color.value.toRadixString(16):null,
-      "disabledColor" : realWidget.disabledColor !=null? realWidget.disabledColor.value.toRadixString(16):null,
+      "color": realWidget.color != null
+          ? realWidget.color.value.toRadixString(16)
+          : null,
+      "disabledColor": realWidget.disabledColor != null
+          ? realWidget.disabledColor.value.toRadixString(16)
+          : null,
       "disabledElevation": realWidget.disabledElevation,
-      "disabledTextColor": realWidget.disabledTextColor!=null ?realWidget.disabledTextColor.value.toRadixString(16):null,
+      "disabledTextColor": realWidget.disabledTextColor != null
+          ? realWidget.disabledTextColor.value.toRadixString(16)
+          : null,
       "elevation": realWidget.elevation,
-      "padding": padding !=null ? "${padding.left},${padding.top},${padding.right},${padding.bottom}" : null,
-      "splashColor": realWidget.splashColor!=null ? realWidget.splashColor.value.toRadixString(16) : null,
-      "textColor": realWidget.textColor!=null?realWidget.textColor.value.toRadixString(16):null,
-      "child":DynamicWidgetBuilder.export(realWidget.child, buildContext)
-
+      "padding": padding != null
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
+          : null,
+      "splashColor": realWidget.splashColor != null
+          ? realWidget.splashColor.value.toRadixString(16)
+          : null,
+      "textColor": realWidget.textColor != null
+          ? realWidget.textColor.value.toRadixString(16)
+          : null,
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }
 

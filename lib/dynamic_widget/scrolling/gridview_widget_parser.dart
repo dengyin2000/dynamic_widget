@@ -20,16 +20,16 @@ class GridViewWidgetParser extends WidgetParser {
     bool reverse = map.containsKey("reverse") ? map['reverse'] : false;
     bool shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
     double cacheExtent =
-        map.containsKey("cacheExtent") ? map["cacheExtent"] : 0.0;
+        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     EdgeInsetsGeometry padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
     double mainAxisSpacing =
-        map.containsKey('mainAxisSpacing') ? map['mainAxisSpacing'] : 0.0;
+        map.containsKey('mainAxisSpacing') ? map['mainAxisSpacing']?.toDouble() : 0.0;
     double crossAxisSpacing =
-        map.containsKey('crossAxisSpacing') ? map['crossAxisSpacing'] : 0.0;
+        map.containsKey('crossAxisSpacing') ? map['crossAxisSpacing']?.toDouble() : 0.0;
     double childAspectRatio =
-        map.containsKey('childAspectRatio') ? map['childAspectRatio'] : 1.0;
+        map.containsKey('childAspectRatio') ? map['childAspectRatio']?.toDouble() : 1.0;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
 
