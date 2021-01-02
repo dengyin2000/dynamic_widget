@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:demo/widget_json.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
-import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dynamic_widget_json_exportor.dart';
-import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
-import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
-import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';

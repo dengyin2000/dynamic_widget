@@ -53,7 +53,7 @@ class DropCapTextParser extends WidgetParser {
   @override
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     var realWidget = widget as DropCapText;
-    var dropCapPadding = realWidget.dropCapPadding as EdgeInsets;
+    var dropCapPadding = realWidget.dropCapPadding;
     return <String, dynamic>{
       "type": widgetName,
       "data": realWidget.data,

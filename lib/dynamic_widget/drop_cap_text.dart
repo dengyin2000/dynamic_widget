@@ -79,10 +79,10 @@ class DropCapText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = TextStyle(
-      color: Theme.of(context).textTheme.body2.color,
-      fontSize: Theme.of(context).textTheme.body2.fontSize,
-      height: Theme.of(context).textTheme.body2.height,
-      fontFamily: Theme.of(context).textTheme.body2.fontFamily,
+      color: Theme.of(context).textTheme.bodyText2.color,
+      fontSize: Theme.of(context).textTheme.bodyText2.fontSize,
+      height: Theme.of(context).textTheme.bodyText2.height,
+      fontFamily: Theme.of(context).textTheme.bodyText2.fontFamily,
     ).merge(style);
 
     if (data == '')
