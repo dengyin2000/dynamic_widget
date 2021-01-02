@@ -857,7 +857,9 @@ var sizedboxJson = '''
   "alignment": "topLeft",
   "children":[
     {
-      "type": "ExpandedSizedBox",
+      "type": "SizedBox",
+      "width": 400.0,
+      "height": 400.0,
       "child":{
         "type":"Container",
         "color": "#0000FF"

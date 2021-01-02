@@ -70,6 +70,11 @@
 
 * Some PR merged, fix some bugs.
 
+## [3.0.3] - Fix bugs
+
+* Fix some dart analysis problem.
+* Preview page can export current page's flutter code to json.
+
 
 
 

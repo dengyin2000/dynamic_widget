@@ -425,10 +425,13 @@ class _CodeEditorPageState extends State<CodeEditorPage> {
   }
 }
 
+// ignore: must_be_immutable
 class PreviewPage extends StatelessWidget {
   final String jsonString;
 
   PreviewPage(this.jsonString);
+
+  DynamicWidgetJsonExportor _exportor;
 
   @override
   Widget build(BuildContext context) {
@@ -438,18 +441,35 @@ class PreviewPage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text("Preview"),
       ),
-      body: FutureBuilder<Widget>(
-        future: _buildWidget(context),
-        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
-          if (snapshot.hasError) {
-            print(snapshot.error);
-          }
-          return snapshot.hasData
-              ? SizedBox.expand(
-                  child: snapshot.data,
-                )
-              : Text("Loading...");
-        },
+      body: Column(
+        children: [
+          Expanded(
+
+                child: FutureBuilder<Widget>(
+                  future: _buildWidget(context),
+                  builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+                    if (snapshot.hasError) {
+                      print(snapshot.error);
+                    }
+                    return snapshot.hasData
+                        ? _exportor = DynamicWidgetJsonExportor(
+
+                              child: snapshot.data,
+
+                        )
+                        : Text("Loading...");
+                  },
+                ),
+          ),
+          RaisedButton(onPressed: (){
+            var exportJsonString = _exportor.exportJsonString();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        CodeEditorPage(exportJsonString)));
+          }, child: Text("export json code"),)
+        ],
       ),
     );
   }

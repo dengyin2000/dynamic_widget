@@ -1091,8 +1091,8 @@ String exportAlignment(Alignment alignment) {
 Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
   return {
     'minWidth': constraints.minWidth,
-    'maxWidth': constraints.maxWidth,
+    'maxWidth': constraints.maxWidth == double.infinity? 999999999.99 : constraints.maxWidth,
     'minHeight': constraints.minHeight,
-    'maxHeight': constraints.maxHeight,
+    'maxHeight': constraints.maxHeight == double.infinity? 999999999.99 : constraints.maxHeight,
   };
 }
