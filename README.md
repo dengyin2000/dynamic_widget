@@ -39,7 +39,7 @@ Widget type will be a type property, and widget's properties will be the json pr
 Add this to your package's pubspec.yaml file:
 ```
 dependencies:
-  dynamic_widget: ^3.0.1
+  dynamic_widget: ^3.0.3
 ```
 
 #### 2. Install it
