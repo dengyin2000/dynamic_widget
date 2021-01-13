@@ -40,15 +40,15 @@ IconData getIconGuessFavorMaterial({String name}) {
   }
 }
 
-String exportIconGuessFavorMaterial(IconData iconData){
-  for(var entry in IconsMap.entries){
-    if (entry.value == iconData){
+String exportIconGuessFavorMaterial(IconData iconData) {
+  for (var entry in IconsMap.entries) {
+    if (entry.value == iconData) {
       return entry.key;
     }
   }
 
-  for(var entry in FontAwesomeIconsMap.entries){
-    if (entry.value == iconData){
+  for (var entry in FontAwesomeIconsMap.entries) {
+    if (entry.value == iconData) {
       return entry.key;
     }
   }

@@ -16,7 +16,8 @@ class AssetImageWidgetParser extends WidgetParser {
         : false;
     double scale = map.containsKey("scale") ? map['scale']?.toDouble() : null;
     double width = map.containsKey('width') ? map['width']?.toDouble() : null;
-    double height = map.containsKey('height') ? map['height']?.toDouble() : null;
+    double height =
+        map.containsKey('height') ? map['height']?.toDouble() : null;
     Color color = map.containsKey('color') ? parseHexColor(map['color']) : null;
     BlendMode blendMode =
         map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
@@ -76,15 +77,14 @@ class AssetImageWidgetParser extends WidgetParser {
 
   @override
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
-    if (_isMatchAssetImageType(widget)){
+    if (_isMatchAssetImageType(widget)) {
       var realWidget = widget as Image;
       AssetImage assetImage;
-      if (realWidget.image is AssetImage){
+      if (realWidget.image is AssetImage) {
         assetImage = realWidget.image;
-      }else if (realWidget.image is ResizeImage) {
+      } else if (realWidget.image is ResizeImage) {
         var t = realWidget.image as ResizeImage;
         assetImage = t.imageProvider as AssetImage;
-
       }
       return <String, dynamic>{
         "type": widgetName,
@@ -92,27 +92,38 @@ class AssetImageWidgetParser extends WidgetParser {
         "semanticLabel": realWidget.semanticLabel,
         "width": realWidget.width,
         "height": realWidget.height,
-        "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
-        "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
-        "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
-        "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
-        "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
-        "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+        "color": realWidget.color != null
+            ? realWidget.color.value.toRadixString(16)
+            : null,
+        "colorBlendMode": realWidget.colorBlendMode != null
+            ? exportBlendMode(realWidget.colorBlendMode)
+            : null,
+        "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
+        "alignment": realWidget.alignment != null
+            ? exportAlignment(realWidget.alignment)
+            : null,
+        "repeat": realWidget.repeat != null
+            ? exportImageRepeat(realWidget.repeat)
+            : null,
+        "centerSlice": realWidget.centerSlice != null
+            ? exportRect(realWidget.centerSlice)
+            : null,
         "matchTextDirection": realWidget.matchTextDirection,
         "gaplessPlayback": realWidget.gaplessPlayback,
-        "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+        "filterQuality": realWidget.filterQuality != null
+            ? exportFilterQuality(realWidget.filterQuality)
+            : null
       };
     }
 
-    if (_isMatchExactAssetImageType(widget)){
+    if (_isMatchExactAssetImageType(widget)) {
       var realWidget = widget as Image;
       ExactAssetImage exactAssetImage;
-      if (realWidget.image is ExactAssetImage){
+      if (realWidget.image is ExactAssetImage) {
         exactAssetImage = realWidget.image;
-      }else if (realWidget.image is ResizeImage) {
+      } else if (realWidget.image is ResizeImage) {
         var t = realWidget.image as ResizeImage;
         exactAssetImage = t.imageProvider as ExactAssetImage;
-
       }
       return <String, dynamic>{
         "type": widgetName,
@@ -121,15 +132,27 @@ class AssetImageWidgetParser extends WidgetParser {
         "scale": exactAssetImage.scale,
         "width": realWidget.width,
         "height": realWidget.height,
-        "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
-        "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
-        "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
-        "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
-        "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
-        "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+        "color": realWidget.color != null
+            ? realWidget.color.value.toRadixString(16)
+            : null,
+        "colorBlendMode": realWidget.colorBlendMode != null
+            ? exportBlendMode(realWidget.colorBlendMode)
+            : null,
+        "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
+        "alignment": realWidget.alignment != null
+            ? exportAlignment(realWidget.alignment)
+            : null,
+        "repeat": realWidget.repeat != null
+            ? exportImageRepeat(realWidget.repeat)
+            : null,
+        "centerSlice": realWidget.centerSlice != null
+            ? exportRect(realWidget.centerSlice)
+            : null,
         "matchTextDirection": realWidget.matchTextDirection,
         "gaplessPlayback": realWidget.gaplessPlayback,
-        "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+        "filterQuality": realWidget.filterQuality != null
+            ? exportFilterQuality(realWidget.filterQuality)
+            : null
       };
     }
 
@@ -144,7 +167,7 @@ class AssetImageWidgetParser extends WidgetParser {
       if (widget.image is AssetImage) {
         return true;
       }
-      if (widget.image is ResizeImage){
+      if (widget.image is ResizeImage) {
         var resizeImage = widget.image as ResizeImage;
         return resizeImage.imageProvider is AssetImage;
       }
@@ -157,7 +180,7 @@ class AssetImageWidgetParser extends WidgetParser {
       if (widget.image is ExactAssetImage) {
         return true;
       }
-      if (widget.image is ResizeImage){
+      if (widget.image is ResizeImage) {
         var resizeImage = widget.image as ResizeImage;
         return resizeImage.imageProvider is ExactAssetImage;
       }
@@ -165,13 +188,9 @@ class AssetImageWidgetParser extends WidgetParser {
     return false;
   }
 
-
-
   @override
-  bool matchWidgetForExport(Widget widget) => _isMatchAssetImageType(widget)
-      || _isMatchExactAssetImageType(widget);
-
-
+  bool matchWidgetForExport(Widget widget) =>
+      _isMatchAssetImageType(widget) || _isMatchExactAssetImageType(widget);
 }
 
 class NetworkImageWidgetParser extends WidgetParser {
@@ -186,7 +205,8 @@ class NetworkImageWidgetParser extends WidgetParser {
         : false;
     double scale = map.containsKey("scale") ? map['scale']?.toDouble() : 1.0;
     double width = map.containsKey('width') ? map['width']?.toDouble() : null;
-    double height = map.containsKey('height') ? map['height']?.toDouble() : null;
+    double height =
+        map.containsKey('height') ? map['height']?.toDouble() : null;
     Color color = map.containsKey('color') ? parseHexColor(map['color']) : null;
     BlendMode blendMode =
         map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
@@ -248,12 +268,11 @@ class NetworkImageWidgetParser extends WidgetParser {
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     var realWidget = widget as Image;
     NetworkImage networkImage;
-    if (realWidget.image is NetworkImage){
+    if (realWidget.image is NetworkImage) {
       networkImage = realWidget.image;
-    }else if (realWidget.image is ResizeImage) {
+    } else if (realWidget.image is ResizeImage) {
       var t = realWidget.image as ResizeImage;
       networkImage = t.imageProvider as NetworkImage;
-
     }
     return <String, dynamic>{
       "type": widgetName,
@@ -261,15 +280,27 @@ class NetworkImageWidgetParser extends WidgetParser {
       "semanticLabel": realWidget.semanticLabel,
       "width": realWidget.width,
       "height": realWidget.height,
-      "color": realWidget.color !=null ? realWidget.color.value.toRadixString(16):null,
-      "colorBlendMode": realWidget.colorBlendMode!=null? exportBlendMode(realWidget.colorBlendMode):null,
-      "fit": realWidget.fit != null? exportBoxFit(realWidget.fit) : null,
-      "alignment": realWidget.alignment !=null? exportAlignment(realWidget.alignment):null,
-      "repeat": realWidget.repeat != null? exportImageRepeat(realWidget.repeat):null,
-      "centerSlice": realWidget.centerSlice!=null? exportRect(realWidget.centerSlice):null,
+      "color": realWidget.color != null
+          ? realWidget.color.value.toRadixString(16)
+          : null,
+      "colorBlendMode": realWidget.colorBlendMode != null
+          ? exportBlendMode(realWidget.colorBlendMode)
+          : null,
+      "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
+      "alignment": realWidget.alignment != null
+          ? exportAlignment(realWidget.alignment)
+          : null,
+      "repeat": realWidget.repeat != null
+          ? exportImageRepeat(realWidget.repeat)
+          : null,
+      "centerSlice": realWidget.centerSlice != null
+          ? exportRect(realWidget.centerSlice)
+          : null,
       "matchTextDirection": realWidget.matchTextDirection,
       "gaplessPlayback": realWidget.gaplessPlayback,
-      "filterQuality": realWidget.filterQuality!=null? exportFilterQuality(realWidget.filterQuality):null
+      "filterQuality": realWidget.filterQuality != null
+          ? exportFilterQuality(realWidget.filterQuality)
+          : null
     };
   }
 
@@ -278,11 +309,11 @@ class NetworkImageWidgetParser extends WidgetParser {
 
   @override
   bool matchWidgetForExport(Widget widget) {
-    if (widget is Image){
+    if (widget is Image) {
       if (widget.image is NetworkImage) {
         return true;
       }
-      if (widget.image is ResizeImage){
+      if (widget.image is ResizeImage) {
         var t = widget.image as ResizeImage;
         return t.imageProvider is NetworkImage;
       }

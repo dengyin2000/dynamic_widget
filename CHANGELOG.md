@@ -75,6 +75,10 @@
 * Fix some dart analysis problem.
 * Preview page can export current page's flutter code to json.
 
+## [3.0.4] - Fix bugs
+
+* Fix the bug which photo can't be display in pub.dev
+
 
 
 

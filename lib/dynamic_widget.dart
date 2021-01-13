@@ -132,14 +132,16 @@ class DynamicWidgetBuilder {
   static Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
     initDefaultParsersIfNess();
     var parser = _findMatchedWidgetParserForExport(widget);
-    if (parser!=null) {
+    if (parser != null) {
       return parser.export(widget, buildContext);
     }
-    log.warning("Can't find WidgetParser for Type ${widget.runtimeType} to export.");
+    log.warning(
+        "Can't find WidgetParser for Type ${widget.runtimeType} to export.");
     return null;
   }
 
-  static List<Map<String, dynamic>> exportWidgets(List<Widget> widgets, BuildContext buildContext) {
+  static List<Map<String, dynamic>> exportWidgets(
+      List<Widget> widgets, BuildContext buildContext) {
     initDefaultParsersIfNess();
     List<Map<String, dynamic>> rt = [];
     for (var widget in widgets) {
@@ -148,9 +150,9 @@ class DynamicWidgetBuilder {
     return rt;
   }
 
-  static WidgetParser _findMatchedWidgetParserForExport(Widget widget){
+  static WidgetParser _findMatchedWidgetParserForExport(Widget widget) {
     for (var parser in _parsers) {
-      if (parser.matchWidgetForExport(widget)){
+      if (parser.matchWidgetForExport(widget)) {
         return parser;
       }
     }

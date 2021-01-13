@@ -66,9 +66,8 @@ class ContainerWidgetParser extends WidgetParser {
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
-      "constraints": constraints!= null
-          ? exportConstraints(constraints)
-          : null,
+      "constraints":
+          constraints != null ? exportConstraints(constraints) : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

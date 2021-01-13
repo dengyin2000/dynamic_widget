@@ -60,14 +60,24 @@ class ListTileWidgetParser extends WidgetParser {
     var realWidget = widget as ListTile;
     var contentPadding = realWidget.contentPadding as EdgeInsets;
     return <String, dynamic>{
-      "type":widgetName,
+      "type": widgetName,
       "isThreeLine": realWidget.isThreeLine,
-      "leading": realWidget.leading!=null? DynamicWidgetBuilder.export(realWidget.leading, buildContext):null,
-      "title": realWidget.title!=null? DynamicWidgetBuilder.export(realWidget.title, buildContext):null,
-      "subtitle": realWidget.subtitle!=null? DynamicWidgetBuilder.export(realWidget.subtitle, buildContext):null,
-      "trailing": realWidget.trailing!=null? DynamicWidgetBuilder.export(realWidget.trailing, buildContext):null,
+      "leading": realWidget.leading != null
+          ? DynamicWidgetBuilder.export(realWidget.leading, buildContext)
+          : null,
+      "title": realWidget.title != null
+          ? DynamicWidgetBuilder.export(realWidget.title, buildContext)
+          : null,
+      "subtitle": realWidget.subtitle != null
+          ? DynamicWidgetBuilder.export(realWidget.subtitle, buildContext)
+          : null,
+      "trailing": realWidget.trailing != null
+          ? DynamicWidgetBuilder.export(realWidget.trailing, buildContext)
+          : null,
       "dense": realWidget.dense,
-      "contentPadding": contentPadding!=null? "${contentPadding.left},${contentPadding.top},${contentPadding.right},${contentPadding.bottom}":null,
+      "contentPadding": contentPadding != null
+          ? "${contentPadding.left},${contentPadding.top},${contentPadding.right},${contentPadding.bottom}"
+          : null,
       "enabled": realWidget.enabled,
       "selected": realWidget.selected
     };

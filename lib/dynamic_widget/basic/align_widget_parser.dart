@@ -10,9 +10,12 @@ class AlignWidgetParser extends WidgetParser {
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
           : Alignment.center,
-      widthFactor: map.containsKey("widthFactor") ? map["widthFactor"]?.toDouble() : null,
-      heightFactor:
-          map.containsKey("heightFactor") ? map["heightFactor"]?.toDouble() : null,
+      widthFactor: map.containsKey("widthFactor")
+          ? map["widthFactor"]?.toDouble()
+          : null,
+      heightFactor: map.containsKey("heightFactor")
+          ? map["heightFactor"]?.toDouble()
+          : null,
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
     );
@@ -29,12 +32,11 @@ class AlignWidgetParser extends WidgetParser {
       "alignment": exportAlignment(realWidget.alignment),
       "widthFactor": realWidget.widthFactor,
       "heightFactor": realWidget.heightFactor,
-      "child" : DynamicWidgetBuilder.export(realWidget.child, buildContext)
+      "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
     return json;
   }
 
   @override
   Type get widgetType => Align;
-
 }

@@ -8,9 +8,10 @@ class DynamicWidgetJsonExportor extends StatelessWidget {
 
   final GlobalKey globalKey = GlobalKey();
 
-  DynamicWidgetJsonExportor({this.child,
+  DynamicWidgetJsonExportor({
+    this.child,
     Key key,
-  }) : super(key: key) ;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -24,7 +24,9 @@ class PaddingWidgetParser extends WidgetParser {
     var padding = realWidget.padding as EdgeInsets;
     return <String, dynamic>{
       "type": widgetName,
-      "padding": padding!=null? "${padding.left},${padding.top},${padding.right},${padding.bottom}":null,
+      "padding": padding != null
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
+          : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

@@ -49,18 +49,21 @@ class SelectableTextWidgetParser implements WidgetParser {
       return <String, dynamic>{
         "type": "SelectableText",
         "data": realWidget.data,
-        "textAlign": realWidget.textAlign!=null?exportTextAlign(realWidget.textAlign):"start",
+        "textAlign": realWidget.textAlign != null
+            ? exportTextAlign(realWidget.textAlign)
+            : "start",
         "maxLines": realWidget.maxLines,
-        "textDirection":exportTextDirection(realWidget.textDirection),
+        "textDirection": exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),
       };
-    }else {
+    } else {
       var parser = SelectableTextSpanParser();
       return <String, dynamic>{
         "type": "SelectableText",
         "textSpan": parser.export(realWidget.textSpan),
-        "textAlign": realWidget.textAlign != null ? exportTextAlign(
-            realWidget.textAlign) : "start",
+        "textAlign": realWidget.textAlign != null
+            ? exportTextAlign(realWidget.textAlign)
+            : "start",
         "maxLines": realWidget.maxLines,
         "textDirection": exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),
@@ -101,7 +104,7 @@ class SelectableTextSpanParser {
     }
   }
 
-  Map<String, dynamic> export(TextSpan textSpan){
+  Map<String, dynamic> export(TextSpan textSpan) {
     return <String, dynamic>{
       "text": textSpan.text,
       "style": exportTextStyle(textSpan.style),
@@ -109,9 +112,9 @@ class SelectableTextSpanParser {
     };
   }
 
-  List<Map<String, dynamic>> exportChildren(TextSpan textSpan){
+  List<Map<String, dynamic>> exportChildren(TextSpan textSpan) {
     List<Map<String, dynamic>> rt = [];
-    if (textSpan.children!=null && textSpan.children.isNotEmpty) {
+    if (textSpan.children != null && textSpan.children.isNotEmpty) {
       for (var span in textSpan.children) {
         rt.add(export(span));
       }

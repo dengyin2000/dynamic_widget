@@ -63,14 +63,24 @@ class DropCapTextParser extends WidgetParser {
       "dropCapStyle": exportTextStyle(realWidget.dropCapStyle),
       "textAlign": exportTextAlign(realWidget.textAlign),
       "dropCap": exportDropCap(realWidget.dropCap, buildContext),
-      "dropCapPadding": dropCapPadding != null? "${dropCapPadding.left},${dropCapPadding.top},${dropCapPadding.right},${dropCapPadding.bottom}":null,
+      "dropCapPadding": dropCapPadding != null
+          ? "${dropCapPadding.left},${dropCapPadding.top},${dropCapPadding.right},${dropCapPadding.bottom}"
+          : null,
       "dropCapChars": realWidget.dropCapChars,
       "forceNoDescent": realWidget.forceNoDescent,
-      "parseInlineMarkdown": realWidget.parseInlineMarkdown != null ? realWidget.parseInlineMarkdown:false,
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):"ltr",
-      "overflow": realWidget.overflow!=null? exportTextOverflow(realWidget.overflow):"clip",
+      "parseInlineMarkdown": realWidget.parseInlineMarkdown != null
+          ? realWidget.parseInlineMarkdown
+          : false,
+      "textDirection": realWidget.textDirection != null
+          ? exportTextDirection(realWidget.textDirection)
+          : "ltr",
+      "overflow": realWidget.overflow != null
+          ? exportTextOverflow(realWidget.overflow)
+          : "clip",
       "maxLines": realWidget.maxLines,
-      "dropCapPosition":realWidget.dropCapPosition!=null? exportDropCapPosition(realWidget.dropCapPosition):null
+      "dropCapPosition": realWidget.dropCapPosition != null
+          ? exportDropCapPosition(realWidget.dropCapPosition)
+          : null
     };
   }
 

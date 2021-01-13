@@ -30,13 +30,14 @@ class PageViewWidgetParser extends WidgetParser {
     if (realWidget.scrollDirection == Axis.horizontal) {
       scrollDirection = "horizontal";
     }
-    var children =   realWidget.childrenDelegate as SliverChildListDelegate;
+    var children = realWidget.childrenDelegate as SliverChildListDelegate;
     return <String, dynamic>{
       "type": "PageView",
       "scrollDirection": scrollDirection,
-      "reverse": realWidget.reverse??false,
+      "reverse": realWidget.reverse ?? false,
       "pageSnapping": realWidget.pageSnapping,
-      "children": DynamicWidgetBuilder.exportWidgets(children.children, buildContext)
+      "children":
+          DynamicWidgetBuilder.exportWidgets(children.children, buildContext)
     };
   }
 

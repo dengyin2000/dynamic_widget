@@ -24,8 +24,12 @@ class FittedBoxWidgetParser extends WidgetParser {
     var realWidget = widget as FittedBox;
     return <String, dynamic>{
       "type": widgetName,
-      "alignment": realWidget.alignment != null? exportAlignment(realWidget.alignment):null,
-      "fit": realWidget.fit!=null? exportBoxFit(realWidget.fit):BoxFit.contain,
+      "alignment": realWidget.alignment != null
+          ? exportAlignment(realWidget.alignment)
+          : null,
+      "fit": realWidget.fit != null
+          ? exportBoxFit(realWidget.fit)
+          : BoxFit.contain,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }

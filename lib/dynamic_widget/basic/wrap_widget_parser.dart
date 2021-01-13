@@ -17,7 +17,8 @@ class WrapWidgetParser extends WidgetParser {
       runAlignment: map.containsKey("runAlignment")
           ? parseWrapAlignment(map["runAlignment"])
           : WrapAlignment.start,
-      runSpacing: map.containsKey("runSpacing") ? map["runSpacing"]?.toDouble() : 0.0,
+      runSpacing:
+          map.containsKey("runSpacing") ? map["runSpacing"]?.toDouble() : 0.0,
       crossAxisAlignment: map.containsKey("crossAxisAlignment")
           ? parseWrapCrossAlignment(map["crossAxisAlignment"])
           : WrapCrossAlignment.start,
@@ -40,15 +41,21 @@ class WrapWidgetParser extends WidgetParser {
     var realWidget = widget as Wrap;
     return <String, dynamic>{
       "type": "Wrap",
-      "direction": realWidget.direction == Axis.horizontal? "horizontal": "vertical",
+      "direction":
+          realWidget.direction == Axis.horizontal ? "horizontal" : "vertical",
       "alignment": exportWrapAlignment(realWidget.alignment),
       "spacing": realWidget.spacing,
       "runAlignment": exportWrapAlignment(realWidget.runAlignment),
       "runSpacing": realWidget.runSpacing,
-      "crossAxisAlignment": exportWrapCrossAlignment(realWidget.crossAxisAlignment),
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
-      "verticalDirection": realWidget.verticalDirection == VerticalDirection.up? "up": "down",
-      "children": DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext)
+      "crossAxisAlignment":
+          exportWrapCrossAlignment(realWidget.crossAxisAlignment),
+      "textDirection": realWidget.textDirection != null
+          ? exportTextDirection(realWidget.textDirection)
+          : null,
+      "verticalDirection":
+          realWidget.verticalDirection == VerticalDirection.up ? "up" : "down",
+      "children":
+          DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext)
     };
   }
 

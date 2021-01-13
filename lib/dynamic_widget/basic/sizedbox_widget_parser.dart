@@ -55,6 +55,4 @@ class SizedBoxWidgetParser extends WidgetParser {
   Type get widgetType => SizedBox;
 }
 
-class UnimplementedType{
-
-}
+class UnimplementedType {}

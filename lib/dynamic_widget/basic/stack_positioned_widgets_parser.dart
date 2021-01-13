@@ -26,12 +26,12 @@ class PositionedWidgetParser extends WidgetParser {
     var realWidget = widget as Positioned;
     return <String, dynamic>{
       "type": "Positioned",
-      "top": realWidget.top??null,
-      "right": realWidget.right??null,
-      "bottom": realWidget.bottom??null,
-      "left": realWidget.left??null,
-      "width": realWidget.width??null,
-      "height": realWidget.height??null,
+      "top": realWidget.top ?? null,
+      "right": realWidget.right ?? null,
+      "bottom": realWidget.bottom ?? null,
+      "left": realWidget.left ?? null,
+      "width": realWidget.width ?? null,
+      "height": realWidget.height ?? null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
   }
@@ -65,14 +65,15 @@ class StackWidgetParser extends WidgetParser {
 
   @override
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
-    var realWidget =  widget as Stack;
+    var realWidget = widget as Stack;
     return <String, dynamic>{
       "type": "Stack",
       "alignment": exportAlignment(realWidget.alignment),
       "textDirection": exportTextDirection(realWidget.textDirection),
       "fit": exportStackFit(realWidget.fit),
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
-      "children": DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext)
+      "children":
+          DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext)
     };
   }
 

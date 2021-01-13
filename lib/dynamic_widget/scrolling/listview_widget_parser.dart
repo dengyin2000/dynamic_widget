@@ -19,11 +19,13 @@ class ListViewWidgetParser extends WidgetParser {
 
     var reverse = map.containsKey("reverse") ? map['reverse'] : false;
     var shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
-    var cacheExtent = map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
+    var cacheExtent =
+        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     var padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    var itemExtent = map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
+    var itemExtent =
+        map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
@@ -32,16 +34,16 @@ class ListViewWidgetParser extends WidgetParser {
     var isDemo = map.containsKey("isDemo") ? map["isDemo"] : false;
 
     var params = new ListViewParams(
-        scrollDirection:scrollDirection,
-        reverse:reverse,
-        shrinkWrap:shrinkWrap,
-        cacheExtent:cacheExtent,
-        padding:padding,
-        itemExtent:itemExtent,
-        children:children,
-        pageSize:pageSize,
-        loadMoreUrl:loadMoreUrl,
-        isDemo:isDemo);
+        scrollDirection: scrollDirection,
+        reverse: reverse,
+        shrinkWrap: shrinkWrap,
+        cacheExtent: cacheExtent,
+        padding: padding,
+        itemExtent: itemExtent,
+        children: children,
+        pageSize: pageSize,
+        loadMoreUrl: loadMoreUrl,
+        isDemo: isDemo);
 
     return new ListViewWidget(params, buildContext);
   }
@@ -51,7 +53,7 @@ class ListViewWidgetParser extends WidgetParser {
 
   @override
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
-    var realWidget  =  widget as ListViewWidget;
+    var realWidget = widget as ListViewWidget;
     String scrollDirection = "vertical";
     if (realWidget._params.scrollDirection == Axis.horizontal) {
       scrollDirection = "horizontal";
@@ -61,15 +63,18 @@ class ListViewWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": "ListView",
       "scrollDirection": scrollDirection,
-      "reverse": realWidget._params.reverse??false,
-      "shrinkWrap": realWidget._params.shrinkWrap??false,
-      "cacheExtent": realWidget._params.cacheExtent??0.0,
-      "padding": padding!=null? "${padding.left},${padding.top},${padding.right},${padding.bottom}":null,
-      "itemExtent": realWidget._params.itemExtent??null,
-      "pageSize": realWidget._params.pageSize??10,
-      "loadMoreUrl": realWidget._params.loadMoreUrl?? null,
-      "isDemo": realWidget._params.isDemo??false,
-      "children": DynamicWidgetBuilder.exportWidgets(realWidget._params.children, buildContext)
+      "reverse": realWidget._params.reverse ?? false,
+      "shrinkWrap": realWidget._params.shrinkWrap ?? false,
+      "cacheExtent": realWidget._params.cacheExtent ?? 0.0,
+      "padding": padding != null
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
+          : null,
+      "itemExtent": realWidget._params.itemExtent ?? null,
+      "pageSize": realWidget._params.pageSize ?? 10,
+      "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
+      "isDemo": realWidget._params.isDemo ?? false,
+      "children": DynamicWidgetBuilder.exportWidgets(
+          realWidget._params.children, buildContext)
     };
   }
 
@@ -157,9 +162,9 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: _params.scrollDirection??Axis.vertical,
-      reverse: _params.reverse??false,
-      shrinkWrap: _params.shrinkWrap??false,
+      scrollDirection: _params.scrollDirection ?? Axis.vertical,
+      reverse: _params.reverse ?? false,
+      shrinkWrap: _params.shrinkWrap ?? false,
       cacheExtent: _params.cacheExtent,
       padding: _params.padding,
       itemCount: loadCompleted ? _items.length : _items.length + 1,
@@ -234,8 +239,8 @@ class ListViewParams {
   //use for demo, if true, it will do the fake request.
   bool isDemo;
 
-  ListViewParams({
-      this.scrollDirection,
+  ListViewParams(
+      {this.scrollDirection,
       this.reverse,
       this.shrinkWrap,
       this.cacheExtent,

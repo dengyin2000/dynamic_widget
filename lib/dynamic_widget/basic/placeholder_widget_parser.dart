@@ -10,11 +10,14 @@ class PlaceholderWidgetParser extends WidgetParser {
       color: map.containsKey('color')
           ? parseHexColor(map['color'])
           : const Color(0xFF455A64),
-      strokeWidth: map.containsKey('strokeWidth') ? map['strokeWidth']?.toDouble() : 2.0,
-      fallbackWidth:
-          map.containsKey('fallbackWidth') ? map['fallbackWidth']?.toDouble() : 400.0,
-      fallbackHeight:
-          map.containsKey('fallbackHeight') ? map['fallbackHeight']?.toDouble() : 400.0,
+      strokeWidth:
+          map.containsKey('strokeWidth') ? map['strokeWidth']?.toDouble() : 2.0,
+      fallbackWidth: map.containsKey('fallbackWidth')
+          ? map['fallbackWidth']?.toDouble()
+          : 400.0,
+      fallbackHeight: map.containsKey('fallbackHeight')
+          ? map['fallbackHeight']?.toDouble()
+          : 400.0,
     );
   }
 
@@ -23,13 +26,15 @@ class PlaceholderWidgetParser extends WidgetParser {
 
   @override
   Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
-    var realWidget =  widget as Placeholder;
+    var realWidget = widget as Placeholder;
     return <String, dynamic>{
       "type": widgetName,
-      "color": realWidget.color!=null?realWidget.color.value.toRadixString(16):"0xFF455A64",
-      "strokeWidth":realWidget.strokeWidth,
-      "fallbackWidth":realWidget.fallbackWidth,
-      "fallbackHeight":realWidget.fallbackHeight
+      "color": realWidget.color != null
+          ? realWidget.color.value.toRadixString(16)
+          : "0xFF455A64",
+      "strokeWidth": realWidget.strokeWidth,
+      "fallbackWidth": realWidget.fallbackWidth,
+      "fallbackHeight": realWidget.fallbackHeight
     };
   }
 

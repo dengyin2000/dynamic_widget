@@ -38,13 +38,24 @@ class RowWidgetParser extends WidgetParser {
     var realWidget = widget as Row;
     return <String, dynamic>{
       "type": "Row",
-      "crossAxisAlignment": exportCrossAxisAlignment(realWidget.crossAxisAlignment),
-      "mainAxisAlignment": exportMainAxisAlignment(realWidget.mainAxisAlignment),
-      "mainAxisSize": realWidget.mainAxisSize == MainAxisSize.max? "max":"min",
-      "textBaseline": realWidget.textBaseline == TextBaseline.alphabetic ? "alphabetic":"ideographic",
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
-      "verticalDirection": realWidget.verticalDirection == VerticalDirection.down? "down":"up",
-      "children": DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext),
+      "crossAxisAlignment":
+          exportCrossAxisAlignment(realWidget.crossAxisAlignment),
+      "mainAxisAlignment":
+          exportMainAxisAlignment(realWidget.mainAxisAlignment),
+      "mainAxisSize":
+          realWidget.mainAxisSize == MainAxisSize.max ? "max" : "min",
+      "textBaseline": realWidget.textBaseline == TextBaseline.alphabetic
+          ? "alphabetic"
+          : "ideographic",
+      "textDirection": realWidget.textDirection != null
+          ? exportTextDirection(realWidget.textDirection)
+          : null,
+      "verticalDirection":
+          realWidget.verticalDirection == VerticalDirection.down
+              ? "down"
+              : "up",
+      "children":
+          DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext),
     };
   }
 
@@ -88,13 +99,24 @@ class ColumnWidgetParser extends WidgetParser {
     var realWidget = widget as Column;
     return <String, dynamic>{
       "type": "Column",
-      "crossAxisAlignment": exportCrossAxisAlignment(realWidget.crossAxisAlignment),
-      "mainAxisAlignment": exportMainAxisAlignment(realWidget.mainAxisAlignment),
-      "mainAxisSize": realWidget.mainAxisSize == MainAxisSize.max? "max":"min",
-      "textBaseline": realWidget.textBaseline == TextBaseline.alphabetic ? "alphabetic":"ideographic",
-      "textDirection": realWidget.textDirection!=null? exportTextDirection(realWidget.textDirection):null,
-      "verticalDirection": realWidget.verticalDirection == VerticalDirection.down? "down":"up",
-      "children": DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext),
+      "crossAxisAlignment":
+          exportCrossAxisAlignment(realWidget.crossAxisAlignment),
+      "mainAxisAlignment":
+          exportMainAxisAlignment(realWidget.mainAxisAlignment),
+      "mainAxisSize":
+          realWidget.mainAxisSize == MainAxisSize.max ? "max" : "min",
+      "textBaseline": realWidget.textBaseline == TextBaseline.alphabetic
+          ? "alphabetic"
+          : "ideographic",
+      "textDirection": realWidget.textDirection != null
+          ? exportTextDirection(realWidget.textDirection)
+          : null,
+      "verticalDirection":
+          realWidget.verticalDirection == VerticalDirection.down
+              ? "down"
+              : "up",
+      "children":
+          DynamicWidgetBuilder.exportWidgets(realWidget.children, buildContext),
     };
   }
 

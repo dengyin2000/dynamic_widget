@@ -41,7 +41,9 @@ class SafeAreaWidgetParser extends WidgetParser {
       "right": realWidget.right,
       "top": realWidget.top,
       "bottom": realWidget.bottom,
-      "minimum": minimum!=null? "${minimum.left},${minimum.top},${minimum.right},${minimum.bottom}":null,
+      "minimum": minimum != null
+          ? "${minimum.left},${minimum.top},${minimum.right},${minimum.bottom}"
+          : null,
       "maintainBottomViewPadding": realWidget.maintainBottomViewPadding,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
