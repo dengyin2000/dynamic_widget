@@ -25,14 +25,14 @@
 
 > I work for an e-commerce company. We need to build flexible pages. So we define a light UI protocol, and implement on Android and iOS. We can dynamic update App UIs by pushing a json file. With this ability, we can do some UI A/B testing without publishing App to app store. Flutter allows you to build beautiful native apps on iOS and Android from a single codebase, it can allow you to build web app later. Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bugs faster. But it still build native app, the UIs can't be dynamic updated. If you want to modify the UIs, you need to publish the updated app to app store. With this project, you can build your UIs from a json string, which is the UI protocol. The json string is very similar with the Flutter widget dart code. All widget type and widget properties are the same.
     
-<img src="./img/Sample.png" width="800">
+<img src="https://github.com/dengyin2000/dynamic_widget/raw/master/img/Sample.png" width="800">
 
 Widget type will be a type property, and widget's properties will be the json properties too. All properties and their values will be almost the same. You can checkout the following document.
 
 [Currently support flutter widgets and properties](WIDGETS.md)
 
 ## Screenshots
-<img src="./img/demo1.gif" width="400">
+<img src="https://github.com/dengyin2000/dynamic_widget/raw/master/img/demo1.gif" width="400">
 
 ## Install
 #### 1. Depend on it
