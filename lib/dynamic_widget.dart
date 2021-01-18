@@ -3,6 +3,7 @@ library dynamic_widget;
 import 'dart:convert';
 
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/appbar_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
@@ -69,7 +70,8 @@ class DynamicWidgetBuilder {
     ClipRRectWidgetParser(),
     SafeAreaWidgetParser(),
     ListTileWidgetParser(),
-    ScaffoldWidgetParser()
+    ScaffoldWidgetParser(),
+    AppBarWidgetParser()
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
