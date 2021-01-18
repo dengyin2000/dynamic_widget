@@ -20,6 +20,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/safearea_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/scaffold_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/sizedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
@@ -67,7 +68,8 @@ class DynamicWidgetBuilder {
     IconWidgetParser(),
     ClipRRectWidgetParser(),
     SafeAreaWidgetParser(),
-    ListTileWidgetParser()
+    ListTileWidgetParser(),
+    ScaffoldWidgetParser()
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
