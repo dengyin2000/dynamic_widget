@@ -38,6 +38,8 @@
 - [SelectableText Widget](#selectabletext-widget)
 - [Icon Widget](#icon-widget)
 - [DropCapText Widget](#dropcaptext-widget)
+- [Scaffold Widget](#scaffold-widget)
+- [AppBar Widget](#appbar-widget)
 
 ## Container Widget
 
@@ -504,3 +506,26 @@ DropCapText, Supported json properties:
 | overflow            | How visual overflow should be handled.                                                                                                                                      | String    | One of the following string:<br>ellipsis (default)<br>clip<br>fade                                                                                                                                                                                                                         | "ellipsis"                             |
 | maxLines            | An optional maximum number of lines for the text to span, wrapping if necessary. If the text exceeds the given number of lines, it will be truncated according to overflow. | int       | One of the following string:<br>start (default) <br>end                                                                                                                                                                                                                                    | "end"                                  |
 | dropCapPosition     | drop cap position                                                                                                                                                           | String    |                                                                                                                                                                                                                                                                                            | 3                                      |
+
+## Scaffold Widget
+
+Scaffold, Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| appBar        | An app bar to display at the top of the scaffold.      | Widget |                                                       |                                                                            |
+| body          | The primary content of the scaffold.                   | Widget |                                                       |                                                                            |
+| floatingActionButton         | A button displayed floating above [body], in the bottom right corner.                | Widget |                               |                                                 |
+| backgroundColor | The color of the [Material] widget that underlies the entire Scaffold.                           | "#AARRGGBB" or "#RRGGBB"                              | "#FF00FF"<br>"#00FF00FF"                                                   |
+
+## AppBar Widget
+
+AppBar, Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| title        | The primary widget displayed in the app bar.     | Widget |                                                       |                                                                            |
+| leading          | A widget to display before the [title].                 | Widget |                                                       |                                                                            |
+| actions         | Widgets to display in a row after the [title] widget.             | List<Widget> |                               |                                                 |
+| centerTitle          | Whether the title should be centered.                                                                                                                                                       | bool      |                                                                                                                                                                                                                                                                                            |                                        |
+| backgroundColor | The color to use for the app bar's material. Typically this should be set along with [brightness], [iconTheme], [textTheme].                           | "#AARRGGBB" or "#RRGGBB"                              | "#FF00FF"<br>"#00FF00FF"                                                   |

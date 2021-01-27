@@ -304,6 +304,8 @@ Already completed widgets:
 * [SelectableText](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#selectabletext-widget)
 * [Icon](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#icon-widget)
 * [DropCapText](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#dropcaptext-widget)
+* [Scaffold](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#scaffold-widget)
+* [AppBar](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#appbar-widget)
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
 
