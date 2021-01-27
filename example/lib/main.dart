@@ -355,6 +355,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 CodeEditorPage(listTileJson)));
                   },
                 ),
+                RaisedButton(
+                  child: Text("Scaffold & AppBar"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(scaffoldAppBarJson)));
+                  },
+                ),
               ]),
             ),
           ),

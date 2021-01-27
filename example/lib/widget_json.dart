@@ -1300,3 +1300,74 @@ var listTileJson = '''
 }
 
 ''';
+
+var scaffoldAppBarJson = '''
+{
+  "type": "Scaffold",
+  "body": {
+    "type": "Text",
+    "data": "This is body",
+    "textAlign": "start",
+    "overflow": "ellipsis",
+    "maxLines": null,
+    "semanticsLabel": null,
+    "softWrap": null,
+    "textDirection": "ltr",
+    "style": null,
+    "textScaleFactor": null
+  },
+  "appBar": {
+    "type": "AppBar",
+    "centerTitle": null,
+    "backgroundColor": null,
+    "title": {
+      "type": "Text",
+      "data": "This is the title of AppBar",
+      "textAlign": "start",
+      "overflow": "ellipsis",
+      "maxLines": null,
+      "semanticsLabel": null,
+      "softWrap": null,
+      "textDirection": "ltr",
+      "style": {
+        "color": "61000000",
+        "debugLabel": null,
+        "decoration": "none",
+        "fontSize": 20.0,
+        "fontFamily": null,
+        "fontStyle": "normal",
+        "fontWeight": "normal"
+      },
+      "textScaleFactor": null
+    },
+    "leading": null,
+    "actions": [
+      {
+        "type": "SizedBox",
+        "width": 40.0,
+        "height": 40.0,
+        "child": {
+          "type": "RaisedButton",
+          "color": "ff2196f3",
+          "disabledColor": null,
+          "disabledElevation": null,
+          "disabledTextColor": null,
+          "elevation": null,
+          "padding": "0.0,0.0,0.0,0.0",
+          "splashColor": null,
+          "textColor": null,
+          "child": {
+            "type": "Icon",
+            "data": "list",
+            "size": 40.0,
+            "color": null,
+            "semanticLabel": null,
+            "textDirection": null
+          }
+        }
+      }
+    ]
+  }
+}
+''';
+
