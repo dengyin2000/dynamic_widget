@@ -1092,11 +1092,11 @@ Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
   return {
     'minWidth': constraints.minWidth,
     'maxWidth': constraints.maxWidth == double.infinity
-        ? 999999999.99
+        ? infinity
         : constraints.maxWidth,
     'minHeight': constraints.minHeight,
     'maxHeight': constraints.maxHeight == double.infinity
-        ? 999999999.99
+        ? infinity
         : constraints.maxHeight,
   };
 }
