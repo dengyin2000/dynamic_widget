@@ -79,6 +79,11 @@
 
 * Fix the bug which photo can't be display in pub.dev
 
+## [3.0.5] - Add Scaffold and AppBar Widget
+
+* Add Scaffold and AppBar Widget.
+* Fix bugs.
+
 
 
 
