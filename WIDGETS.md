@@ -40,6 +40,9 @@
 - [DropCapText Widget](#dropcaptext-widget)
 - [Scaffold Widget](#scaffold-widget)
 - [AppBar Widget](#appbar-widget)
+- [LimitedBox Widget](#limited-widget)
+- [Offstage Widget](#offstage-widget)
+- [OverflowBox Widget](#overflowbox-widget)
 
 ## Container Widget
 
@@ -529,3 +532,36 @@ AppBar, Supported json properties:
 | actions         | Widgets to display in a row after the [title] widget.             | List<Widget> |                               |                                                 |
 | centerTitle          | Whether the title should be centered.                                                                                                                                                       | bool      |                                                                                                                                                                                                                                                                                            |                                        |
 | backgroundColor | The color to use for the app bar's material. Typically this should be set along with [brightness], [iconTheme], [textTheme].                           | "#AARRGGBB" or "#RRGGBB"                              | "#FF00FF"<br>"#00FF00FF"                                                   |
+
+## LimitedBox Widget
+
+LimitedBox, here to see flutter [LimitedBox](https://api.flutter.dev/flutter/widgets/LimitedBox-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| maxHeight        | The maximum height limit to apply in the absence of a BoxConstraints.maxHeight constraint.     | double |                                                       |                                                                            |
+| maxWidth          | The maximum width limit to apply in the absence of a BoxConstraints.maxWidth constraint.                | double |                                                       |                                                                            |
+| child    | The widget below this widget in the tree.                                                     | Widget |                                |             |
+
+## Offstage Widget
+
+Offstage, here to see flutter [Offstage](https://api.flutter.dev/flutter/widgets/Offstage-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| offstage        | Whether the child is hidden from the rest of the tree.    | bool |                                                       |                                                                            |
+| child    | The widget below this widget in the tree.                                                     | Widget |                                |             |
+
+## OverflowBox Widget
+
+OverflowBox, here to see flutter [OverflowBox](https://api.flutter.dev/flutter/widgets/OverflowBox-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| alignment   | How to align the child.                                                                     | String         | One of the following string:<br>topLeft<br>topCenter<br>topRight<br>centerLeft<br>center<br>centerRight<br>bottomLeft<br>bottomCenter<br>bottomRight | "topLeft"                            |
+| maxHeight        | The maximum height constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.    | double |                                                       |                                                                            |
+| maxWidth          | The maximum width constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.               | double |                                                       |                                                                            |
+| minHeight        | The minimum height constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.   | double |                                                       |                                                                            |
+| minWidth          | The minimum width constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.              | double |                                                       |                                                                            |
+| child    | The widget below this widget in the tree.                                                     | Widget |                                |             |
+

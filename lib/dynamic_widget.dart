@@ -15,7 +15,9 @@ import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart
 import 'package:dynamic_widget/dynamic_widget/basic/icon_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/limitedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/listtile_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/offstage_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/opacity_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
@@ -34,6 +36,7 @@ import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
+import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
@@ -71,7 +74,10 @@ class DynamicWidgetBuilder {
     SafeAreaWidgetParser(),
     ListTileWidgetParser(),
     ScaffoldWidgetParser(),
-    AppBarWidgetParser()
+    AppBarWidgetParser(),
+    LimitedBoxWidgetParser(),
+    OffstageWidgetParser(),
+    OverflowBoxWidgetParser()
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};

@@ -1371,3 +1371,70 @@ var scaffoldAppBarJson = '''
 }
 ''';
 
+var limitedboxJson = '''
+{
+  "type": "Row",
+  "children":[
+    {
+      "type" : "Container",
+      "color": "#FF00FF",
+      "width": 100.0
+    },
+    {
+      "type": "LimitedBox",
+      "maxWidth": 150.0,
+      "child" : {
+        "type": "Container",
+        "color": "#FFFF00",
+        "width": 450.0
+      }
+    }
+  ]
+}
+''';
+
+var offstageJson = '''
+{
+  "type": "Row",
+  "children":[
+    {
+      "type" : "Container",
+      "color": "#FF00FF",
+      "width": 100.0
+    },
+    {
+      "type": "Offstage",
+      "offstage": true,
+      "child" : {
+        "type": "Container",
+        "color": "#FFFF00",
+        "width": 250.0
+      }
+    }
+  ]
+}
+''';
+
+var overflowboxJson = '''
+{
+  "type": "Container",
+  "width": 200.0,
+  "height": 200.0,
+  "color":"#FF00FF",
+  "padding": "5, 5, 5, 5",
+  "child":{
+    "type": "OverflowBox",
+    "maxWidth": 300.0,
+    "maxHeight": 300.0,
+    "child": {
+      "type": "Container",
+      "child": {
+        "width": 400.0,
+        "height": 400.0,
+        "color":"#33FF00FF"
+      }
+    }
+  }
+}
+''';
+

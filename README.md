@@ -306,6 +306,10 @@ Already completed widgets:
 * [DropCapText](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#dropcaptext-widget)
 * [Scaffold](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#scaffold-widget)
 * [AppBar](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#appbar-widget)
+* [LimitedBox](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#limitedbox-widget)
+* [Offstage](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#offstage-widget)
+* [OverflowBox](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#overflowbox-widget)
+
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
 

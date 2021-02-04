@@ -365,6 +365,36 @@ class _MyHomePageState extends State<MyHomePage> {
                                 CodeEditorPage(scaffoldAppBarJson)));
                   },
                 ),
+                RaisedButton(
+                  child: Text("LimitedBox"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(limitedboxJson)));
+                  },
+                ),
+                RaisedButton(
+                  child: Text("Offstage"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(offstageJson)));
+                  },
+                ),
+                RaisedButton(
+                  child: Text("OverflowBox"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(overflowboxJson)));
+                  },
+                ),
               ]),
             ),
           ),
