@@ -40,7 +40,7 @@
 - [DropCapText Widget](#dropcaptext-widget)
 - [Scaffold Widget](#scaffold-widget)
 - [AppBar Widget](#appbar-widget)
-- [LimitedBox Widget](#limited-widget)
+- [LimitedBox Widget](#limitedbox-widget)
 - [Offstage Widget](#offstage-widget)
 - [OverflowBox Widget](#overflowbox-widget)
 
