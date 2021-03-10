@@ -13,9 +13,9 @@ class DropCapTextParser extends WidgetParser {
       mode: map.containsKey('mode')
           ? parseDropCapMode(map['mode'])
           : DropCapMode.inside,
-      style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
+      style: map.containsKey('style') ? parseTextStyle(buildContext, map['style']) : null,
       dropCapStyle: map.containsKey('dropCapStyle')
-          ? parseTextStyle(map['dropCapStyle'])
+          ? parseTextStyle(buildContext, map['dropCapStyle'])
           : null,
       textAlign: map.containsKey('textAlign')
           ? parseTextAlign(map['textAlign'])

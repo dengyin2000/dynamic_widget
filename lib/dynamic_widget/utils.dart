@@ -268,7 +268,7 @@ Color parseHexColor(String hexColorString) {
   return Color(colorInt);
 }
 
-TextStyle parseTextStyle(Map<String, dynamic> map) {
+TextStyle parseTextStyle(BuildContext context, Map<String, dynamic> map) {
   if (map == null) {
     return null;
   }
@@ -283,7 +283,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
   return TextStyle(
-    color: parseHexColor(color),
+    color: parseColor(context, color),
     debugLabel: debugLabel,
     decoration: parseTextDecoration(decoration),
     fontSize: fontSize,
