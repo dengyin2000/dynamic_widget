@@ -37,7 +37,7 @@ class ScaffoldWidgetParser extends WidgetParser {
               map["floatingActionButton"], buildContext, listener)
           : null,
       backgroundColor: map.containsKey("backgroundColor")
-          ? parseHexColor(map["backgroundColor"])
+          ? parseColor(buildContext, map["backgroundColor"])
           : null,
     );
 
