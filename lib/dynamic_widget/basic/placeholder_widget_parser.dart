@@ -8,7 +8,7 @@ class PlaceholderWidgetParser extends WidgetParser {
       ClickListener listener) {
     return Placeholder(
       color: map.containsKey('color')
-          ? parseHexColor(map['color'])
+          ? parseColor(buildContext, map['color'])
           : const Color(0xFF455A64),
       strokeWidth:
           map.containsKey('strokeWidth') ? map['strokeWidth']?.toDouble() : 2.0,

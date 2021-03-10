@@ -12,7 +12,9 @@ class IconWidgetParser extends WidgetParser {
           ? getIconUsingPrefix(name: map['data'])
           : Icons.android,
       size: map.containsKey("size") ? map['size']?.toDouble() : null,
-      color: map.containsKey('color') ? parseHexColor(map['color']) : null,
+      color: map.containsKey('color')
+          ? parseColor(buildContext, map['color'])
+          : null,
       semanticLabel:
           map.containsKey('semanticLabel') ? map['semanticLabel'] : null,
       textDirection: map.containsKey('textDirection')
