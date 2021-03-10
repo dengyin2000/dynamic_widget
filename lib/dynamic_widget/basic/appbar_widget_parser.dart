@@ -45,7 +45,7 @@ class AppBarWidgetParser extends WidgetParser {
       centerTitle:
           map.containsKey("centerTitle") ? map["centerTitle"] as bool : false,
       backgroundColor: map.containsKey("backgroundColor")
-          ? parseHexColor(map["backgroundColor"])
+          ? parseColor(buildContext, map["backgroundColor"])
           : null,
     );
 
