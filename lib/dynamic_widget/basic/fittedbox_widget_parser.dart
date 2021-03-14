@@ -5,12 +5,12 @@ import 'package:flutter/widgets.dart';
 class FittedBoxWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return FittedBox(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
           : Alignment.center,
-      fit: map.containsKey("fit") ? parseBoxFit(map["fit"]) : BoxFit.contain,
+      fit: map.containsKey("fit") ? parseBoxFit(map["fit"])! : BoxFit.contain,
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
     );
@@ -20,12 +20,12 @@ class FittedBoxWidgetParser extends WidgetParser {
   String get widgetName => "FittedBox";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as FittedBox;
     return <String, dynamic>{
       "type": widgetName,
       "alignment": realWidget.alignment != null
-          ? exportAlignment(realWidget.alignment)
+          ? exportAlignment(realWidget.alignment as Alignment?)
           : null,
       "fit": realWidget.fit != null
           ? exportBoxFit(realWidget.fit)

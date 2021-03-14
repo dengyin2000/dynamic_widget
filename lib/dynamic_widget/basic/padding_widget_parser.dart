@@ -5,11 +5,11 @@ import 'package:flutter/widgets.dart';
 class PaddingWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Padding(
       padding: map.containsKey("padding")
-          ? parseEdgeInsetsGeometry(map["padding"])
-          : null,
+          ? parseEdgeInsetsGeometry(map["padding"])!
+          : EdgeInsets.zero,
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
     );
@@ -19,7 +19,7 @@ class PaddingWidgetParser extends WidgetParser {
   String get widgetName => "Padding";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Padding;
     var padding = realWidget.padding as EdgeInsets;
     return <String, dynamic>{

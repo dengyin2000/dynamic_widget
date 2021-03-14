@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 class ListViewWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") &&
         "horizontal" == map["scrollDirection"]) {
@@ -52,14 +52,14 @@ class ListViewWidgetParser extends WidgetParser {
   String get widgetName => "ListView";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as ListViewWidget;
     String scrollDirection = "vertical";
     if (realWidget._params.scrollDirection == Axis.horizontal) {
       scrollDirection = "horizontal";
     }
 
-    var padding = realWidget._params.padding as EdgeInsets;
+    var padding = realWidget._params.padding as EdgeInsets?;
     return <String, dynamic>{
       "type": "ListView",
       "scrollDirection": scrollDirection,
@@ -74,7 +74,7 @@ class ListViewWidgetParser extends WidgetParser {
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
       "isDemo": realWidget._params.isDemo ?? false,
       "children": DynamicWidgetBuilder.exportWidgets(
-          realWidget._params.children, buildContext)
+          realWidget._params.children!, buildContext)
     };
   }
 
@@ -94,7 +94,7 @@ class ListViewWidget extends StatefulWidget {
 
 class _ListViewWidgetState extends State<ListViewWidget> {
   ListViewParams _params;
-  List<Widget> _items = [];
+  List<Widget?> _items = [];
 
   ScrollController _scrollController = new ScrollController();
   bool isPerformingRequest = false;
@@ -105,14 +105,14 @@ class _ListViewWidgetState extends State<ListViewWidget> {
 
   _ListViewWidgetState(this._params) {
     if (_params.children != null) {
-      _items.addAll(_params.children);
+      _items.addAll(_params.children!);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    if (_params.loadMoreUrl == null || _params.loadMoreUrl.isEmpty) {
+    if (_params.loadMoreUrl == null || _params.loadMoreUrl!.isEmpty) {
       loadCompleted = true;
       return;
     }
@@ -128,7 +128,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo ? await fakeRequest() : await doRequest();
+      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
@@ -172,7 +172,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
         if (index == _items.length) {
           return _buildProgressIndicator();
         } else {
-          return _items[index];
+          return _items[index]!;
         }
       },
       controller: _scrollController,
@@ -213,7 +213,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     // Await the http get response, then decode the json-formatted responce.
     try {
       var response = await http.get(Uri.parse(getLoadMoreUrl(
-          _params.loadMoreUrl, _items.length, _params.pageSize)));
+          _params.loadMoreUrl, _items.length, _params.pageSize)!));
       if (response.statusCode == 200) {
         return response.body;
       }
@@ -225,19 +225,19 @@ class _ListViewWidgetState extends State<ListViewWidget> {
 }
 
 class ListViewParams {
-  Axis scrollDirection;
-  bool reverse;
-  bool shrinkWrap;
-  double cacheExtent;
-  EdgeInsetsGeometry padding;
-  double itemExtent;
-  List<Widget> children;
+  Axis? scrollDirection;
+  bool? reverse;
+  bool? shrinkWrap;
+  double? cacheExtent;
+  EdgeInsetsGeometry? padding;
+  double? itemExtent;
+  List<Widget?>? children;
 
-  int pageSize;
-  String loadMoreUrl;
+  int? pageSize;
+  String? loadMoreUrl;
 
   //use for demo, if true, it will do the fake request.
-  bool isDemo;
+  bool? isDemo;
 
   ListViewParams(
       {this.scrollDirection,

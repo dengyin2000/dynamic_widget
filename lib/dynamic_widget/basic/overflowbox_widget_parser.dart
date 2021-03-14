@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 
 class OverflowBoxWidgetParser extends WidgetParser{
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     OverflowBox realWidget = widget as OverflowBox;
     return <String, dynamic>{
       "type": widgetName,
-      "alignment": exportAlignment(realWidget.alignment),
+      "alignment": exportAlignment(realWidget.alignment as Alignment?),
       "minWidth": realWidget.minWidth,
       "maxWidth": realWidget.maxWidth,
       "minHeight": realWidget.minHeight,
@@ -18,7 +18,7 @@ class OverflowBoxWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener? listener) {
     return OverflowBox(
       alignment: parseAlignment(map['alignment']),
       minWidth: map.containsKey("minWidth")?map['minWidth']:null,

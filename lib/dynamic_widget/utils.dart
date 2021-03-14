@@ -4,7 +4,7 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
 
-TextAlign parseTextAlign(String textAlignString) {
+TextAlign parseTextAlign(String? textAlignString) {
   //left the system decide
   TextAlign textAlign = TextAlign.start;
   switch (textAlignString) {
@@ -32,7 +32,7 @@ TextAlign parseTextAlign(String textAlignString) {
   return textAlign;
 }
 
-String exportTextAlign(TextAlign textAlign) {
+String exportTextAlign(TextAlign? textAlign) {
   String rt = "start";
   if (textAlign == TextAlign.left) {
     rt = "left";
@@ -55,7 +55,7 @@ String exportTextAlign(TextAlign textAlign) {
   return rt;
 }
 
-TextOverflow parseTextOverflow(String textOverflowString) {
+TextOverflow parseTextOverflow(String? textOverflowString) {
   TextOverflow textOverflow = TextOverflow.ellipsis;
   switch (textOverflowString) {
     case "ellipsis":
@@ -73,7 +73,7 @@ TextOverflow parseTextOverflow(String textOverflowString) {
   return textOverflow;
 }
 
-String exportTextOverflow(TextOverflow textOverflow) {
+String exportTextOverflow(TextOverflow? textOverflow) {
   String rt = "ellipsis";
   if (textOverflow == TextOverflow.clip) {
     rt = "clip";
@@ -85,7 +85,7 @@ String exportTextOverflow(TextOverflow textOverflow) {
   return rt;
 }
 
-TextDecoration parseTextDecoration(String textDecorationString) {
+TextDecoration parseTextDecoration(String? textDecorationString) {
   TextDecoration textDecoration = TextDecoration.none;
   switch (textDecorationString) {
     case "lineThrough":
@@ -104,7 +104,7 @@ TextDecoration parseTextDecoration(String textDecorationString) {
   return textDecoration;
 }
 
-String exportTextDecoration(TextDecoration decoration) {
+String exportTextDecoration(TextDecoration? decoration) {
   var rt = "none";
   if (decoration == TextDecoration.lineThrough) {
     rt = "lineThrough";
@@ -121,7 +121,7 @@ String exportTextDecoration(TextDecoration decoration) {
   return rt;
 }
 
-TextDirection parseTextDirection(String textDirectionString) {
+TextDirection parseTextDirection(String? textDirectionString) {
   TextDirection textDirection = TextDirection.ltr;
   switch (textDirectionString) {
     case 'ltr':
@@ -136,7 +136,7 @@ TextDirection parseTextDirection(String textDirectionString) {
   return textDirection;
 }
 
-String exportTextDirection(TextDirection textDirection) {
+String exportTextDirection(TextDirection? textDirection) {
   String rt = "ltr";
   if (textDirection == TextDirection.rtl) {
     rt = "rtl";
@@ -144,7 +144,7 @@ String exportTextDirection(TextDirection textDirection) {
   return rt;
 }
 
-FontWeight parseFontWeight(String textFontWeight) {
+FontWeight parseFontWeight(String? textFontWeight) {
   FontWeight fontWeight = FontWeight.normal;
   switch (textFontWeight) {
     case 'w100':
@@ -182,7 +182,7 @@ FontWeight parseFontWeight(String textFontWeight) {
   return fontWeight;
 }
 
-String exportFontWeight(FontWeight fontWeight) {
+String exportFontWeight(FontWeight? fontWeight) {
   String rt = "normal";
   if (fontWeight == FontWeight.w100) {
     rt = "w100";
@@ -214,7 +214,7 @@ String exportFontWeight(FontWeight fontWeight) {
   return rt;
 }
 
-Color parseHexColor(String hexColorString) {
+Color? parseHexColor(String? hexColorString) {
   if (hexColorString == null) {
     return null;
   }
@@ -226,17 +226,17 @@ Color parseHexColor(String hexColorString) {
   return Color(colorInt);
 }
 
-TextStyle parseTextStyle(Map<String, dynamic> map) {
+TextStyle? parseTextStyle(Map<String, dynamic>? map) {
   if (map == null) {
     return null;
   }
   //TODO: more properties need to be implemented, such as decorationColor, decorationStyle, wordSpacing and so on.
-  String color = map['color'];
-  String debugLabel = map['debugLabel'];
-  String decoration = map['decoration'];
-  String fontFamily = map['fontFamily'];
-  double fontSize = map['fontSize']?.toDouble();
-  String fontWeight = map['fontWeight'];
+  String? color = map['color'];
+  String? debugLabel = map['debugLabel'];
+  String? decoration = map['decoration'];
+  String? fontFamily = map['fontFamily'];
+  double? fontSize = map['fontSize']?.toDouble();
+  String? fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
@@ -251,14 +251,14 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
   );
 }
 
-Map<String, dynamic> exportTextStyle(TextStyle textStyle) {
+Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
   if (textStyle == null) {
     return null;
   }
 
   return <String, dynamic>{
     "color": textStyle.color != null
-        ? textStyle.color.value.toRadixString(16)
+        ? textStyle.color!.value.toRadixString(16)
         : null,
     "debugLabel": textStyle.debugLabel,
     "decoration": exportTextDecoration(textStyle.decoration),
@@ -269,7 +269,7 @@ Map<String, dynamic> exportTextStyle(TextStyle textStyle) {
   };
 }
 
-Alignment parseAlignment(String alignmentString) {
+Alignment parseAlignment(String? alignmentString) {
   Alignment alignment = Alignment.center;
   switch (alignmentString) {
     case 'topLeft':
@@ -305,7 +305,7 @@ Alignment parseAlignment(String alignmentString) {
 
 const double infinity = 9999999999;
 
-BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
+BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
   double minWidth = 0.0;
   double maxWidth = double.infinity;
   double minHeight = 0.0;
@@ -369,7 +369,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic> map) {
   );
 }
 
-EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString) {
+EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
   //left,top,right,bottom
   if (edgeInsetsGeometryString == null ||
       edgeInsetsGeometryString.trim() == '') {
@@ -383,7 +383,7 @@ EdgeInsetsGeometry parseEdgeInsetsGeometry(String edgeInsetsGeometryString) {
       bottom: double.parse(values[3]));
 }
 
-CrossAxisAlignment parseCrossAxisAlignment(String crossAxisAlignmentString) {
+CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
   switch (crossAxisAlignmentString) {
     case 'start':
       return CrossAxisAlignment.start;
@@ -420,7 +420,7 @@ String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment) {
   return rt;
 }
 
-MainAxisAlignment parseMainAxisAlignment(String mainAxisAlignmentString) {
+MainAxisAlignment parseMainAxisAlignment(String? mainAxisAlignmentString) {
   switch (mainAxisAlignmentString) {
     case 'start':
       return MainAxisAlignment.start;
@@ -454,20 +454,20 @@ String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment) {
   return rt;
 }
 
-MainAxisSize parseMainAxisSize(String mainAxisSizeString) =>
+MainAxisSize parseMainAxisSize(String? mainAxisSizeString) =>
     mainAxisSizeString == 'min' ? MainAxisSize.min : MainAxisSize.max;
 
-TextBaseline parseTextBaseline(String parseTextBaselineString) =>
+TextBaseline parseTextBaseline(String? parseTextBaselineString) =>
     'alphabetic' == parseTextBaselineString
         ? TextBaseline.alphabetic
         : TextBaseline.ideographic;
 
-VerticalDirection parseVerticalDirection(String verticalDirectionString) =>
+VerticalDirection parseVerticalDirection(String? verticalDirectionString) =>
     'up' == verticalDirectionString
         ? VerticalDirection.up
         : VerticalDirection.down;
 
-String exportBlendMode(BlendMode blendMode) {
+String? exportBlendMode(BlendMode? blendMode) {
   if (blendMode == null) {
     return null;
   }
@@ -563,7 +563,7 @@ String exportBlendMode(BlendMode blendMode) {
   return rt;
 }
 
-BlendMode parseBlendMode(String blendModeString) {
+BlendMode? parseBlendMode(String? blendModeString) {
   if (blendModeString == null || blendModeString.trim().length == 0) {
     return null;
   }
@@ -633,7 +633,7 @@ BlendMode parseBlendMode(String blendModeString) {
   }
 }
 
-BoxFit parseBoxFit(String boxFitString) {
+BoxFit? parseBoxFit(String? boxFitString) {
   if (boxFitString == null) {
     return null;
   }
@@ -658,7 +658,7 @@ BoxFit parseBoxFit(String boxFitString) {
   return null;
 }
 
-String exportBoxFit(BoxFit boxFit) {
+String exportBoxFit(BoxFit? boxFit) {
   String rt = "contain";
   if (boxFit == BoxFit.fill) {
     rt = "fill";
@@ -681,7 +681,7 @@ String exportBoxFit(BoxFit boxFit) {
   return rt;
 }
 
-ImageRepeat parseImageRepeat(String imageRepeatString) {
+ImageRepeat? parseImageRepeat(String? imageRepeatString) {
   if (imageRepeatString == null) {
     return null;
   }
@@ -702,9 +702,6 @@ ImageRepeat parseImageRepeat(String imageRepeatString) {
 }
 
 String exportImageRepeat(ImageRepeat imageRepeat) {
-  if (imageRepeat == null) {
-    return null;
-  }
   String rt = "noRepeat";
   if (imageRepeat == ImageRepeat.repeat) {
     rt = "repeat";
@@ -718,7 +715,7 @@ String exportImageRepeat(ImageRepeat imageRepeat) {
   return rt;
 }
 
-Rect parseRect(String fromLTRBString) {
+Rect? parseRect(String? fromLTRBString) {
   if (fromLTRBString == null) {
     return null;
   }
@@ -731,7 +728,7 @@ String exportRect(Rect rect) {
   return "${rect.left},${rect.top},${rect.right},${rect.bottom}";
 }
 
-FilterQuality parseFilterQuality(String filterQualityString) {
+FilterQuality? parseFilterQuality(String? filterQualityString) {
   if (filterQualityString == null) {
     return null;
   }
@@ -750,9 +747,7 @@ FilterQuality parseFilterQuality(String filterQualityString) {
 }
 
 String exportFilterQuality(FilterQuality filterQuality) {
-  if (filterQuality == null) {
-    return null;
-  }
+
   String rt = "low";
   if (filterQuality == FilterQuality.none) {
     rt = "none";
@@ -769,7 +764,7 @@ String exportFilterQuality(FilterQuality filterQuality) {
   return rt;
 }
 
-String getLoadMoreUrl(String url, int currentNo, int pageSize) {
+String? getLoadMoreUrl(String? url, int currentNo, int? pageSize) {
   if (url == null) {
     return null;
   }
@@ -791,7 +786,7 @@ String getLoadMoreUrl(String url, int currentNo, int pageSize) {
   return url;
 }
 
-StackFit parseStackFit(String value) {
+StackFit? parseStackFit(String? value) {
   if (value == null) return null;
 
   switch (value) {
@@ -816,7 +811,7 @@ String exportStackFit(StackFit stackFit) {
   return rt;
 }
 
-Clip parseClip(String value) {
+Clip? parseClip(String? value) {
   if (value == null) {
     return null;
   }
@@ -849,7 +844,7 @@ String exportClip(Clip clip) {
   return rt;
 }
 
-Axis parseAxis(String axisString) {
+Axis parseAxis(String? axisString) {
   if (axisString == null) {
     return Axis.horizontal;
   }
@@ -864,7 +859,7 @@ Axis parseAxis(String axisString) {
 }
 
 //WrapAlignment
-WrapAlignment parseWrapAlignment(String wrapAlignmentString) {
+WrapAlignment parseWrapAlignment(String? wrapAlignmentString) {
   if (wrapAlignmentString == null) {
     return WrapAlignment.start;
   }
@@ -903,7 +898,7 @@ String exportWrapAlignment(WrapAlignment wrapAlignment) {
 }
 
 //WrapCrossAlignment
-WrapCrossAlignment parseWrapCrossAlignment(String wrapCrossAlignmentString) {
+WrapCrossAlignment parseWrapCrossAlignment(String? wrapCrossAlignmentString) {
   if (wrapCrossAlignmentString == null) {
     return WrapCrossAlignment.start;
   }
@@ -930,7 +925,7 @@ String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment) {
   return rt;
 }
 
-Clip parseClipBehavior(String clipBehaviorString) {
+Clip parseClipBehavior(String? clipBehaviorString) {
   if (clipBehaviorString == null) {
     return Clip.antiAlias;
   }
@@ -948,9 +943,6 @@ Clip parseClipBehavior(String clipBehaviorString) {
 }
 
 String exportClipBehavior(Clip clip) {
-  if (clip == null) {
-    return "antiAlias";
-  }
 
   if (clip == Clip.antiAliasWithSaveLayer) {
     return "antiAliasWithSaveLayer";
@@ -967,7 +959,7 @@ String exportClipBehavior(Clip clip) {
   return "antiAlias";
 }
 
-DropCapMode parseDropCapMode(String value) {
+DropCapMode? parseDropCapMode(String? value) {
   if (value == null) {
     return null;
   }
@@ -984,7 +976,7 @@ DropCapMode parseDropCapMode(String value) {
   }
 }
 
-String exportDropCapMod(DropCapMode mode) {
+String? exportDropCapMod(DropCapMode? mode) {
   if (mode == null) {
     return null;
   }
@@ -1003,7 +995,7 @@ String exportDropCapMod(DropCapMode mode) {
   }
 }
 
-DropCapPosition parseDropCapPosition(String value) {
+DropCapPosition? parseDropCapPosition(String? value) {
   if (value == null) {
     return null;
   }
@@ -1018,7 +1010,7 @@ DropCapPosition parseDropCapPosition(String value) {
   }
 }
 
-String exportDropCapPosition(DropCapPosition dropCapPosition) {
+String exportDropCapPosition(DropCapPosition? dropCapPosition) {
   String rt = "start";
   if (dropCapPosition == DropCapPosition.end) {
     rt = "end";
@@ -1026,8 +1018,8 @@ String exportDropCapPosition(DropCapPosition dropCapPosition) {
   return rt;
 }
 
-DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
-    ClickListener listener) {
+DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
+    ClickListener? listener) {
   if (map == null) {
     return null;
   }
@@ -1039,7 +1031,7 @@ DropCap parseDropCap(Map<String, dynamic> map, BuildContext buildContext,
   );
 }
 
-Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext) {
+Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext) {
   if (dropCap == null) {
     return null;
   }
@@ -1050,7 +1042,7 @@ Map<String, dynamic> exportDropCap(DropCap dropCap, BuildContext buildContext) {
   };
 }
 
-String exportAlignment(Alignment alignment) {
+String exportAlignment(Alignment? alignment) {
   if (alignment == null) {
     return "center";
   }

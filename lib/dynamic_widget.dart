@@ -101,7 +101,7 @@ class DynamicWidgetBuilder {
     }
   }
 
-  static Widget build(
+  static Widget? build(
       String json, BuildContext buildContext, ClickListener listener) {
     initDefaultParsersIfNess();
     var map = jsonDecode(json);
@@ -111,13 +111,13 @@ class DynamicWidgetBuilder {
     return widget;
   }
 
-  static Widget buildFromMap(Map<String, dynamic> map,
-      BuildContext buildContext, ClickListener listener) {
+  static Widget? buildFromMap(Map<String, dynamic>? map,
+      BuildContext buildContext, ClickListener? listener) {
     initDefaultParsersIfNess();
     if (map == null) {
       return null;
     }
-    String widgetName = map['type'];
+    String? widgetName = map['type'];
     if (widgetName == null) {
       return null;
     }
@@ -129,17 +129,17 @@ class DynamicWidgetBuilder {
     return null;
   }
 
-  static List<Widget> buildWidgets(
-      List<dynamic> values, BuildContext buildContext, ClickListener listener) {
+  static List<Widget?> buildWidgets(
+      List<dynamic> values, BuildContext buildContext, ClickListener? listener) {
     initDefaultParsersIfNess();
-    List<Widget> rt = [];
+    List<Widget?> rt = [];
     for (var value in values) {
       rt.add(buildFromMap(value, buildContext, listener));
     }
     return rt;
   }
 
-  static Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  static Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     initDefaultParsersIfNess();
     var parser = _findMatchedWidgetParserForExport(widget);
     if (parser != null) {
@@ -150,17 +150,17 @@ class DynamicWidgetBuilder {
     return null;
   }
 
-  static List<Map<String, dynamic>> exportWidgets(
-      List<Widget> widgets, BuildContext buildContext) {
+  static List<Map<String, dynamic>?> exportWidgets(
+      List<Widget?> widgets, BuildContext? buildContext) {
     initDefaultParsersIfNess();
-    List<Map<String, dynamic>> rt = [];
+    List<Map<String, dynamic>?> rt = [];
     for (var widget in widgets) {
       rt.add(export(widget, buildContext));
     }
     return rt;
   }
 
-  static WidgetParser _findMatchedWidgetParserForExport(Widget widget) {
+  static WidgetParser? _findMatchedWidgetParserForExport(Widget? widget) {
     for (var parser in _parsers) {
       if (parser.matchWidgetForExport(widget)) {
         return parser;
@@ -174,7 +174,7 @@ class DynamicWidgetBuilder {
 abstract class WidgetParser {
   /// parse the json map into a flutter widget.
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener);
+      ClickListener? listener);
 
   /// the widget type name for example:
   /// {"type" : "Text", "data" : "Denny"}
@@ -184,24 +184,24 @@ abstract class WidgetParser {
   String get widgetName;
 
   /// export the runtime widget to json
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext);
+  Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext);
 
   /// match current widget
   Type get widgetType;
 
-  bool matchWidgetForExport(Widget widget) => widget.runtimeType == widgetType;
+  bool matchWidgetForExport(Widget? widget) => widget.runtimeType == widgetType;
 }
 
 abstract class ClickListener {
-  void onClicked(String event);
+  void onClicked(String? event);
 }
 
 class NonResponseWidgetClickListener implements ClickListener {
   static final Logger log = Logger('NonResponseWidgetClickListener');
 
   @override
-  void onClicked(String event) {
-    log.info("receiver click event: " + event);
+  void onClicked(String? event) {
+    log.info("receiver click event: " + event!);
     print("receiver click event: " + event);
   }
 }

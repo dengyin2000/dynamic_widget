@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 class BaselineWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Baseline(
       baseline: map["baseline"]?.toDouble(),
       baselineType: map["baselineType"] == "alphabetic"
@@ -19,7 +19,7 @@ class BaselineWidgetParser extends WidgetParser {
   String get widgetName => "Baseline";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Baseline;
     return <String, dynamic>{
       "type": widgetName,

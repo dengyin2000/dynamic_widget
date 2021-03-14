@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 class ClipRRectWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var radius = map['borderRadius'].toString().split(",");
     double topLeft = double.parse(radius[0]);
     double topRight = double.parse(radius[1]);
@@ -28,9 +28,9 @@ class ClipRRectWidgetParser extends WidgetParser {
   String get widgetName => "ClipRRect";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as ClipRRect;
-    var borderRadius = realWidget.borderRadius;
+    var borderRadius = realWidget.borderRadius!;
     return <String, dynamic>{
       "type": widgetName,
       "borderRadius":

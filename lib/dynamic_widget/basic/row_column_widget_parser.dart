@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 class RowWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Row(
       crossAxisAlignment: map.containsKey('crossAxisAlignment')
           ? parseCrossAxisAlignment(map['crossAxisAlignment'])
@@ -26,7 +26,7 @@ class RowWidgetParser extends WidgetParser {
           ? parseVerticalDirection(map['verticalDirection'])
           : VerticalDirection.down,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
+          map['children'], buildContext, listener) as List<Widget>,
     );
   }
 
@@ -34,7 +34,7 @@ class RowWidgetParser extends WidgetParser {
   String get widgetName => "Row";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Row;
     return <String, dynamic>{
       "type": "Row",
@@ -66,7 +66,7 @@ class RowWidgetParser extends WidgetParser {
 class ColumnWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Column(
       crossAxisAlignment: map.containsKey('crossAxisAlignment')
           ? parseCrossAxisAlignment(map['crossAxisAlignment'])
@@ -87,7 +87,7 @@ class ColumnWidgetParser extends WidgetParser {
           ? parseVerticalDirection(map['verticalDirection'])
           : VerticalDirection.down,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
+          map['children'], buildContext, listener) as List<Widget>,
     );
   }
 
@@ -95,7 +95,7 @@ class ColumnWidgetParser extends WidgetParser {
   String get widgetName => "Column";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Column;
     return <String, dynamic>{
       "type": "Column",

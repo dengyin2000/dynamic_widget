@@ -6,15 +6,15 @@ import 'package:flutter/widgets.dart';
 class TextWidgetParser implements WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
-    String data = map['data'];
-    String textAlignString = map['textAlign'];
-    String overflow = map['overflow'];
-    int maxLines = map['maxLines'];
-    String semanticsLabel = map['semanticsLabel'];
-    bool softWrap = map['softWrap'];
-    String textDirectionString = map['textDirection'];
-    double textScaleFactor = map['textScaleFactor']?.toDouble();
+      ClickListener? listener) {
+    String? data = map['data'];
+    String? textAlignString = map['textAlign'];
+    String? overflow = map['overflow'];
+    int? maxLines = map['maxLines'];
+    String? semanticsLabel = map['semanticsLabel'];
+    bool? softWrap = map['softWrap'];
+    String? textDirectionString = map['textDirection'];
+    double? textScaleFactor = map['textScaleFactor']?.toDouble();
     var textSpan;
     var textSpanParser = TextSpanParser();
     if (map.containsKey("textSpan")) {
@@ -23,7 +23,7 @@ class TextWidgetParser implements WidgetParser {
 
     if (textSpan == null) {
       return Text(
-        data,
+        data!,
         textAlign: parseTextAlign(textAlignString),
         overflow: parseTextOverflow(overflow),
         maxLines: maxLines,
@@ -52,7 +52,7 @@ class TextWidgetParser implements WidgetParser {
   String get widgetName => "Text";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Text;
     if (realWidget.textSpan == null) {
       return <String, dynamic>{
@@ -75,7 +75,7 @@ class TextWidgetParser implements WidgetParser {
       var parser = TextSpanParser();
       return <String, dynamic>{
         "type": "Text",
-        "textSpan": parser.export(realWidget.textSpan),
+        "textSpan": parser.export(realWidget.textSpan as TextSpan),
         "textAlign": realWidget.textAlign != null
             ? exportTextAlign(realWidget.textAlign)
             : "start",
@@ -96,18 +96,18 @@ class TextWidgetParser implements WidgetParser {
   Type get widgetType => Text;
 
   @override
-  bool matchWidgetForExport(Widget widget) => widget is Text;
+  bool matchWidgetForExport(Widget? widget) => widget is Text;
 }
 
 class TextSpanParser {
-  TextSpan parse(Map<String, dynamic> map, ClickListener listener) {
-    String clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
+  TextSpan parse(Map<String, dynamic> map, ClickListener? listener) {
+    String? clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],
         style: parseTextStyle(map['style']),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
-            listener.onClicked(clickEvent);
+            listener!.onClicked(clickEvent);
           },
         children: []);
 
@@ -127,17 +127,17 @@ class TextSpanParser {
   }
 
   void parseChildren(
-      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener listener) {
+      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener? listener) {
     for (var childmap in childrenSpan) {
-      textSpan.children.add(parse(childmap, listener));
+      textSpan.children!.add(parse(childmap, listener));
     }
   }
 
   List<Map<String, dynamic>> exportChildren(TextSpan textSpan) {
     List<Map<String, dynamic>> rt = [];
-    if (textSpan.children != null && textSpan.children.isNotEmpty) {
-      for (var span in textSpan.children) {
-        rt.add(export(span));
+    if (textSpan.children != null && textSpan.children!.isNotEmpty) {
+      for (var span in textSpan.children!) {
+        rt.add(export(span as TextSpan));
       }
     }
     return rt;

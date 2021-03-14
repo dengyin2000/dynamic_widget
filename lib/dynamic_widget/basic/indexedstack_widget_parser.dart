@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 class IndexedStackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return IndexedStack(
       index: map.containsKey("index") ? map["index"] : 0,
       alignment: map.containsKey("alignment")
@@ -15,7 +15,7 @@ class IndexedStackWidgetParser extends WidgetParser {
           ? parseTextDirection(map["textDirection"])
           : null,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
+          map['children'], buildContext, listener) as List<Widget>,
     );
   }
 
@@ -23,13 +23,13 @@ class IndexedStackWidgetParser extends WidgetParser {
   String get widgetName => "IndexedStack";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as IndexedStack;
     return <String, dynamic>{
       "type": widgetName,
       "index": realWidget.index,
       "alignment": realWidget.alignment != null
-          ? exportAlignment(realWidget.alignment)
+          ? exportAlignment(realWidget.alignment as Alignment?)
           : AlignmentDirectional.topStart,
       "textDirection": realWidget.textDirection != null
           ? exportTextDirection(realWidget.textDirection)

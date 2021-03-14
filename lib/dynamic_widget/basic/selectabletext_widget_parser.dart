@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 class SelectableTextWidgetParser implements WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
-    String data = map['data'];
-    String textAlignString = map['textAlign'];
-    int maxLines = map['maxLines'];
-    String textDirectionString = map['textDirection'];
+      ClickListener? listener) {
+    String? data = map['data'];
+    String? textAlignString = map['textAlign'];
+    int? maxLines = map['maxLines'];
+    String? textDirectionString = map['textDirection'];
 //    double textScaleFactor = map['textScaleFactor'];
     var textSpan;
     var textSpanParser = SelectableTextSpanParser();
@@ -20,7 +20,7 @@ class SelectableTextWidgetParser implements WidgetParser {
 
     if (textSpan == null) {
       return SelectableText(
-        data,
+        data!,
         textAlign: parseTextAlign(textAlignString),
         maxLines: maxLines,
         textDirection: parseTextDirection(textDirectionString),
@@ -43,7 +43,7 @@ class SelectableTextWidgetParser implements WidgetParser {
   String get widgetName => "SelectableText";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as SelectableText;
     if (realWidget.textSpan == null) {
       return <String, dynamic>{
@@ -60,7 +60,7 @@ class SelectableTextWidgetParser implements WidgetParser {
       var parser = SelectableTextSpanParser();
       return <String, dynamic>{
         "type": "SelectableText",
-        "textSpan": parser.export(realWidget.textSpan),
+        "textSpan": parser.export(realWidget.textSpan!),
         "textAlign": realWidget.textAlign != null
             ? exportTextAlign(realWidget.textAlign)
             : "start",
@@ -72,21 +72,21 @@ class SelectableTextWidgetParser implements WidgetParser {
   }
 
   @override
-  bool matchWidgetForExport(Widget widget) => widget is SelectableText;
+  bool matchWidgetForExport(Widget? widget) => widget is SelectableText;
 
   @override
   Type get widgetType => SelectableText;
 }
 
 class SelectableTextSpanParser {
-  TextSpan parse(Map<String, dynamic> map, ClickListener listener) {
-    String clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
+  TextSpan parse(Map<String, dynamic> map, ClickListener? listener) {
+    String? clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],
         style: parseTextStyle(map['style']),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
-            listener.onClicked(clickEvent);
+            listener!.onClicked(clickEvent);
           },
         children: []);
 
@@ -98,9 +98,9 @@ class SelectableTextSpanParser {
   }
 
   void parseChildren(
-      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener listener) {
+      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener? listener) {
     for (var childmap in childrenSpan) {
-      textSpan.children.add(parse(childmap, listener));
+      textSpan.children!.add(parse(childmap, listener));
     }
   }
 
@@ -114,9 +114,9 @@ class SelectableTextSpanParser {
 
   List<Map<String, dynamic>> exportChildren(TextSpan textSpan) {
     List<Map<String, dynamic>> rt = [];
-    if (textSpan.children != null && textSpan.children.isNotEmpty) {
-      for (var span in textSpan.children) {
-        rt.add(export(span));
+    if (textSpan.children != null && textSpan.children!.isNotEmpty) {
+      for (var span in textSpan.children!) {
+        rt.add(export(span as TextSpan));
       }
     }
     return rt;

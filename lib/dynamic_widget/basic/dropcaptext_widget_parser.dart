@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class DropCapTextParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return DropCapText(
       data: map.containsKey('data') ? map['data'] : null,
       selectable: map.containsKey('selectable') ? map['selectable'] : false,
@@ -24,7 +24,7 @@ class DropCapTextParser extends WidgetParser {
           ? parseDropCap(map['dropCap'], buildContext, listener)
           : null,
       dropCapPadding: map.containsKey('dropCapPadding')
-          ? parseEdgeInsetsGeometry(map['dropCapPadding'])
+          ? parseEdgeInsetsGeometry(map['dropCapPadding']) as EdgeInsets?
           : EdgeInsets.zero,
       indentation: Offset.zero,
       //todo: actually add this
@@ -51,7 +51,7 @@ class DropCapTextParser extends WidgetParser {
   String get widgetName => "DropCapText";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as DropCapText;
     var dropCapPadding = realWidget.dropCapPadding;
     return <String, dynamic>{

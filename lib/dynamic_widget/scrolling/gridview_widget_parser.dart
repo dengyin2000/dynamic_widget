@@ -10,27 +10,27 @@ import 'package:http/http.dart' as http;
 class GridViewWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") &&
         "horizontal" == map["scrollDirection"]) {
       scrollDirection = Axis.horizontal;
     }
-    int crossAxisCount = map['crossAxisCount'];
-    bool reverse = map.containsKey("reverse") ? map['reverse'] : false;
-    bool shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
-    double cacheExtent =
+    int? crossAxisCount = map['crossAxisCount'];
+    bool? reverse = map.containsKey("reverse") ? map['reverse'] : false;
+    bool? shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
+    double? cacheExtent =
         map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
-    EdgeInsetsGeometry padding = map.containsKey('padding')
+    EdgeInsetsGeometry? padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    double mainAxisSpacing = map.containsKey('mainAxisSpacing')
+    double? mainAxisSpacing = map.containsKey('mainAxisSpacing')
         ? map['mainAxisSpacing']?.toDouble()
         : 0.0;
-    double crossAxisSpacing = map.containsKey('crossAxisSpacing')
+    double? crossAxisSpacing = map.containsKey('crossAxisSpacing')
         ? map['crossAxisSpacing']?.toDouble()
         : 0.0;
-    double childAspectRatio = map.containsKey('childAspectRatio')
+    double? childAspectRatio = map.containsKey('childAspectRatio')
         ? map['childAspectRatio']?.toDouble()
         : 1.0;
     var children = DynamicWidgetBuilder.buildWidgets(
@@ -62,14 +62,14 @@ class GridViewWidgetParser extends WidgetParser {
   String get widgetName => "GridView";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as GridViewWidget;
     String scrollDirection = "vertical";
     if (realWidget._params.scrollDirection == Axis.horizontal) {
       scrollDirection = "horizontal";
     }
 
-    var padding = realWidget._params.padding as EdgeInsets;
+    var padding = realWidget._params.padding as EdgeInsets?;
     return <String, dynamic>{
       "type": "GridView",
       "scrollDirection": scrollDirection,
@@ -87,7 +87,7 @@ class GridViewWidgetParser extends WidgetParser {
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
       "isDemo": realWidget._params.isDemo ?? false,
       "children": DynamicWidgetBuilder.exportWidgets(
-          realWidget._params.children, buildContext)
+          realWidget._params.children!, buildContext)
     };
   }
 
@@ -108,7 +108,7 @@ class GridViewWidget extends StatefulWidget {
 
 class _GridViewWidgetState extends State<GridViewWidget> {
   GridViewParams _params;
-  List<Widget> _items = [];
+  List<Widget?> _items = [];
 
   ScrollController _scrollController = new ScrollController();
   bool isPerformingRequest = false;
@@ -119,14 +119,14 @@ class _GridViewWidgetState extends State<GridViewWidget> {
 
   _GridViewWidgetState(this._params) {
     if (_params.children != null) {
-      _items.addAll(_params.children);
+      _items.addAll(_params.children!);
     }
   }
 
   @override
   void initState() {
     super.initState();
-    if (_params.loadMoreUrl == null || _params.loadMoreUrl.isEmpty) {
+    if (_params.loadMoreUrl == null || _params.loadMoreUrl!.isEmpty) {
       loadCompleted = true;
       return;
     }
@@ -142,7 +142,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo ? await fakeRequest() : await doRequest();
+      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
@@ -182,13 +182,13 @@ class _GridViewWidgetState extends State<GridViewWidget> {
   Widget build(BuildContext context) {
     var footer = _buildProgressIndicator();
     var sliverGrid = SliverPadding(
-      padding: _params.padding,
+      padding: _params.padding!,
       sliver: SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: _params.crossAxisCount,
-            mainAxisSpacing: _params.mainAxisSpacing,
-            crossAxisSpacing: _params.crossAxisSpacing,
-            childAspectRatio: _params.childAspectRatio),
+            crossAxisCount: _params.crossAxisCount!,
+            mainAxisSpacing: _params.mainAxisSpacing!,
+            crossAxisSpacing: _params.crossAxisSpacing!,
+            childAspectRatio: _params.childAspectRatio!),
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {
             return _items[index];
@@ -238,7 +238,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
     // Await the http get response, then decode the json-formatted responce.
     try {
       var response = await http.get(Uri.parse(getLoadMoreUrl(
-          _params.loadMoreUrl, _items.length, _params.pageSize)));
+          _params.loadMoreUrl, _items.length, _params.pageSize)!));
       if (response.statusCode == 200) {
         return response.body;
       }
@@ -250,22 +250,22 @@ class _GridViewWidgetState extends State<GridViewWidget> {
 }
 
 class GridViewParams {
-  int crossAxisCount;
-  Axis scrollDirection;
-  bool reverse;
-  bool shrinkWrap;
-  double cacheExtent;
-  EdgeInsetsGeometry padding;
-  double mainAxisSpacing;
-  double crossAxisSpacing;
-  double childAspectRatio;
-  List<Widget> children;
+  int? crossAxisCount;
+  Axis? scrollDirection;
+  bool? reverse;
+  bool? shrinkWrap;
+  double? cacheExtent;
+  EdgeInsetsGeometry? padding;
+  double? mainAxisSpacing;
+  double? crossAxisSpacing;
+  double? childAspectRatio;
+  List<Widget?>? children;
 
-  int pageSize;
-  String loadMoreUrl;
+  int? pageSize;
+  String? loadMoreUrl;
 
   //use for demo, if true, it will do the fake request.
-  bool isDemo;
+  bool? isDemo;
 
   GridViewParams(
       {this.crossAxisCount,

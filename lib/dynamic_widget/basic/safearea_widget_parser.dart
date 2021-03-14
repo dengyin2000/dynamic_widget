@@ -5,13 +5,13 @@ import 'package:flutter/widgets.dart';
 class SafeAreaWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var left = map.containsKey("left") ? map["left"] : true;
     var right = map.containsKey("right") ? map["right"] : true;
     var top = map.containsKey("top") ? map["top"] : true;
     var bottom = map.containsKey("bottom") ? map["bottom"] : true;
     var edgeInsets = map.containsKey("minimum")
-        ? parseEdgeInsetsGeometry(map['minimum'])
+        ? parseEdgeInsetsGeometry(map['minimum'])!
         : EdgeInsets.zero;
     var maintainBottomViewPadding = map.containsKey("maintainBottomViewPadding")
         ? map["maintainBottomViewPadding"]
@@ -21,10 +21,10 @@ class SafeAreaWidgetParser extends WidgetParser {
       right: right,
       top: top,
       bottom: bottom,
-      minimum: edgeInsets,
+      minimum: edgeInsets as EdgeInsets,
       maintainBottomViewPadding: maintainBottomViewPadding,
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, listener)!,
     );
   }
 
@@ -32,7 +32,7 @@ class SafeAreaWidgetParser extends WidgetParser {
   String get widgetName => "SafeArea";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as SafeArea;
     var minimum = realWidget.minimum;
     return <String, dynamic>{

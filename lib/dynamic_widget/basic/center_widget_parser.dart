@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 class CenterWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Center(
       widthFactor: map.containsKey("widthFactor")
           ? map["widthFactor"]?.toDouble()
@@ -21,7 +21,7 @@ class CenterWidgetParser extends WidgetParser {
   String get widgetName => "Center";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Center;
     return <String, dynamic>{
       "type": widgetName,
