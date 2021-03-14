@@ -84,6 +84,10 @@
 * Add Scaffold and AppBar Widget.
 * Fix bugs.
 
+## [4.0.0-nullsafety.1] - null safety migration
+
+* null safety migration
+
 
 
 
