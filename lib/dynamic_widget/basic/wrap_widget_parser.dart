@@ -29,7 +29,7 @@ class WrapWidgetParser extends WidgetParser {
           ? parseVerticalDirection(map["verticalDirection"])
           : VerticalDirection.down,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener) as List<Widget>,
+          map['children'], buildContext, listener),
     );
   }
 
