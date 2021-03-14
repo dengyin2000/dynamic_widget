@@ -44,6 +44,7 @@ class StackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
+
     return Stack(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -56,7 +57,7 @@ class StackWidgetParser extends WidgetParser {
           ? parseClip(map["clipBehavior"])!
           : Clip.hardEdge,
       children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener) as List<Widget>,
+          map['children'], buildContext, listener),
     );
   }
 

@@ -129,12 +129,15 @@ class DynamicWidgetBuilder {
     return null;
   }
 
-  static List<Widget?> buildWidgets(
+  static List<Widget> buildWidgets(
       List<dynamic> values, BuildContext buildContext, ClickListener? listener) {
     initDefaultParsersIfNess();
-    List<Widget?> rt = [];
+    List<Widget> rt = [];
     for (var value in values) {
-      rt.add(buildFromMap(value, buildContext, listener));
+      var buildFromMap2 = buildFromMap(value, buildContext, listener);
+      if(buildFromMap2!=null) {
+        rt.add(buildFromMap2);
+      }
     }
     return rt;
   }
