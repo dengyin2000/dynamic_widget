@@ -5,11 +5,13 @@
 # Flutter Dynamic Widget
 >A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is very similar with flutter widget code. 
 
+**From 4.0.0-nullsafety.1 version, it supports null-safety.**
+
 **From 3.0.0 version, it supports exporting your flutter code to json code. please check [How to write the json code](#how-to-write-the-json-code)**
 
 **From 1.0.4 version, it supports flutter web application.**
 
-**From 4.0.0-nullsafety.1 version, it supports null-safety.**
+
 
 
 ## Table of contents
