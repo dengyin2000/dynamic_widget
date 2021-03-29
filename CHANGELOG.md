@@ -84,9 +84,17 @@
 * Add Scaffold and AppBar Widget.
 * Fix bugs.
 
+## [3.0.6] - bug fixed
+
+* Fix the bug, https://github.com/dengyin2000/dynamic_widget/issues/64
+
 ## [4.0.0-nullsafety.1] - null safety migration
 
 * null safety migration
+
+## [4.0.0] - null safety migration
+
+* null safety version released.
 
 
 

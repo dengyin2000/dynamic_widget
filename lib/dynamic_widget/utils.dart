@@ -1042,6 +1042,51 @@ Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext
   };
 }
 
+String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional){
+
+  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
+    return "bottomCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.center) {
+    return "center";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomEnd) {
+    return "bottomEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomStart) {
+    return "bottomStart";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.centerEnd) {
+    return "centerEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.centerStart) {
+    return "centerStart";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
+    return "bottomCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topCenter) {
+    return "topCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topEnd) {
+    return "topEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topStart) {
+    return "topStart";
+  }
+
+  return "topStart";
+}
+
 String exportAlignment(Alignment? alignment) {
   if (alignment == null) {
     return "center";
