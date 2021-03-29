@@ -68,7 +68,7 @@ class StackWidgetParser extends WidgetParser {
     var realWidget = widget as Stack;
     return <String, dynamic>{
       "type": "Stack",
-      "alignment": exportAlignment(realWidget.alignment),
+      "alignment": realWidget.alignment is AlignmentDirectional ? exportAlignmentDirectional(realWidget.alignment) :exportAlignment(realWidget.alignment),
       "textDirection": exportTextDirection(realWidget.textDirection),
       "fit": exportStackFit(realWidget.fit),
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
