@@ -84,6 +84,10 @@
 * Add Scaffold and AppBar Widget.
 * Fix bugs.
 
+## [3.0.6] - bug fixed
+
+*Fix the bug, https://github.com/dengyin2000/dynamic_widget/issues/64
+
 
 
 
