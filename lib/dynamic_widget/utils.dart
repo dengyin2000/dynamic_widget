@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 TextAlign parseTextAlign(String textAlignString) {
@@ -214,6 +215,47 @@ String exportFontWeight(FontWeight fontWeight) {
   return rt;
 }
 
+Color parseColor(BuildContext context, String color) {
+  if (color == null) {
+    return null;
+  }
+
+  return color.startsWith('::')
+      ? parseThemeColor(Theme.of(context).colorScheme, color)
+      : parseHexColor(color);
+}
+
+Color parseThemeColor(ColorScheme colorScheme, String color) {
+  switch (color) {
+    case '::primary':
+      return colorScheme.primary;
+    case '::primaryVariant':
+      return colorScheme.primaryVariant;
+    case '::onPrimary':
+      return colorScheme.onPrimary;
+    case '::secondary':
+      return colorScheme.secondary;
+    case '::secondaryVariant':
+      return colorScheme.secondaryVariant;
+    case '::onSecondary':
+      return colorScheme.onSecondary;
+    case '::surface':
+      return colorScheme.surface;
+    case '::onSurface':
+      return colorScheme.onSurface;
+    case '::background':
+      return colorScheme.background;
+    case '::onBackground':
+      return colorScheme.onBackground;
+    case '::error':
+      return colorScheme.error;
+    case '::onError':
+      return colorScheme.onError;
+    default:
+      return null;
+  }
+}
+
 Color parseHexColor(String hexColorString) {
   if (hexColorString == null) {
     return null;
@@ -226,7 +268,7 @@ Color parseHexColor(String hexColorString) {
   return Color(colorInt);
 }
 
-TextStyle parseTextStyle(Map<String, dynamic> map) {
+TextStyle parseTextStyle(BuildContext context, Map<String, dynamic> map) {
   if (map == null) {
     return null;
   }
@@ -241,7 +283,7 @@ TextStyle parseTextStyle(Map<String, dynamic> map) {
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
 
   return TextStyle(
-    color: parseHexColor(color),
+    color: parseColor(context, color),
     debugLabel: debugLabel,
     decoration: parseTextDecoration(decoration),
     fontSize: fontSize,

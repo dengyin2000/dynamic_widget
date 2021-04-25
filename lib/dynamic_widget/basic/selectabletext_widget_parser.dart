@@ -15,7 +15,7 @@ class SelectableTextWidgetParser implements WidgetParser {
     var textSpan;
     var textSpanParser = SelectableTextSpanParser();
     if (map.containsKey("textSpan")) {
-      textSpan = textSpanParser.parse(map['textSpan'], listener);
+      textSpan = textSpanParser.parse(buildContext, map['textSpan'], listener);
     }
 
     if (textSpan == null) {
@@ -24,7 +24,9 @@ class SelectableTextWidgetParser implements WidgetParser {
         textAlign: parseTextAlign(textAlignString),
         maxLines: maxLines,
         textDirection: parseTextDirection(textDirectionString),
-        style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
+        style: map.containsKey('style')
+            ? parseTextStyle(buildContext, map['style'])
+            : null,
 //        textScaleFactor: textScaleFactor,
       );
     } else {
@@ -33,7 +35,9 @@ class SelectableTextWidgetParser implements WidgetParser {
         textAlign: parseTextAlign(textAlignString),
         maxLines: maxLines,
         textDirection: parseTextDirection(textDirectionString),
-        style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
+        style: map.containsKey('style')
+            ? parseTextStyle(buildContext, map['style'])
+            : null,
 //        textScaleFactor: textScaleFactor,
       );
     }
@@ -79,11 +83,12 @@ class SelectableTextWidgetParser implements WidgetParser {
 }
 
 class SelectableTextSpanParser {
-  TextSpan parse(Map<String, dynamic> map, ClickListener listener) {
+  TextSpan parse(BuildContext buildContext, Map<String, dynamic> map,
+      ClickListener listener) {
     String clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],
-        style: parseTextStyle(map['style']),
+        style: parseTextStyle(buildContext, map['style']),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
             listener.onClicked(clickEvent);
@@ -91,16 +96,16 @@ class SelectableTextSpanParser {
         children: []);
 
     if (map.containsKey('children')) {
-      parseChildren(textSpan, map['children'], listener);
+      parseChildren(buildContext, textSpan, map['children'], listener);
     }
 
     return textSpan;
   }
 
-  void parseChildren(
-      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener listener) {
+  void parseChildren(BuildContext buildContext, TextSpan textSpan,
+      List<dynamic> childrenSpan, ClickListener listener) {
     for (var childmap in childrenSpan) {
-      textSpan.children.add(parse(childmap, listener));
+      textSpan.children.add(parse(buildContext, childmap, listener));
     }
   }
 

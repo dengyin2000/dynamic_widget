@@ -7,7 +7,7 @@ class ContainerWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener listener) {
     Alignment alignment = parseAlignment(map['alignment']);
-    Color color = parseHexColor(map['color']);
+    Color color = parseColor(buildContext, map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
     //TODO: decoration, foregroundDecoration and transform properties to be implemented.
     EdgeInsetsGeometry margin = parseEdgeInsetsGeometry(map['margin']);

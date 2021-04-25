@@ -10,15 +10,17 @@ class RaisedButtonParser extends WidgetParser {
         map.containsKey("click_event") ? map['click_event'] : "";
 
     var raisedButton = RaisedButton(
-      color: map.containsKey('color') ? parseHexColor(map['color']) : null,
+      color: map.containsKey('color')
+          ? parseColor(buildContext, map['color'])
+          : null,
       disabledColor: map.containsKey('disabledColor')
-          ? parseHexColor(map['disabledColor'])
+          ? parseColor(buildContext, map['disabledColor'])
           : null,
       disabledElevation: map.containsKey('disabledElevation')
           ? map['disabledElevation']?.toDouble()
           : 0.0,
       disabledTextColor: map.containsKey('disabledTextColor')
-          ? parseHexColor(map['disabledTextColor'])
+          ? parseColor(buildContext, map['disabledTextColor'])
           : null,
       elevation:
           map.containsKey('elevation') ? map['elevation']?.toDouble() : 0.0,
@@ -26,10 +28,11 @@ class RaisedButtonParser extends WidgetParser {
           ? parseEdgeInsetsGeometry(map['padding'])
           : null,
       splashColor: map.containsKey('splashColor')
-          ? parseHexColor(map['splashColor'])
+          ? parseColor(buildContext, map['splashColor'])
           : null,
-      textColor:
-          map.containsKey('textColor') ? parseHexColor(map['textColor']) : null,
+      textColor: map.containsKey('textColor')
+          ? parseColor(buildContext, map['textColor'])
+          : null,
       child: DynamicWidgetBuilder.buildFromMap(
           map['child'], buildContext, listener),
       onPressed: () {
