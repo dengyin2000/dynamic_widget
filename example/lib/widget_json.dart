@@ -190,11 +190,36 @@ var raisedButtonJson = '''
   "alignment": "center",
   "child": {
     "type": "RaisedButton",
-    "color": "##FF00FF",
+    "color": "#FF00FF",
     "padding": "8,8,8,8",
     "textColor": "#00FF00",
     "elevation" : 8.0,
     "splashColor" : "#00FF00",
+    "click_event" : "route://productDetail?goods_id=123",
+    "child" : {
+      "type": "Text",
+      "data": "I am a button"
+    }  
+  }
+}
+
+
+''';
+
+var elevatedButtonJson = '''
+{
+  "type": "Container",
+  "alignment": "center",
+  "child": {
+    "type": "ElevatedButton",
+    "foregroundColor": "#FF00FF",
+    "shadowColor":"#E53914",
+    "padding": "8,8,8,8",
+    "elevation" : 8.0,
+    "textStyle":{
+      "color": "#00FF00",
+      "fontStyle": "italic"
+    },
     "click_event" : "route://productDetail?goods_id=123",
     "child" : {
       "type": "Text",
