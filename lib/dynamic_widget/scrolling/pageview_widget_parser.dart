@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 class PageViewWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
+
     var scrollDirection = Axis.vertical;
     if (map.containsKey("scrollDirection") &&
         "horizontal" == map["scrollDirection"]) {
@@ -24,7 +25,7 @@ class PageViewWidgetParser extends WidgetParser {
   String get widgetName => "PageView";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as PageView;
     String scrollDirection = "vertical";
     if (realWidget.scrollDirection == Axis.horizontal) {
@@ -34,7 +35,7 @@ class PageViewWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": "PageView",
       "scrollDirection": scrollDirection,
-      "reverse": realWidget.reverse ?? false,
+      "reverse": realWidget.reverse,
       "pageSnapping": realWidget.pageSnapping,
       "children":
           DynamicWidgetBuilder.exportWidgets(children.children, buildContext)

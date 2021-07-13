@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class RaisedButtonParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
-    String clickEvent =
+      ClickListener? listener) {
+    String? clickEvent =
         map.containsKey("click_event") ? map['click_event'] : "";
 
     var raisedButton = RaisedButton(
@@ -33,7 +33,7 @@ class RaisedButtonParser extends WidgetParser {
       child: DynamicWidgetBuilder.buildFromMap(
           map['child'], buildContext, listener),
       onPressed: () {
-        listener.onClicked(clickEvent);
+        listener!.onClicked(clickEvent);
       },
     );
 
@@ -44,31 +44,31 @@ class RaisedButtonParser extends WidgetParser {
   String get widgetName => "RaisedButton";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as RaisedButton;
-    var padding = realWidget.padding as EdgeInsets;
+    var padding = realWidget.padding as EdgeInsets?;
 
     return <String, dynamic>{
       "type": widgetName,
       "color": realWidget.color != null
-          ? realWidget.color.value.toRadixString(16)
+          ? realWidget.color!.value.toRadixString(16)
           : null,
       "disabledColor": realWidget.disabledColor != null
-          ? realWidget.disabledColor.value.toRadixString(16)
+          ? realWidget.disabledColor!.value.toRadixString(16)
           : null,
       "disabledElevation": realWidget.disabledElevation,
       "disabledTextColor": realWidget.disabledTextColor != null
-          ? realWidget.disabledTextColor.value.toRadixString(16)
+          ? realWidget.disabledTextColor!.value.toRadixString(16)
           : null,
       "elevation": realWidget.elevation,
       "padding": padding != null
           ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
           : null,
       "splashColor": realWidget.splashColor != null
-          ? realWidget.splashColor.value.toRadixString(16)
+          ? realWidget.splashColor!.value.toRadixString(16)
           : null,
       "textColor": realWidget.textColor != null
-          ? realWidget.textColor.value.toRadixString(16)
+          ? realWidget.textColor!.value.toRadixString(16)
           : null,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };

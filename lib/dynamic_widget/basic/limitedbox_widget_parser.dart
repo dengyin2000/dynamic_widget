@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class LimitedBoxWidgetParser extends WidgetParser {
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     LimitedBox realWidget = widget as LimitedBox;
     return <String, dynamic>{
       "type": widgetName,
@@ -20,7 +20,7 @@ class LimitedBoxWidgetParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return LimitedBox(
       maxWidth: map.containsKey("maxWidth") ? map['maxWidth'] : double.infinity,
       maxHeight:

@@ -5,10 +5,10 @@ import 'package:flutter/widgets.dart';
 class PlaceholderWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Placeholder(
       color: map.containsKey('color')
-          ? parseHexColor(map['color'])
+          ? parseHexColor(map['color'])!
           : const Color(0xFF455A64),
       strokeWidth:
           map.containsKey('strokeWidth') ? map['strokeWidth']?.toDouble() : 2.0,
@@ -25,7 +25,7 @@ class PlaceholderWidgetParser extends WidgetParser {
   String get widgetName => "Placeholder";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Placeholder;
     return <String, dynamic>{
       "type": widgetName,

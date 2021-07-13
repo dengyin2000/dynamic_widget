@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -471,7 +471,7 @@ class PreviewPage extends StatelessWidget {
 
   PreviewPage(this.jsonString);
 
-  DynamicWidgetJsonExportor _exportor;
+  late DynamicWidgetJsonExportor _exportor;
 
   @override
   Widget build(BuildContext context) {
@@ -485,9 +485,9 @@ class PreviewPage extends StatelessWidget {
         children: [
           Expanded(
 
-                child: FutureBuilder<Widget>(
+                child: FutureBuilder<Widget?>(
                   future: _buildWidget(context),
-                  builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+                  builder: (BuildContext context, AsyncSnapshot<Widget?> snapshot) {
                     if (snapshot.hasError) {
                       print(snapshot.error);
                     }
@@ -514,7 +514,7 @@ class PreviewPage extends StatelessWidget {
     );
   }
 
-  Future<Widget> _buildWidget(BuildContext context) async {
+  Future<Widget?> _buildWidget(BuildContext context) async {
     return DynamicWidgetBuilder.build(
         jsonString, context, new DefaultClickListener());
   }
@@ -522,8 +522,8 @@ class PreviewPage extends StatelessWidget {
 
 class DefaultClickListener implements ClickListener {
   @override
-  void onClicked(String event) {
-    print("Receive click event: " + event);
+  void onClicked(String? event) {
+    print("Receive click event: " + (event == null ? "" : event));
   }
 }
 

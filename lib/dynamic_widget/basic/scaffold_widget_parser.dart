@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 class ScaffoldWidgetParser extends WidgetParser {
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Scaffold;
 
     return <String, dynamic>{
@@ -15,18 +15,18 @@ class ScaffoldWidgetParser extends WidgetParser {
       "floatingActionButton": DynamicWidgetBuilder.export(
           realWidget.floatingActionButton, buildContext),
       "backgroundColor": realWidget.backgroundColor != null
-          ? realWidget.backgroundColor.value.toRadixString(16)
+          ? realWidget.backgroundColor!.value.toRadixString(16)
           : null,
     };
   }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var scaffoldWidget = Scaffold(
       appBar: map.containsKey("appBar")
           ? DynamicWidgetBuilder.buildFromMap(
-              map["appBar"], buildContext, listener)
+              map["appBar"], buildContext, listener) as PreferredSizeWidget?
           : null,
       body: map.containsKey("body")
           ? DynamicWidgetBuilder.buildFromMap(

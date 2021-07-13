@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 class ExpandedWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Expanded(
       child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
+          map["child"], buildContext, listener)!,
       flex: map.containsKey("flex") ? map["flex"] : 1,
     );
   }
@@ -16,7 +16,7 @@ class ExpandedWidgetParser extends WidgetParser {
   String get widgetName => "Expanded";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Expanded;
     return <String, dynamic>{
       "type": widgetName,

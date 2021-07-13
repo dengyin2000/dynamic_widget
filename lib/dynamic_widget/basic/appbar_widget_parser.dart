@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppBarWidgetParser extends WidgetParser {
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as AppBar;
 
     return <String, dynamic>{
@@ -18,17 +18,17 @@ class AppBarWidgetParser extends WidgetParser {
       "actions": realWidget.actions == null
           ? null
           : DynamicWidgetBuilder.exportWidgets(
-              realWidget.actions, buildContext),
+              realWidget.actions!, buildContext),
       "centerTitle": realWidget.centerTitle,
       "backgroundColor": realWidget.backgroundColor == null
           ? null
-          : realWidget.backgroundColor.value.toRadixString(16),
+          : realWidget.backgroundColor!.value.toRadixString(16),
     };
   }
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     var appBarWidget = AppBar(
       title: map.containsKey("title")
           ? DynamicWidgetBuilder.buildFromMap(
@@ -40,10 +40,10 @@ class AppBarWidgetParser extends WidgetParser {
           : null,
       actions: map.containsKey("actions")
           ? DynamicWidgetBuilder.buildWidgets(
-              map["actions"], buildContext, listener)
+              map["actions"], buildContext, listener) as List<Widget>?
           : null,
       centerTitle:
-          map.containsKey("centerTitle") ? map["centerTitle"] as bool : false,
+          map.containsKey("centerTitle") ? map["centerTitle"] as bool? : false,
       backgroundColor: map.containsKey("backgroundColor")
           ? parseHexColor(map["backgroundColor"])
           : null,

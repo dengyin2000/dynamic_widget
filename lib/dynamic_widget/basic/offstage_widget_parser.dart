@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 class OffstageWidgetParser extends WidgetParser{
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     Offstage realWidget = widget as Offstage;
     return <String, dynamic>{
       "type": widgetName,
@@ -14,7 +14,7 @@ class OffstageWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener? listener) {
     return Offstage(
       offstage: map.containsKey("offstage")?map['offstage']:true,
       child: DynamicWidgetBuilder.buildFromMap(map['child'], buildContext, listener),

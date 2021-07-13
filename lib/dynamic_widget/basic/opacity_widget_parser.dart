@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 class OpacityWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Opacity(
       opacity: map["opacity"]?.toDouble(),
       alwaysIncludeSemantics: map.containsKey("alwaysIncludeSemantics")
@@ -19,7 +19,7 @@ class OpacityWidgetParser extends WidgetParser {
   String get widgetName => "Opacity";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Opacity;
     return <String, dynamic>{
       "type": widgetName,

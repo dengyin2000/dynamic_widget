@@ -21,14 +21,14 @@ enum DropCapPosition {
 }
 
 class DropCap extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final double width, height;
 
   DropCap({
-    Key key,
+    Key? key,
     this.child,
-    @required this.width,
-    @required this.height,
+    required this.width,
+    required this.height,
   })  : assert(width != null),
         assert(height != null),
         super(key: key);
@@ -41,23 +41,23 @@ class DropCap extends StatelessWidget {
 
 class DropCapText extends StatelessWidget {
   final String data;
-  final bool selectable;
-  final DropCapMode mode;
-  final TextStyle style, dropCapStyle;
+  final bool? selectable;
+  final DropCapMode? mode;
+  final TextStyle? style, dropCapStyle;
   final TextAlign textAlign;
-  final DropCap dropCap;
-  final EdgeInsets dropCapPadding;
+  final DropCap? dropCap;
+  final EdgeInsets? dropCapPadding;
   final Offset indentation;
-  final bool forceNoDescent, parseInlineMarkdown;
+  final bool? forceNoDescent, parseInlineMarkdown;
   final TextDirection textDirection;
-  final DropCapPosition dropCapPosition;
-  final int dropCapChars;
-  final int maxLines;
-  final TextOverflow overflow;
+  final DropCapPosition? dropCapPosition;
+  final int? dropCapChars;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   DropCapText(
-      {Key key,
-      this.data,
+      {Key? key,
+      required this.data,
       this.selectable,
       this.mode,
       this.style,
@@ -79,20 +79,20 @@ class DropCapText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = TextStyle(
-      color: Theme.of(context).textTheme.bodyText2.color,
-      fontSize: Theme.of(context).textTheme.bodyText2.fontSize,
-      height: Theme.of(context).textTheme.bodyText2.height,
-      fontFamily: Theme.of(context).textTheme.bodyText2.fontFamily,
+      color: Theme.of(context).textTheme.bodyText2!.color,
+      fontSize: Theme.of(context).textTheme.bodyText2!.fontSize,
+      height: Theme.of(context).textTheme.bodyText2!.height,
+      fontFamily: Theme.of(context).textTheme.bodyText2!.fontFamily,
     ).merge(style);
 
     if (data == '')
-      return selectable
+      return selectable!
           ? SelectableText(data, style: textStyle)
           : Text(data, style: textStyle);
 
     TextStyle capStyle = TextStyle(
       color: textStyle.color,
-      fontSize: textStyle.fontSize * 5.5,
+      fontSize: textStyle.fontSize! * 5.5,
       fontFamily: textStyle.fontFamily,
       fontWeight: textStyle.fontWeight,
       fontStyle: textStyle.fontStyle,
@@ -100,9 +100,9 @@ class DropCapText extends StatelessWidget {
     ).merge(dropCapStyle);
 
     double capWidth, capHeight;
-    int dropCapChars = dropCap != null ? 0 : this.dropCapChars;
+    int? dropCapChars = dropCap != null ? 0 : this.dropCapChars;
     CrossAxisAlignment sideCrossAxisAlignment = CrossAxisAlignment.start;
-    MarkdownParser mdData = parseInlineMarkdown ? MarkdownParser(data) : null;
+    MarkdownParser? mdData = parseInlineMarkdown! ? MarkdownParser(data) : null;
     final String dropCapStr =
         (mdData?.plainText ?? data).substring(0, dropCapChars);
 
@@ -111,8 +111,8 @@ class DropCapText extends StatelessWidget {
 
     // custom DropCap
     if (dropCap != null) {
-      capWidth = dropCap.width;
-      capHeight = dropCap.height;
+      capWidth = dropCap!.width;
+      capHeight = dropCap!.height;
     } else {
       TextPainter capPainter = TextPainter(
         text: TextSpan(
@@ -124,7 +124,7 @@ class DropCapText extends StatelessWidget {
       capPainter.layout();
       capWidth = capPainter.width;
       capHeight = capPainter.height;
-      if (forceNoDescent) {
+      if (forceNoDescent!) {
         List<LineMetrics> ls = capPainter.computeLineMetrics();
         capHeight -=
             ls.isNotEmpty ? ls[0].descent * 0.95 : capPainter.height * 0.2;
@@ -132,16 +132,16 @@ class DropCapText extends StatelessWidget {
     }
 
     // compute drop cap padding
-    capWidth += dropCapPadding.left + dropCapPadding.right;
-    capHeight += dropCapPadding.top + dropCapPadding.bottom;
+    capWidth += dropCapPadding!.left + dropCapPadding!.right;
+    capHeight += dropCapPadding!.top + dropCapPadding!.bottom;
 
-    MarkdownParser mdRest =
-        parseInlineMarkdown ? mdData.subchars(dropCapChars) : null;
-    String restData = data.substring(dropCapChars);
+    MarkdownParser? mdRest =
+        parseInlineMarkdown! ? mdData!.subchars(dropCapChars) : null;
+    String restData = data.substring(dropCapChars!);
 
     TextSpan textSpan = TextSpan(
-      text: parseInlineMarkdown ? null : restData,
-      children: parseInlineMarkdown ? mdRest.toTextSpanList() : null,
+      text: parseInlineMarkdown! ? null : restData,
+      children: parseInlineMarkdown! ? mdRest!.toTextSpanList() : null,
       style: textStyle.apply(
           fontSizeFactor: MediaQuery.of(context).textScaleFactor),
     );
@@ -164,7 +164,7 @@ class DropCapText extends StatelessWidget {
       double boundsWidth = constraints.maxWidth - capWidth;
       if (boundsWidth < 1) boundsWidth = 1;
 
-      int charIndexEnd = data.length;
+      int? charIndexEnd = data.length;
 
       //int startMillis = new DateTime.now().millisecondsSinceEpoch;
       if (rows > 0) {
@@ -197,12 +197,12 @@ class DropCapText extends StatelessWidget {
             crossAxisAlignment: sideCrossAxisAlignment,
             children: <Widget>[
               dropCap != null
-                  ? Padding(padding: dropCapPadding, child: dropCap)
+                  ? Padding(padding: dropCapPadding!, child: dropCap)
                   : Container(
                       width: capWidth,
                       height: capHeight,
                       padding: dropCapPadding,
-                      child: selectable
+                      child: selectable!
                           ? SelectableText.rich(
                               TextSpan(
                                 text: dropCapStr,
@@ -225,7 +225,7 @@ class DropCapText extends StatelessWidget {
                   padding: EdgeInsets.only(top: indentation.dy),
                   height: (lineHeight * min(maxLines ?? rows, rows)) +
                       indentation.dy,
-                  child: selectable
+                  child: selectable!
                       ? SelectableText.rich(
                           textSpan,
                           maxLines: maxLines,
@@ -239,7 +239,7 @@ class DropCapText extends StatelessWidget {
                           textAlign: textAlign,
                           textDirection: textDirection,
                           overflow: (maxLines == null ||
-                                  (maxLines > rows &&
+                                  (maxLines! > rows &&
                                       overflow == TextOverflow.fade))
                               ? TextOverflow.clip
                               : overflow,
@@ -248,44 +248,44 @@ class DropCapText extends StatelessWidget {
               ),
             ],
           ),
-          if (maxLines == null || maxLines > rows)
+          if (maxLines == null || maxLines! > rows)
             Padding(
               padding: EdgeInsets.only(left: indentation.dx),
-              child: selectable
+              child: selectable!
                   ? SelectableText.rich(
                       TextSpan(
-                        text: parseInlineMarkdown
+                        text: parseInlineMarkdown!
                             ? null
                             : restData.substring(charIndexEnd),
-                        children: parseInlineMarkdown
-                            ? mdRest.subchars(charIndexEnd).toTextSpanList()
+                        children: parseInlineMarkdown!
+                            ? mdRest!.subchars(charIndexEnd).toTextSpanList()
                             : null,
                         style: textStyle.apply(
                             fontSizeFactor:
                                 MediaQuery.of(context).textScaleFactor),
                       ),
                       scrollPhysics: NeverScrollableScrollPhysics(),
-                      maxLines: maxLines != null && maxLines > rows
-                          ? maxLines - rows
+                      maxLines: maxLines != null && maxLines! > rows
+                          ? maxLines! - rows
                           : null,
                       textAlign: textAlign,
                       textDirection: textDirection,
                     )
                   : Text.rich(
                       TextSpan(
-                        text: parseInlineMarkdown
+                        text: parseInlineMarkdown!
                             ? null
                             : restData.substring(charIndexEnd),
-                        children: parseInlineMarkdown
-                            ? mdRest.subchars(charIndexEnd).toTextSpanList()
+                        children: parseInlineMarkdown!
+                            ? mdRest!.subchars(charIndexEnd).toTextSpanList()
                             : null,
                         style: textStyle.apply(
                             fontSizeFactor:
                                 MediaQuery.of(context).textScaleFactor),
                       ),
                       overflow: overflow,
-                      maxLines: maxLines != null && maxLines > rows
-                          ? maxLines - rows
+                      maxLines: maxLines != null && maxLines! > rows
+                          ? maxLines! - rows
                           : null,
                       textAlign: textAlign,
                       textDirection: textDirection,
@@ -300,13 +300,13 @@ class DropCapText extends StatelessWidget {
       BuildContext context, TextStyle textStyle, TextStyle capStyle) {
     MarkdownParser mdData = MarkdownParser(data);
 
-    return selectable
+    return selectable!
         ? SelectableText.rich(
             TextSpan(
               style: textStyle,
               children: <TextSpan>[
                 TextSpan(
-                  text: mdData.plainText.substring(0, dropCapChars),
+                  text: mdData.plainText!.substring(0, dropCapChars),
                   style: capStyle.merge(TextStyle(height: 0)),
                 ),
                 TextSpan(
@@ -323,7 +323,7 @@ class DropCapText extends StatelessWidget {
               style: textStyle,
               children: <TextSpan>[
                 TextSpan(
-                  text: mdData.plainText.substring(0, dropCapChars),
+                  text: mdData.plainText!.substring(0, dropCapChars),
                   style: capStyle.merge(TextStyle(height: 0)),
                 ),
                 TextSpan(
@@ -340,19 +340,19 @@ class DropCapText extends StatelessWidget {
 
 class MarkdownParser {
   final String data;
-  List<MarkdownSpan> spans;
-  String plainText;
+  late List<MarkdownSpan> spans;
+  String? plainText;
 
   List<TextSpan> toTextSpanList() {
     return spans.map((s) => s.toTextSpan()).toList();
   }
 
-  MarkdownParser subchars(int startIndex, [int endIndex]) {
+  MarkdownParser subchars(int? startIndex, [int? endIndex]) {
     final List<MarkdownSpan> subspans = [];
-    int skip = startIndex;
+    int? skip = startIndex;
     for (int s = 0; s < spans.length; s++) {
       MarkdownSpan span = spans[s];
-      if (skip <= 0) {
+      if (skip! <= 0) {
         subspans.add(span);
       } else if (span.text.length < skip) {
         skip -= span.text.length;
@@ -436,7 +436,7 @@ class MarkdownParser {
         c += MARKUP_UNDERLINE.length - 1;
       } else {
         spans[spans.length - 1].text += data[c];
-        plainText += data[c];
+        plainText = plainText ?? "" + data[c];
       }
     }
   }
@@ -450,9 +450,9 @@ class MarkdownSpan {
   TextSpan toTextSpan() => TextSpan(text: text, style: style);
 
   MarkdownSpan({
-    @required this.text,
-    @required this.style,
-    @required this.markups,
+    required this.text,
+    required this.style,
+    required this.markups,
   });
 }
 

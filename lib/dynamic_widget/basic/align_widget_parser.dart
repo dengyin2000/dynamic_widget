@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 class AlignWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener listener) {
+      ClickListener? listener) {
     return Align(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -25,11 +25,11 @@ class AlignWidgetParser extends WidgetParser {
   String get widgetName => "Align";
 
   @override
-  Map<String, dynamic> export(Widget widget, BuildContext buildContext) {
+  Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Align;
     Map<String, dynamic> json = {
       "type": widgetName,
-      "alignment": exportAlignment(realWidget.alignment),
+      "alignment": exportAlignment(realWidget.alignment as Alignment?),
       "widthFactor": realWidget.widthFactor,
       "heightFactor": realWidget.heightFactor,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
