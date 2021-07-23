@@ -44,6 +44,7 @@
 - [LimitedBox Widget](#limitedbox-widget)
 - [Offstage Widget](#offstage-widget)
 - [OverflowBox Widget](#overflowbox-widget)
+- [Divider Widget](#divider-widget)
 
 ## Container Widget
 
@@ -582,4 +583,16 @@ OverflowBox, here to see flutter [OverflowBox](https://api.flutter.dev/flutter/w
 | minHeight        | The minimum height constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.   | double |                                                       |                                                                            |
 | minWidth          | The minimum width constraint to give the child. Set this to null (the default) to use the constraint from the parent instead.              | double |                                                       |                                                                            |
 | child    | The widget below this widget in the tree.                                                     | Widget |                                |             |
+
+## Divider Widget
+
+Divider, here to see flutter [Divider](https://api.flutter.dev/flutter/material/Divider-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| height   | The divider's height extent.                                                                   | double         | 8.0 |                           |
+| thickness        | The thickness of the line drawn within the divider.    | double |   2.0                                                    |                                                                            |
+| indent          | The amount of empty space to the leading edge of the divider.              | double |        8.0                                               |                                                                            |
+| endIndent        | The amount of empty space to the trailing edge of the divider.  | double |                       8.0                                |                                                                            |
+| color          | The color to use when painting the line.             | String         | "#AARRGGBB" or "#RRGGBB"                                                                                                                             | "#FF00FF"<br>"#00FF00FF"             |
 

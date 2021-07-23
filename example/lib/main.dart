@@ -405,6 +405,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 CodeEditorPage(overflowboxJson)));
                   },
                 ),
+                RaisedButton(
+                  child: Text("Divider"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(dividerJson)));
+                  },
+                ),
               ]),
             ),
           ),

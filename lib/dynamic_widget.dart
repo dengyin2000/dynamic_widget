@@ -9,6 +9,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/center_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/divider_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
@@ -78,7 +79,8 @@ class DynamicWidgetBuilder {
     LimitedBoxWidgetParser(),
     OffstageWidgetParser(),
     OverflowBoxWidgetParser(),
-    ElevatedButtonParser()
+    ElevatedButtonParser(),
+    DividerWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};

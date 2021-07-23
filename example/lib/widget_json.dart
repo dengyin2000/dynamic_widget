@@ -1463,3 +1463,195 @@ var overflowboxJson = '''
 }
 ''';
 
+var dividerJson = '''
+{
+  "type": "ListView",
+  "padding": "10, 10, 10, 10",
+  "children":[
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+    {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    },
+    {
+      "type": "AssetImage",
+      "name": "assets/vip.png"
+    },
+        {
+      "type": "Divider",
+      "height": 8.0,
+      "color": "##FF00FF",
+      "indent": 100.0,
+      "endIndent": 100.0,
+      "thickness": 20.0
+    }
+    
+  ]
+}
+
+''';
+
+
