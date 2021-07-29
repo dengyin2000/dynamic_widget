@@ -81,6 +81,7 @@ class DynamicWidgetBuilder {
     OverflowBoxWidgetParser(),
     ElevatedButtonParser(),
     DividerWidgetParser(),
+    TextButtonParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};

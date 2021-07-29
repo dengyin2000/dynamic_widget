@@ -228,7 +228,20 @@ var elevatedButtonJson = '''
   }
 }
 
-
+var textButtonJson = '''
+{
+  "type": "Container",
+  "alignment": "center",
+  "child": {
+    "type": "TextButton",
+    "padding": "8,8,8,8",
+    "click_event" : "route://productDetail?goods_id=123",
+    "child" : {
+      "type": "Text",
+      "data": "I am a button"
+    }
+  }
+}
 ''';
 
 var rowJson = '''
