@@ -1654,4 +1654,25 @@ var dividerJson = '''
 
 ''';
 
+var rotatedBoxJson = '''
+{
+  "type": "Container",
+  "color": "#FF00FF",
+  "alignment": "center",
+  "child": {
+    "type":"RotatedBox",
+    "quarterTurns": 3,
+    "child":{
+        "type": "Text",
+        "data": "Flutter dynamic widget",
+        "maxLines": 3,
+        "overflow": "ellipsis",
+        "style": {
+          "color": "#00FFFF",
+          "fontSize": 20.0
+        }
+    }
+  }
+}
+''';
 

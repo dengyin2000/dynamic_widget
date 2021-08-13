@@ -38,6 +38,7 @@ import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
+import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
 
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
@@ -81,6 +82,7 @@ class DynamicWidgetBuilder {
     OverflowBoxWidgetParser(),
     ElevatedButtonParser(),
     DividerWidgetParser(),
+    RotatedBoxWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
