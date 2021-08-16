@@ -45,6 +45,7 @@
 - [Offstage Widget](#offstage-widget)
 - [OverflowBox Widget](#overflowbox-widget)
 - [Divider Widget](#divider-widget)
+- [RotatedBox Widget](#rotatedbox-widget)
 
 ## Container Widget
 
@@ -596,3 +597,11 @@ Divider, here to see flutter [Divider](https://api.flutter.dev/flutter/material/
 | endIndent        | The amount of empty space to the trailing edge of the divider.  | double |                       8.0                                |                                                                            |
 | color          | The color to use when painting the line.             | String         | "#AARRGGBB" or "#RRGGBB"                                                                                                                             | "#FF00FF"<br>"#00FF00FF"             |
 
+## RotatedBox Widget
+
+RotatedBox, here to see flutter [RotatedBox](https://api.flutter.dev/flutter/widgets/RotatedBox-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| quarterTurns   | The number of clockwise quarter turns the child should be rotated.                                                                   | int         | 3 |                           |
+| child    | The widget below this widget in the tree.                                                     | Widget |                                |             |

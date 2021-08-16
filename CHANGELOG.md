@@ -100,6 +100,9 @@
 
 * add ElevatedButtonParser.
 
+## [4.0.2] - add DividerWidget and RotatedBox widget parser
+
+* add DividerWidget and RotatedBox widget parser.
 
 
 

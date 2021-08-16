@@ -316,6 +316,7 @@ Already completed widgets:
 * [Offstage](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#offstage-widget)
 * [OverflowBox](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#overflowbox-widget)
 * [Divider](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#divider-widget)
+* [RotatedBox](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#rotatedbox-widget)
 
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
