@@ -27,6 +27,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  dynamic_widget:
+    path: ../
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
