@@ -425,6 +425,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 CodeEditorPage(dividerJson)));
                   },
                 ),
+                RaisedButton(
+                  child: Text("RotatedBox"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(rotatedBoxJson)));
+                  },
+                ),
               ]),
             ),
           ),
