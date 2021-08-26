@@ -3,7 +3,7 @@
     <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
 </a>
 # Flutter Dynamic Widget
->A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is very similar with flutter widget code. 
+>A Backend-Driven UI toolkit, build your dynamic UI with json, and the json format is very similar with flutter widget code.
 
 **From 4.0.0-nullsafety.1 version, it supports null-safety.**
 
@@ -29,7 +29,7 @@
 ## General info
 
 > I work for an e-commerce company. We need to build flexible pages. So we define a light UI protocol, and implement on Android and iOS. We can dynamic update App UIs by pushing a json file. With this ability, we can do some UI A/B testing without publishing App to app store. Flutter allows you to build beautiful native apps on iOS and Android from a single codebase, it can allow you to build web app later. Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bugs faster. But it still build native app, the UIs can't be dynamic updated. If you want to modify the UIs, you need to publish the updated app to app store. With this project, you can build your UIs from a json string, which is the UI protocol. The json string is very similar with the Flutter widget dart code. All widget type and widget properties are the same.
-    
+
 <img src="https://github.com/dengyin2000/dynamic_widget/raw/master/img/Sample.png" width="800">
 
 Widget type will be a type property, and widget's properties will be the json properties too. All properties and their values will be almost the same. You can checkout the following document.
@@ -174,7 +174,7 @@ var raisedButton_json =
     "child" : {
       "type": "Text",
       "data": "I am a button"
-    }  
+    }
   }
 }
 ```
@@ -201,7 +201,7 @@ Finally, pass the listener to build method.
 ```
 
 ## How to write the json code
-You don't need to write the json code by hand, you can export your flutter code to json code efficiently with DynamicWidgetJsonExportor widget. You just need to wrap your flutter code with DynamicWidgetJsonExportor widget, then invoke its `exportJsonString()` method, look at following example, click the "export" button, it will find the DynamicWidgetJsonExportor widget, and export its child to json code efficiently. 
+You don't need to write the json code by hand, you can export your flutter code to json code efficiently with DynamicWidgetJsonExportor widget. You just need to wrap your flutter code with DynamicWidgetJsonExportor widget, then invoke its `exportJsonString()` method, look at following example, click the "export" button, it will find the DynamicWidgetJsonExportor widget, and export its child to json code efficiently.
 
 ```dart
 class _JSONExporterState extends State<JSONExporter> {
@@ -282,6 +282,7 @@ Already completed widgets:
 * [TextStyle](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#textstyle)
 * [RaisedButton](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#raisedbutton-widget)
 * [ElevatedButton](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#elevatedbutton-widget)
+* [TextButton](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#textbutton-widget)
 * [Row](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#row-widget)
 * [Column](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#column-widget)
 * [AssetImage](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#assetimage-widget)

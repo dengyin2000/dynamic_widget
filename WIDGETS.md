@@ -10,6 +10,7 @@
 - [TextStyle](#textstyle)
 - [RaisedButton Widget](#raisedbutton-widget)
 - [ElevatedButton Widget](#elevatedbutton-widget)
+- [TextButton Widget](#textbutton-widget)
 - [Row Widget](#row-widget)
 - [Column Widget](#column-widget)
 - [AssetImage Widget](#assetimage-widget)
@@ -125,6 +126,23 @@ RaisedButton widget, here to see flutter [RaisedButton widget](https://docs.flut
 ## ElevatedButton Widget
 
 ElevatedButton widget, here to see flutter [ElevatedButton widget](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) definition. Supported json properties:
+
+| property          | definition                                                                                                    | type   | value                    | sample                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- | ------ | ------------------------ | ------------------------------------ |
+| foregroundColor             | The color for the button's Text and Icon widget descendants.    | String | "#AARRGGBB" or "#RRGGBB" | "#FF00FF"<br>"#00FF00FF"             |
+| backgroundColor     | The button's background fill color.                                                   | String | "#AARRGGBB" or "#RRGGBB" | "#FF00FF"<br>"#00FF00FF"             |
+| overlayColor     | The highlight color that's typically used to indicate that the button is focused, hovered, or pressed.                                                | String | "#AARRGGBB" or "#RRGGBB" | "#FF00FF"<br>"#00FF00FF"             |
+| shadowColor     | The shadow color of the button's Material.                                                | String | "#AARRGGBB" or "#RRGGBB" | "#FF00FF"<br>"#00FF00FF"             |
+| elevation         | The z-coordinate at which to place this button. This controls the size of the shadow below the raised button. | double |                          |                                      |
+| padding           | The internal padding for the button's child.                                                                  | String | left,top,right,bottom    | "8,10,12,8"                          |
+| textStyle               | The style to apply to the text and the children.                                                                                                                            | TextStyle |                                                                                                                                                                                                                                                                                            | {"color": "#00FFFF", "fontSize": 26.0} |
+| child             | The button's label.                                                                                           | Widget |                          |                                      |
+| alignment            | How to align the image within its bounds.                                                                           | String | enum values, please see enum Alignment, default value is Alignment.center.       | "center"                             |
+| click_event       | Url route string, for example: "route://productDetail?goods_id=123" for navigating to product detail page.    | String |                          | "route://productDetail?goods_id=123" |
+
+## TextButton Widget
+
+TextButton widget, here to see flutter [TextButton widget](https://api.flutter.dev/flutter/material/TextButton-class.html) definition. Supported json properties:
 
 | property          | definition                                                                                                    | type   | value                    | sample                               |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- | ------ | ------------------------ | ------------------------------------ |

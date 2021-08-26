@@ -82,6 +82,7 @@ class DynamicWidgetBuilder {
     OverflowBoxWidgetParser(),
     ElevatedButtonParser(),
     DividerWidgetParser(),
+    TextButtonParser(),
     RotatedBoxWidgetParser(),
   ];
 
