@@ -226,7 +226,7 @@ var elevatedButtonJson = '''
       "data": "I am a button"
     }  
   }
-}
+} ''';
 
 var textButtonJson = '''
 {
