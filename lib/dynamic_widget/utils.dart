@@ -747,7 +747,6 @@ FilterQuality? parseFilterQuality(String? filterQualityString) {
 }
 
 String exportFilterQuality(FilterQuality filterQuality) {
-
   String rt = "low";
   if (filterQuality == FilterQuality.none) {
     rt = "none";
@@ -943,7 +942,6 @@ Clip parseClipBehavior(String? clipBehaviorString) {
 }
 
 String exportClipBehavior(Clip clip) {
-
   if (clip == Clip.antiAliasWithSaveLayer) {
     return "antiAliasWithSaveLayer";
   }
@@ -1031,7 +1029,8 @@ DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
   );
 }
 
-Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext) {
+Map<String, dynamic>? exportDropCap(
+    DropCap? dropCap, BuildContext? buildContext) {
   if (dropCap == null) {
     return null;
   }
@@ -1042,8 +1041,7 @@ Map<String, dynamic>? exportDropCap(DropCap? dropCap, BuildContext? buildContext
   };
 }
 
-String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional){
-
+String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional) {
   if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
     return "bottomCenter";
   }
@@ -1136,4 +1134,59 @@ Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
         ? infinity
         : constraints.maxHeight,
   };
+}
+
+/// BorderSide
+Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
+  if (borderSide == BorderSide.none) {
+    return null;
+  }
+  return <String, dynamic>{
+    "color": borderSide.color.value.toRadixString(16),
+    "width": borderSide.width,
+    "style": borderSide.style.index,
+  };
+}
+
+BorderSide parseBorderSide(Map<String, dynamic>? map) {
+  if (map == null) return BorderSide.none;
+  if (!map.containsKey('color')) return BorderSide.none;
+  return BorderSide(
+    color: parseHexColor(map['color'])!,
+    width: map['width'] ?? 0,
+    style: BorderStyle.values[map['style']],
+  );
+}
+
+/// BorderRadius
+String exportBorderRadius(BorderRadius radius) {
+  return "${exportRadius(radius.topLeft)},${exportRadius(radius.topRight)},${exportRadius(radius.bottomRight)},${exportRadius(radius.bottomLeft)}";
+}
+
+BorderRadius parseBorderRadius(String radius) {
+  final values = radius.split(',');
+  if (values.length == 4) {
+    return BorderRadius.only(
+      topLeft: parseRadius(values[0]),
+      topRight: parseRadius(values[1]),
+      bottomRight: parseRadius(values[2]),
+      bottomLeft: parseRadius(values[3]),
+    );
+  } else {
+    return BorderRadius.zero;
+  }
+}
+
+/// Radius
+String exportRadius(Radius radius) {
+  return "${radius.x}:${radius.y}";
+}
+
+Radius parseRadius(String radius) {
+  final values = radius.split(':');
+  if (values.length == 2) {
+    return Radius.elliptical(double.parse(values[0]), double.parse(values[1]));
+  } else {
+    return Radius.zero;
+  }
 }

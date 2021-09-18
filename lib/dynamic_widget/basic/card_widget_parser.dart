@@ -1,4 +1,5 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
+import 'package:dynamic_widget/dynamic_widget/common/rounded_rectangle_border_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,13 @@ class CardParser extends WidgetParser {
       final bool semanticContainer = widget.semanticContainer;
       final Map<String, dynamic>? childMap =
           DynamicWidgetBuilder.export(widget.child, buildContext);
+      final Map<String, dynamic>? shape;
+      if (widget.shape != null && widget.shape is RoundedRectangleBorder) {
+        shape = RoundedRectangleBorderParser.export(
+            widget.shape as RoundedRectangleBorder);
+      } else
+        shape = null;
+
       final Map<String, dynamic> map = {
         "type": widgetName,
       };
@@ -40,6 +48,7 @@ class CardParser extends WidgetParser {
       if (strMargin != null) map['margin'] = strMargin;
       map['semanticContainer'] = semanticContainer;
       if (childMap != null) map['child'] = childMap;
+      if (shape != null) map['shape'] = shape;
 
       return map;
     }
@@ -59,11 +68,14 @@ class CardParser extends WidgetParser {
     final Widget? child = childMap == null
         ? null
         : DynamicWidgetBuilder.buildFromMap(childMap, buildContext, listener);
+    final RoundedRectangleBorder? shape =
+        RoundedRectangleBorderParser.parse(map['shape']);
 
     var card = Card(
       color: color,
       shadowColor: shadowColor,
       elevation: elevation,
+      shape: shape,
       borderOnForeground: borderOnForeground,
       margin: margin,
       semanticContainer: semanticContainer,
