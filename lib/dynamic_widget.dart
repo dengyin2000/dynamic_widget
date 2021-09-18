@@ -41,6 +41,8 @@ import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
 
+export 'dynamic_widget/util/binding_data.dart';
+
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class BindingData {
   /// when building your ui
   /// DEMO:
@@ -13,19 +15,34 @@ class BindingData {
   static Map<String, dynamic> bindingJsonUIAndData(
       Map<String, dynamic> uiMap, Map<String, dynamic> data) {
     uiMap.forEach((key, value) {
-      print("key: $key");
-      if (key == 'data') {
-        if (data[value] != null) {
-          uiMap[key] = data[value];
-        }
-      }
-      if (key == "child") {
-        uiMap[key] = bindingJsonUIAndData(uiMap[key], data);
-      }
-      if (key == "children") {
-        uiMap[key].forEach((child) {
-          child = bindingJsonUIAndData(child, data);
-        });
+      switch (key) {
+        case 'data':
+          if (data[value] != null) {
+            uiMap[key] = data[value];
+          }
+          break;
+        case 'child':
+          uiMap[key] = bindingJsonUIAndData(uiMap[key], data);
+          break;
+        case 'children':
+          uiMap[key].forEach((child) {
+            child = bindingJsonUIAndData(child, data);
+          });
+          break;
+        case 'tempChild':
+          if (uiMap.containsKey('dataKey') && uiMap.containsKey('children')) {
+            var dataList = data[uiMap['dataKey']];
+            if (dataList != null && dataList is List) {
+              List children = [];
+              final childJson = jsonEncode(value);
+              dataList.forEach((element) {
+                final Map<String, dynamic> child = jsonDecode(childJson);
+                children.add(bindingJsonUIAndData(child, element));
+              });
+              uiMap['children'] = children;
+            }
+          }
+          break;
       }
     });
     return uiMap;

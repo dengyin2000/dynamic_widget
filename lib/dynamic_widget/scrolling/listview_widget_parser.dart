@@ -60,6 +60,8 @@ class ListViewWidgetParser extends WidgetParser {
     }
 
     var padding = realWidget._params.padding as EdgeInsets?;
+    var tempChild =
+        DynamicWidgetBuilder.export(widget._params.tempChild, buildContext);
     return <String, dynamic>{
       "type": "ListView",
       "scrollDirection": scrollDirection,
@@ -74,7 +76,9 @@ class ListViewWidgetParser extends WidgetParser {
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
       "isDemo": realWidget._params.isDemo ?? false,
       "children": DynamicWidgetBuilder.exportWidgets(
-          realWidget._params.children!, buildContext)
+          realWidget._params.children ?? [], buildContext),
+      "tempChild": tempChild,
+      "dataKey": realWidget._params.dataKey,
     };
   }
 
@@ -128,7 +132,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
+      var jsonString =
+          _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
@@ -233,6 +238,12 @@ class ListViewParams {
   double? itemExtent;
   List<Widget?>? children;
 
+  /// use to data binding
+  String? dataKey;
+
+  /// use to data binding
+  Widget? tempChild;
+
   int? pageSize;
   String? loadMoreUrl;
 
@@ -249,5 +260,18 @@ class ListViewParams {
       this.children,
       this.pageSize,
       this.loadMoreUrl,
-      this.isDemo});
+      this.isDemo,
+      this.tempChild,
+      this.dataKey}) {
+    // assert(this.children != null || this.tempChild != null,
+    //     "you must set one of [children] or [tempChild]");
+    // if (this.tempChild != null) {
+    //   assert(this.dataKey != null && this.children == null,
+    //       "you must set [dataKey] and [children] not to set");
+    // }
+    // if (this.children != null) {
+    //   assert(this.dataKey == null && this.tempChild == null,
+    //       "do not set any dataKey and tempChild");
+    // }
+  }
 }
