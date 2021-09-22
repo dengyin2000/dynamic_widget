@@ -42,7 +42,7 @@ class CardParser extends WidgetParser {
       };
       if (color != null) map['color'] = color;
       if (shadowColor != null) map['shadowColor'] = shadowColor;
-      if (elevation != null) map['elevation'] = elevation;
+      if (elevation != null) map['elevation'] = elevation.toDouble();
       map['borderOnForeground'] = borderOnForeground;
       if (clipBehavior != null) map['clipBehavior'] = clipBehavior;
       if (strMargin != null) map['margin'] = strMargin;

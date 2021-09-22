@@ -623,3 +623,19 @@ RotatedBox, here to see flutter [RotatedBox](https://api.flutter.dev/flutter/wid
 | ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
 | quarterTurns   | The number of clockwise quarter turns the child should be rotated.                                                                   | int         | 3 |                           |
 | child    | The widget below this widget in the tree.                                                     | Widget |                                |             |
+
+## Card Widget
+
+Card, here to see flutter [Card](https://api.flutter.dev/flutter/material/Card-class.html) definition. Supported json properties:
+
+| property      | definition                                             | type   | value                                                 | sample                                                                     |
+| ------------- | ------------------------------------------------------ | ------ | ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| color                 | The card's background color.                                                                                          | int    |   3 | |
+| shadowColor           | The color to paint the shadow below the card.                                                                         | int    |   3 | |
+| elevation             | The z-coordinate at which to place this card. This controls the size of the shadow below the card.                    | int    |   8 | |
+| borderOnForeground    | Whether to paint the shape border in front of the child.                                                              | bool   |   true | |
+| clipBehavior          | The content will be clipped (or not) according to this option.                                                        | String |        | |
+| margin                | The empty space that surrounds the card.                                                                              | String |   left,top,right,bottom  | |
+| semanticContainer     | Whether this widget represents a single semantic container, or if false a collection of individual semantic nodes.    | bool   |   true | |
+| child                 | The widget below this widget in the tree.                                                                             | Widget |        | |
+| shape                 | The shape of the card's Material.                                                                                     | Map    |        | |

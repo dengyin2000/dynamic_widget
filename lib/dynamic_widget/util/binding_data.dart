@@ -22,7 +22,8 @@ class BindingData {
           }
           break;
         case 'child':
-          uiMap[key] = bindingJsonUIAndData(uiMap[key], data);
+          if (uiMap[key] != null)
+            uiMap[key] = bindingJsonUIAndData(uiMap[key], data);
           break;
         case 'children':
           uiMap[key].forEach((child) {
