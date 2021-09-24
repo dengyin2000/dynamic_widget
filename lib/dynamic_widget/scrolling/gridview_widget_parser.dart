@@ -5,7 +5,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 
 class GridViewWidgetParser extends WidgetParser {
@@ -19,21 +18,20 @@ class GridViewWidgetParser extends WidgetParser {
     }
     int? crossAxisCount = map['crossAxisCount'];
     bool? reverse = map.containsKey("reverse") ? map['reverse'] : false;
-    bool? shrinkWrap =
-        map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
+    bool? shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
     double? cacheExtent =
-        map["cacheExtent"] != null ? (map["cacheExtent"] as double).w : 0.0;
+        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     EdgeInsetsGeometry? padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    double? mainAxisSpacing = map['mainAxisSpacing'] != null
-        ? (map['mainAxisSpacing'] as double).w
+    double? mainAxisSpacing = map.containsKey('mainAxisSpacing')
+        ? map['mainAxisSpacing']?.toDouble()
         : 0.0;
-    double? crossAxisSpacing = map['crossAxisSpacing'] != null
-        ? (map['crossAxisSpacing'] as double).w
+    double? crossAxisSpacing = map.containsKey('crossAxisSpacing')
+        ? map['crossAxisSpacing']?.toDouble()
         : 0.0;
-    double? childAspectRatio = map['childAspectRatio'] != null
-        ? (map['childAspectRatio'] as double).w
+    double? childAspectRatio = map.containsKey('childAspectRatio')
+        ? map['childAspectRatio']?.toDouble()
         : 1.0;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
@@ -72,25 +70,18 @@ class GridViewWidgetParser extends WidgetParser {
     }
 
     var padding = realWidget._params.padding as EdgeInsets?;
-    final sw = ScreenUtil().scaleWidth;
     return <String, dynamic>{
       "type": "GridView",
       "scrollDirection": scrollDirection,
       "crossAxisCount": realWidget._params.crossAxisCount,
       "reverse": realWidget._params.reverse ?? false,
       "shrinkWrap": realWidget._params.shrinkWrap ?? false,
-      "cacheExtent": realWidget._params.cacheExtent != null
-          ? realWidget._params.cacheExtent! / sw
-          : 0.0,
+      "cacheExtent": realWidget._params.cacheExtent ?? 0.0,
       "padding": padding != null
-          ? "${padding.left / sw},${padding.top / sw},${padding.right / sw},${padding.bottom / sw}"
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
           : null,
-      "mainAxisSpacing": realWidget._params.mainAxisSpacing != null
-          ? realWidget._params.mainAxisSpacing! / sw
-          : 0.0,
-      "crossAxisSpacing": realWidget._params.crossAxisSpacing != null
-          ? realWidget._params.crossAxisSpacing! / sw
-          : 0.0,
+      "mainAxisSpacing": realWidget._params.mainAxisSpacing ?? 0.0,
+      "crossAxisSpacing": realWidget._params.crossAxisSpacing ?? 0.0,
       "childAspectRatio": realWidget._params.childAspectRatio ?? 1.0,
       "pageSize": realWidget._params.pageSize ?? 10,
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
@@ -151,8 +142,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString =
-          _params.isDemo! ? await fakeRequest() : await doRequest();
+      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {

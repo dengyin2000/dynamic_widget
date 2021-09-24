@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 TextAlign parseTextAlign(String? textAlignString) {
   //left the system decide
@@ -245,7 +244,7 @@ TextStyle? parseTextStyle(Map<String, dynamic>? map) {
     color: parseHexColor(color),
     debugLabel: debugLabel,
     decoration: parseTextDecoration(decoration),
-    fontSize: fontSize?.sp,
+    fontSize: fontSize,
     fontFamily: fontFamily,
     fontStyle: fontStyle,
     fontWeight: parseFontWeight(fontWeight),
@@ -263,9 +262,7 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
         : null,
     "debugLabel": textStyle.debugLabel,
     "decoration": exportTextDecoration(textStyle.decoration),
-    "fontSize": textStyle.fontSize != null
-        ? textStyle.fontSize! / ScreenUtil().textScaleFactor
-        : 13,
+    "fontSize": textStyle.fontSize,
     "fontFamily": textStyle.fontFamily,
     "fontStyle": FontStyle.italic == textStyle.fontStyle ? "italic" : "normal",
     "fontWeight": exportFontWeight(textStyle.fontWeight),
@@ -365,10 +362,10 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
   }
 
   return BoxConstraints(
-    minWidth: minWidth.w,
-    maxWidth: maxWidth.w,
-    minHeight: minHeight.w,
-    maxHeight: maxHeight.w,
+    minWidth: minWidth,
+    maxWidth: maxWidth,
+    minHeight: minHeight,
+    maxHeight: maxHeight,
   );
 }
 
@@ -380,10 +377,10 @@ EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
   }
   var values = edgeInsetsGeometryString.split(",");
   return EdgeInsets.only(
-      left: double.parse(values[0]).w,
-      top: double.parse(values[1]).w,
-      right: double.parse(values[2]).w,
-      bottom: double.parse(values[3]).w);
+      left: double.parse(values[0]),
+      top: double.parse(values[1]),
+      right: double.parse(values[2]),
+      bottom: double.parse(values[3]));
 }
 
 CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
@@ -723,14 +720,12 @@ Rect? parseRect(String? fromLTRBString) {
     return null;
   }
   var strings = fromLTRBString.split(',');
-  return Rect.fromLTRB(double.parse(strings[0]).w, double.parse(strings[1]).w,
-      double.parse(strings[2]).w, double.parse(strings[3]).w);
+  return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]),
+      double.parse(strings[2]), double.parse(strings[3]));
 }
 
 String exportRect(Rect rect) {
-  final screenUtil = ScreenUtil();
-  final sw = screenUtil.scaleWidth;
-  return "${rect.left / sw},${rect.top / sw},${rect.right / sw},${rect.bottom / sw}";
+  return "${rect.left},${rect.top},${rect.right},${rect.bottom}";
 }
 
 FilterQuality? parseFilterQuality(String? filterQualityString) {
@@ -1026,11 +1021,9 @@ DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
   if (map == null) {
     return null;
   }
-  final width = map['width'] != null ? (map['width'] as num).w : 0.0;
-  final height = map['height'] != null ? (map['height'] as num).w : 0.0;
   return DropCap(
-    width: width,
-    height: height,
+    width: map['width']?.toDouble(),
+    height: map['height']?.toDouble(),
     child:
         DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );
@@ -1041,11 +1034,9 @@ Map<String, dynamic>? exportDropCap(
   if (dropCap == null) {
     return null;
   }
-  final screenUtil = ScreenUtil();
-  final sw = screenUtil.scaleWidth;
   return <String, dynamic>{
-    "width": dropCap.width / sw,
-    "height": dropCap.height / sw,
+    "width": dropCap.width,
+    "height": dropCap.height,
     "child": DynamicWidgetBuilder.export(dropCap.child, buildContext),
   };
 }
@@ -1133,16 +1124,15 @@ String exportAlignment(Alignment? alignment) {
 }
 
 Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
-  final screenUtil = ScreenUtil();
   return {
-    'minWidth': constraints.minWidth / screenUtil.scaleWidth,
+    'minWidth': constraints.minWidth,
     'maxWidth': constraints.maxWidth == double.infinity
         ? infinity
-        : constraints.maxWidth / screenUtil.scaleWidth,
-    'minHeight': constraints.minHeight / screenUtil.scaleWidth,
+        : constraints.maxWidth,
+    'minHeight': constraints.minHeight,
     'maxHeight': constraints.maxHeight == double.infinity
         ? infinity
-        : constraints.maxHeight / screenUtil.scaleWidth,
+        : constraints.maxHeight,
   };
 }
 
@@ -1153,7 +1143,7 @@ Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
   }
   return <String, dynamic>{
     "color": borderSide.color.value.toRadixString(16),
-    "width": borderSide.width / ScreenUtil().scaleWidth,
+    "width": borderSide.width,
     "style": borderSide.style.index,
   };
 }
@@ -1161,10 +1151,9 @@ Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
 BorderSide parseBorderSide(Map<String, dynamic>? map) {
   if (map == null) return BorderSide.none;
   if (!map.containsKey('color')) return BorderSide.none;
-  final width = map['width'] != null ? (map['width'] as num).w : 0.0;
   return BorderSide(
     color: parseHexColor(map['color'])!,
-    width: width,
+    width: map['width'] ?? 0,
     style: BorderStyle.values[map['style']],
   );
 }
@@ -1190,15 +1179,13 @@ BorderRadius parseBorderRadius(String radius) {
 
 /// Radius
 String exportRadius(Radius radius) {
-  final sw = ScreenUtil().scaleWidth;
-  return "${radius.x / sw}:${radius.y / sw}";
+  return "${radius.x}:${radius.y}";
 }
 
 Radius parseRadius(String radius) {
   final values = radius.split(':');
   if (values.length == 2) {
-    return Radius.elliptical(
-        double.parse(values[0]).w, double.parse(values[1]).w);
+    return Radius.elliptical(double.parse(values[0]), double.parse(values[1]));
   } else {
     return Radius.zero;
   }

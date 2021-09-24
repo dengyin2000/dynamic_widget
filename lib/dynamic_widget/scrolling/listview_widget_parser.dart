@@ -5,7 +5,6 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 
 class ListViewWidgetParser extends WidgetParser {
@@ -21,11 +20,12 @@ class ListViewWidgetParser extends WidgetParser {
     var reverse = map.containsKey("reverse") ? map['reverse'] : false;
     var shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
     var cacheExtent =
-        map["cacheExtent"] != null ? (map["cacheExtent"] as num).w : 0.0;
+        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     var padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    var itemExtent = map["itemExtent"] != null ? (map["itemExtent"] as num).w : null;
+    var itemExtent =
+        map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
@@ -62,21 +62,16 @@ class ListViewWidgetParser extends WidgetParser {
     var padding = realWidget._params.padding as EdgeInsets?;
     var tempChild =
         DynamicWidgetBuilder.export(widget._params.tempChild, buildContext);
-    final sw = ScreenUtil().scaleWidth;
     return <String, dynamic>{
       "type": "ListView",
       "scrollDirection": scrollDirection,
       "reverse": realWidget._params.reverse ?? false,
       "shrinkWrap": realWidget._params.shrinkWrap ?? false,
-      "cacheExtent": realWidget._params.cacheExtent != null
-          ? realWidget._params.cacheExtent! / sw
-          : 0.0,
+      "cacheExtent": realWidget._params.cacheExtent ?? 0.0,
       "padding": padding != null
-          ? "${padding.left / sw},${padding.top / sw},${padding.right / sw},${padding.bottom / sw}"
+          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
           : null,
-      "itemExtent": realWidget._params.itemExtent != null
-          ? realWidget._params.itemExtent! / sw
-          : null,
+      "itemExtent": realWidget._params.itemExtent ?? null,
       "pageSize": realWidget._params.pageSize ?? 10,
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
       "isDemo": realWidget._params.isDemo ?? false,
@@ -115,9 +110,6 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   _ListViewWidgetState(this._params) {
     if (_params.children != null) {
       _items.addAll(_params.children!);
-    }
-    if (_params.tempChild != null) {
-      _items.add(_params.tempChild);
     }
   }
 
