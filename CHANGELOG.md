@@ -104,6 +104,11 @@
 
 * add DividerWidget and RotatedBox widget parser.
 
+## [4.0.3] - add TextButton Widget and Card widget parser
+
+* add TextButton widget parser, thanks ChangJoo Park(박창주)
+* add Card widget parser, thanks linpc
+
 
 
 
