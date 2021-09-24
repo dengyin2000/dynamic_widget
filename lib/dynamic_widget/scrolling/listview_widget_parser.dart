@@ -5,6 +5,7 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 
 class ListViewWidgetParser extends WidgetParser {
@@ -20,12 +21,11 @@ class ListViewWidgetParser extends WidgetParser {
     var reverse = map.containsKey("reverse") ? map['reverse'] : false;
     var shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
     var cacheExtent =
-        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
+        map["cacheExtent"] != null ? (map["cacheExtent"] as num).w : 0.0;
     var padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    var itemExtent =
-        map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
+    var itemExtent = map["itemExtent"] != null ? (map["itemExtent"] as num).w : null;
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
     var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
@@ -60,21 +60,30 @@ class ListViewWidgetParser extends WidgetParser {
     }
 
     var padding = realWidget._params.padding as EdgeInsets?;
+    var tempChild =
+        DynamicWidgetBuilder.export(widget._params.tempChild, buildContext);
+    final sw = ScreenUtil().scaleWidth;
     return <String, dynamic>{
       "type": "ListView",
       "scrollDirection": scrollDirection,
       "reverse": realWidget._params.reverse ?? false,
       "shrinkWrap": realWidget._params.shrinkWrap ?? false,
-      "cacheExtent": realWidget._params.cacheExtent ?? 0.0,
+      "cacheExtent": realWidget._params.cacheExtent != null
+          ? realWidget._params.cacheExtent! / sw
+          : 0.0,
       "padding": padding != null
-          ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
+          ? "${padding.left / sw},${padding.top / sw},${padding.right / sw},${padding.bottom / sw}"
           : null,
-      "itemExtent": realWidget._params.itemExtent ?? null,
+      "itemExtent": realWidget._params.itemExtent != null
+          ? realWidget._params.itemExtent! / sw
+          : null,
       "pageSize": realWidget._params.pageSize ?? 10,
       "loadMoreUrl": realWidget._params.loadMoreUrl ?? null,
       "isDemo": realWidget._params.isDemo ?? false,
       "children": DynamicWidgetBuilder.exportWidgets(
-          realWidget._params.children!, buildContext)
+          realWidget._params.children ?? [], buildContext),
+      "tempChild": tempChild,
+      "dataKey": realWidget._params.dataKey,
     };
   }
 
@@ -107,6 +116,9 @@ class _ListViewWidgetState extends State<ListViewWidget> {
     if (_params.children != null) {
       _items.addAll(_params.children!);
     }
+    if (_params.tempChild != null) {
+      _items.add(_params.tempChild);
+    }
   }
 
   @override
@@ -128,7 +140,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
+      var jsonString =
+          _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {
@@ -233,6 +246,12 @@ class ListViewParams {
   double? itemExtent;
   List<Widget?>? children;
 
+  /// use to data binding
+  String? dataKey;
+
+  /// use to data binding
+  Widget? tempChild;
+
   int? pageSize;
   String? loadMoreUrl;
 
@@ -249,5 +268,18 @@ class ListViewParams {
       this.children,
       this.pageSize,
       this.loadMoreUrl,
-      this.isDemo});
+      this.isDemo,
+      this.tempChild,
+      this.dataKey}) {
+    // assert(this.children != null || this.tempChild != null,
+    //     "you must set one of [children] or [tempChild]");
+    // if (this.tempChild != null) {
+    //   assert(this.dataKey != null && this.children == null,
+    //       "you must set [dataKey] and [children] not to set");
+    // }
+    // if (this.children != null) {
+    //   assert(this.dataKey == null && this.tempChild == null,
+    //       "do not set any dataKey and tempChild");
+    // }
+  }
 }

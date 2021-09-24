@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AssetImageWidgetParser extends WidgetParser {
   @override
@@ -18,7 +19,8 @@ class AssetImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
     BlendMode? blendMode =
         map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
     BoxFit? boxFit =
@@ -48,8 +50,8 @@ class AssetImageWidgetParser extends WidgetParser {
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
       scale: scale,
-      width: width,
-      height: height,
+      width: width?.w,
+      height: height?.w,
       color: color,
       colorBlendMode: blendMode,
       fit: boxFit,
@@ -86,12 +88,13 @@ class AssetImageWidgetParser extends WidgetParser {
         var t = realWidget.image as ResizeImage;
         assetImage = t.imageProvider as AssetImage;
       }
+      final sw = ScreenUtil().scaleWidth;
       return <String, dynamic>{
         "type": widgetName,
         "name": assetImage.assetName,
         "semanticLabel": realWidget.semanticLabel,
-        "width": realWidget.width,
-        "height": realWidget.height,
+        "width": realWidget.width != null ? realWidget.width! / sw : 0,
+        "height": realWidget.height != null ? realWidget.height! / sw : 0,
         "color": realWidget.color != null
             ? realWidget.color!.value.toRadixString(16)
             : null,
@@ -207,7 +210,8 @@ class NetworkImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
     BlendMode? blendMode =
         map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
     BoxFit? boxFit =
@@ -237,8 +241,8 @@ class NetworkImageWidgetParser extends WidgetParser {
       semanticLabel: semanticLabel,
       excludeFromSemantics: excludeFromSemantics,
       scale: scale,
-      width: width,
-      height: height,
+      width: width?.w,
+      height: height?.w,
       color: color,
       colorBlendMode: blendMode,
       fit: boxFit,
@@ -274,12 +278,13 @@ class NetworkImageWidgetParser extends WidgetParser {
       var t = realWidget.image as ResizeImage;
       networkImage = t.imageProvider as NetworkImage;
     }
+    final sw = ScreenUtil().scaleWidth;
     return <String, dynamic>{
       "type": widgetName,
       "src": networkImage.url,
       "semanticLabel": realWidget.semanticLabel,
-      "width": realWidget.width,
-      "height": realWidget.height,
+      "width": realWidget.width != null ? realWidget.width! / sw : 0,
+      "height": realWidget.height != null ? realWidget.height! / sw : 0,
       "color": realWidget.color != null
           ? realWidget.color!.value.toRadixString(16)
           : null,

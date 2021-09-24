@@ -1,6 +1,7 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContainerWidgetParser extends WidgetParser {
   @override
@@ -20,13 +21,14 @@ class ContainerWidgetParser extends WidgetParser {
     String? clickEvent =
         map.containsKey("click_event") ? map['click_event'] : null;
 
+    final screenUtil = ScreenUtil();
     var containerWidget = Container(
       alignment: alignment,
       padding: padding,
       color: color,
       margin: margin,
-      width: map['width']?.toDouble(),
-      height: map['height']?.toDouble(),
+      width: map['width'] != null ? (map['width'] as double).w : 0,
+      height: map['height'] != null ? (map['height'] as double).w : 0,
       constraints: constraints,
       child: child,
     );

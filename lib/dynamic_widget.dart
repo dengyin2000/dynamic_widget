@@ -7,6 +7,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/appbar_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/aspectratio_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/card_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/center_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/divider_widget_parser.dart';
@@ -39,6 +40,8 @@ import 'package:logging/logging.dart';
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
+
+export 'dynamic_widget/util/binding_data.dart';
 
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
@@ -84,6 +87,7 @@ class DynamicWidgetBuilder {
     DividerWidgetParser(),
     TextButtonParser(),
     RotatedBoxWidgetParser(),
+    CardParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
@@ -135,20 +139,21 @@ class DynamicWidgetBuilder {
     return null;
   }
 
-  static List<Widget> buildWidgets(
-      List<dynamic> values, BuildContext buildContext, ClickListener? listener) {
+  static List<Widget> buildWidgets(List<dynamic> values,
+      BuildContext buildContext, ClickListener? listener) {
     initDefaultParsersIfNess();
     List<Widget> rt = [];
     for (var value in values) {
       var buildFromMap2 = buildFromMap(value, buildContext, listener);
-      if(buildFromMap2!=null) {
+      if (buildFromMap2 != null) {
         rt.add(buildFromMap2);
       }
     }
     return rt;
   }
 
-  static Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
+  static Map<String, dynamic>? export(
+      Widget? widget, BuildContext? buildContext) {
     initDefaultParsersIfNess();
     var parser = _findMatchedWidgetParserForExport(widget);
     if (parser != null) {

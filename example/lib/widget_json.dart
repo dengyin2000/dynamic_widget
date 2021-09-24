@@ -1689,3 +1689,36 @@ var rotatedBoxJson = '''
 }
 ''';
 
+var cardJson = '''
+{
+    "type":"Card",
+    "color":"fff44336",
+    "shadowColor":"ff2196f3",
+    "elevation":10.0,
+    "borderOnForeground":true,
+    "margin":"10.0,10.0,10.0,10.0,",
+    "semanticContainer":true,
+    "child":{
+        "type":"Container",
+        "alignment":null,
+        "padding":null,
+        "color":null,
+        "margin":null,
+        "constraints":{
+            "minWidth":200.0,
+            "maxWidth":200.0,
+            "minHeight":100.0,
+            "maxHeight":100.0
+        },
+        "child":null
+    },
+    "shape":{
+        "side":{
+            "color":"ff2196f3",
+            "width":2.0,
+            "style":1
+        },
+        "borderRadius":"10.0:10.0,10.0:10.0,10.0:10.0,10.0:10.0"
+    }
+}
+''';
