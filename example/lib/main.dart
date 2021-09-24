@@ -517,7 +517,7 @@ class PreviewPage extends StatelessWidget {
 
   PreviewPage(this.jsonString);
 
-  late DynamicWidgetJsonExportor _exportor;
+  late DynamicWidgetJsonExportor? _exportor;
 
   @override
   Widget build(BuildContext context) {
@@ -546,11 +546,12 @@ class PreviewPage extends StatelessWidget {
           ),
           RaisedButton(
             onPressed: () {
-              var exportJsonString = _exportor.exportJsonString();
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CodeEditorPage(exportJsonString)));
+              var exportJsonString = _exportor?.exportJsonString();
+              if (exportJsonString!=null)
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CodeEditorPage(exportJsonString)));
             },
             child: Text("export json code"),
           )
