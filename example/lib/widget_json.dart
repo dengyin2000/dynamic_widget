@@ -14,7 +14,51 @@ var containerJson = '''
     }
   }
 }
+''';
 
+var singleChildScrollViewJson = '''
+{
+  "type": "SingleChildScrollView",
+  "child": {
+    "type": "Column",
+    "crossAxisAlignment": "start",
+    "mainAxisAlignment": "start",
+    "mainAxisSize": "max",
+    "textBaseline": "alphabetic",
+    "textDirection": "ltr",
+    "verticalDirection": "down",
+    "children":[
+      {
+          "type": "Placeholder",
+          "color": "#00FF00",
+          "strokeWidth": 6.0,
+          "fallbackWidth": 100.0,
+          "fallbackHeight": 200.0
+      },
+      {
+          "type": "Placeholder",
+          "color": "#FF0000",
+          "strokeWidth": 6.0,
+          "fallbackWidth": 100.0,
+          "fallbackHeight": 200.0
+      },
+      {
+          "type": "Placeholder",
+          "color": "#0000FF",
+          "strokeWidth": 6.0,
+          "fallbackWidth": 100.0,
+          "fallbackHeight": 200.0
+      },
+      {
+          "type": "Placeholder",
+          "color": "#000000",
+          "strokeWidth": 6.0,
+          "fallbackWidth": 100.0,
+          "fallbackHeight": 200.0
+      }
+    ]
+  }
+}
 ''';
 
 var textJson = '''
@@ -181,7 +225,7 @@ var dropCapTextImageJson = '''
        ]
     }
   ]
-}      
+}
 ''';
 
 var raisedButtonJson = '''
@@ -199,7 +243,7 @@ var raisedButtonJson = '''
     "child" : {
       "type": "Text",
       "data": "I am a button"
-    }  
+    }
   }
 }
 
@@ -224,7 +268,7 @@ var elevatedButtonJson = '''
     "child" : {
       "type": "Text",
       "data": "I am a button"
-    }  
+    }
   }
 } ''';
 
@@ -443,7 +487,7 @@ var gridviewJson = '''
       "type": "AssetImage",
       "name": "assets/vip.png"
     }
-    
+
   ]
 }
 
@@ -534,7 +578,7 @@ var listviewJson = '''
       "type": "AssetImage",
       "name": "assets/vip.png"
     }
-    
+
   ]
 }
 
@@ -624,7 +668,7 @@ var pageviewJson = '''
       "type": "AssetImage",
       "name": "assets/vip.png"
     }
-    
+
   ]
 }
 
@@ -762,7 +806,7 @@ var listviewLoadmoreJson = '''
       "type": "AssetImage",
       "name": "assets/vip.png"
     }
-    
+
   ]
 }
 
@@ -836,7 +880,7 @@ var gridviewloadmoreJson = '''
       "type": "AssetImage",
       "name": "assets/vip.png"
     }
-    
+
   ]
 }
 
@@ -944,7 +988,7 @@ var wrapJson = '''
   "type": "Wrap",
   "spacing" : 8.0,
   "runSpacing" : 8.0,
-  "alignment":"center", 
+  "alignment":"center",
   "runAlignment" : "start",
   "crossAxisAlignment":"center",
   "children": [
@@ -955,7 +999,7 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "XXL"
-        }  
+        }
       },
     {
         "type": "RaisedButton",
@@ -964,8 +1008,8 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "XL"
-        }  
-      }   
+        }
+      }
       ,
     {
         "type": "RaisedButton",
@@ -974,7 +1018,7 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "SSL"
-        }  
+        }
       }   ,
     {
         "type": "RaisedButton",
@@ -983,7 +1027,7 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "L"
-        }  
+        }
       },
     {
         "type": "RaisedButton",
@@ -992,7 +1036,7 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "LLL"
-        }  
+        }
       },
     {
         "type": "RaisedButton",
@@ -1001,7 +1045,7 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "GGG"
-        }  
+        }
       },
     {
         "type": "RaisedButton",
@@ -1010,8 +1054,8 @@ var wrapJson = '''
         "child" : {
           "type": "Text",
           "data": "AAA"
-        }  
-      }             
+        }
+      }
   ]
 }
 ''';
@@ -1077,7 +1121,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1092,7 +1136,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1107,7 +1151,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1122,7 +1166,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1137,7 +1181,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1152,7 +1196,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1167,7 +1211,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1182,7 +1226,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1197,7 +1241,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1212,7 +1256,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1227,7 +1271,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1242,7 +1286,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1257,7 +1301,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1272,7 +1316,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1287,7 +1331,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1302,7 +1346,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1317,7 +1361,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     },
         {
       "type": "ListTile",
@@ -1332,7 +1376,7 @@ var listTileJson = '''
       "subtitle":{
         "type":"Text",
         "data":"Subtitle text"
-      } 
+      }
     }
   ]
 }
@@ -1661,7 +1705,7 @@ var dividerJson = '''
       "endIndent": 100.0,
       "thickness": 20.0
     }
-    
+
   ]
 }
 

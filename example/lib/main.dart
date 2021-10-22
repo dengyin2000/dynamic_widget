@@ -441,6 +441,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             builder: (context) => CodeEditorPage(cardJson)));
                   },
                 ),
+                ElevatedButton(
+                  child: Text("SingleChildScrollView"),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CodeEditorPage(singleChildScrollViewJson)));
+                  },
+                ),
               ]),
             ),
           ),
