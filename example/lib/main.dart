@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Dynamic Widget Json String Export Example"),
                     onPressed: () {
                       Navigator.push(
@@ -492,7 +492,7 @@ class _CodeEditorPageState extends State<CodeEditorPage> {
             SizedBox(
               height: 8,
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text("Preview"),
               onPressed: () {
                 setState(() {
@@ -544,7 +544,7 @@ class PreviewPage extends StatelessWidget {
               },
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
               var exportJsonString = _exportor?.exportJsonString();
               if (exportJsonString!=null)
@@ -611,13 +611,13 @@ class _JSONExporterState extends State<JSONExporter> {
                 ),
               ),
               Container(
-                child: RaisedButton(
+                child: ElevatedButton(
                   child: Text("Export"),
                   onPressed: () {
                     var exportor =
                         key.currentWidget as DynamicWidgetJsonExportor;
                     var exportJsonString = exportor.exportJsonString();
-                    Scaffold.of(context).showSnackBar(SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
                             Text("json string was exported to editor page.")));
                     Future.delayed(Duration(seconds: 1), () {
