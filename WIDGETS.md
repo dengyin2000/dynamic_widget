@@ -639,3 +639,16 @@ Card, here to see flutter [Card](https://api.flutter.dev/flutter/material/Card-c
 | semanticContainer     | Whether this widget represents a single semantic container, or if false a collection of individual semantic nodes.    | bool   |   true | |
 | child                 | The widget below this widget in the tree.                                                                             | Widget |        | |
 | shape                 | The shape of the card's Material.                                                                                     | Map    |        | |
+
+
+## SingleChildScrollView
+
+SingleChildScrollView, here to see flutter [SingleChildScrollView](https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html) definition. Suppert json properties:
+
+| property        | definition                                                     | type   | value                                                              | sample     |
+|-----------------|----------------------------------------------------------------|--------|--------------------------------------------------------------------|------------|
+| reverse         | Whether the scroll view scrolls in the reading direction.      | bool   | default value is false                                             |            |
+| clipBehavior    | The content will be clipped (or not) according to this option. | String | enum values, please see enum Clip, default value is Clip.hardEdge. |            |
+| padding         | The internal padding for the SingleChildScrollView's child.    | String | left,top,right,bottom                                              | "0,0,0,0"  |
+| scrollDirection | The axis along which the scroll view scrolls.                  | String | enum values, please see enum Axis, default value is Axis.vertical. | "vertical" |
+| child           | The widget below this widget in the tree.                      | Widget |                                                                    |            |

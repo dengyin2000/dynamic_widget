@@ -34,6 +34,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view_widget_parser.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
@@ -86,6 +87,7 @@ class DynamicWidgetBuilder {
     TextButtonParser(),
     RotatedBoxWidgetParser(),
     CardParser(),
+    SingleChildScrollViewParser()
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
