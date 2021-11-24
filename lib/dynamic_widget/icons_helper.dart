@@ -2441,7 +2441,6 @@ const Map<String, IconData> FontAwesomeIconsMap = <String, IconData>{
   'trashRestoreAlt': FontAwesomeIcons.trashRestoreAlt,
   'tree': FontAwesomeIcons.tree,
   'trello': FontAwesomeIcons.trello,
-  'tripadvisor': FontAwesomeIcons.tripadvisor,
   'trophy': FontAwesomeIcons.trophy,
   'truck': FontAwesomeIcons.truck,
   'truckLoading': FontAwesomeIcons.truckLoading,
