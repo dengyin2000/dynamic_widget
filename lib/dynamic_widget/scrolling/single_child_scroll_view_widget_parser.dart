@@ -35,7 +35,7 @@ class SingleChildScrollViewParser extends WidgetParser {
 
     var clipBehaviorString = map['clipBehavior'];
     return SingleChildScrollView(
-      reverse: map.containsKey('reverse') ? map['splashColor'] : false,
+      reverse: map.containsKey('reverse') ? map['reverse'] : false,
       clipBehavior: parseClipBehavior(clipBehaviorString),
       padding: map.containsKey("padding")
           ? parseEdgeInsetsGeometry(map["padding"])!
