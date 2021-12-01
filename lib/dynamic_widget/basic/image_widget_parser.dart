@@ -19,10 +19,10 @@ class AssetImageWidgetParser extends WidgetParser {
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
     Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? blendMode =
-        map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
-    BoxFit? boxFit =
-        map.containsKey('boxFit') ? parseBoxFit(map['boxFit']) : null;
+    BlendMode? colorBlendMode =
+        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
+    BoxFit? fit =
+        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])
         : Alignment.center;
@@ -51,8 +51,8 @@ class AssetImageWidgetParser extends WidgetParser {
       width: width,
       height: height,
       color: color,
-      colorBlendMode: blendMode,
-      fit: boxFit,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
       alignment: alignment,
       repeat: repeat,
       centerSlice: centerSlice,
@@ -90,6 +90,7 @@ class AssetImageWidgetParser extends WidgetParser {
         "type": widgetName,
         "name": assetImage.assetName,
         "semanticLabel": realWidget.semanticLabel,
+        "excludeFromSemantics": realWidget.excludeFromSemantics,
         "width": realWidget.width,
         "height": realWidget.height,
         "color": realWidget.color != null
@@ -129,6 +130,7 @@ class AssetImageWidgetParser extends WidgetParser {
         "type": widgetName,
         "name": exactAssetImage.assetName,
         "semanticLabel": realWidget.semanticLabel,
+        "excludeFromSemantics": realWidget.excludeFromSemantics,
         "scale": exactAssetImage.scale,
         "width": realWidget.width,
         "height": realWidget.height,
@@ -208,10 +210,10 @@ class NetworkImageWidgetParser extends WidgetParser {
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
     Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? blendMode =
-        map.containsKey('blendMode') ? parseBlendMode(map['blendMode']) : null;
-    BoxFit? boxFit =
-        map.containsKey('boxFit') ? parseBoxFit(map['boxFit']) : null;
+    BlendMode? colorBlendMode =
+        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
+    BoxFit? fit =
+        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])
         : Alignment.center;
@@ -240,8 +242,8 @@ class NetworkImageWidgetParser extends WidgetParser {
       width: width,
       height: height,
       color: color,
-      colorBlendMode: blendMode,
-      fit: boxFit,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
       alignment: alignment,
       repeat: repeat,
       centerSlice: centerSlice,
@@ -278,6 +280,7 @@ class NetworkImageWidgetParser extends WidgetParser {
       "type": widgetName,
       "src": networkImage.url,
       "semanticLabel": realWidget.semanticLabel,
+      "excludeFromSemantics": realWidget.excludeFromSemantics,
       "width": realWidget.width,
       "height": realWidget.height,
       "color": realWidget.color != null
