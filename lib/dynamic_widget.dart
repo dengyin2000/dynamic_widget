@@ -1,5 +1,6 @@
 library dynamic_widget;
 
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:dynamic_widget/dynamic_widget/basic/align_widget_parser.dart';
@@ -90,8 +91,9 @@ class DynamicWidgetBuilder {
     SingleChildScrollViewParser()
   ];
 
-  static final _widgetNameParserMap =
-      new CanonicalizedMap<String, String>((string) => string.toLowerCase());
+  static final _widgetNameParserMap = new LinkedHashMap<String, dynamic>(
+      equals: (a, b) => a.toLowerCase() == b.toLowerCase(),
+      hashCode: (key) => key.toLowerCase().hashCode);
 
   static List<WidgetParser> get parserList => _parsers;
 
