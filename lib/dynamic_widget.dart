@@ -90,7 +90,10 @@ class DynamicWidgetBuilder {
     SingleChildScrollViewParser()
   ];
 
-  static final _widgetNameParserMap = <String, WidgetParser>{};
+  static final _widgetNameParserMap =
+      new CanonicalizedMap<String, String>((string) => string.toLowerCase());
+
+  static List<WidgetParser> get parserList => _parsers;
 
   static bool _defaultParserInited = false;
 
