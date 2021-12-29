@@ -22,9 +22,8 @@ class LimitedBoxWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
     return LimitedBox(
-      maxWidth: map.containsKey("maxWidth") ? map['maxWidth'] : double.infinity,
-      maxHeight:
-          map.containsKey("maxHeight") ? map['maxHeight'] : double.infinity,
+      maxWidth: toDouble(map['maxWidth'], double.infinity),
+      maxHeight: toDouble(map['maxHeight'], double.infinity),
       child: DynamicWidgetBuilder.buildFromMap(
           map['child'], buildContext, listener),
     );

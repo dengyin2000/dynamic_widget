@@ -7,10 +7,10 @@ class SelectableTextWidgetParser implements WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    String? data = map['data'];
-    String? textAlignString = map['textAlign'];
-    int? maxLines = map['maxLines'];
-    String? textDirectionString = map['textDirection'];
+    String? data = toStr(map['data']);
+    String? textAlignString = toStr(map['textAlign']);
+    int? maxLines = toInt(map['maxLines'], null);
+    String? textDirectionString = toStr(map['textDirection']);
 //    double textScaleFactor = map['textScaleFactor'];
     var textSpan;
     var textSpanParser = SelectableTextSpanParser();

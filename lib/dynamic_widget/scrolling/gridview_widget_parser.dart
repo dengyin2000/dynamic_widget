@@ -17,29 +17,21 @@ class GridViewWidgetParser extends WidgetParser {
       scrollDirection = Axis.horizontal;
     }
     int? crossAxisCount = map['crossAxisCount'];
-    bool? reverse = map.containsKey("reverse") ? map['reverse'] : false;
-    bool? shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
-    double? cacheExtent =
-        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
+    bool? reverse = toBool(map['reverse'], false);
+    bool? shrinkWrap = toBool(map["shrinkWrap"], false);
+    double? cacheExtent = toDouble(map["cacheExtent"], 0.0);
     EdgeInsetsGeometry? padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    double? mainAxisSpacing = map.containsKey('mainAxisSpacing')
-        ? map['mainAxisSpacing']?.toDouble()
-        : 0.0;
-    double? crossAxisSpacing = map.containsKey('crossAxisSpacing')
-        ? map['crossAxisSpacing']?.toDouble()
-        : 0.0;
-    double? childAspectRatio = map.containsKey('childAspectRatio')
-        ? map['childAspectRatio']?.toDouble()
-        : 1.0;
+    double? mainAxisSpacing = toDouble(map['mainAxisSpacing'], 0.0);
+    double? crossAxisSpacing = toDouble(map['crossAxisSpacing'], 0.0);
+    double? childAspectRatio = toDouble(map['childAspectRatio'], 1.0);
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
 
-    var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
-    var loadMoreUrl =
-        map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;
-    var isDemo = map.containsKey("isDemo") ? map["isDemo"] : false;
+    var pageSize = toInt(map["pageSize"], 10);
+    var loadMoreUrl = toStr(map["loadMoreUrl"], null);
+    var isDemo = toBool(map["isDemo"], false);
 
     GridViewParams params = GridViewParams(
         crossAxisCount: crossAxisCount,
@@ -142,7 +134,8 @@ class _GridViewWidgetState extends State<GridViewWidget> {
   _getMoreData() async {
     if (!isPerformingRequest) {
       setState(() => isPerformingRequest = true);
-      var jsonString = _params.isDemo! ? await fakeRequest() : await doRequest();
+      var jsonString =
+          _params.isDemo! ? await fakeRequest() : await doRequest();
       var buildWidgets = DynamicWidgetBuilder.buildWidgets(
           jsonDecode(jsonString), widget._buildContext, null);
       setState(() {

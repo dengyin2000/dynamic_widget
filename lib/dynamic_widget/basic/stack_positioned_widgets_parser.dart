@@ -9,12 +9,12 @@ class PositionedWidgetParser extends WidgetParser {
     return Positioned(
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener)!,
-      top: map.containsKey("top") ? map["top"]?.toDouble() : null,
-      right: map.containsKey("right") ? map["right"]?.toDouble() : null,
-      bottom: map.containsKey("bottom") ? map["bottom"]?.toDouble() : null,
-      left: map.containsKey("left") ? map["left"]?.toDouble() : null,
-      width: map.containsKey("width") ? map["width"]?.toDouble() : null,
-      height: map.containsKey("height") ? map["height"]?.toDouble() : null,
+      top: toDouble(map["top"], null),
+      right: toDouble(map["right"], null),
+      bottom: toDouble(map["bottom"], null),
+      left: toDouble(map["left"], null),
+      width: toDouble(map["width"], null),
+      height: toDouble(map["height"], null),
     );
   }
 
@@ -44,7 +44,6 @@ class StackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-
     return Stack(
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
@@ -69,9 +68,10 @@ class StackWidgetParser extends WidgetParser {
     var realWidget = widget as Stack;
     return <String, dynamic>{
       "type": "Stack",
-      "alignment": realWidget.alignment is AlignmentDirectional ?
-                    exportAlignmentDirectional(realWidget.alignment as AlignmentDirectional)
-                      : exportAlignment(realWidget.alignment as Alignment),
+      "alignment": realWidget.alignment is AlignmentDirectional
+          ? exportAlignmentDirectional(
+              realWidget.alignment as AlignmentDirectional)
+          : exportAlignment(realWidget.alignment as Alignment),
       "textDirection": exportTextDirection(realWidget.textDirection),
       "fit": exportStackFit(realWidget.fit),
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),

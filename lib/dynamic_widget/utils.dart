@@ -1,3 +1,4 @@
+import 'dart:js';
 import 'dart:ui';
 
 import 'package:dynamic_widget/dynamic_widget.dart';
@@ -219,6 +220,14 @@ Color? parseHexColor(String? hexColorString) {
     return null;
   }
   hexColorString = hexColorString.toUpperCase().replaceAll("#", "");
+
+  // fill length = 3
+  if (hexColorString.length == 3) {
+    hexColorString = "${hexColorString[0]}${hexColorString[0]}" +
+        "${hexColorString[1]}${hexColorString[1]}" +
+        "${hexColorString[2]}${hexColorString[2]}";
+  }
+
   if (hexColorString.length == 6) {
     hexColorString = "FF" + hexColorString;
   }
@@ -235,7 +244,7 @@ TextStyle? parseTextStyle(Map<String, dynamic>? map) {
   String? debugLabel = map['debugLabel'];
   String? decoration = map['decoration'];
   String? fontFamily = map['fontFamily'];
-  double? fontSize = map['fontSize']?.toDouble();
+  double? fontSize = toDouble(map['fontSize']);
   String? fontWeight = map['fontWeight'];
   FontStyle fontStyle =
       'italic' == map['fontStyle'] ? FontStyle.italic : FontStyle.normal;
@@ -313,7 +322,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
 
   if (map != null) {
     if (map.containsKey('minWidth')) {
-      var minWidthValue = map['minWidth']?.toDouble();
+      var minWidthValue = toDouble(map['minWidth']);
 
       if (minWidthValue != null) {
         if (minWidthValue >= infinity) {
@@ -325,7 +334,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('maxWidth')) {
-      var maxWidthValue = map['maxWidth']?.toDouble();
+      var maxWidthValue = toDouble(map['maxWidth']);
 
       if (maxWidthValue != null) {
         if (maxWidthValue >= infinity) {
@@ -337,7 +346,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('minHeight')) {
-      var minHeightValue = map['minHeight']?.toDouble();
+      var minHeightValue = toDouble(map['minHeight']);
 
       if (minHeightValue != null) {
         if (minHeightValue >= infinity) {
@@ -349,7 +358,7 @@ BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
     }
 
     if (map.containsKey('maxHeight')) {
-      var maxHeightValue = map['maxHeight']?.toDouble();
+      var maxHeightValue = toDouble(map['maxHeight']);
 
       if (maxHeightValue != null) {
         if (maxHeightValue >= infinity) {
@@ -377,10 +386,10 @@ EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
   }
   var values = edgeInsetsGeometryString.split(",");
   return EdgeInsets.only(
-      left: double.parse(values[0]),
-      top: double.parse(values[1]),
-      right: double.parse(values[2]),
-      bottom: double.parse(values[3]));
+      left: toDouble(values[0]),
+      top: toDouble(values[1]),
+      right: toDouble(values[2]),
+      bottom: toDouble(values[3]));
 }
 
 CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
@@ -1022,8 +1031,8 @@ DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
     return null;
   }
   return DropCap(
-    width: map['width']?.toDouble(),
-    height: map['height']?.toDouble(),
+    width: toDouble(map['width']),
+    height: toDouble(map['height']),
     child:
         DynamicWidgetBuilder.buildFromMap(map["child"], buildContext, listener),
   );
@@ -1189,4 +1198,64 @@ Radius parseRadius(String radius) {
   } else {
     return Radius.zero;
   }
+}
+
+// safe toDouble
+double toDouble(i, [def = 0.0]) {
+  if (i == null) {
+    return def;
+  }
+  if (i is double) {
+    return i;
+  }
+  try {
+    var ti = double.tryParse(i);
+    if (ti != null) {
+      return ti;
+    }
+  } catch (e) {}
+  return def;
+}
+
+// safe toInt
+int toInt(i, [def = 0]) {
+  if (i == null) {
+    return def;
+  }
+  if (i is int) {
+    return i;
+  }
+  try {
+    var ti = int.tryParse(i, radix: 10);
+    if (ti != null) {
+      return ti;
+    }
+  } catch (e) {}
+  return def;
+}
+
+// safe toStr
+String toStr(s, [def = ""]) {
+  if (s == null) {
+    return def;
+  }
+  if (s is int) {
+    return (s).toString();
+  }
+  return s.toString();
+}
+
+// safe toBool
+bool toBool(s, [def = false]) {
+  if (s == null) {
+    return def;
+  }
+  if (s is int) {
+    return s != 0;
+  }
+  if (s is double) {
+    return (s != 0.0);
+  }
+  s = s.toString();
+  return s.isNotEmpty && s.toLowerCase() != 'false';
 }

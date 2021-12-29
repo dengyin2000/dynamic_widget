@@ -7,10 +7,10 @@ class ClipRRectWidgetParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
     var radius = map['borderRadius'].toString().split(",");
-    double topLeft = double.parse(radius[0]);
-    double topRight = double.parse(radius[1]);
-    double bottomLeft = double.parse(radius[2]);
-    double bottomRight = double.parse(radius[3]);
+    double topLeft = toDouble(radius[0]);
+    double topRight = toDouble(radius[1]);
+    double bottomLeft = toDouble(radius[2]);
+    double bottomRight = toDouble(radius[3]);
     var clipBehaviorString = map['clipBehavior'];
     return ClipRRect(
       borderRadius: BorderRadius.only(

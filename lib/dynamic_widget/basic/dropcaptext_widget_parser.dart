@@ -8,8 +8,8 @@ class DropCapTextParser extends WidgetParser {
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
     return DropCapText(
-      data: map.containsKey('data') ? map['data'] : null,
-      selectable: map.containsKey('selectable') ? map['selectable'] : false,
+      data: toStr(map['data'], null),
+      selectable: toBool(map['selectable'], false),
       mode: map.containsKey('mode')
           ? parseDropCapMode(map['mode'])
           : DropCapMode.inside,
@@ -28,19 +28,16 @@ class DropCapTextParser extends WidgetParser {
           : EdgeInsets.zero,
       indentation: Offset.zero,
       //todo: actually add this
-      dropCapChars: map.containsKey('dropCapChars') ? map['dropCapChars'] : 1,
-      forceNoDescent:
-          map.containsKey('forceNoDescent') ? map['forceNoDescent'] : false,
-      parseInlineMarkdown: map.containsKey('parseInlineMarkdown')
-          ? map['parseInlineMarkdown']
-          : false,
+      dropCapChars: toInt(map['dropCapChars'], 1),
+      forceNoDescent: toBool(map['forceNoDescent'], false),
+      parseInlineMarkdown: toBool(map['parseInlineMarkdown'], false),
       textDirection: map.containsKey('textDirection')
           ? parseTextDirection(map['textDirection'])
           : TextDirection.ltr,
       overflow: map.containsKey('overflow')
           ? parseTextOverflow(map['overflow'])
           : TextOverflow.clip,
-      maxLines: map.containsKey('maxLines') ? map['maxLines'] : null,
+      maxLines: toInt(map['maxLines'], null),
       dropCapPosition: map.containsKey('dropCapPosition')
           ? parseDropCapPosition(map['dropCapPosition'])
           : null,

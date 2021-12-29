@@ -42,8 +42,7 @@ class AppBarWidgetParser extends WidgetParser {
           ? DynamicWidgetBuilder.buildWidgets(
               map["actions"], buildContext, listener) as List<Widget>?
           : null,
-      centerTitle:
-          map.containsKey("centerTitle") ? map["centerTitle"] as bool? : false,
+      centerTitle: toBool(map["centerTitle"], false),
       backgroundColor: map.containsKey("backgroundColor")
           ? parseHexColor(map["backgroundColor"])
           : null,

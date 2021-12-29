@@ -10,12 +10,8 @@ class AlignWidgetParser extends WidgetParser {
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
           : Alignment.center,
-      widthFactor: map.containsKey("widthFactor")
-          ? map["widthFactor"]?.toDouble()
-          : null,
-      heightFactor: map.containsKey("heightFactor")
-          ? map["heightFactor"]?.toDouble()
-          : null,
+      widthFactor: toDouble(map["widthFactor"], null),
+      heightFactor: toDouble(map["heightFactor"], null),
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
     );

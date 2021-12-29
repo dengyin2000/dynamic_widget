@@ -17,21 +17,18 @@ class ListViewWidgetParser extends WidgetParser {
       scrollDirection = Axis.horizontal;
     }
 
-    var reverse = map.containsKey("reverse") ? map['reverse'] : false;
-    var shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
-    var cacheExtent =
-        map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
+    var reverse = toBool(map['reverse'], false);
+    var shrinkWrap = toBool(map["shrinkWrap"], false);
+    var cacheExtent = toDouble(map["cacheExtent"], 0.0);
     var padding = map.containsKey('padding')
         ? parseEdgeInsetsGeometry(map['padding'])
         : null;
-    var itemExtent =
-        map.containsKey("itemExtent") ? map["itemExtent"]?.toDouble() : null;
+    var itemExtent = toDouble(map["itemExtent"], null);
     var children = DynamicWidgetBuilder.buildWidgets(
         map['children'], buildContext, listener);
-    var pageSize = map.containsKey("pageSize") ? map["pageSize"] : 10;
-    var loadMoreUrl =
-        map.containsKey("loadMoreUrl") ? map["loadMoreUrl"] : null;
-    var isDemo = map.containsKey("isDemo") ? map["isDemo"] : false;
+    var pageSize = toInt(map["pageSize"], 10);
+    var loadMoreUrl = toStr(map["loadMoreUrl"], null);
+    var isDemo = toBool(map["isDemo"], false);
 
     var params = new ListViewParams(
         scrollDirection: scrollDirection,

@@ -6,16 +6,15 @@ class SafeAreaWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    var left = map.containsKey("left") ? map["left"] : true;
-    var right = map.containsKey("right") ? map["right"] : true;
-    var top = map.containsKey("top") ? map["top"] : true;
-    var bottom = map.containsKey("bottom") ? map["bottom"] : true;
+    var left = toBool(map["left"], true);
+    var right = toBool(map["right"], true);
+    var top = toBool(map["top"], true);
+    var bottom = toBool(map["bottom"], true);
     var edgeInsets = map.containsKey("minimum")
         ? parseEdgeInsetsGeometry(map['minimum'])!
         : EdgeInsets.zero;
-    var maintainBottomViewPadding = map.containsKey("maintainBottomViewPadding")
-        ? map["maintainBottomViewPadding"]
-        : false;
+    var maintainBottomViewPadding =
+        toBool(map["maintainBottomViewPadding"], false);
     return SafeArea(
       left: left,
       right: right,

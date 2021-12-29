@@ -1,12 +1,14 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
+import '../utils.dart';
+
 class BaselineWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
     return Baseline(
-      baseline: map["baseline"]?.toDouble(),
+      baseline: toDouble(map["baseline"]),
       baselineType: map["baselineType"] == "alphabetic"
           ? TextBaseline.alphabetic
           : TextBaseline.ideographic,

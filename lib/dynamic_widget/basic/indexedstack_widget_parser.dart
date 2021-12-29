@@ -6,9 +6,8 @@ class IndexedStackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-
     return IndexedStack(
-      index: map.containsKey("index") ? map["index"] : 0,
+      index: toInt(map["index"], 0),
       alignment: map.containsKey("alignment")
           ? parseAlignment(map["alignment"])
           : AlignmentDirectional.topStart,

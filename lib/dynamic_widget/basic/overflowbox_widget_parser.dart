@@ -2,7 +2,7 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/cupertino.dart';
 
-class OverflowBoxWidgetParser extends WidgetParser{
+class OverflowBoxWidgetParser extends WidgetParser {
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     OverflowBox realWidget = widget as OverflowBox;
@@ -18,14 +18,16 @@ class OverflowBoxWidgetParser extends WidgetParser{
   }
 
   @override
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener? listener) {
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      ClickListener? listener) {
     return OverflowBox(
       alignment: parseAlignment(map['alignment']),
-      minWidth: map.containsKey("minWidth")?map['minWidth']:null,
-      maxWidth: map.containsKey("maxWidth")?map['maxWidth']:null,
-      minHeight: map.containsKey("minHeight")?map['minHeight']:null,
-      maxHeight: map.containsKey("maxHeight")?map['maxHeight']:null,
-      child: DynamicWidgetBuilder.buildFromMap(map['child'], buildContext, listener),
+      minWidth: toDouble(map['minWidth'], null),
+      maxWidth: toDouble(map['maxWidth'], null),
+      minHeight: toDouble(map['minHeight'], null),
+      maxHeight: toDouble(map['maxHeight'], null),
+      child: DynamicWidgetBuilder.buildFromMap(
+          map['child'], buildContext, listener),
     );
   }
 
@@ -34,5 +36,4 @@ class OverflowBoxWidgetParser extends WidgetParser{
 
   @override
   Type get widgetType => OverflowBox;
-
 }

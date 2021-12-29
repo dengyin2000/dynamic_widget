@@ -7,14 +7,14 @@ class TextWidgetParser implements WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    String? data = map['data'];
-    String? textAlignString = map['textAlign'];
-    String? overflow = map['overflow'];
-    int? maxLines = map['maxLines'];
-    String? semanticsLabel = map['semanticsLabel'];
-    bool? softWrap = map['softWrap'];
-    String? textDirectionString = map['textDirection'];
-    double? textScaleFactor = map['textScaleFactor']?.toDouble();
+    String? data = toStr(map['data'], null);
+    String? textAlignString = toStr(map['textAlign'], null);
+    String? overflow = toStr(map['overflow'], null);
+    int? maxLines = toInt(map['maxLines'], null);
+    String? semanticsLabel = toStr(map['semanticsLabel'], null);
+    bool? softWrap = toBool(map['softWrap'], null);
+    String? textDirectionString = toStr(map['textDirection'], null);
+    double? textScaleFactor = toDouble(map['textScaleFactor'], null);
     var textSpan;
     var textSpanParser = TextSpanParser();
     if (map.containsKey("textSpan")) {

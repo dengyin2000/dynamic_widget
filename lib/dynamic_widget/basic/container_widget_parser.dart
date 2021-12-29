@@ -17,16 +17,15 @@ class ContainerWidgetParser extends WidgetParser {
         ? null
         : DynamicWidgetBuilder.buildFromMap(childMap, buildContext, listener);
 
-    String? clickEvent =
-        map.containsKey("click_event") ? map['click_event'] : null;
+    String? clickEvent = toStr(map['click_event'], null);
 
     var containerWidget = Container(
       alignment: alignment,
       padding: padding,
       color: color,
       margin: margin,
-      width: map['width']?.toDouble(),
-      height: map['height']?.toDouble(),
+      width: toDouble(map['width'], null),
+      height: toDouble(map['height'], null),
       constraints: constraints,
       child: child,
     );

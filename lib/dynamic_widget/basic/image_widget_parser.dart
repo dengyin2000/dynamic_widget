@@ -11,18 +11,16 @@ class AssetImageWidgetParser extends WidgetParser {
     String name = map['name'];
     String? semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
-    bool excludeFromSemantics = map.containsKey('excludeFromSemantics')
-        ? map['excludeFromSemantics']
-        : false;
-    double? scale = map.containsKey("scale") ? map['scale']?.toDouble() : null;
-    double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
-    double? height =
-        map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    bool excludeFromSemantics = toBool(map['excludeFromSemantics'], false);
+    double? scale = toDouble(map['scale'], null);
+    double? width = toDouble(map['width'], null);
+    double? height = toDouble(map['height'], null);
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])
         : Alignment.center;
@@ -31,11 +29,8 @@ class AssetImageWidgetParser extends WidgetParser {
         : ImageRepeat.noRepeat;
     Rect? centerSlice =
         map.containsKey('centerSlice') ? parseRect(map['centerSlice']) : null;
-    bool matchTextDirection = map.containsKey('matchTextDirection')
-        ? map['matchTextDirection']
-        : false;
-    bool gaplessPlayback =
-        map.containsKey('gaplessPlayback') ? map['gaplessPlayback'] : false;
+    bool matchTextDirection = toBool(map['matchTextDirection'], false);
+    bool gaplessPlayback = toBool(map['gaplessPlayback'], false);
     FilterQuality filterQuality = map.containsKey('filterQuality')
         ? parseFilterQuality(map['filterQuality'])!
         : FilterQuality.low;
@@ -205,15 +200,15 @@ class NetworkImageWidgetParser extends WidgetParser {
     bool excludeFromSemantics = map.containsKey('excludeFromSemantics')
         ? map['excludeFromSemantics']
         : false;
-    double scale = map.containsKey("scale") ? map['scale']?.toDouble() : 1.0;
-    double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
-    double? height =
-        map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    double scale = toDouble(map['scale'], 1.0);
+    double? width = toDouble(map['width'], null);
+    double? height = toDouble(map['height'], null);
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])
         : Alignment.center;
@@ -222,17 +217,13 @@ class NetworkImageWidgetParser extends WidgetParser {
         : ImageRepeat.noRepeat;
     Rect? centerSlice =
         map.containsKey('centerSlice') ? parseRect(map['centerSlice']) : null;
-    bool matchTextDirection = map.containsKey('matchTextDirection')
-        ? map['matchTextDirection']
-        : false;
-    bool gaplessPlayback =
-        map.containsKey('gaplessPlayback') ? map['gaplessPlayback'] : false;
+    bool matchTextDirection = toBool(map['matchTextDirection'], false);
+    bool gaplessPlayback = toBool(map['gaplessPlayback'], false);
     FilterQuality filterQuality = map.containsKey('filterQuality')
         ? parseFilterQuality(map['filterQuality'])!
         : FilterQuality.low;
 
-    String? clickEvent =
-        map.containsKey("click_event") ? map['click_event'] : "";
+    String? clickEvent = toStr(map['click_event'], "");
 
     var widget = Image.network(
       src,
