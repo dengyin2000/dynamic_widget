@@ -8,7 +8,7 @@ class FittedBoxWidgetParser extends WidgetParser {
       ClickListener? listener) {
     return FittedBox(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])
+          ? parseAlignment(map["alignment"])!
           : Alignment.center,
       fit: map.containsKey("fit") ? parseBoxFit(map["fit"])! : BoxFit.contain,
       child: DynamicWidgetBuilder.buildFromMap(
