@@ -109,6 +109,11 @@
 * add TextButton widget parser, thanks ChangJoo Park(박창주)
 * add Card widget parser, thanks linpc
 
+## [4.0.4] - add SingleChildScrollView widget parser and bugfix
+
+* add add SingleChildScrollView widget parser
+* bugfix
+
 
 
 

@@ -47,6 +47,7 @@
 - [OverflowBox Widget](#overflowbox-widget)
 - [Divider Widget](#divider-widget)
 - [RotatedBox Widget](#rotatedbox-widget)
+- [SingleChildScrollView Widget](#singlechildscrollview-widget)
 
 ## Container Widget
 
@@ -641,7 +642,7 @@ Card, here to see flutter [Card](https://api.flutter.dev/flutter/material/Card-c
 | shape                 | The shape of the card's Material.                                                                                     | Map    |        | |
 
 
-## SingleChildScrollView
+## SingleChildScrollView widget
 
 SingleChildScrollView, here to see flutter [SingleChildScrollView](https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html) definition. Suppert json properties:
 
