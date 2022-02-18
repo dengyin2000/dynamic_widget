@@ -10,7 +10,7 @@ class IndexedStackWidgetParser extends WidgetParser {
     return IndexedStack(
       index: map.containsKey("index") ? map["index"] : 0,
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])
+          ? parseAlignment(map["alignment"])!
           : AlignmentDirectional.topStart,
       textDirection: map.containsKey("textDirection")
           ? parseTextDirection(map["textDirection"])

@@ -55,8 +55,8 @@ String exportTextAlign(TextAlign? textAlign) {
   return rt;
 }
 
-TextOverflow parseTextOverflow(String? textOverflowString) {
-  TextOverflow textOverflow = TextOverflow.ellipsis;
+TextOverflow? parseTextOverflow(String? textOverflowString) {
+  TextOverflow? textOverflow;
   switch (textOverflowString) {
     case "ellipsis":
       textOverflow = TextOverflow.ellipsis;
@@ -73,7 +73,10 @@ TextOverflow parseTextOverflow(String? textOverflowString) {
   return textOverflow;
 }
 
-String exportTextOverflow(TextOverflow? textOverflow) {
+String? exportTextOverflow(TextOverflow? textOverflow) {
+  if(textOverflow == null){
+    return null;
+  }
   String rt = "ellipsis";
   if (textOverflow == TextOverflow.clip) {
     rt = "clip";
@@ -269,8 +272,8 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
   };
 }
 
-Alignment parseAlignment(String? alignmentString) {
-  Alignment alignment = Alignment.center;
+Alignment? parseAlignment(String? alignmentString) {
+  Alignment? alignment;
   switch (alignmentString) {
     case 'topLeft':
       alignment = Alignment.topLeft;

@@ -47,7 +47,7 @@ class StackWidgetParser extends WidgetParser {
 
     return Stack(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])
+          ? parseAlignment(map["alignment"])!
           : AlignmentDirectional.topStart,
       textDirection: map.containsKey("textDirection")
           ? parseTextDirection(map["textDirection"])

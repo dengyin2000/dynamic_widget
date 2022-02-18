@@ -8,7 +8,7 @@ class AlignWidgetParser extends WidgetParser {
       ClickListener? listener) {
     return Align(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])
+          ? parseAlignment(map["alignment"])!
           : Alignment.center,
       widthFactor: map.containsKey("widthFactor")
           ? map["widthFactor"]?.toDouble()
