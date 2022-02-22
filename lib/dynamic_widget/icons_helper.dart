@@ -739,7 +739,6 @@ const Map<String, IconData> IconsMap = <String, IconData>{
   'picture_in_picture': Icons.picture_in_picture,
   'picture_in_picture_alt': Icons.picture_in_picture_alt,
   'pie_chart': Icons.pie_chart,
-  'pie_chart_outlined': Icons.pie_chart_outlined,
   'pin_drop': Icons.pin_drop,
   'place': Icons.place,
   'play_arrow': Icons.play_arrow,
