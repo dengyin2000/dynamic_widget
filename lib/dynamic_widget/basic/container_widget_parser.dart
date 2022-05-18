@@ -1,5 +1,6 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
+import 'package:poc_generic_ui/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class ContainerWidgetParser extends WidgetParser {
@@ -9,7 +10,7 @@ class ContainerWidgetParser extends WidgetParser {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
-    //TODO: decoration, foregroundDecoration and transform properties to be implemented.
+    //TODO: transform properties to be implemented.
     EdgeInsetsGeometry? margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry? padding = parseEdgeInsetsGeometry(map['padding']);
     Map<String, dynamic>? childMap = map['child'];
@@ -25,6 +26,8 @@ class ContainerWidgetParser extends WidgetParser {
       padding: padding,
       color: color,
       margin: margin,
+      decoration: parseDecoration(map['decoration']),
+      foregroundDecoration: parseDecoration(map['foregroundDecoration']),
       width: map['width']?.toDouble(),
       height: map['height']?.toDouble(),
       constraints: constraints,
@@ -51,9 +54,15 @@ class ContainerWidgetParser extends WidgetParser {
     var realWidget = widget as Container;
     var padding = realWidget.padding as EdgeInsets?;
     var margin = realWidget.margin as EdgeInsets?;
+    var decoration = realWidget.decoration as BoxDecoration?;
+    var foregroundDecoration =
+        realWidget.foregroundDecoration as BoxDecoration?;
     var constraints = realWidget.constraints;
+
     return <String, dynamic>{
       "type": widgetName,
+      "decoration": exportDecoration(decoration),
+      "foregroundDecoration": exportDecoration(foregroundDecoration),
       "alignment": realWidget.alignment != null
           ? exportAlignment(realWidget.alignment as Alignment?)
           : null,

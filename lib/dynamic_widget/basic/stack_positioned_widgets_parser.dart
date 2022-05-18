@@ -1,5 +1,6 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
+import 'package:poc_generic_ui/utils.dart';
 import 'package:flutter/widgets.dart';
 
 class PositionedWidgetParser extends WidgetParser {
@@ -44,11 +45,12 @@ class StackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
+    final alignment = parseAlignmentDirectional(map["alignment"]) ??
+        parseAlignment(map["alignment"]) ??
+        AlignmentDirectional.topStart;
 
     return Stack(
-      alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])!
-          : AlignmentDirectional.topStart,
+      alignment: alignment,
       textDirection: map.containsKey("textDirection")
           ? parseTextDirection(map["textDirection"])
           : null,
@@ -69,9 +71,10 @@ class StackWidgetParser extends WidgetParser {
     var realWidget = widget as Stack;
     return <String, dynamic>{
       "type": "Stack",
-      "alignment": realWidget.alignment is AlignmentDirectional ?
-                    exportAlignmentDirectional(realWidget.alignment as AlignmentDirectional)
-                      : exportAlignment(realWidget.alignment as Alignment),
+      "alignment": realWidget.alignment is AlignmentDirectional
+          ? exportAlignmentDirectional(
+              realWidget.alignment as AlignmentDirectional)
+          : exportAlignment(realWidget.alignment as Alignment),
       "textDirection": exportTextDirection(realWidget.textDirection),
       "fit": exportStackFit(realWidget.fit),
       "clipBehavior": exportClipBehavior(realWidget.clipBehavior),
