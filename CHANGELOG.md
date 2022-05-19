@@ -114,6 +114,10 @@
 * add add SingleChildScrollView widget parser
 * bugfix
 
+## [4.0.5] - pr #91，https://github.com/dengyin2000/dynamic_widget/issues/91
+
+* 4.0.4 error with Pie_chart_outlined / pie_chart_outline #91
+
 
 
 
