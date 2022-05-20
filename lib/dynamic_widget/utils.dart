@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
+import 'package:poc_generic_ui/utils.dart';
 import 'package:flutter/widgets.dart';
 
 TextAlign parseTextAlign(String? textAlignString) {
@@ -74,7 +76,7 @@ TextOverflow? parseTextOverflow(String? textOverflowString) {
 }
 
 String? exportTextOverflow(TextOverflow? textOverflow) {
-  if(textOverflow == null){
+  if (textOverflow == null) {
     return null;
   }
   String rt = "ellipsis";
@@ -270,40 +272,6 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
     "fontStyle": FontStyle.italic == textStyle.fontStyle ? "italic" : "normal",
     "fontWeight": exportFontWeight(textStyle.fontWeight),
   };
-}
-
-Alignment? parseAlignment(String? alignmentString) {
-  Alignment? alignment;
-  switch (alignmentString) {
-    case 'topLeft':
-      alignment = Alignment.topLeft;
-      break;
-    case 'topCenter':
-      alignment = Alignment.topCenter;
-      break;
-    case 'topRight':
-      alignment = Alignment.topRight;
-      break;
-    case 'centerLeft':
-      alignment = Alignment.centerLeft;
-      break;
-    case 'center':
-      alignment = Alignment.center;
-      break;
-    case 'centerRight':
-      alignment = Alignment.centerRight;
-      break;
-    case 'bottomLeft':
-      alignment = Alignment.bottomLeft;
-      break;
-    case 'bottomCenter':
-      alignment = Alignment.bottomCenter;
-      break;
-    case 'bottomRight':
-      alignment = Alignment.bottomRight;
-      break;
-  }
-  return alignment;
 }
 
 const double infinity = 9999999999;
@@ -1044,88 +1012,6 @@ Map<String, dynamic>? exportDropCap(
   };
 }
 
-String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional) {
-  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
-    return "bottomCenter";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.center) {
-    return "center";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomEnd) {
-    return "bottomEnd";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomStart) {
-    return "bottomStart";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.centerEnd) {
-    return "centerEnd";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.centerStart) {
-    return "centerStart";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
-    return "bottomCenter";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.topCenter) {
-    return "topCenter";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.topEnd) {
-    return "topEnd";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.topStart) {
-    return "topStart";
-  }
-
-  return "topStart";
-}
-
-String exportAlignment(Alignment? alignment) {
-  if (alignment == null) {
-    return "center";
-  }
-  if (alignment == Alignment.center) {
-    return "center";
-  }
-  if (alignment == Alignment.bottomRight) {
-    return "bottomRight";
-  }
-  if (alignment == Alignment.bottomCenter) {
-    return "bottomCenter";
-  }
-  if (alignment == Alignment.bottomLeft) {
-    return "bottomLeft";
-  }
-  if (alignment == Alignment.centerLeft) {
-    return "centerLeft";
-  }
-  if (alignment == Alignment.centerRight) {
-    return "centerRight";
-  }
-  if (alignment == Alignment.topCenter) {
-    return "topCenter";
-  }
-  if (alignment == Alignment.topLeft) {
-    return "topLeft";
-  }
-  if (alignment == Alignment.topRight) {
-    return "topRight";
-  }
-  if (alignment == Alignment.bottomRight) {
-    return "bottomRight";
-  }
-
-  return "center";
-}
-
 Map<String, dynamic> exportConstraints(BoxConstraints constraints) {
   return {
     'minWidth': constraints.minWidth,
@@ -1192,4 +1078,315 @@ Radius parseRadius(String radius) {
   } else {
     return Radius.zero;
   }
+}
+
+// GradientTransform
+GradientTransform? parseGradientTransform(Map<String, dynamic>? map) {
+  if (map != null && map['type'] == 'GradientRotation') {
+    return GradientRotation(map['radians']);
+  }
+
+  return null;
+}
+
+Map<String, dynamic>? exportGradientTransform(GradientTransform? transform) {
+  if (transform is GradientRotation) {
+    return <String, dynamic>{
+      'type': transform.runtimeType.toString(),
+      'radians': transform.radians,
+    };
+  }
+
+  return null;
+}
+
+// AlignmentDirectional
+String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional) {
+  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
+    return "bottomCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.center) {
+    return "center";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomEnd) {
+    return "bottomEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomStart) {
+    return "bottomStart";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.centerEnd) {
+    return "centerEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.centerStart) {
+    return "centerStart";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
+    return "bottomCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topCenter) {
+    return "topCenter";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topEnd) {
+    return "topEnd";
+  }
+
+  if (alignmentDirectional == AlignmentDirectional.topStart) {
+    return "topStart";
+  }
+
+  return "topStart";
+}
+
+// Alignment
+Alignment? parseAlignment(String? alignmentString) {
+  Alignment? alignment;
+  switch (alignmentString) {
+    case 'topLeft':
+      alignment = Alignment.topLeft;
+      break;
+    case 'topCenter':
+      alignment = Alignment.topCenter;
+      break;
+    case 'topRight':
+      alignment = Alignment.topRight;
+      break;
+    case 'centerLeft':
+      alignment = Alignment.centerLeft;
+      break;
+    case 'center':
+      alignment = Alignment.center;
+      break;
+    case 'centerRight':
+      alignment = Alignment.centerRight;
+      break;
+    case 'bottomLeft':
+      alignment = Alignment.bottomLeft;
+      break;
+    case 'bottomCenter':
+      alignment = Alignment.bottomCenter;
+      break;
+    case 'bottomRight':
+      alignment = Alignment.bottomRight;
+      break;
+  }
+  return alignment;
+}
+
+String exportAlignment(Alignment? alignment) {
+  if (alignment == null) {
+    return "center";
+  }
+  if (alignment == Alignment.center) {
+    return "center";
+  }
+  if (alignment == Alignment.bottomRight) {
+    return "bottomRight";
+  }
+  if (alignment == Alignment.bottomCenter) {
+    return "bottomCenter";
+  }
+  if (alignment == Alignment.bottomLeft) {
+    return "bottomLeft";
+  }
+  if (alignment == Alignment.centerLeft) {
+    return "centerLeft";
+  }
+  if (alignment == Alignment.centerRight) {
+    return "centerRight";
+  }
+  if (alignment == Alignment.topCenter) {
+    return "topCenter";
+  }
+  if (alignment == Alignment.topLeft) {
+    return "topLeft";
+  }
+  if (alignment == Alignment.topRight) {
+    return "topRight";
+  }
+  if (alignment == Alignment.bottomRight) {
+    return "bottomRight";
+  }
+
+  return "center";
+}
+
+// AlignmentGeometry
+AlignmentGeometry? parseAlignmentGeometry(String? alignment) {
+  return parseAlignment(alignment) ?? parseAlignmentDirectional(alignment);
+}
+
+String? exportAlignmentGeometry(AlignmentGeometry? alignment) {
+  if (alignment is Alignment) {
+    return exportAlignment(alignment);
+  }
+
+  if (alignment is AlignmentDirectional) {
+    return exportAlignmentDirectional(alignment);
+  }
+
+  return null;
+}
+
+// BoxShadow
+BoxShadow? parseBoxShadow(Map<String, dynamic>? map) {
+  if (map == null) return null;
+  final offset = map['offset'] as String;
+  final dx = offset.split(':').firstOrNull ?? '0';
+  final dy = offset.split(':').lastOrNull ?? '0';
+
+  return BoxShadow(
+    color: parseHexColor(map['color']) ?? const Color(0xFF000000),
+    offset: Offset(double.parse(dx), double.parse(dy)),
+    blurRadius: map['blurRadius'] ?? 0,
+    spreadRadius: map['spreadRadius'] ?? 0,
+    blurStyle:
+        BlurStyleExtension.parseBlurStyle(map['blurStyle']) ?? BlurStyle.normal,
+  );
+}
+
+Map<String, dynamic>? exportBoxShadow(BoxShadow? boxShadow) {
+  if (boxShadow == null) return null;
+
+  return <String, dynamic>{
+    'color': boxShadow.color.value.toRadixString(16),
+    'offset': '${boxShadow.offset.dx}:${boxShadow.offset.dy}',
+    'blurRadius': boxShadow.blurRadius,
+    'spreadRadius': boxShadow.spreadRadius,
+    'blurStyle': boxShadow.blurStyle.name,
+  };
+}
+
+// TODO: Gradient unsupported type RadialGradient and SweepGradient
+Gradient? parseGradient(Map<String, dynamic>? map) {
+  if (map != null && map['type'] == 'LinearGradient') {
+    final colors = map['colors'] as List;
+    final transform = map['transform'] as Map<String, dynamic>?;
+    final tileMode = TileModeExtension.parseTileMode(map['tileMode']);
+
+    return LinearGradient(
+      begin: parseAlignmentGeometry(map['begin']) ?? Alignment.centerLeft,
+      end: parseAlignmentGeometry(map['end']) ?? Alignment.centerRight,
+      colors: colors
+          .map(
+            (color) => parseHexColor(color),
+          )
+          .whereNotNull()
+          .toList(),
+      stops: map['stops'],
+      tileMode: tileMode ?? TileMode.clamp,
+      transform: parseGradientTransform(transform),
+    );
+  }
+
+  return null;
+}
+
+Map<String, dynamic>? exportGradient(Gradient? gradient) {
+  if (gradient is LinearGradient) {
+    final colors =
+        gradient.colors.map((color) => color.value.toRadixString(16)).toList();
+
+    return <String, dynamic>{
+      'type': gradient.runtimeType.toString(),
+      'begin': exportAlignmentGeometry(gradient.begin),
+      'end': exportAlignmentGeometry(gradient.end),
+      'colors': colors,
+      'stops': gradient.stops,
+      'tileMode': gradient.tileMode.name,
+      'transform': exportGradientTransform(gradient.transform),
+    };
+  }
+
+  return null;
+}
+
+// TODO: Decoration unsupported type FlutterLogoDecoration, ShapeDecoration, UnderlineTabIndicator
+Decoration? parseDecoration(Map<String, dynamic>? map) {
+  if (map != null && map['type'] == 'BoxDecoration') {
+    final boxShadow = map['boxShadow'] as List<Map<String, dynamic>>?;
+    final borderRadius = map['borderRadius'] as String?;
+    final gradient = map['gradient'] as Map<String, dynamic>?;
+
+    return BoxDecoration(
+      color: parseHexColor(map['color']),
+      // TODO: implemented Decoration Image
+      // image: null,
+      border: parseBoxBorder(map['border']),
+      borderRadius:
+          borderRadius != null ? parseBorderRadius(borderRadius) : null,
+      boxShadow: boxShadow
+          ?.map((boxShadow) => parseBoxShadow(boxShadow))
+          .whereNotNull()
+          .toList(),
+      gradient: parseGradient(gradient),
+      backgroundBlendMode: parseBlendMode(map['backgroundBlendMode']),
+      shape:
+          BoxShapeExtension.parseBoxShape(map['shape']) ?? BoxShape.rectangle,
+    );
+  }
+
+  return null;
+}
+
+Map<String, dynamic>? exportDecoration(Decoration? decoration) {
+  if (decoration is BoxDecoration) {
+    final borderRadius = decoration.borderRadius as BorderRadius?;
+    final border = exportBoxBorder(decoration.border);
+    final boxShadow = decoration.boxShadow?.map(
+      (boxShadow) => exportBoxShadow(boxShadow),
+    );
+    final gradient = exportGradient(decoration.gradient);
+
+    return <String, dynamic>{
+      'type': decoration.runtimeType.toString(),
+      'color': decoration.color?.value.toRadixString(16),
+      // TODO: implemented Decoration Image
+      // 'image': null,
+      'border': border,
+      'borderRadius':
+          borderRadius != null ? exportBorderRadius(borderRadius) : null,
+      'boxShadow': boxShadow,
+      'gradient': gradient,
+      'backgroundBlendMode': exportBlendMode(decoration.backgroundBlendMode),
+      'shape': decoration.shape.name
+    };
+  }
+
+  return null;
+}
+
+// TODO: Border unsupported type BorderDirectional
+BoxBorder? parseBoxBorder(Map<String, dynamic>? map) {
+  if (map != null && map['type'] == 'Border') {
+    return Border(
+      top: parseBorderSide(map['top']),
+      right: parseBorderSide(map['right']),
+      bottom: parseBorderSide(map['bottom']),
+      left: parseBorderSide(map['left']),
+    );
+  }
+
+  return null;
+}
+
+Map<String, dynamic>? exportBoxBorder(BoxBorder? border) {
+  if (border is Border) {
+    return <String, dynamic>{
+      'type': border.runtimeType.toString(),
+      'top': exportBorderSide(border.top),
+      'right': exportBorderSide(border.right),
+      'bottom': exportBorderSide(border.bottom),
+      'left': exportBorderSide(border.left),
+    };
+  }
+
+  return null;
 }
