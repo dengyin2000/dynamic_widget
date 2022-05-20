@@ -757,6 +757,7 @@ const Map<String, IconData> IconsMap = <String, IconData>{
   'power': Icons.power,
   'power_input': Icons.power_input,
   'power_settings_new': Icons.power_settings_new,
+  'power_settings_new_outlined': Icons.power_settings_new_outlined,
   'pregnant_woman': Icons.pregnant_woman,
   'present_to_all': Icons.present_to_all,
   'print': Icons.print,
