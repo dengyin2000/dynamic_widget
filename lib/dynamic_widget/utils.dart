@@ -4,6 +4,8 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
 
+import '../apnaklub_widgets/readmoretext.dart';
+
 TextAlign parseTextAlign(String? textAlignString) {
   //left the system decide
   TextAlign textAlign = TextAlign.start;
@@ -74,7 +76,7 @@ TextOverflow? parseTextOverflow(String? textOverflowString) {
 }
 
 String? exportTextOverflow(TextOverflow? textOverflow) {
-  if(textOverflow == null){
+  if (textOverflow == null) {
     return null;
   }
   String rt = "ellipsis";
@@ -145,6 +147,20 @@ String exportTextDirection(TextDirection? textDirection) {
     rt = "rtl";
   }
   return rt;
+}
+
+Locale? parseLocale(String? locale) {
+  if (locale != null) {
+    return Locale(locale);
+  }
+  return null;
+}
+
+String? exportLocale(Locale? locale) {
+  if (locale != null) {
+    return locale.languageCode;
+  }
+  return null;
 }
 
 FontWeight parseFontWeight(String? textFontWeight) {
@@ -958,6 +974,26 @@ String exportClipBehavior(Clip clip) {
   }
 
   return "antiAlias";
+}
+
+TrimMode parseTrimMode(String? trimMode) {
+  if (trimMode == 'length') {
+    return TrimMode.Length;
+  } else if (trimMode == 'line') {
+    return TrimMode.Line;
+  } else {
+    return TrimMode.Length;
+  }
+}
+
+String? exportTrimMode(TrimMode trimMode) {
+  if (trimMode == TrimMode.Length) {
+    return 'length';
+  } else if (trimMode == TrimMode.Line) {
+    return 'line';
+  } else {
+    return null;
+  }
 }
 
 DropCapMode? parseDropCapMode(String? value) {
