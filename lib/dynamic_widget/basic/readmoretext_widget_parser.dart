@@ -15,7 +15,7 @@ class ReadMoreTextParser extends WidgetParser {
       'trimLength': readMoreText.trimLength,
       'trimLines': readMoreText.trimLines,
       'colorClickableText': readMoreText.colorClickableText,
-      'trimMode': readMoreText.trimMode,
+      'trimMode': exportTrimMode(readMoreText.trimMode),
       'textAlign': readMoreText.textAlign,
       'delimiterStyle': readMoreText.delimiterStyle,
       'moreStyle': readMoreText.moreStyle,
@@ -24,7 +24,7 @@ class ReadMoreTextParser extends WidgetParser {
       'locale': readMoreText.locale,
       'textScaleFactor': readMoreText.textScaleFactor,
       'semanticsLabel': readMoreText.semanticsLabel,
-      'style': readMoreText.style,
+      'style': exportTextStyle(readMoreText.style),
     };
   }
 
