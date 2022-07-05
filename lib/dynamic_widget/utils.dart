@@ -163,6 +163,23 @@ String? exportLocale(Locale? locale) {
   return null;
 }
 
+FlexFit parseFlexFit(String? fit) {
+  if (fit != null) {
+    if (fit.toLowerCase() == 'tight') {
+      return FlexFit.tight;
+    }
+    return FlexFit.loose;
+  }
+  return FlexFit.loose;
+}
+
+String exportFlexFit(FlexFit? fit) {
+  if (fit != null) {
+    return fit.name;
+  }
+  return FlexFit.loose.name;
+}
+
 FontWeight parseFontWeight(String? textFontWeight) {
   FontWeight fontWeight = FontWeight.normal;
   switch (textFontWeight) {
