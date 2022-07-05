@@ -14,9 +14,11 @@ import 'package:dynamic_widget/dynamic_widget/basic/divider_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/flex_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/icon_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/inkwell_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/limitedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/listtile_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/offstage_widget_parser.dart';
@@ -89,7 +91,9 @@ class DynamicWidgetBuilder {
     RotatedBoxWidgetParser(),
     CardParser(),
     SingleChildScrollViewParser(),
-    ReadMoreTextParser()
+    ReadMoreTextParser(),
+    InkwellWidgetParser(),
+    FlexWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
