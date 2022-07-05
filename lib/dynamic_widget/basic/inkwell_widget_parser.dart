@@ -24,7 +24,7 @@ class InkwellWidgetParser extends WidgetParser {
   }
 
   @override
-  String get widgetName => "InkwellWidget";
+  String get widgetName => "Inkwell";
 
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
