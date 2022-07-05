@@ -9,7 +9,7 @@ class ReadMoreTextParser extends WidgetParser {
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var readMoreText = widget as ReadMoreText;
     return {
-      'type': 'ReadMoreText',
+      'type': widgetName,
       'data': readMoreText.data,
       'trimExpandedText': readMoreText.trimExpandedText,
       'trimCollapsedText': readMoreText.trimCollapsedText,

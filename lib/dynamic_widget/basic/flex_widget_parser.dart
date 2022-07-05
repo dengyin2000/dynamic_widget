@@ -40,7 +40,7 @@ class FlexWidgetParser extends WidgetParser {
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as Flex;
     return <String, dynamic>{
-      "type": "Flex",
+      "type": widgetName,
       "direction": realWidget.direction == Axis.horizontal ? "horizontal" : "vertical",
       "crossAxisAlignment":
           exportCrossAxisAlignment(realWidget.crossAxisAlignment),
