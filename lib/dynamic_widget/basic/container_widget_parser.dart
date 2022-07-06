@@ -1,4 +1,5 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
+import 'package:dynamic_widget/dynamic_widget/boxdecoration_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
@@ -24,6 +25,7 @@ class ContainerWidgetParser extends WidgetParser {
       alignment: alignment,
       padding: padding,
       color: color,
+      decoration: parseBoxDecoration(map['boxDecoration']),
       margin: margin,
       width: map['width']?.toDouble(),
       height: map['height']?.toDouble(),
@@ -60,9 +62,11 @@ class ContainerWidgetParser extends WidgetParser {
       "padding": padding != null
           ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
           : null,
-      "color": realWidget.color != null
-          ? realWidget.color!.value.toRadixString(16)
-          : null,
+      //* color in decoration overrides the color causing problems
+      // "color": realWidget.color != null
+      //     ? realWidget.color!.value.toRadixString(16)
+      //     : null,
+      "boxDecoration": exportBoxDecoration(realWidget.decoration as BoxDecoration),
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,

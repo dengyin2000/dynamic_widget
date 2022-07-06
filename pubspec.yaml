@@ -16,6 +16,8 @@ dependencies:
 
   font_awesome_flutter: ^9.0.0
 
+  flutter_svg: ^1.1.1+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
