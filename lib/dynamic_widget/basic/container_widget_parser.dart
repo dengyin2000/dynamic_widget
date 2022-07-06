@@ -10,7 +10,7 @@ class ContainerWidgetParser extends WidgetParser {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
-    //TODO: decoration, foregroundDecoration and transform properties to be implemented.
+    //TODO: foregroundDecoration and transform properties to be implemented.
     EdgeInsetsGeometry? margin = parseEdgeInsetsGeometry(map['margin']);
     EdgeInsetsGeometry? padding = parseEdgeInsetsGeometry(map['padding']);
     Map<String, dynamic>? childMap = map['child'];
@@ -24,7 +24,7 @@ class ContainerWidgetParser extends WidgetParser {
     var containerWidget = Container(
       alignment: alignment,
       padding: padding,
-      color: color,
+      // color: color,
       decoration: parseBoxDecoration(map['decoration']),
       margin: margin,
       width: map['width']?.toDouble(),
@@ -32,7 +32,7 @@ class ContainerWidgetParser extends WidgetParser {
       constraints: constraints,
       child: child,
     );
-
+    
     if (listener != null && clickEvent != null) {
       return GestureDetector(
         onTap: () {
@@ -66,7 +66,9 @@ class ContainerWidgetParser extends WidgetParser {
       // "color": realWidget.color != null
       //     ? realWidget.color!.value.toRadixString(16)
       //     : null,
-      "decoration": exportBoxDecoration(realWidget.decoration as BoxDecoration),
+      "decoration": exportBoxDecoration(realWidget.decoration != null
+          ? realWidget.decoration as BoxDecoration
+          : null),
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,

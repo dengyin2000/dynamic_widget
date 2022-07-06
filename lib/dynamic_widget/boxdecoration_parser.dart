@@ -11,7 +11,7 @@ BoxDecoration? parseBoxDecoration(String? boxDecoration) {
   Map<String, dynamic> map = json.decode(boxDecoration);
   List border = map['border'].split(',');
 
-  return BoxDecoration(
+  BoxDecoration _boxDecoration = BoxDecoration(
       color: parseHexColor(map['color']),
       // TODO: Implement image in decoration when needed
       // image: map['image'] == null ? null : NetworkImage(src),
@@ -22,9 +22,10 @@ BoxDecoration? parseBoxDecoration(String? boxDecoration) {
         bottom: parseBorderSide(map),
       ),
       borderRadius: parseBorderRadius(map['borderRadius']));
+  return _boxDecoration;
 }
 
-String? exportBoxDecoration(BoxDecoration? decoration) {
+Map<String, dynamic>? exportBoxDecoration(BoxDecoration? decoration) {
   if (decoration == null) {
     return null;
   }
@@ -52,6 +53,5 @@ String? exportBoxDecoration(BoxDecoration? decoration) {
     "borderRadius": exportBorderRadius(decoration.borderRadius as BorderRadius)
   };
 
-  {}
-  return json.encode(map);
+  return map;
 }
