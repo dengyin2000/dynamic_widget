@@ -25,7 +25,7 @@ class ContainerWidgetParser extends WidgetParser {
       alignment: alignment,
       padding: padding,
       color: color,
-      decoration: parseBoxDecoration(map['boxDecoration']),
+      decoration: parseBoxDecoration(map['decoration']),
       margin: margin,
       width: map['width']?.toDouble(),
       height: map['height']?.toDouble(),
@@ -66,7 +66,7 @@ class ContainerWidgetParser extends WidgetParser {
       // "color": realWidget.color != null
       //     ? realWidget.color!.value.toRadixString(16)
       //     : null,
-      "boxDecoration": exportBoxDecoration(realWidget.decoration as BoxDecoration),
+      "decoration": exportBoxDecoration(realWidget.decoration as BoxDecoration),
       "margin": margin != null
           ? "${margin.left},${margin.top},${margin.right},${margin.bottom}"
           : null,
