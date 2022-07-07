@@ -4,24 +4,25 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
 /// BoxDecoration currently only supports network image
-BoxDecoration? parseBoxDecoration(String? boxDecoration) {
+BoxDecoration? parseBoxDecoration(Map<String, dynamic>? boxDecoration) {
   if (boxDecoration == null) {
     return null;
   }
-  Map<String, dynamic> map = json.decode(boxDecoration);
-  List border = map['border'].split(',');
 
+  print('--' * 100);
+  var border = boxDecoration['border'];
+  print(border);
   BoxDecoration _boxDecoration = BoxDecoration(
-      color: parseHexColor(map['color']),
+      color: parseHexColor(boxDecoration['color']),
       // TODO: Implement image in decoration when needed
       // image: map['image'] == null ? null : NetworkImage(src),
       border: Border(
-        left: parseBorderSide(map),
-        top: parseBorderSide(map),
-        right: parseBorderSide(map),
-        bottom: parseBorderSide(map),
+        left: parseBorderSide(border['left']),
+        top: parseBorderSide(border['top']),
+        right: parseBorderSide(border['right']),
+        bottom: parseBorderSide(border['bottom']),
       ),
-      borderRadius: parseBorderRadius(map['borderRadius']));
+      borderRadius: parseBorderRadius(boxDecoration['borderRadius']));
   return _boxDecoration;
 }
 
