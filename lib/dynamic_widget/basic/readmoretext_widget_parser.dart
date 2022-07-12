@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 import '../utils.dart';
 
-class ReadMoreTextParser extends WidgetParser {
+class ReadMoreTextParser extends NewWidgetParser {
   @override
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var readMoreText = widget as ReadMoreText;
@@ -31,7 +31,7 @@ class ReadMoreTextParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     // delimiter not implemented
     // delimiter = _kEllipsis + ' ', is default
 

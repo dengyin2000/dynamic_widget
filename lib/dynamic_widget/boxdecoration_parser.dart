@@ -9,7 +9,6 @@ BoxDecoration? parseBoxDecoration(Map<String, dynamic>? boxDecoration) {
     return null;
   }
 
-  print('--' * 100);
   var border = boxDecoration['border'];
   print(border);
   BoxDecoration _boxDecoration = BoxDecoration(

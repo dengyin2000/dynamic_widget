@@ -2,10 +2,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
-class PaddingWidgetParser extends WidgetParser {
+class PaddingWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return Padding(
       padding: map.containsKey("padding")
           ? parseEdgeInsetsGeometry(map["padding"])!

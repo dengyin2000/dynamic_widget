@@ -2,10 +2,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
-class InkwellWidgetParser extends WidgetParser {
+class InkwellWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     String? clickEvent =
         map.containsKey("click_event") ? map['click_event'] : "";
 
@@ -16,7 +16,7 @@ class InkwellWidgetParser extends WidgetParser {
       child: DynamicWidgetBuilder.buildFromMap(
           map['child'], buildContext, listener),
       onTap: () {
-        listener!.onClicked(clickEvent);
+        listener!.clickListener!.onClicked(clickEvent);
       },
     );
 

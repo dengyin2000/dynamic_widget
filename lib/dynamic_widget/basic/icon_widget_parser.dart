@@ -3,10 +3,10 @@ import 'package:dynamic_widget/dynamic_widget/icons_helper.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
-class IconWidgetParser extends WidgetParser {
+class IconWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return Icon(
       map.containsKey('data')
           ? getIconUsingPrefix(name: map['data'])

@@ -557,11 +557,12 @@ class PreviewPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               var exportJsonString = _exportor?.exportJsonString();
-              if (exportJsonString!=null)
+              if (exportJsonString != null)
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CodeEditorPage(exportJsonString)));
+                        builder: (context) =>
+                            CodeEditorPage(exportJsonString)));
             },
             child: Text("export json code"),
           )

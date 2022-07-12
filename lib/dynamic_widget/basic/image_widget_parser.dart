@@ -4,10 +4,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
-class AssetImageWidgetParser extends WidgetParser {
+class AssetImageWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     String name = map['name'];
     String? semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -18,11 +18,12 @@ class AssetImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])!
         : Alignment.center;
@@ -64,7 +65,7 @@ class AssetImageWidgetParser extends WidgetParser {
     if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
         onTap: () {
-          listener.onClicked(clickEvent);
+          listener.clickListener!.onClicked(clickEvent);
         },
         child: widget,
       );
@@ -195,10 +196,10 @@ class AssetImageWidgetParser extends WidgetParser {
       _isMatchAssetImageType(widget) || _isMatchExactAssetImageType(widget);
 }
 
-class NetworkImageWidgetParser extends WidgetParser {
+class NetworkImageWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     String src = map['src'];
     String? semanticLabel =
         map.containsKey('semanticLabel') ? map['semanticLabel'] : null;
@@ -209,11 +210,12 @@ class NetworkImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])!
         : Alignment.center;
@@ -255,7 +257,7 @@ class NetworkImageWidgetParser extends WidgetParser {
     if (listener != null && (clickEvent != null && clickEvent.isNotEmpty)) {
       return GestureDetector(
         onTap: () {
-          listener.onClicked(clickEvent);
+          listener.clickListener!.onClicked(clickEvent);
         },
         child: widget,
       );

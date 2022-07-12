@@ -2,10 +2,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
-class PlaceholderWidgetParser extends WidgetParser {
+class PlaceholderWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return Placeholder(
       color: map.containsKey('color')
           ? parseHexColor(map['color'])!

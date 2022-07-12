@@ -2,10 +2,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
-class FlexWidgetParser extends WidgetParser {
+class FlexWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return Flex(
       direction: map.containsKey("direction")
           ? parseAxis(map["direction"])
@@ -41,7 +41,8 @@ class FlexWidgetParser extends WidgetParser {
     var realWidget = widget as Flex;
     return <String, dynamic>{
       "type": widgetName,
-      "direction": realWidget.direction == Axis.horizontal ? "horizontal" : "vertical",
+      "direction":
+          realWidget.direction == Axis.horizontal ? "horizontal" : "vertical",
       "crossAxisAlignment":
           exportCrossAxisAlignment(realWidget.crossAxisAlignment),
       "mainAxisAlignment":

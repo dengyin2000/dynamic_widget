@@ -262,6 +262,13 @@ Color? parseHexColor(String? hexColorString) {
   return Color(colorInt);
 }
 
+exportHexColor(Color? color) {
+  if (color == null) {
+    return null;
+  }
+  return color.value.toRadixString(16);
+}
+
 TextStyle? parseTextStyle(Map<String, dynamic>? map) {
   if (map == null) {
     return null;
@@ -417,6 +424,13 @@ EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
       top: double.parse(values[1]),
       right: double.parse(values[2]),
       bottom: double.parse(values[3]));
+}
+
+String? exportEdgeInsetsGeometry(EdgeInsets? edgeInsetsGeometry) {
+  //left,top,right,bottom
+  return edgeInsetsGeometry != null
+      ? "${edgeInsetsGeometry.left},${edgeInsetsGeometry.top},${edgeInsetsGeometry.right},${edgeInsetsGeometry.bottom}"
+      : null;
 }
 
 CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
@@ -1073,7 +1087,7 @@ String exportDropCapPosition(DropCapPosition? dropCapPosition) {
 }
 
 DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
-    ClickListener? listener) {
+    EventListener? listener) {
   if (map == null) {
     return null;
   }

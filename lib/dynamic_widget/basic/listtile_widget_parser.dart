@@ -4,10 +4,10 @@ import 'package:flutter/widgets.dart';
 
 import '../utils.dart';
 
-class ListTileWidgetParser extends WidgetParser {
+class ListTileWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     bool isThreeLine =
         map.containsKey("isThreeLine") ? map["isThreeLine"] : false;
     EdgeInsetsGeometry? contentPadding = map.containsKey("contentPadding")
@@ -45,7 +45,7 @@ class ListTileWidgetParser extends WidgetParser {
       enabled: enabled,
       onTap: () {
         if (listener != null && tapEvent != null) {
-          listener.onClicked(tapEvent);
+          listener.clickListener!.onClicked(tapEvent);
         }
       },
       selected: selected,

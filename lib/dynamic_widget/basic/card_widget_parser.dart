@@ -3,7 +3,7 @@ import 'package:dynamic_widget/dynamic_widget/common/rounded_rectangle_border_pa
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
-class CardParser extends WidgetParser {
+class CardParser extends NewWidgetParser {
   @override
   String get widgetName => 'Card';
 
@@ -56,7 +56,7 @@ class CardParser extends WidgetParser {
 
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     final Color? color = parseHexColor(map['color']);
     final Color? shadowColor = parseHexColor(map['shadowColor']);
     final double? elevation = map['elevation'];

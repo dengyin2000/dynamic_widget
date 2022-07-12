@@ -3,10 +3,10 @@ import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SelectableTextWidgetParser implements WidgetParser {
+class SelectableTextWidgetParser implements NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     String? data = map['data'];
     String? textAlignString = map['textAlign'];
     int? maxLines = map['maxLines'];
@@ -79,14 +79,14 @@ class SelectableTextWidgetParser implements WidgetParser {
 }
 
 class SelectableTextSpanParser {
-  TextSpan parse(Map<String, dynamic> map, ClickListener? listener) {
+  TextSpan parse(Map<String, dynamic> map, EventListener? listener) {
     String? clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],
         style: parseTextStyle(map['style']),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
-            listener!.onClicked(clickEvent);
+            listener!.clickListener!.onClicked(clickEvent);
           },
         children: []);
 
@@ -98,7 +98,7 @@ class SelectableTextSpanParser {
   }
 
   void parseChildren(
-      TextSpan textSpan, List<dynamic> childrenSpan, ClickListener? listener) {
+      TextSpan textSpan, List<dynamic> childrenSpan, EventListener? listener) {
     for (var childmap in childrenSpan) {
       textSpan.children!.add(parse(childmap, listener));
     }

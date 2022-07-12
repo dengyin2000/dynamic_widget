@@ -3,10 +3,10 @@ import 'package:dynamic_widget/dynamic_widget/boxdecoration_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
-class ContainerWidgetParser extends WidgetParser {
+class ContainerWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     Alignment? alignment = parseAlignment(map['alignment']);
     Color? color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
@@ -32,11 +32,11 @@ class ContainerWidgetParser extends WidgetParser {
       constraints: constraints,
       child: child,
     );
-    
+
     if (listener != null && clickEvent != null) {
       return GestureDetector(
         onTap: () {
-          listener.onClicked(clickEvent);
+          listener.clickListener!.onClicked(clickEvent);
         },
         child: containerWidget,
       );

@@ -34,6 +34,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser
 import 'package:dynamic_widget/dynamic_widget/basic/sizedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/textfield_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
@@ -96,14 +97,15 @@ class DynamicWidgetBuilder {
     InkwellWidgetParser(),
     FlexWidgetParser(),
     FlexibleWidgetParser(),
+    TextFieldWidgetParser(),
   ];
 
-  static final _widgetNameParserMap = <String, WidgetParser>{};
+  static final _widgetNameParserMap = <String, NewWidgetParser>{};
 
   static bool _defaultParserInited = false;
 
   // use this method for adding your custom widget parser
-  static void addParser(WidgetParser parser) {
+  static void addParser(NewWidgetParser parser) {
     log.info(
         "add custom widget parser, make sure you don't overwirte the widget type.");
     _parsers.add(parser);
@@ -120,17 +122,18 @@ class DynamicWidgetBuilder {
   }
 
   static Widget? build(
-      String json, BuildContext buildContext, ClickListener listener) {
+      String json, BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
     var map = jsonDecode(json);
-    ClickListener _listener =
-        listener == null ? new NonResponseWidgetClickListener() : listener;
-    var widget = buildFromMap(map, buildContext, _listener);
+    if (listener == null) listener = EventListener();
+    listener.clickListener =
+        listener.clickListener == null ?  NonResponseWidgetClickListener() : listener.clickListener;
+    var widget = buildFromMap(map, buildContext, listener);
     return widget;
   }
 
   static Widget? buildFromMap(Map<String, dynamic>? map,
-      BuildContext buildContext, ClickListener? listener) {
+      BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
     if (map == null) {
       return null;
@@ -148,7 +151,7 @@ class DynamicWidgetBuilder {
   }
 
   static List<Widget> buildWidgets(List<dynamic> values,
-      BuildContext buildContext, ClickListener? listener) {
+      BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
     List<Widget> rt = [];
     for (var value in values) {
@@ -168,7 +171,7 @@ class DynamicWidgetBuilder {
       return parser.export(widget, buildContext);
     }
     log.warning(
-        "Can't find WidgetParser for Type ${widget.runtimeType} to export.");
+        "Can't find NewWidgetParser for Type ${widget.runtimeType} to export.");
     return null;
   }
 
@@ -182,7 +185,7 @@ class DynamicWidgetBuilder {
     return rt;
   }
 
-  static WidgetParser? _findMatchedWidgetParserForExport(Widget? widget) {
+  static NewWidgetParser? _findMatchedWidgetParserForExport(Widget? widget) {
     for (var parser in _parsers) {
       if (parser.matchWidgetForExport(widget)) {
         return parser;
@@ -196,7 +199,28 @@ class DynamicWidgetBuilder {
 abstract class WidgetParser {
   /// parse the json map into a flutter widget.
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener);
+      EventListener listener);
+
+  /// the widget type name for example:
+  /// {"type" : "Text", "data" : "Denny"}
+  /// if you want to make a flutter Text widget, you should implement this
+  /// method return "Text", for more details, please see
+  /// @TextWidgetParser
+  String get widgetName;
+
+  /// export the runtime widget to json
+  Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext);
+
+  /// match current widget
+  Type get widgetType;
+
+  bool matchWidgetForExport(Widget? widget) => widget.runtimeType == widgetType;
+}
+
+abstract class NewWidgetParser {
+  /// parse the json map into a flutter widget.
+  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
+      EventListener? listener);
 
   /// the widget type name for example:
   /// {"type" : "Text", "data" : "Denny"}
@@ -216,6 +240,12 @@ abstract class WidgetParser {
 
 abstract class ClickListener {
   void onClicked(String? event);
+}
+
+class EventListener {
+  ClickListener? clickListener;
+  Function(String, String)? onTextChange;
+  Map<String, TextEditingController>? textEditingController;
 }
 
 class NonResponseWidgetClickListener implements ClickListener {

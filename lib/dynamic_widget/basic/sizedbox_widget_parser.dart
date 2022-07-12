@@ -2,10 +2,10 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:flutter/widgets.dart';
 
 //Creates a box that will become as large as its parent allows.
-class ExpandedSizedBoxWidgetParser extends WidgetParser {
+class ExpandedSizedBoxWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return SizedBox.expand(
       child: DynamicWidgetBuilder.buildFromMap(
           map["child"], buildContext, listener),
@@ -25,10 +25,10 @@ class ExpandedSizedBoxWidgetParser extends WidgetParser {
   Type get widgetType => UnimplementedType;
 }
 
-class SizedBoxWidgetParser extends WidgetParser {
+class SizedBoxWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      ClickListener? listener) {
+      EventListener? listener) {
     return SizedBox(
       width: map["width"],
       height: map["height"],
