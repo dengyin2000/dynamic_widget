@@ -33,6 +33,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/scaffold_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/selectabletext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/sizedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/textFormField_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/textfield_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
@@ -98,6 +99,7 @@ class DynamicWidgetBuilder {
     FlexWidgetParser(),
     FlexibleWidgetParser(),
     TextFieldWidgetParser(),
+    TextFormFieldWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, NewWidgetParser>{};
@@ -124,12 +126,17 @@ class DynamicWidgetBuilder {
   static Widget? build(
       String json, BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
-    var map = jsonDecode(json);
-    if (listener == null) listener = EventListener();
-    listener.clickListener =
-        listener.clickListener == null ?  NonResponseWidgetClickListener() : listener.clickListener;
-    var widget = buildFromMap(map, buildContext, listener);
-    return widget;
+    try {
+      var map = jsonDecode(json);
+      if (listener == null) listener = EventListener();
+      listener.clickListener = listener.clickListener == null
+          ? NonResponseWidgetClickListener()
+          : listener.clickListener;
+      var widget = buildFromMap(map, buildContext, listener);
+      return widget;
+    } catch (e) {
+      throw e;
+    }
   }
 
   static Widget? buildFromMap(Map<String, dynamic>? map,
