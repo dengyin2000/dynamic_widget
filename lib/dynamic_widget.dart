@@ -126,35 +126,49 @@ class DynamicWidgetBuilder {
   static Widget? build(
       String json, BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
-    try {
-      var map = jsonDecode(json);
-      if (listener == null) listener = EventListener();
-      listener.clickListener = listener.clickListener == null
-          ? NonResponseWidgetClickListener()
-          : listener.clickListener;
-      var widget = buildFromMap(map, buildContext, listener);
-      return widget;
-    } catch (e) {
-      throw e;
-    }
+    // try {
+    var map = jsonDecode(json);
+    if (listener == null) listener = EventListener();
+    listener.clickListener = listener.clickListener == null
+        ? NonResponseWidgetClickListener()
+        : listener.clickListener;
+    var widget = buildFromMap(map, buildContext, listener);
+    return widget;
+    // } catch (e) {
+    //   print('--' * 100);
+    //   print(json);
+    //   print(e.toString());
+    //   print('--' * 100);
+    //   throw e;
+    // }
   }
 
   static Widget? buildFromMap(Map<String, dynamic>? map,
       BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
-    if (map == null) {
+    try {
+      if (map == null) {
+        return null;
+      }
+      String? widgetName = map['type'];
+      if (widgetName == null) {
+        return null;
+      }
+      print('--' * 100);
+      var parser = _widgetNameParserMap[widgetName];
+      print(parser);
+      if (parser != null) {
+        return parser.parse(map, buildContext, listener);
+      }
+      log.warning("Not support parser type: $widgetName");
       return null;
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
     }
-    String? widgetName = map['type'];
-    if (widgetName == null) {
-      return null;
-    }
-    var parser = _widgetNameParserMap[widgetName];
-    if (parser != null) {
-      return parser.parse(map, buildContext, listener);
-    }
-    log.warning("Not support parser type: $widgetName");
-    return null;
   }
 
   static List<Widget> buildWidgets(List<dynamic> values,
@@ -193,12 +207,19 @@ class DynamicWidgetBuilder {
   }
 
   static NewWidgetParser? _findMatchedWidgetParserForExport(Widget? widget) {
-    for (var parser in _parsers) {
-      if (parser.matchWidgetForExport(widget)) {
-        return parser;
+    try {
+      for (var parser in _parsers) {
+        if (parser.matchWidgetForExport(widget)) {
+          return parser;
+        }
       }
+      return null;
+    } catch (e) {
+      print('--' * 100);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
     }
-    return null;
   }
 }
 

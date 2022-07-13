@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +11,9 @@ class TextFormFieldWidgetParser extends NewWidgetParser {
 
       print("======================== 2");
 
-      TextField realWidget = (textFormField.builder  as UnmanagedRestorationScope).child as TextField;
+      TextField realWidget =
+          (textFormField.builder as UnmanagedRestorationScope).child
+              as TextField;
       print("======================== 3");
       return {
         "type": widgetName,
@@ -23,7 +23,7 @@ class TextFormFieldWidgetParser extends NewWidgetParser {
         "cursorColor": exportHexColor(realWidget.cursorColor),
       };
     } catch (e) {
-      log(e.toString());
+      print(e.toString());
       throw e;
     }
   }
@@ -37,72 +37,80 @@ class TextFormFieldWidgetParser extends NewWidgetParser {
     listener!.textEditingController?.putIfAbsent(id, () {
       return textEditingController;
     });
-    return TextFormField(
-      controller: listener.textEditingController![id],
-      onChanged: (text) => listener.onTextChange!(id, text),
+    try {
+      return TextFormField(
+        controller: listener.textEditingController![id],
+        onChanged: (text) => listener.onTextChange!(id, text),
 
-      // Key? key,
-      // FocusNode? focusNode,
-      // InputDecoration? decoration = const InputDecoration(),
-      // TextInputType? keyboardType,
-      // TextInputAction? textInputAction,
-      // TextCapitalization textCapitalization = TextCapitalization.none,
-      // TextStyle? style,
-      // StrutStyle? strutStyle,
-      // TextAlign textAlign = TextAlign.start,
-      // TextAlignVertical? textAlignVertical,
-      // TextDirection? textDirection,
-      // bool readOnly = false,
-      // ToolbarOptions? toolbarOptions,
-      // bool? showCursor,
-      // bool autofocus = false,
-      // String obscuringCharacter = '•',
-      // bool obscureText = false,
-      // bool autocorrect = true,
-      // SmartDashesType? smartDashesType,
-      // SmartQuotesType? smartQuotesType,
-      // bool enableSuggestions = true,
-      // int? maxLines = 1,
-      // int? minLines,
-      // bool expands = false,
-      // int? maxLength,
-      // MaxLengthEnforcement? maxLengthEnforcement,
-      // void Function()? onEditingComplete,
-      // void Function(String)? onSubmitted,
-      // void Function(String, Map<String, dynamic>)? onAppPrivateCommand,
-      // List<TextInputFormatter>? inputFormatters,
-      // bool? enabled,
-      // double cursorWidth = 2.0,
-      // double? cursorHeight,
-      // Radius? cursorRadius,
-      // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
-      // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
-      // Brightness? keyboardAppearance,
-      // EdgeInsets scrollPadding = const EdgeInsets.all(20.0),
-      // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
-      // bool? enableInteractiveSelection,
-      // TextSelectionControls? selectionControls,
-      // void Function()? onTap,
-      // MouseCursor? mouseCursor,
-      // Widget? Function(BuildContext, {required int currentLength, required bool isFocused, required int? maxLength})? buildCounter,
-      // ScrollController? scrollController,
-      // ScrollPhysics? scrollPhysics,
-      // Iterable<String>? autofillHints = const <String>[],
-      // Clip clipBehavior = Clip.hardEdge,
-      // String? restorationId,
-      // bool scribbleEnabled = true,
-      // bool enableIMEPersonalizedLearning = true,
+        // Key? key,
+        // FocusNode? focusNode,
+        // InputDecoration? decoration = const InputDecoration(),
+        // TextInputType? keyboardType,
+        // TextInputAction? textInputAction,
+        // TextCapitalization textCapitalization = TextCapitalization.none,
+        // TextStyle? style,
+        // StrutStyle? strutStyle,
+        // TextAlign textAlign = TextAlign.start,
+        // TextAlignVertical? textAlignVertical,
+        // TextDirection? textDirection,
+        // bool readOnly = false,
+        // ToolbarOptions? toolbarOptions,
+        // bool? showCursor,
+        // bool autofocus = false,
+        // String obscuringCharacter = '•',
+        // bool obscureText = false,
+        // bool autocorrect = true,
+        // SmartDashesType? smartDashesType,
+        // SmartQuotesType? smartQuotesType,
+        // bool enableSuggestions = true,
+        // int? maxLines = 1,
+        // int? minLines,
+        // bool expands = false,
+        // int? maxLength,
+        // MaxLengthEnforcement? maxLengthEnforcement,
+        // void Function()? onEditingComplete,
+        // void Function(String)? onSubmitted,
+        // void Function(String, Map<String, dynamic>)? onAppPrivateCommand,
+        // List<TextInputFormatter>? inputFormatters,
+        // bool? enabled,
+        // double cursorWidth = 2.0,
+        // double? cursorHeight,
+        // Radius? cursorRadius,
+        // BoxHeightStyle selectionHeightStyle = ui.BoxHeightStyle.tight,
+        // BoxWidthStyle selectionWidthStyle = ui.BoxWidthStyle.tight,
+        // Brightness? keyboardAppearance,
+        // EdgeInsets scrollPadding = const EdgeInsets.all(20.0),
+        // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+        // bool? enableInteractiveSelection,
+        // TextSelectionControls? selectionControls,
+        // void Function()? onTap,
+        // MouseCursor? mouseCursor,
+        // Widget? Function(BuildContext, {required int currentLength, required bool isFocused, required int? maxLength})? buildCounter,
+        // ScrollController? scrollController,
+        // ScrollPhysics? scrollPhysics,
+        // Iterable<String>? autofillHints = const <String>[],
+        // Clip clipBehavior = Clip.hardEdge,
+        // String? restorationId,
+        // bool scribbleEnabled = true,
+        // bool enableIMEPersonalizedLearning = true,
 
-      decoration: parseInputDecoration(inputDecoration),
-      enabled: true,
-      // ! make
-      cursorColor: parseHexColor(map['cursorColor']),
-      textAlign: parseTextAlign(map['textAlign']),
-      // keyboardType: TextInputType.datetime,
-      // inputFormatters: <TextInputFormatter>[
-      //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-      // ],
-    );
+        decoration: parseInputDecoration(inputDecoration),
+        enabled: true,
+        // ! make
+        cursorColor: parseHexColor(map['cursorColor']),
+        textAlign: parseTextAlign(map['textAlign']),
+        // keyboardType: TextInputType.datetime,
+        // inputFormatters: <TextInputFormatter>[
+        //   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+        // ],
+      );
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override

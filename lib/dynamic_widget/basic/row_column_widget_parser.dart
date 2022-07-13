@@ -6,28 +6,36 @@ class RowWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       EventListener? listener) {
-    return Row(
-      crossAxisAlignment: map.containsKey('crossAxisAlignment')
-          ? parseCrossAxisAlignment(map['crossAxisAlignment'])
-          : CrossAxisAlignment.center,
-      mainAxisAlignment: map.containsKey('mainAxisAlignment')
-          ? parseMainAxisAlignment(map['mainAxisAlignment'])
-          : MainAxisAlignment.start,
-      mainAxisSize: map.containsKey('mainAxisSize')
-          ? parseMainAxisSize(map['mainAxisSize'])
-          : MainAxisSize.max,
-      textBaseline: map.containsKey('textBaseline')
-          ? parseTextBaseline(map['textBaseline'])
-          : null,
-      textDirection: map.containsKey('textDirection')
-          ? parseTextDirection(map['textDirection'])
-          : null,
-      verticalDirection: map.containsKey('verticalDirection')
-          ? parseVerticalDirection(map['verticalDirection'])
-          : VerticalDirection.down,
-      children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
-    );
+    try {
+      return Row(
+        crossAxisAlignment: map.containsKey('crossAxisAlignment')
+            ? parseCrossAxisAlignment(map['crossAxisAlignment'])
+            : CrossAxisAlignment.center,
+        mainAxisAlignment: map.containsKey('mainAxisAlignment')
+            ? parseMainAxisAlignment(map['mainAxisAlignment'])
+            : MainAxisAlignment.start,
+        mainAxisSize: map.containsKey('mainAxisSize')
+            ? parseMainAxisSize(map['mainAxisSize'])
+            : MainAxisSize.max,
+        textBaseline: map.containsKey('textBaseline')
+            ? parseTextBaseline(map['textBaseline'])
+            : null,
+        textDirection: map.containsKey('textDirection')
+            ? parseTextDirection(map['textDirection'])
+            : null,
+        verticalDirection: map.containsKey('verticalDirection')
+            ? parseVerticalDirection(map['verticalDirection'])
+            : VerticalDirection.down,
+        children: DynamicWidgetBuilder.buildWidgets(
+            map['children'], buildContext, listener),
+      );
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override
@@ -67,28 +75,36 @@ class ColumnWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       EventListener? listener) {
-    return Column(
-      crossAxisAlignment: map.containsKey('crossAxisAlignment')
-          ? parseCrossAxisAlignment(map['crossAxisAlignment'])
-          : CrossAxisAlignment.center,
-      mainAxisAlignment: map.containsKey('mainAxisAlignment')
-          ? parseMainAxisAlignment(map['mainAxisAlignment'])
-          : MainAxisAlignment.start,
-      mainAxisSize: map.containsKey('mainAxisSize')
-          ? parseMainAxisSize(map['mainAxisSize'])
-          : MainAxisSize.max,
-      textBaseline: map.containsKey('textBaseline')
-          ? parseTextBaseline(map['textBaseline'])
-          : null,
-      textDirection: map.containsKey('textDirection')
-          ? parseTextDirection(map['textDirection'])
-          : null,
-      verticalDirection: map.containsKey('verticalDirection')
-          ? parseVerticalDirection(map['verticalDirection'])
-          : VerticalDirection.down,
-      children: DynamicWidgetBuilder.buildWidgets(
-          map['children'], buildContext, listener),
-    );
+    try {
+      return Column(
+        crossAxisAlignment: map.containsKey('crossAxisAlignment')
+            ? parseCrossAxisAlignment(map['crossAxisAlignment'])
+            : CrossAxisAlignment.center,
+        mainAxisAlignment: map.containsKey('mainAxisAlignment')
+            ? parseMainAxisAlignment(map['mainAxisAlignment'])
+            : MainAxisAlignment.start,
+        mainAxisSize: map.containsKey('mainAxisSize')
+            ? parseMainAxisSize(map['mainAxisSize'])
+            : MainAxisSize.max,
+        textBaseline: map.containsKey('textBaseline')
+            ? parseTextBaseline(map['textBaseline'])
+            : null,
+        textDirection: map.containsKey('textDirection')
+            ? parseTextDirection(map['textDirection'])
+            : null,
+        verticalDirection: map.containsKey('verticalDirection')
+            ? parseVerticalDirection(map['verticalDirection'])
+            : VerticalDirection.down,
+        children: DynamicWidgetBuilder.buildWidgets(
+            map['children'], buildContext, listener),
+      );
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override

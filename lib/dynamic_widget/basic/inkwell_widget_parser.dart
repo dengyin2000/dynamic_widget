@@ -8,19 +8,26 @@ class InkwellWidgetParser extends NewWidgetParser {
       EventListener? listener) {
     String? clickEvent =
         map.containsKey("click_event") ? map['click_event'] : "";
+    try {
+      var inkwell = InkWell(
+        splashColor: map.containsKey('splashColor')
+            ? parseHexColor(map['splashColor'])
+            : null,
+        child: DynamicWidgetBuilder.buildFromMap(
+            map['child'], buildContext, listener),
+        onTap: () {
+          listener!.clickListener!.onClicked(clickEvent);
+        },
+      );
 
-    var inkwell = InkWell(
-      splashColor: map.containsKey('splashColor')
-          ? parseHexColor(map['splashColor'])
-          : null,
-      child: DynamicWidgetBuilder.buildFromMap(
-          map['child'], buildContext, listener),
-      onTap: () {
-        listener!.clickListener!.onClicked(clickEvent);
-      },
-    );
-
-    return inkwell;
+      return inkwell;
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override

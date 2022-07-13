@@ -21,30 +21,38 @@ class TextWidgetParser implements NewWidgetParser {
       textSpan = textSpanParser.parse(map['textSpan'], listener);
     }
 
-    if (textSpan == null) {
-      return Text(
-        data!,
-        textAlign: parseTextAlign(textAlignString),
-        overflow: parseTextOverflow(overflow),
-        maxLines: maxLines,
-        semanticsLabel: semanticsLabel,
-        softWrap: softWrap,
-        textDirection: parseTextDirection(textDirectionString),
-        style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
-      );
-    } else {
-      return Text.rich(
-        textSpan,
-        textAlign: parseTextAlign(textAlignString),
-        overflow: parseTextOverflow(overflow),
-        maxLines: maxLines,
-        semanticsLabel: semanticsLabel,
-        softWrap: softWrap,
-        textDirection: parseTextDirection(textDirectionString),
-        style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
-      );
+    try {
+      if (textSpan == null) {
+        return Text(
+          data!,
+          textAlign: parseTextAlign(textAlignString),
+          overflow: parseTextOverflow(overflow),
+          maxLines: maxLines,
+          semanticsLabel: semanticsLabel,
+          softWrap: softWrap,
+          textDirection: parseTextDirection(textDirectionString),
+          style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
+          textScaleFactor: textScaleFactor,
+        );
+      } else {
+        return Text.rich(
+          textSpan,
+          textAlign: parseTextAlign(textAlignString),
+          overflow: parseTextOverflow(overflow),
+          maxLines: maxLines,
+          semanticsLabel: semanticsLabel,
+          softWrap: softWrap,
+          textDirection: parseTextDirection(textDirectionString),
+          style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
+          textScaleFactor: textScaleFactor,
+        );
+      }
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
     }
   }
 

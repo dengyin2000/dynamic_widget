@@ -6,10 +6,18 @@ class ExpandedSizedBoxWidgetParser extends NewWidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       EventListener? listener) {
-    return SizedBox.expand(
-      child: DynamicWidgetBuilder.buildFromMap(
-          map["child"], buildContext, listener),
-    );
+    try {
+      return SizedBox.expand(
+        child: DynamicWidgetBuilder.buildFromMap(
+            map["child"], buildContext, listener),
+      );
+    } catch (e) {
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override

@@ -34,11 +34,13 @@ class SingleChildScrollViewParser extends NewWidgetParser {
     }
 
     var clipBehaviorString = map['clipBehavior'];
-    return SingleChildScrollView(
+
+    try{
+      return SingleChildScrollView(
       reverse: map.containsKey('reverse') ? map['reverse'] : false,
       clipBehavior: parseClipBehavior(clipBehaviorString),
       padding: map.containsKey("padding")
-          ? parseEdgeInsetsGeometry(map["padding"])!
+          ? parseEdgeInsetsGeometry(map["padding"])
           : EdgeInsets.zero,
       scrollDirection: scrollDirection,
       child: DynamicWidgetBuilder.buildFromMap(
@@ -46,7 +48,13 @@ class SingleChildScrollViewParser extends NewWidgetParser {
         buildContext,
         listener,
       ),
-    );
+    );}catch(e){
+      print('--' * 100);
+      print(map);
+      print(e.toString());
+      print('--' * 100);
+      throw e;
+    }
   }
 
   @override
