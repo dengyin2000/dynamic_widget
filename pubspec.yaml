@@ -17,6 +17,7 @@ dependencies:
   font_awesome_flutter: ^9.0.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 

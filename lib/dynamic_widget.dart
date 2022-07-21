@@ -36,17 +36,41 @@ import 'package:dynamic_widget/dynamic_widget/basic/stack_positioned_widgets_par
 import 'package:dynamic_widget/dynamic_widget/basic/textFormField_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/text_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/textfield_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/visiblity_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/wrap_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view_widget_parser.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
+
+extension BoolParsing on String {
+  bool parseBoolStrict() {
+    if (toLowerCase() == 'true') {
+      return true;
+    } else if (toLowerCase() == 'false') {
+      return false;
+    }
+
+    throw '"$this" can not be parsed to boolean.';
+  }
+
+  bool? parseBool() {
+    if (toLowerCase() == 'true') {
+      return true;
+    } else if (toLowerCase() == 'false') {
+      return false;
+    } else {
+      return null;
+    }
+  }
+}
 
 class DynamicWidgetBuilder {
   static final Logger log = Logger('DynamicWidget');
@@ -100,6 +124,7 @@ class DynamicWidgetBuilder {
     FlexibleWidgetParser(),
     TextFieldWidgetParser(),
     TextFormFieldWidgetParser(),
+    VisibilityWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, NewWidgetParser>{};
@@ -144,8 +169,12 @@ class DynamicWidgetBuilder {
   }
 
   static Widget? buildFromMap(Map<String, dynamic>? map,
-      BuildContext buildContext, EventListener? listener) {
+      BuildContext buildContext, EventListener? listener,
+      {Widget? child}) {
     initDefaultParsersIfNess();
+    if (child != null) {
+      return child;
+    }
     try {
       if (map == null) {
         return null;
@@ -274,6 +303,7 @@ class EventListener {
   ClickListener? clickListener;
   Function(String, String)? onTextChange;
   Map<String, TextEditingController>? textEditingController;
+  Map<String, ValueNotifier<Object?>>? valueListenable;
 }
 
 class NonResponseWidgetClickListener implements ClickListener {
