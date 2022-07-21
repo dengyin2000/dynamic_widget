@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:dynamic_widget/assertions/assert_constants.dart';
+import 'package:dynamic_widget/assertions/type_assertions.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
@@ -273,6 +275,16 @@ TextStyle? parseTextStyle(Map<String, dynamic>? map) {
   if (map == null) {
     return null;
   }
+
+  var typeAssertions = TypeAssertions('TextStyle');
+  typeAssertions.run(map: map, attribute: 'color', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'debugLabel', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'decoration', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'fontFamily', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'fontSize', expectedType: TYPE_DOUBLE);
+  typeAssertions.run(map: map, attribute: 'fontWeight', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'fontStyle', expectedType: TYPE_STRING);
+
   //TODO: more properties need to be implemented, such as decorationColor, decorationStyle, wordSpacing and so on.
   String? color = map['color'];
   String? debugLabel = map['debugLabel'];
@@ -349,61 +361,53 @@ Alignment? parseAlignment(String? alignmentString) {
 const double infinity = 9999999999;
 
 BoxConstraints parseBoxConstraints(Map<String, dynamic>? map) {
+
   double minWidth = 0.0;
   double maxWidth = double.infinity;
   double minHeight = 0.0;
   double maxHeight = double.infinity;
 
+  var typeAssertions = TypeAssertions("BoxConstraints");
   if (map != null) {
-    if (map.containsKey('minWidth')) {
-      var minWidthValue = map['minWidth']?.toDouble();
 
-      if (minWidthValue != null) {
-        if (minWidthValue >= infinity) {
-          minWidth = double.infinity;
-        } else {
-          minWidth = minWidthValue;
-        }
+    typeAssertions.run(map: map, attribute: 'minWidth', expectedType: TYPE_DOUBLE);
+    typeAssertions.run(map: map, attribute: 'maxWidth', expectedType: TYPE_DOUBLE);
+    typeAssertions.run(map: map, attribute: 'minHeight', expectedType: TYPE_DOUBLE);
+    typeAssertions.run(map: map, attribute: 'maxHeight', expectedType: TYPE_DOUBLE);
+
+    if (map.containsKey('minWidth') && map['minWidth'] != null) {
+      double minWidthValue = double.parse(map['minWidth'].toString());
+      if (minWidthValue >= infinity) {
+        minWidth = double.infinity;
+      } else {
+        minWidth = minWidthValue;
       }
     }
-
-    if (map.containsKey('maxWidth')) {
-      var maxWidthValue = map['maxWidth']?.toDouble();
-
-      if (maxWidthValue != null) {
-        if (maxWidthValue >= infinity) {
-          maxWidth = double.infinity;
-        } else {
-          maxWidth = maxWidthValue;
-        }
+    if (map.containsKey('maxWidth') && map['maxWidth'] != null) {
+      var maxWidthValue = double.parse(map['maxWidth'].toString());
+      if (maxWidthValue >= infinity) {
+        maxWidth = double.infinity;
+      } else {
+        maxWidth = maxWidthValue;
       }
     }
-
-    if (map.containsKey('minHeight')) {
-      var minHeightValue = map['minHeight']?.toDouble();
-
-      if (minHeightValue != null) {
-        if (minHeightValue >= infinity) {
-          minHeight = double.infinity;
-        } else {
-          minHeight = minHeightValue;
-        }
+    if (map.containsKey('minHeight') && map['minHeight'] != null) {
+      var minHeightValue = double.parse(map['minHeight'].toString());
+      if (minHeightValue >= infinity) {
+        minHeight = double.infinity;
+      } else {
+        minHeight = minHeightValue;
       }
     }
-
-    if (map.containsKey('maxHeight')) {
-      var maxHeightValue = map['maxHeight']?.toDouble();
-
-      if (maxHeightValue != null) {
-        if (maxHeightValue >= infinity) {
-          maxHeight = double.infinity;
-        } else {
-          maxHeight = maxHeightValue;
-        }
+    if (map.containsKey('maxHeight') && map['maxHeight'] != null) {
+      var maxHeightValue = double.parse(map['maxHeight'].toString());
+      if (maxHeightValue >= infinity) {
+        maxHeight = double.infinity;
+      } else {
+        maxHeight = maxHeightValue;
       }
     }
   }
-
   return BoxConstraints(
     minWidth: minWidth,
     maxWidth: maxWidth,
@@ -419,6 +423,11 @@ EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
     return null;
   }
   var values = edgeInsetsGeometryString.split(",");
+
+  var typeAssertions = TypeAssertions("EdgeInsetsGeometry");
+  for(var value in values) {
+    typeAssertions.assertDouble(value);
+  }
   return EdgeInsets.only(
       left: double.parse(values[0]),
       top: double.parse(values[1]),
@@ -770,6 +779,10 @@ Rect? parseRect(String? fromLTRBString) {
     return null;
   }
   var strings = fromLTRBString.split(',');
+  var typeAssertions = TypeAssertions("Rect");
+  strings.forEach((element) {
+    typeAssertions.assertDouble(element);
+  });
   return Rect.fromLTRB(double.parse(strings[0]), double.parse(strings[1]),
       double.parse(strings[2]), double.parse(strings[3]));
 }
@@ -1221,6 +1234,12 @@ Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
 BorderSide parseBorderSide(Map<String, dynamic>? map) {
   if (map == null) return BorderSide.none;
   if (!map.containsKey('color')) return BorderSide.none;
+
+  var typeAssertions = TypeAssertions("BorderSide");
+  typeAssertions.run(map: map, attribute: 'color', expectedType: TYPE_STRING);
+  typeAssertions.run(map: map, attribute: 'width', expectedType: TYPE_DOUBLE);
+  typeAssertions.run(map: map, attribute: 'style', expectedType: TYPE_INT);
+
   return BorderSide(
     color: parseHexColor(map['color'])!,
     width: map['width'] ?? 0,
@@ -1255,6 +1274,10 @@ String exportRadius(Radius radius) {
 Radius parseRadius(String radius) {
   final values = radius.split(':');
   if (values.length == 2) {
+    var typeAssertions = TypeAssertions('Radius');
+    typeAssertions.assertDouble(values[0]);
+    typeAssertions.assertDouble(values[1]);
+
     return Radius.elliptical(double.parse(values[0]), double.parse(values[1]));
   } else {
     return Radius.zero;

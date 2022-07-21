@@ -1,8 +1,20 @@
+import 'package:dynamic_widget/assertions/assert_constants.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../new_widget_parser.dart';
+
 class SingleChildScrollViewParser extends NewWidgetParser {
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    typeAssertionDriver(map: map, attribute: 'scrollDirection', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'reverse', expectedType: TYPE_BOOL);
+    typeAssertionDriver(map: map, attribute: 'padding', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'clipBehavior', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'child', expectedType: TYPE_MAP);
+  }
+
   @override
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as SingleChildScrollView;
@@ -20,6 +32,7 @@ class SingleChildScrollViewParser extends NewWidgetParser {
       "padding": padding != null
           ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"
           : null,
+      "clipBehavior":exportClip(realWidget.clipBehavior),
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext),
     };
   }

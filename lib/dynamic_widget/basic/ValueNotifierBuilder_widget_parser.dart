@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../dynamic_widget.dart';
+import '../../new_widget_parser.dart';
 
 class ValueNotifierBuilderWidgetParser extends NewWidgetParser {
   @override
@@ -34,8 +35,13 @@ class ValueNotifierBuilderWidgetParser extends NewWidgetParser {
   }
 
   @override
-  String get widgetName => throw UnimplementedError();
+  String get widgetName => 'ValueListenableBuilder';
 
   @override
   Type get widgetType => ValueListenableBuilder;
+  
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    // TODO: implement assertionChecks
+  }
 }

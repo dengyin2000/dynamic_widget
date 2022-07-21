@@ -1,8 +1,23 @@
+import 'package:dynamic_widget/assertions/assert_constants.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../new_widget_parser.dart';
+
 class FlexWidgetParser extends NewWidgetParser {
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    typeAssertionDriver(map: map, attribute: 'direction', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'crossAxisAlignment', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'mainAxisAlignment', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'mainAxisSize', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'textBaseline', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'textDirection', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'verticalDirection', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'children', expectedType: TYPE_LIST);
+  }
+
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       EventListener? listener) {

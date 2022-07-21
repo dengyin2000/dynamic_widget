@@ -42,13 +42,13 @@ import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.d
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view_widget_parser.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
 import 'dynamic_widget/basic/rotatedbox_widget_parser.dart';
+import 'new_widget_parser.dart';
 
 extension BoolParsing on String {
   bool parseBoolStrict() {
@@ -151,21 +151,21 @@ class DynamicWidgetBuilder {
   static Widget? build(
       String json, BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
-    // try {
-    var map = jsonDecode(json);
-    if (listener == null) listener = EventListener();
-    listener.clickListener = listener.clickListener == null
-        ? NonResponseWidgetClickListener()
-        : listener.clickListener;
-    var widget = buildFromMap(map, buildContext, listener);
-    return widget;
-    // } catch (e) {
-    //   print('--' * 100);
-    //   print(json);
-    //   print(e.toString());
-    //   print('--' * 100);
-    //   throw e;
-    // }
+    try {
+      var map = jsonDecode(json);
+      if (listener == null) listener = EventListener();
+      listener.clickListener = listener.clickListener == null
+          ? NonResponseWidgetClickListener()
+          : listener.clickListener;
+      var widget = buildFromMap(map, buildContext, listener);
+      return widget;
+    } on FormatException catch (e) {
+      print("DynamicWidgetBuilder.build - Invalid JSON - $e");
+      throw e;
+    } catch (e) {
+      print(e);
+      throw e;
+    }
   }
 
   static Widget? buildFromMap(Map<String, dynamic>? map,
@@ -187,7 +187,7 @@ class DynamicWidgetBuilder {
       var parser = _widgetNameParserMap[widgetName];
       print(parser);
       if (parser != null) {
-        return parser.parse(map, buildContext, listener);
+        return getParsedWidget(parser, map, buildContext, listener);
       }
       log.warning("Not support parser type: $widgetName");
       return null;
@@ -200,11 +200,23 @@ class DynamicWidgetBuilder {
     }
   }
 
+  static Widget getParsedWidget(
+      NewWidgetParser parser,
+      Map<String, dynamic> map,
+      BuildContext buildContext,
+      EventListener? listener) {
+    // assertion checks should be called before parse method of parser.
+    parser.assertionChecks(map);
+    return parser.parse(map, buildContext, listener);
+  }
+
   static List<Widget> buildWidgets(List<dynamic> values,
       BuildContext buildContext, EventListener? listener) {
     initDefaultParsersIfNess();
     List<Widget> rt = [];
     for (var value in values) {
+      assert(value == null || value is Map<String, dynamic>,
+          "Build Widgets: Expecting Map<String, dynamic> but found ${value.runtimeType} at index ${values.indexOf(value)}");
       var buildFromMap2 = buildFromMap(value, buildContext, listener);
       if (buildFromMap2 != null) {
         rt.add(buildFromMap2);
@@ -274,27 +286,6 @@ abstract class WidgetParser {
   bool matchWidgetForExport(Widget? widget) => widget.runtimeType == widgetType;
 }
 
-abstract class NewWidgetParser {
-  /// parse the json map into a flutter widget.
-  Widget parse(Map<String, dynamic> map, BuildContext buildContext,
-      EventListener? listener);
-
-  /// the widget type name for example:
-  /// {"type" : "Text", "data" : "Denny"}
-  /// if you want to make a flutter Text widget, you should implement this
-  /// method return "Text", for more details, please see
-  /// @TextWidgetParser
-  String get widgetName;
-
-  /// export the runtime widget to json
-  Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext);
-
-  /// match current widget
-  Type get widgetType;
-
-  bool matchWidgetForExport(Widget? widget) => widget.runtimeType == widgetType;
-}
-
 abstract class ClickListener {
   void onClicked(String? event);
 }
@@ -304,6 +295,15 @@ class EventListener {
   Function(String, String)? onTextChange;
   Map<String, TextEditingController>? textEditingController;
   Map<String, ValueNotifier<Object?>>? valueListenable;
+
+  EventListener(
+      {Map<String, TextEditingController>? textEditingController,
+      Function(String, String)? onTextChange})
+      : this.textEditingController = textEditingController ?? {} {
+    this.onTextChange = onTextChange ?? f;
+  }
+
+  void f(String s, String v) {}
 }
 
 class NonResponseWidgetClickListener implements ClickListener {

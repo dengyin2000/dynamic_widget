@@ -2,7 +2,14 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../new_widget_parser.dart';
+
 class TextFormFieldWidgetParser extends NewWidgetParser {
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    // TODO: implement assertionChecks
+  }
+
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     try {

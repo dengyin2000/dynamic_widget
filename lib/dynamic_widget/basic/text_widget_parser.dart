@@ -1,9 +1,27 @@
+import 'package:dynamic_widget/assertions/assert_constants.dart';
+import 'package:dynamic_widget/assertions/type_assertions.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 
-class TextWidgetParser implements NewWidgetParser {
+import '../../new_widget_parser.dart';
+
+class TextWidgetParser extends NewWidgetParser {
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    typeAssertionDriver(map: map, attribute: 'data', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'textAlign', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'overflow', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'maxLines', expectedType: TYPE_INT);
+    typeAssertionDriver(map: map, attribute: 'semanticsLabel', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'softWrap', expectedType: TYPE_BOOL);
+    typeAssertionDriver(map: map, attribute: 'textDirection', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'textScaleFactor', expectedType: TYPE_DOUBLE);
+    typeAssertionDriver(map: map, attribute: 'textSpan', expectedType: TYPE_MAP);
+    typeAssertionDriver(map: map, attribute: 'style', expectedType: TYPE_MAP);
+  }
+
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       EventListener? listener) {
@@ -105,6 +123,12 @@ class TextWidgetParser implements NewWidgetParser {
 
 class TextSpanParser {
   TextSpan parse(Map<String, dynamic> map, EventListener? listener) {
+
+    var typeAssertions = TypeAssertions('TextSpanParser');
+    typeAssertions.run(map: map, attribute: 'text', expectedType: TYPE_STRING);
+    typeAssertions.run(map: map, attribute: 'style', expectedType: TYPE_MAP);
+    typeAssertions.run(map: map, attribute: 'children', expectedType: TYPE_LIST);
+
     String? clickEvent = map.containsKey("recognizer") ? map['recognizer'] : "";
     var textSpan = TextSpan(
         text: map['text'],

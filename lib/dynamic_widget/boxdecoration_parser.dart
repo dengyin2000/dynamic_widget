@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:dynamic_widget/assertions/assert_constants.dart';
+import 'package:dynamic_widget/assertions/type_assertions.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,18 @@ BoxDecoration? parseBoxDecoration(Map<String, dynamic>? boxDecoration) {
     return null;
   }
 
+  var typeAssertions = TypeAssertions('BoxDecoration');
+  typeAssertions.run(map: boxDecoration, attribute: 'border', expectedType: TYPE_MAP);
+  typeAssertions.run(map: boxDecoration, attribute: 'color', expectedType: TYPE_STRING);
+  typeAssertions.run(map: boxDecoration, attribute: 'borderRadius', expectedType: TYPE_STRING);
+
   var border = boxDecoration['border'];
+
+  typeAssertions.run(map: border, attribute: 'left', expectedType: TYPE_MAP);
+  typeAssertions.run(map: border, attribute: 'top', expectedType: TYPE_MAP);
+  typeAssertions.run(map: border, attribute: 'right', expectedType: TYPE_MAP);
+  typeAssertions.run(map: border, attribute: 'bottom', expectedType: TYPE_MAP);
+
   print(border);
   BoxDecoration _boxDecoration = BoxDecoration(
       color: parseHexColor(boxDecoration['color']),

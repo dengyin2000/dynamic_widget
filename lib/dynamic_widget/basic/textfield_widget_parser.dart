@@ -1,15 +1,58 @@
+import 'package:dynamic_widget/assertions/assert_constants.dart';
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
 
+import '../../new_widget_parser.dart';
+
 class TextFieldWidgetParser extends NewWidgetParser {
+  @override
+  void assertionChecks(Map<String, dynamic> map) {
+    String inputDe = 'inputDecoration';
+    typeAssertionDriver(map: map, attribute: 'id', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: inputDe, expectedType: TYPE_MAP);
+    typeAssertionDriver(map: map, attribute: 'cursorColor', expectedType: TYPE_STRING);
+    typeAssertionDriver(map: map, attribute: 'textAlign', expectedType: TYPE_STRING);
+
+    if(map.containsKey(inputDe) && map[inputDe] != null) {
+      typeAssertions?.subWidget = inputDe;
+
+      Map<String, dynamic> inputDeMap = map[inputDe];
+      typeAssertionDriver(map: inputDeMap, attribute: 'iconColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'labelText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'helperText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'helperMaxLines', expectedType: TYPE_INT);
+      typeAssertionDriver(map: inputDeMap, attribute: 'hintText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'hintMaxLines', expectedType: TYPE_INT);
+      typeAssertionDriver(map: inputDeMap, attribute: 'errorText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'errorMaxLines', expectedType: TYPE_INT);
+      typeAssertionDriver(map: inputDeMap, attribute: 'contentPadding', expectedType: TYPE_STRING);
+      //typeAssertionDriver(map: inputDeMap, attribute: 'prefixIcon', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'prefixText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'prefixIconColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'suffixText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'suffixIconColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'counterText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'fillColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'focusColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'hoverColor', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'focusedBorder', expectedType: TYPE_MAP);
+      typeAssertionDriver(map: inputDeMap, attribute: 'enabledBorder', expectedType: TYPE_MAP);
+      typeAssertionDriver(map: inputDeMap, attribute: 'semanticCounterText', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'alignLabelWithHint', expectedType: TYPE_STRING);
+      typeAssertionDriver(map: inputDeMap, attribute: 'constraints', expectedType: TYPE_MAP);
+      typeAssertionDriver(map: inputDeMap, attribute: 'enabled', expectedType: TYPE_BOOL);
+
+    }
+  }
+
   @override
   Map<String, dynamic> export(Widget? widget, BuildContext? buildContext) {
     TextField realWidget = widget as TextField;
     return {
       "type": widgetName,
       "id": "put-unique-id-here",
-      "decoration": exportInputDecoration(realWidget.decoration),
+      "inputDecoration": exportInputDecoration(realWidget.decoration),
       "textAlign": exportTextAlign(realWidget.textAlign),
       "cursorColor": exportHexColor(realWidget.cursorColor),
     };
@@ -26,7 +69,7 @@ class TextFieldWidgetParser extends NewWidgetParser {
     });
     return TextField(
       controller: listener.textEditingController![id],
-      onChanged: (text) => listener.onTextChange!(id, text),
+      onChanged: (text) => listener.onTextChange!= null? listener.onTextChange!(id, text) : null,
 
       // Key? key,
       // FocusNode? focusNode,
