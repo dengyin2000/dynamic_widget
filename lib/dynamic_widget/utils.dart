@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 Map<List<Enum>, Enum?> typeDefaultList = {
   TextAlign.values: TextAlign.start,
   TextOverflow.values: TextOverflow.fade,
-  // TextDecorationStyle.values: TextDecorationStyle.solid,
+  TextDecorationStyle.values: TextDecorationStyle.solid,
   TextDirection.values: TextDirection.ltr,
   CrossAxisAlignment.values: CrossAxisAlignment.center,
   MainAxisAlignment.values: MainAxisAlignment.start,
@@ -72,6 +72,14 @@ TextOverflow? parseTextOverflow(String? textOverflowString) =>
 
 String? exportTextOverflow(TextOverflow? textOverflow) =>
     exportEnum(textOverflow);
+
+TextDecorationStyle? parseTextDecorationStyle(
+        String? textDecorationStyleString) =>
+    parseEnum('TextDecorationStyle', textDecorationStyleString)
+        as TextDecorationStyle?;
+
+String? exportTextDecorationStyle(TextDecorationStyle? textDecorationStyle) =>
+    exportEnum(textDecorationStyle);
 
 TextDecoration parseTextDecoration(String? textDecorationString) {
   TextDecoration textDecoration = TextDecoration.none;
