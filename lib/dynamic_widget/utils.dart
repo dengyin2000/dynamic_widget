@@ -4,89 +4,74 @@ import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
 
-TextAlign parseTextAlign(String? textAlignString) {
-  //left the system decide
-  TextAlign textAlign = TextAlign.start;
-  switch (textAlignString) {
-    case "left":
-      textAlign = TextAlign.left;
-      break;
-    case "right":
-      textAlign = TextAlign.right;
-      break;
-    case "center":
-      textAlign = TextAlign.center;
-      break;
-    case "justify":
-      textAlign = TextAlign.justify;
-      break;
-    case "start":
-      textAlign = TextAlign.start;
-      break;
-    case "end":
-      textAlign = TextAlign.end;
-      break;
-    default:
-      textAlign = TextAlign.start;
-  }
-  return textAlign;
+Map<List<Enum>, Enum?> typeDefaultList = {
+  TextAlign.values: TextAlign.start,
+  TextOverflow.values: TextOverflow.fade,
+  // TextDecorationStyle.values: TextDecorationStyle.solid,
+  TextDirection.values: TextDirection.ltr,
+  CrossAxisAlignment.values: CrossAxisAlignment.center,
+  MainAxisAlignment.values: MainAxisAlignment.start,
+  MainAxisSize.values: MainAxisSize.max,
+  TextBaseline.values: TextBaseline.ideographic,
+  VerticalDirection.values: VerticalDirection.down,
+  BlendMode.values: BlendMode.srcIn,
+  BoxFit.values: BoxFit.contain,
+  ImageRepeat.values: ImageRepeat.noRepeat,
+  FilterQuality.values: FilterQuality.low,
+  StackFit.values: StackFit.loose,
+  Clip.values: Clip.hardEdge,
+  Axis.values: Axis.horizontal,
+  WrapAlignment.values: WrapAlignment.start,
+  WrapCrossAlignment.values: WrapCrossAlignment.start,
+  DropCapMode.values: DropCapMode.inside,
+  DropCapPosition.values: DropCapPosition.start
+};
+
+extension ChangeCase on String {
+  String get lowereCamelCase => substring(0, 1).toLowerCase() + substring(1);
+  String get upperCamelCase => substring(0, 1).toUpperCase() + substring(1);
 }
 
-String exportTextAlign(TextAlign? textAlign) {
-  String rt = "start";
-  if (textAlign == TextAlign.left) {
-    rt = "left";
+Enum? parseEnum(String type, String? input) {
+  //find the correct type
+  List<Enum> typeClass = typeDefaultList.keys.firstWhere(
+      (element) => element[0].runtimeType.toString() == type.upperCamelCase,
+      orElse: () => throw 'parseEnum($type) not found');
+  // find correct enum
+  for (Enum element in typeClass) {
+    if (element.name == input) {
+      return element;
+    }
   }
-  if (textAlign == TextAlign.right) {
-    rt = "right";
-  }
-  if (textAlign == TextAlign.center) {
-    rt = "center";
-  }
-  if (textAlign == TextAlign.justify) {
-    rt = "justify";
-  }
-  if (textAlign == TextAlign.start) {
-    rt = "start";
-  }
-  if (textAlign == TextAlign.end) {
-    rt = "end";
-  }
-  return rt;
+  // else default
+  return typeDefaultList[typeClass];
 }
 
-TextOverflow? parseTextOverflow(String? textOverflowString) {
-  TextOverflow? textOverflow;
-  switch (textOverflowString) {
-    case "ellipsis":
-      textOverflow = TextOverflow.ellipsis;
-      break;
-    case "clip":
-      textOverflow = TextOverflow.clip;
-      break;
-    case "fade":
-      textOverflow = TextOverflow.fade;
-      break;
-    default:
-      textOverflow = TextOverflow.fade;
+String exportEnum(Enum? input) {
+  // find correct enum
+  List<Enum> typeClass = typeDefaultList.keys.firstWhere(
+      (element) => element[0].runtimeType == input.runtimeType,
+      orElse: () => throw 'exportEnum($input) not found');
+
+  for (Enum element in typeClass) {
+    if (element == input) {
+      return element.name;
+    }
   }
-  return textOverflow;
+  // else default
+  return typeDefaultList[typeClass]!.name;
 }
 
-String? exportTextOverflow(TextOverflow? textOverflow) {
-  if(textOverflow == null){
-    return null;
-  }
-  String rt = "ellipsis";
-  if (textOverflow == TextOverflow.clip) {
-    rt = "clip";
-  }
+TextAlign parseTextAlign(String? textAlignString) =>
+    parseEnum('TextAlign', textAlignString) as TextAlign;
 
-  if (textOverflow == TextOverflow.fade) {
-    rt = "fade";
-  }
-  return rt;
-}
+String exportTextAlign(TextAlign? textAlign) => exportEnum(textAlign);
+
+TextOverflow? parseTextOverflow(String? textOverflowString) =>
+    parseEnum('TextOverflow', textOverflowString) as TextOverflow?;
+
+String? exportTextOverflow(TextOverflow? textOverflow) =>
+    exportEnum(textOverflow);
 
 TextDecoration parseTextDecoration(String? textDecorationString) {
   TextDecoration textDecoration = TextDecoration.none;
@@ -124,28 +109,11 @@ String exportTextDecoration(TextDecoration? decoration) {
   return rt;
 }
 
-TextDirection parseTextDirection(String? textDirectionString) {
-  TextDirection textDirection = TextDirection.ltr;
-  switch (textDirectionString) {
-    case 'ltr':
-      textDirection = TextDirection.ltr;
-      break;
-    case 'rtl':
-      textDirection = TextDirection.rtl;
-      break;
-    default:
-      textDirection = TextDirection.ltr;
-  }
-  return textDirection;
-}
+TextDirection parseTextDirection(String? textDirectionString) =>
+    parseEnum('TextDirection', textDirectionString) as TextDirection;
 
-String exportTextDirection(TextDirection? textDirection) {
-  String rt = "ltr";
-  if (textDirection == TextDirection.rtl) {
-    rt = "rtl";
-  }
-  return rt;
-}
+String exportTextDirection(TextDirection? textDirection) =>
+    exportEnum(textDirection);
 
 FontWeight parseFontWeight(String? textFontWeight) {
   FontWeight fontWeight = FontWeight.normal;
@@ -386,337 +354,66 @@ EdgeInsetsGeometry? parseEdgeInsetsGeometry(String? edgeInsetsGeometryString) {
       bottom: double.parse(values[3]));
 }
 
-CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) {
-  switch (crossAxisAlignmentString) {
-    case 'start':
-      return CrossAxisAlignment.start;
-    case 'end':
-      return CrossAxisAlignment.end;
-    case 'center':
-      return CrossAxisAlignment.center;
-    case 'stretch':
-      return CrossAxisAlignment.stretch;
-    case 'baseline':
-      return CrossAxisAlignment.baseline;
-  }
-  return CrossAxisAlignment.center;
-}
+CrossAxisAlignment parseCrossAxisAlignment(String? crossAxisAlignmentString) =>
+    parseEnum('crossAxisAlignment', crossAxisAlignmentString)
+        as CrossAxisAlignment;
 
-String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment) {
-  String rt = "center";
-  if (crossAxisAlignment == CrossAxisAlignment.start) {
-    rt = "start";
-  }
-  if (crossAxisAlignment == CrossAxisAlignment.end) {
-    rt = "end";
-  }
-  if (crossAxisAlignment == CrossAxisAlignment.center) {
-    rt = "center";
-  }
-  if (crossAxisAlignment == CrossAxisAlignment.stretch) {
-    rt = "stretch";
-  }
-  if (crossAxisAlignment == CrossAxisAlignment.baseline) {
-    rt = "baseline";
-  }
+String exportCrossAxisAlignment(CrossAxisAlignment crossAxisAlignment) =>
+    exportEnum(crossAxisAlignment);
 
-  return rt;
-}
+MainAxisAlignment parseMainAxisAlignment(String? mainAxisAlignmentString) =>
+    parseEnum('mainAxisAlignment', mainAxisAlignmentString)
+        as MainAxisAlignment;
 
-MainAxisAlignment parseMainAxisAlignment(String? mainAxisAlignmentString) {
-  switch (mainAxisAlignmentString) {
-    case 'start':
-      return MainAxisAlignment.start;
-    case 'end':
-      return MainAxisAlignment.end;
-    case 'center':
-      return MainAxisAlignment.center;
-    case 'spaceBetween':
-      return MainAxisAlignment.spaceBetween;
-    case 'spaceAround':
-      return MainAxisAlignment.spaceAround;
-    case 'spaceEvenly':
-      return MainAxisAlignment.spaceEvenly;
-  }
-  return MainAxisAlignment.start;
-}
-
-String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment) {
-  String rt = "start";
-  if (mainAxisAlignment == MainAxisAlignment.end) {
-    rt = "end";
-  } else if (mainAxisAlignment == MainAxisAlignment.center) {
-    rt = "center";
-  } else if (mainAxisAlignment == MainAxisAlignment.spaceBetween) {
-    rt = "spaceBetween";
-  } else if (mainAxisAlignment == MainAxisAlignment.spaceAround) {
-    rt = "spaceAround";
-  } else if (mainAxisAlignment == MainAxisAlignment.spaceEvenly) {
-    rt = "spaceEvenly";
-  }
-  return rt;
-}
+String exportMainAxisAlignment(MainAxisAlignment mainAxisAlignment) =>
+    exportEnum(mainAxisAlignment);
 
 MainAxisSize parseMainAxisSize(String? mainAxisSizeString) =>
-    mainAxisSizeString == 'min' ? MainAxisSize.min : MainAxisSize.max;
+    parseEnum('mainAxisSize', mainAxisSizeString) as MainAxisSize;
+
+String exportMainAxisSize(MainAxisSize mainAxisSize) =>
+    exportEnum(mainAxisSize);
 
 TextBaseline parseTextBaseline(String? parseTextBaselineString) =>
-    'alphabetic' == parseTextBaselineString
-        ? TextBaseline.alphabetic
-        : TextBaseline.ideographic;
+    parseEnum('textBaseline', parseTextBaselineString) as TextBaseline;
+
+String exportTextBaseline(TextBaseline textBaseline) =>
+    exportEnum(textBaseline);
 
 VerticalDirection parseVerticalDirection(String? verticalDirectionString) =>
-    'up' == verticalDirectionString
-        ? VerticalDirection.up
-        : VerticalDirection.down;
+    parseEnum('verticalDirection', verticalDirectionString)
+        as VerticalDirection;
 
-String? exportBlendMode(BlendMode? blendMode) {
-  if (blendMode == null) {
-    return null;
-  }
-  String rt = "srcIn";
-  if (blendMode == BlendMode.clear) {
-    rt = "clear";
-  }
-  if (blendMode == BlendMode.src) {
-    rt = "src";
-  }
-  if (blendMode == BlendMode.dst) {
-    rt = "dst";
-  }
-  if (blendMode == BlendMode.srcOver) {
-    rt = "srcOver";
-  }
-  if (blendMode == BlendMode.dstOver) {
-    rt = "dstOver";
-  }
-  if (blendMode == BlendMode.srcIn) {
-    rt = "srcIn";
-  }
-  if (blendMode == BlendMode.dstIn) {
-    rt = "dstIn";
-  }
-  if (blendMode == BlendMode.srcOut) {
-    rt = "srcOut";
-  }
-  if (blendMode == BlendMode.dstOut) {
-    rt = "dstOut";
-  }
-  if (blendMode == BlendMode.srcATop) {
-    rt = "srcATop";
-  }
-  if (blendMode == BlendMode.dstATop) {
-    rt = "dstATop";
-  }
-  if (blendMode == BlendMode.xor) {
-    rt = "xor";
-  }
-  if (blendMode == BlendMode.plus) {
-    rt = "plus";
-  }
-  if (blendMode == BlendMode.modulate) {
-    rt = "modulate";
-  }
-  if (blendMode == BlendMode.screen) {
-    rt = "screen";
-  }
-  if (blendMode == BlendMode.overlay) {
-    rt = "overlay";
-  }
-  if (blendMode == BlendMode.darken) {
-    rt = "darken";
-  }
-  if (blendMode == BlendMode.lighten) {
-    rt = "lighten";
-  }
-  if (blendMode == BlendMode.colorDodge) {
-    rt = "colorDodge";
-  }
-  if (blendMode == BlendMode.colorBurn) {
-    rt = "colorBurn";
-  }
-  if (blendMode == BlendMode.hardLight) {
-    rt = "hardLight";
-  }
-  if (blendMode == BlendMode.softLight) {
-    rt = "softLight";
-  }
-  if (blendMode == BlendMode.difference) {
-    rt = "difference";
-  }
-  if (blendMode == BlendMode.exclusion) {
-    rt = "exclusion";
-  }
-  if (blendMode == BlendMode.multiply) {
-    rt = "multiply";
-  }
-  if (blendMode == BlendMode.hue) {
-    rt = "hue";
-  }
-  if (blendMode == BlendMode.saturation) {
-    rt = "saturation";
-  }
-  if (blendMode == BlendMode.color) {
-    rt = "color";
-  }
-  if (blendMode == BlendMode.luminosity) {
-    rt = "luminosity";
-  }
-
-  return rt;
-}
+String exportVerticalDirection(VerticalDirection verticalDirection) =>
+    exportEnum(verticalDirection);
 
 BlendMode? parseBlendMode(String? blendModeString) {
   if (blendModeString == null || blendModeString.trim().length == 0) {
     return null;
   }
-
-  switch (blendModeString.trim()) {
-    case 'clear':
-      return BlendMode.clear;
-    case 'src':
-      return BlendMode.src;
-    case 'dst':
-      return BlendMode.dst;
-    case 'srcOver':
-      return BlendMode.srcOver;
-    case 'dstOver':
-      return BlendMode.dstOver;
-    case 'srcIn':
-      return BlendMode.srcIn;
-    case 'dstIn':
-      return BlendMode.dstIn;
-    case 'srcOut':
-      return BlendMode.srcOut;
-    case 'dstOut':
-      return BlendMode.dstOut;
-    case 'srcATop':
-      return BlendMode.srcATop;
-    case 'dstATop':
-      return BlendMode.dstATop;
-    case 'xor':
-      return BlendMode.xor;
-    case 'plus':
-      return BlendMode.plus;
-    case 'modulate':
-      return BlendMode.modulate;
-    case 'screen':
-      return BlendMode.screen;
-    case 'overlay':
-      return BlendMode.overlay;
-    case 'darken':
-      return BlendMode.darken;
-    case 'lighten':
-      return BlendMode.lighten;
-    case 'colorDodge':
-      return BlendMode.colorDodge;
-    case 'colorBurn':
-      return BlendMode.colorBurn;
-    case 'hardLight':
-      return BlendMode.hardLight;
-    case 'softLight':
-      return BlendMode.softLight;
-    case 'difference':
-      return BlendMode.difference;
-    case 'exclusion':
-      return BlendMode.exclusion;
-    case 'multiply':
-      return BlendMode.multiply;
-    case 'hue':
-      return BlendMode.hue;
-    case 'saturation':
-      return BlendMode.saturation;
-    case 'color':
-      return BlendMode.color;
-    case 'luminosity':
-      return BlendMode.luminosity;
-
-    default:
-      return BlendMode.srcIn;
-  }
+  return parseEnum('blendMode', blendModeString.trim()) as BlendMode;
 }
 
-BoxFit? parseBoxFit(String? boxFitString) {
-  if (boxFitString == null) {
+String? exportBlendMode(BlendMode? blendMode) {
+  if (blendMode == null) {
     return null;
   }
-
-  switch (boxFitString) {
-    case 'fill':
-      return BoxFit.fill;
-    case 'contain':
-      return BoxFit.contain;
-    case 'cover':
-      return BoxFit.cover;
-    case 'fitWidth':
-      return BoxFit.fitWidth;
-    case 'fitHeight':
-      return BoxFit.fitHeight;
-    case 'none':
-      return BoxFit.none;
-    case 'scaleDown':
-      return BoxFit.scaleDown;
-  }
-
-  return null;
+  return exportEnum(blendMode);
 }
 
-String exportBoxFit(BoxFit? boxFit) {
-  String rt = "contain";
-  if (boxFit == BoxFit.fill) {
-    rt = "fill";
-  }
-  if (boxFit == BoxFit.cover) {
-    rt = "cover";
-  }
-  if (boxFit == BoxFit.fitWidth) {
-    rt = "fitWidth";
-  }
-  if (boxFit == BoxFit.fitHeight) {
-    rt = "fitHeight";
-  }
-  if (boxFit == BoxFit.none) {
-    rt = "none";
-  }
-  if (boxFit == BoxFit.scaleDown) {
-    rt = "scaleDown";
-  }
-  return rt;
-}
+BoxFit? parseBoxFit(String? boxFitString) =>
+    parseEnum('boxFit', boxFitString) as BoxFit;
+
+String exportBoxFit(BoxFit? boxFit) => exportEnum(boxFit);
 
 ImageRepeat? parseImageRepeat(String? imageRepeatString) {
   if (imageRepeatString == null) {
     return null;
   }
-
-  switch (imageRepeatString) {
-    case 'repeat':
-      return ImageRepeat.repeat;
-    case 'repeatX':
-      return ImageRepeat.repeatX;
-    case 'repeatY':
-      return ImageRepeat.repeatY;
-    case 'noRepeat':
-      return ImageRepeat.noRepeat;
-
-    default:
-      return ImageRepeat.noRepeat;
-  }
+  return parseEnum('imageRepeat', imageRepeatString) as ImageRepeat;
 }
 
-String exportImageRepeat(ImageRepeat imageRepeat) {
-  String rt = "noRepeat";
-  if (imageRepeat == ImageRepeat.repeat) {
-    rt = "repeat";
-  }
-  if (imageRepeat == ImageRepeat.repeatX) {
-    rt = "repeatX";
-  }
-  if (imageRepeat == ImageRepeat.repeatY) {
-    rt = "repeatY";
-  }
-  return rt;
-}
+String exportImageRepeat(ImageRepeat imageRepeat) => exportEnum(imageRepeat);
 
 Rect? parseRect(String? fromLTRBString) {
   if (fromLTRBString == null) {
@@ -735,36 +432,11 @@ FilterQuality? parseFilterQuality(String? filterQualityString) {
   if (filterQualityString == null) {
     return null;
   }
-  switch (filterQualityString) {
-    case 'none':
-      return FilterQuality.none;
-    case 'low':
-      return FilterQuality.low;
-    case 'medium':
-      return FilterQuality.medium;
-    case 'high':
-      return FilterQuality.high;
-    default:
-      return FilterQuality.low;
-  }
+  return parseEnum('filterQuality', filterQualityString) as FilterQuality;
 }
 
-String exportFilterQuality(FilterQuality filterQuality) {
-  String rt = "low";
-  if (filterQuality == FilterQuality.none) {
-    rt = "none";
-  }
-  if (filterQuality == FilterQuality.low) {
-    rt = "low";
-  }
-  if (filterQuality == FilterQuality.medium) {
-    rt = "medium";
-  }
-  if (filterQuality == FilterQuality.high) {
-    rt = "high";
-  }
-  return rt;
-}
+String exportFilterQuality(FilterQuality filterQuality) =>
+    exportEnum(filterQuality);
 
 String? getLoadMoreUrl(String? url, int currentNo, int? pageSize) {
   if (url == null) {
@@ -790,143 +462,42 @@ String? getLoadMoreUrl(String? url, int currentNo, int? pageSize) {
 
 StackFit? parseStackFit(String? value) {
   if (value == null) return null;
-
-  switch (value) {
-    case 'loose':
-      return StackFit.loose;
-    case 'expand':
-      return StackFit.expand;
-    case 'passthrough':
-      return StackFit.passthrough;
-    default:
-      return StackFit.loose;
-  }
+  return parseEnum('stackFit', value) as StackFit;
 }
 
-String exportStackFit(StackFit stackFit) {
-  String rt = "loose";
-  if (stackFit == StackFit.expand) {
-    rt = "expand";
-  } else if (stackFit == StackFit.passthrough) {
-    rt = "passthrough";
-  }
-  return rt;
-}
+String exportStackFit(StackFit stackFit) => exportEnum(stackFit);
 
 Clip? parseClip(String? value) {
   if (value == null) {
     return null;
   }
-
-  switch (value) {
-    case 'none':
-      return Clip.none;
-    case 'hardEdge':
-      return Clip.hardEdge;
-    case 'antiAlias':
-      return Clip.antiAlias;
-    case 'antiAliasWithSaveLayer':
-      return Clip.antiAliasWithSaveLayer;
-    default:
-      return Clip.hardEdge;
-  }
+  return parseEnum('clip', value) as Clip;
 }
 
 String exportClip(Clip clip) {
-  String rt = "hardEdge";
-  if (clip == Clip.none) {
-    rt = "none";
-  } else if (clip == Clip.hardEdge) {
-    rt = "hardEdge";
-  } else if (clip == Clip.antiAlias) {
-    rt = "antiAlias";
-  } else if (clip == Clip.antiAliasWithSaveLayer) {
-    rt = "antiAliasWithSaveLayer";
-  }
-  return rt;
+  return exportEnum(clip);
 }
 
-Axis parseAxis(String? axisString) {
-  if (axisString == null) {
-    return Axis.horizontal;
-  }
+Axis parseAxis(String? axisString) => parseEnum('axis', axisString) as Axis;
 
-  switch (axisString) {
-    case "horizontal":
-      return Axis.horizontal;
-    case "vertical":
-      return Axis.vertical;
-  }
-  return Axis.horizontal;
-}
+String exportAxis(Axis axis) => exportEnum(axis);
 
 //WrapAlignment
-WrapAlignment parseWrapAlignment(String? wrapAlignmentString) {
-  if (wrapAlignmentString == null) {
-    return WrapAlignment.start;
-  }
+WrapAlignment parseWrapAlignment(String? wrapAlignmentString) =>
+    parseEnum('wrapAlignment', wrapAlignmentString) as WrapAlignment;
 
-  switch (wrapAlignmentString) {
-    case "start":
-      return WrapAlignment.start;
-    case "end":
-      return WrapAlignment.end;
-    case "center":
-      return WrapAlignment.center;
-    case "spaceBetween":
-      return WrapAlignment.spaceBetween;
-    case "spaceAround":
-      return WrapAlignment.spaceAround;
-    case "spaceEvenly":
-      return WrapAlignment.spaceEvenly;
-  }
-  return WrapAlignment.start;
-}
-
-String exportWrapAlignment(WrapAlignment wrapAlignment) {
-  String rt = "start";
-  if (wrapAlignment == WrapAlignment.end) {
-    rt = "end";
-  } else if (wrapAlignment == WrapAlignment.center) {
-    rt = "center";
-  } else if (wrapAlignment == WrapAlignment.spaceBetween) {
-    rt = "spaceBetween";
-  } else if (wrapAlignment == WrapAlignment.spaceAround) {
-    rt = "spaceAround";
-  } else if (wrapAlignment == WrapAlignment.spaceEvenly) {
-    rt = "spaceEvenly";
-  }
-  return rt;
-}
+String exportWrapAlignment(WrapAlignment wrapAlignment) =>
+    exportEnum(wrapAlignment);
 
 //WrapCrossAlignment
-WrapCrossAlignment parseWrapCrossAlignment(String? wrapCrossAlignmentString) {
-  if (wrapCrossAlignmentString == null) {
-    return WrapCrossAlignment.start;
-  }
+WrapCrossAlignment parseWrapCrossAlignment(String? wrapCrossAlignmentString) =>
+    parseEnum('wrapCrossAlignment', wrapCrossAlignmentString)
+        as WrapCrossAlignment;
 
-  switch (wrapCrossAlignmentString) {
-    case "start":
-      return WrapCrossAlignment.start;
-    case "end":
-      return WrapCrossAlignment.end;
-    case "center":
-      return WrapCrossAlignment.center;
-  }
+String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment) =>
+    exportEnum(wrapCrossAlignment);
 
-  return WrapCrossAlignment.start;
-}
-
-String exportWrapCrossAlignment(WrapCrossAlignment wrapCrossAlignment) {
-  String rt = "start";
-  if (wrapCrossAlignment == WrapCrossAlignment.end) {
-    rt = "end";
-  } else if (wrapCrossAlignment == WrapCrossAlignment.center) {
-    rt = "center";
-  }
-  return rt;
-}
-
+// TODO: duplicate
 Clip parseClipBehavior(String? clipBehaviorString) {
   if (clipBehaviorString == null) {
     return Clip.antiAlias;
@@ -964,60 +535,21 @@ DropCapMode? parseDropCapMode(String? value) {
   if (value == null) {
     return null;
   }
-
-  switch (value) {
-    case 'inside':
-      return DropCapMode.inside;
-    case 'upwards':
-      return DropCapMode.upwards;
-    case 'aside':
-      return DropCapMode.aside;
-    default:
-      return DropCapMode.inside;
-  }
+  return parseEnum('dropCapMode', value) as DropCapMode;
 }
 
 String? exportDropCapMod(DropCapMode? mode) {
-  if (mode == null) {
-    return null;
-  }
-
-  switch (mode) {
-    case DropCapMode.inside:
-      return "inside";
-    case DropCapMode.baseline:
-      return "baseline";
-    case DropCapMode.aside:
-      return "aside";
-    case DropCapMode.upwards:
-      return "upwards";
-    default:
-      return "inside";
-  }
+  if (mode == null) return null;
+  return exportEnum(mode);
 }
 
 DropCapPosition? parseDropCapPosition(String? value) {
-  if (value == null) {
-    return null;
-  }
-
-  switch (value) {
-    case 'start':
-      return DropCapPosition.start;
-    case 'end':
-      return DropCapPosition.end;
-    default:
-      return DropCapPosition.start;
-  }
+  if (value == null) return null;
+  return parseEnum('dropCapPosition', value) as DropCapPosition;
 }
 
-String exportDropCapPosition(DropCapPosition? dropCapPosition) {
-  String rt = "start";
-  if (dropCapPosition == DropCapPosition.end) {
-    rt = "end";
-  }
-  return rt;
-}
+String exportDropCapPosition(DropCapPosition? dropCapPosition) =>
+    exportEnum(dropCapPosition);
 
 DropCap? parseDropCap(Map<String, dynamic>? map, BuildContext buildContext,
     ClickListener? listener) {
