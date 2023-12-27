@@ -114,8 +114,7 @@ class DynamicWidgetBuilder {
       String json, BuildContext buildContext, ClickListener listener) {
     initDefaultParsersIfNess();
     var map = jsonDecode(json);
-    ClickListener _listener =
-        listener == null ? new NonResponseWidgetClickListener() : listener;
+    ClickListener _listener = listener;
     var widget = buildFromMap(map, buildContext, _listener);
     return widget;
   }
