@@ -118,6 +118,12 @@
 
 * 4.0.4 error with Pie_chart_outlined / pie_chart_outline #91
 
+## [5.0.0] - fix compile error for flutter 3.16.5
+
+* fix compile error for flutter 3.16.5
+* remove RaiseButtonParser, use ElevatedButtonParser instead.
+
+
 
 
 

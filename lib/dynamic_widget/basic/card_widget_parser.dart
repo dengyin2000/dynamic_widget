@@ -52,6 +52,7 @@ class CardParser extends WidgetParser {
 
       return map;
     }
+    return null;
   }
 
   @override

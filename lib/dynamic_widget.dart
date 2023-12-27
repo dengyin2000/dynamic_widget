@@ -49,7 +49,6 @@ class DynamicWidgetBuilder {
     ContainerWidgetParser(),
     TextWidgetParser(),
     SelectableTextWidgetParser(),
-    RaisedButtonParser(),
     RowWidgetParser(),
     ColumnWidgetParser(),
     AssetImageWidgetParser(),

@@ -40,7 +40,7 @@ class AppBarWidgetParser extends WidgetParser {
           : null,
       actions: map.containsKey("actions")
           ? DynamicWidgetBuilder.buildWidgets(
-              map["actions"], buildContext, listener) as List<Widget>?
+              map["actions"], buildContext, listener)
           : null,
       centerTitle:
           map.containsKey("centerTitle") ? map["centerTitle"] as bool? : false,
