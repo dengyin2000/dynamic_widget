@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 enum DropCapMode {
   /// default
@@ -76,10 +75,10 @@ class DropCapText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = TextStyle(
-      color: Theme.of(context).textTheme.bodyText2!.color,
-      fontSize: Theme.of(context).textTheme.bodyText2!.fontSize,
-      height: Theme.of(context).textTheme.bodyText2!.height,
-      fontFamily: Theme.of(context).textTheme.bodyText2!.fontFamily,
+      color: Theme.of(context).textTheme.bodyMedium!.color,
+      fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
+      height: Theme.of(context).textTheme.bodyMedium!.height,
+      fontFamily: Theme.of(context).textTheme.bodyMedium!.fontFamily,
     ).merge(style);
 
     if (data == '')

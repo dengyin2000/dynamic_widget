@@ -1,7 +1,6 @@
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ScaffoldWidgetParser extends WidgetParser {
   @override
