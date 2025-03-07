@@ -123,6 +123,10 @@
 * fix compile error for flutter 3.16.5
 * remove RaiseButtonParser, use ElevatedButtonParser instead.
 
+## [6.0.0] - fix compile error for flutter 3.29.0
+
+* fix compile error for flutter 3.29.0
+
 
 
 
