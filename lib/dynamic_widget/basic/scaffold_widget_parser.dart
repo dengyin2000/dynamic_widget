@@ -14,7 +14,7 @@ class ScaffoldWidgetParser extends WidgetParser {
       "floatingActionButton": DynamicWidgetBuilder.export(
           realWidget.floatingActionButton, buildContext),
       "backgroundColor": realWidget.backgroundColor != null
-          ? realWidget.backgroundColor!.value.toRadixString(16)
+          ? realWidget.backgroundColor!.toARGB32().toRadixString(16)
           : null,
     };
   }

@@ -1,4 +1,3 @@
-
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/drop_cap_text.dart';
 import 'package:flutter/widgets.dart';
@@ -73,7 +72,7 @@ TextOverflow? parseTextOverflow(String? textOverflowString) {
 }
 
 String? exportTextOverflow(TextOverflow? textOverflow) {
-  if(textOverflow == null){
+  if (textOverflow == null) {
     return null;
   }
   String rt = "ellipsis";
@@ -260,7 +259,7 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
 
   return <String, dynamic>{
     "color": textStyle.color != null
-        ? textStyle.color!.value.toRadixString(16)
+        ? textStyle.color!.toARGB32().toRadixString(16)
         : null,
     "debugLabel": textStyle.debugLabel,
     "decoration": exportTextDecoration(textStyle.decoration),
@@ -1144,7 +1143,7 @@ Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
     return null;
   }
   return <String, dynamic>{
-    "color": borderSide.color.value.toRadixString(16),
+    "color": borderSide.color.toARGB32().toRadixString(16),
     "width": borderSide.width,
     "style": borderSide.style.index,
   };

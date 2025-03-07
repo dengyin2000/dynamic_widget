@@ -1,4 +1,3 @@
-
 import 'package:dynamic_widget/dynamic_widget.dart';
 import 'package:dynamic_widget/dynamic_widget/utils.dart';
 import 'package:flutter/widgets.dart';
@@ -17,11 +16,12 @@ class AssetImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])!
         : Alignment.center;
@@ -93,26 +93,20 @@ class AssetImageWidgetParser extends WidgetParser {
         "width": realWidget.width,
         "height": realWidget.height,
         "color": realWidget.color != null
-            ? realWidget.color!.value.toRadixString(16)
+            ? realWidget.color!.toARGB32().toRadixString(16)
             : null,
         "colorBlendMode": realWidget.colorBlendMode != null
             ? exportBlendMode(realWidget.colorBlendMode)
             : null,
         "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
-        "alignment": realWidget.alignment != null
-            ? exportAlignment(realWidget.alignment as Alignment?)
-            : null,
-        "repeat": realWidget.repeat != null
-            ? exportImageRepeat(realWidget.repeat)
-            : null,
+        "alignment": exportAlignment(realWidget.alignment as Alignment?),
+        "repeat": exportImageRepeat(realWidget.repeat),
         "centerSlice": realWidget.centerSlice != null
             ? exportRect(realWidget.centerSlice!)
             : null,
         "matchTextDirection": realWidget.matchTextDirection,
         "gaplessPlayback": realWidget.gaplessPlayback,
-        "filterQuality": realWidget.filterQuality != null
-            ? exportFilterQuality(realWidget.filterQuality)
-            : null
+        "filterQuality": exportFilterQuality(realWidget.filterQuality)
       };
     }
 
@@ -134,26 +128,20 @@ class AssetImageWidgetParser extends WidgetParser {
         "width": realWidget.width,
         "height": realWidget.height,
         "color": realWidget.color != null
-            ? realWidget.color!.value.toRadixString(16)
+            ? realWidget.color!.toARGB32().toRadixString(16)
             : null,
         "colorBlendMode": realWidget.colorBlendMode != null
             ? exportBlendMode(realWidget.colorBlendMode)
             : null,
         "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
-        "alignment": realWidget.alignment != null
-            ? exportAlignment(realWidget.alignment as Alignment?)
-            : null,
-        "repeat": realWidget.repeat != null
-            ? exportImageRepeat(realWidget.repeat)
-            : null,
+        "alignment": exportAlignment(realWidget.alignment as Alignment?),
+        "repeat": exportImageRepeat(realWidget.repeat),
         "centerSlice": realWidget.centerSlice != null
             ? exportRect(realWidget.centerSlice!)
             : null,
         "matchTextDirection": realWidget.matchTextDirection,
         "gaplessPlayback": realWidget.gaplessPlayback,
-        "filterQuality": realWidget.filterQuality != null
-            ? exportFilterQuality(realWidget.filterQuality)
-            : null
+        "filterQuality": exportFilterQuality(realWidget.filterQuality)
       };
     }
 
@@ -208,11 +196,12 @@ class NetworkImageWidgetParser extends WidgetParser {
     double? width = map.containsKey('width') ? map['width']?.toDouble() : null;
     double? height =
         map.containsKey('height') ? map['height']?.toDouble() : null;
-    Color? color = map.containsKey('color') ? parseHexColor(map['color']) : null;
-    BlendMode? colorBlendMode =
-        map.containsKey('colorBlendMode') ? parseBlendMode(map['colorBlendMode']) : null;
-    BoxFit? fit =
-        map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
+    Color? color =
+        map.containsKey('color') ? parseHexColor(map['color']) : null;
+    BlendMode? colorBlendMode = map.containsKey('colorBlendMode')
+        ? parseBlendMode(map['colorBlendMode'])
+        : null;
+    BoxFit? fit = map.containsKey('fit') ? parseBoxFit(map['fit']) : null;
     Alignment alignment = map.containsKey('alignment')
         ? parseAlignment(map['alignment'])!
         : Alignment.center;
@@ -283,26 +272,20 @@ class NetworkImageWidgetParser extends WidgetParser {
       "width": realWidget.width,
       "height": realWidget.height,
       "color": realWidget.color != null
-          ? realWidget.color!.value.toRadixString(16)
+          ? realWidget.color!.toARGB32().toRadixString(16)
           : null,
       "colorBlendMode": realWidget.colorBlendMode != null
           ? exportBlendMode(realWidget.colorBlendMode)
           : null,
       "fit": realWidget.fit != null ? exportBoxFit(realWidget.fit) : null,
-      "alignment": realWidget.alignment != null
-          ? exportAlignment(realWidget.alignment as Alignment?)
-          : null,
-      "repeat": realWidget.repeat != null
-          ? exportImageRepeat(realWidget.repeat)
-          : null,
+      "alignment": exportAlignment(realWidget.alignment as Alignment?),
+      "repeat": exportImageRepeat(realWidget.repeat),
       "centerSlice": realWidget.centerSlice != null
           ? exportRect(realWidget.centerSlice!)
           : null,
       "matchTextDirection": realWidget.matchTextDirection,
       "gaplessPlayback": realWidget.gaplessPlayback,
-      "filterQuality": realWidget.filterQuality != null
-          ? exportFilterQuality(realWidget.filterQuality)
-          : null
+      "filterQuality": exportFilterQuality(realWidget.filterQuality)
     };
   }
 

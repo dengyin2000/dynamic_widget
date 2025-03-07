@@ -7,39 +7,39 @@ class ElevatedButtonParser extends WidgetParser {
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as ElevatedButton;
     var color = realWidget.style?.foregroundColor != null
-        ? realWidget.style?.foregroundColor
-            ?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.foregroundColor?.resolve(WidgetState.values.toSet())
         : null;
     var backgroundColor = realWidget.style?.backgroundColor != null
-        ? realWidget.style?.backgroundColor
-            ?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.backgroundColor?.resolve(WidgetState.values.toSet())
         : null;
     var overlayColor = realWidget.style?.overlayColor != null
-        ? realWidget.style?.overlayColor?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.overlayColor?.resolve(WidgetState.values.toSet())
         : null;
     var shadowColor = realWidget.style?.shadowColor != null
-        ? realWidget.style?.shadowColor?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.shadowColor?.resolve(WidgetState.values.toSet())
         : null;
     var elevation = realWidget.style?.elevation != null
-        ? realWidget.style?.elevation?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.elevation?.resolve(WidgetState.values.toSet())
         : null;
     var edgeInsetsGeometry = realWidget.style?.padding != null
-        ? realWidget.style?.padding?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.padding?.resolve(WidgetState.values.toSet())
             as EdgeInsets?
         : null;
     var textStyle2 = realWidget.style?.textStyle != null
-        ? realWidget.style?.textStyle?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.textStyle?.resolve(WidgetState.values.toSet())
         : null;
     return <String, dynamic>{
       "type": widgetName,
-      "foregroundColor": color != null ? color.value.toRadixString(16) : null,
+      "foregroundColor":
+          color != null ? color.toARGB32().toRadixString(16) : null,
       "backgroundColor": backgroundColor != null
-          ? backgroundColor.value.toRadixString(16)
+          ? backgroundColor.toARGB32().toRadixString(16)
           : null,
-      "overlayColor":
-          overlayColor != null ? overlayColor.value.toRadixString(16) : null,
+      "overlayColor": overlayColor != null
+          ? overlayColor.toARGB32().toRadixString(16)
+          : null,
       "shadowColor":
-          shadowColor != null ? shadowColor.value.toRadixString(16) : null,
+          shadowColor != null ? shadowColor.toARGB32().toRadixString(16) : null,
       "elevation": elevation,
       "padding": edgeInsetsGeometry != null
           ? "${edgeInsetsGeometry.left},${edgeInsetsGeometry.top},${edgeInsetsGeometry.right},${edgeInsetsGeometry.bottom}"
@@ -61,25 +61,25 @@ class ElevatedButtonParser extends WidgetParser {
       },
       style: ButtonStyle(
         foregroundColor: map.containsKey("foregroundColor")
-            ? MaterialStateProperty.all(parseHexColor(map["foregroundColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["foregroundColor"]))
             : null,
         backgroundColor: map.containsKey("backgroundColor")
-            ? MaterialStateProperty.all(parseHexColor(map["backgroundColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["backgroundColor"]))
             : null,
         overlayColor: map.containsKey("overlayColor")
-            ? MaterialStateProperty.all(parseHexColor(map["overlayColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["overlayColor"]))
             : null,
         shadowColor: map.containsKey("shadowColor")
-            ? MaterialStateProperty.all(parseHexColor(map["shadowColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["shadowColor"]))
             : null,
         elevation: map.containsKey("elevation")
-            ? MaterialStateProperty.all(map["elevation"])
+            ? WidgetStateProperty.all(map["elevation"])
             : null,
         padding: map.containsKey("padding")
-            ? MaterialStateProperty.all(parseEdgeInsetsGeometry(map["padding"]))
+            ? WidgetStateProperty.all(parseEdgeInsetsGeometry(map["padding"]))
             : null,
         textStyle: map.containsKey("textStyle")
-            ? MaterialStateProperty.all(parseTextStyle(map["textStyle"]))
+            ? WidgetStateProperty.all(parseTextStyle(map["textStyle"]))
             : null,
         alignment: map.containsKey("alignment")
             ? parseAlignment(map["alignment"])
@@ -102,39 +102,39 @@ class TextButtonParser extends WidgetParser {
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     var realWidget = widget as TextButton;
     var color = realWidget.style?.foregroundColor != null
-        ? realWidget.style?.foregroundColor
-            ?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.foregroundColor?.resolve(WidgetState.values.toSet())
         : null;
     var backgroundColor = realWidget.style?.backgroundColor != null
-        ? realWidget.style?.backgroundColor
-            ?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.backgroundColor?.resolve(WidgetState.values.toSet())
         : null;
     var overlayColor = realWidget.style?.overlayColor != null
-        ? realWidget.style?.overlayColor?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.overlayColor?.resolve(WidgetState.values.toSet())
         : null;
     var shadowColor = realWidget.style?.shadowColor != null
-        ? realWidget.style?.shadowColor?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.shadowColor?.resolve(WidgetState.values.toSet())
         : null;
     var elevation = realWidget.style?.elevation != null
-        ? realWidget.style?.elevation?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.elevation?.resolve(WidgetState.values.toSet())
         : null;
     var edgeInsetsGeometry = realWidget.style?.padding != null
-        ? realWidget.style?.padding?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.padding?.resolve(WidgetState.values.toSet())
             as EdgeInsets?
         : null;
     var textStyle2 = realWidget.style?.textStyle != null
-        ? realWidget.style?.textStyle?.resolve(MaterialState.values.toSet())
+        ? realWidget.style?.textStyle?.resolve(WidgetState.values.toSet())
         : null;
     var map = <String, dynamic>{
       "type": widgetName,
-      "foregroundColor": color != null ? color.value.toRadixString(16) : null,
+      "foregroundColor":
+          color != null ? color.toARGB32().toRadixString(16) : null,
       "backgroundColor": backgroundColor != null
-          ? backgroundColor.value.toRadixString(16)
+          ? backgroundColor.toARGB32().toRadixString(16)
           : null,
-      "overlayColor":
-          overlayColor != null ? overlayColor.value.toRadixString(16) : null,
+      "overlayColor": overlayColor != null
+          ? overlayColor.toARGB32().toRadixString(16)
+          : null,
       "shadowColor":
-          shadowColor != null ? shadowColor.value.toRadixString(16) : null,
+          shadowColor != null ? shadowColor.toARGB32().toRadixString(16) : null,
       "elevation": elevation,
       "padding": edgeInsetsGeometry != null
           ? "${edgeInsetsGeometry.left},${edgeInsetsGeometry.top},${edgeInsetsGeometry.right},${edgeInsetsGeometry.bottom}"
@@ -157,25 +157,25 @@ class TextButtonParser extends WidgetParser {
       },
       style: ButtonStyle(
         foregroundColor: map.containsKey("foregroundColor")
-            ? MaterialStateProperty.all(parseHexColor(map["foregroundColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["foregroundColor"]))
             : null,
         backgroundColor: map.containsKey("backgroundColor")
-            ? MaterialStateProperty.all(parseHexColor(map["backgroundColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["backgroundColor"]))
             : null,
         overlayColor: map.containsKey("overlayColor")
-            ? MaterialStateProperty.all(parseHexColor(map["overlayColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["overlayColor"]))
             : null,
         shadowColor: map.containsKey("shadowColor")
-            ? MaterialStateProperty.all(parseHexColor(map["shadowColor"]))
+            ? WidgetStateProperty.all(parseHexColor(map["shadowColor"]))
             : null,
         elevation: map.containsKey("elevation")
-            ? MaterialStateProperty.all(map["elevation"])
+            ? WidgetStateProperty.all(map["elevation"])
             : null,
         padding: map.containsKey("padding")
-            ? MaterialStateProperty.all(parseEdgeInsetsGeometry(map["padding"]))
+            ? WidgetStateProperty.all(parseEdgeInsetsGeometry(map["padding"]))
             : null,
         textStyle: map.containsKey("textStyle")
-            ? MaterialStateProperty.all(parseTextStyle(map["textStyle"]))
+            ? WidgetStateProperty.all(parseTextStyle(map["textStyle"]))
             : null,
         alignment: map.containsKey("alignment")
             ? parseAlignment(map["alignment"])

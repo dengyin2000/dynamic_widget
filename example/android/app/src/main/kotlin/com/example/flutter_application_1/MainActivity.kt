@@ -1,4 +1,5 @@
-package com.github.dengyin2000.example
+package com.example.flutter_application_1
+
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : FlutterActivity()
