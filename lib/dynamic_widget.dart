@@ -9,11 +9,13 @@ import 'package:dynamic_widget/dynamic_widget/basic/baseline_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/button_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/card_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/center_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/colored_box_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/divider_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/flutter_svg_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/icon_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/image_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/indexedstack_widget_parser.dart';
@@ -23,6 +25,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/offstage_widget_parser.dart'
 import 'package:dynamic_widget/dynamic_widget/basic/opacity_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/padding_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/placeholder_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/repaint_boundary_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/row_column_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/safearea_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/scaffold_widget_parser.dart';
@@ -35,6 +38,7 @@ import 'package:dynamic_widget/dynamic_widget/scrolling/gridview_widget_parser.d
 import 'package:dynamic_widget/dynamic_widget/scrolling/listview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/pageview_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view_widget_parser.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
@@ -86,7 +90,11 @@ class DynamicWidgetBuilder {
     TextButtonParser(),
     RotatedBoxWidgetParser(),
     CardParser(),
-    SingleChildScrollViewParser()
+    SingleChildScrollViewParser(),
+    ColoredBoxWidgetParser(),
+    RepaintBoundaryWidgetParser(),
+    SvgPictureWidgetParser(),
+    NetworkSvgPictureWidgetParser(),
   ];
 
   static final _widgetNameParserMap = <String, WidgetParser>{};
@@ -134,6 +142,9 @@ class DynamicWidgetBuilder {
       return parser.parse(map, buildContext, listener);
     }
     log.warning("Not support parser type: $widgetName");
+    if (kDebugMode) {
+      throw UnimplementedError("Not support parser type: $widgetName");
+    }
     return null;
   }
 

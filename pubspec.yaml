@@ -12,6 +12,8 @@ dependencies:
 
   logging: ^1.0.1
 
+  flutter_svg: ^2.0.17
+
   http: ^1.0.0
 
   font_awesome_flutter: ^9.0.0
