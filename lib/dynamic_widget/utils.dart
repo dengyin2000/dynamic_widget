@@ -270,6 +270,40 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
   };
 }
 
+AlignmentDirectional? parseAlignmentDirectional(String? alignmentString) {
+  AlignmentDirectional? alignment;
+  switch (alignmentString) {
+    case 'topStart':
+      alignment = AlignmentDirectional.topStart;
+      break;
+    case 'topCenter':
+      alignment = AlignmentDirectional.topCenter;
+      break;
+    case 'topEnd':
+      alignment = AlignmentDirectional.topEnd;
+      break;
+    case 'centerStart':
+      alignment = AlignmentDirectional.centerStart;
+      break;
+    case 'center':
+      alignment = AlignmentDirectional.center;
+      break;
+    case 'centerEnd':
+      alignment = AlignmentDirectional.centerEnd;
+      break;
+    case 'bottomStart':
+      alignment = AlignmentDirectional.bottomStart;
+      break;
+    case 'bottomCenter':
+      alignment = AlignmentDirectional.bottomCenter;
+      break;
+    case 'bottomEnd':
+      alignment = AlignmentDirectional.bottomEnd;
+      break;
+  }
+  return alignment;
+}
+
 Alignment? parseAlignment(String? alignmentString) {
   Alignment? alignment;
   switch (alignmentString) {
@@ -302,6 +336,11 @@ Alignment? parseAlignment(String? alignmentString) {
       break;
   }
   return alignment;
+}
+
+AlignmentGeometry? parseAlignmentGeometry(String? alignmentString) {
+  return parseAlignmentDirectional(alignmentString) ??
+      parseAlignment(alignmentString);
 }
 
 const double infinity = 9999999999;
@@ -1042,86 +1081,64 @@ Map<String, dynamic>? exportDropCap(
   };
 }
 
-String exportAlignmentDirectional(AlignmentDirectional alignmentDirectional) {
-  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
+String? exportAlignment(AlignmentGeometry? alignmentGeometry) {
+  if (alignmentGeometry == Alignment.bottomRight) {
+    return "bottomRight";
+  }
+  if (alignmentGeometry == Alignment.bottomCenter) {
     return "bottomCenter";
   }
-
-  if (alignmentDirectional == AlignmentDirectional.center) {
+  if (alignmentGeometry == Alignment.bottomLeft) {
+    return "bottomLeft";
+  }
+  if (alignmentGeometry == Alignment.center) {
     return "center";
   }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomEnd) {
-    return "bottomEnd";
+  if (alignmentGeometry == Alignment.centerLeft) {
+    return "centerLeft";
   }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomStart) {
-    return "bottomStart";
+  if (alignmentGeometry == Alignment.centerRight) {
+    return "centerRight";
   }
-
-  if (alignmentDirectional == AlignmentDirectional.centerEnd) {
-    return "centerEnd";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.centerStart) {
-    return "centerStart";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.bottomCenter) {
-    return "bottomCenter";
-  }
-
-  if (alignmentDirectional == AlignmentDirectional.topCenter) {
+  if (alignmentGeometry == Alignment.topCenter) {
     return "topCenter";
   }
+  if (alignmentGeometry == Alignment.topLeft) {
+    return "topLeft";
+  }
+  if (alignmentGeometry == Alignment.topRight) {
+    return "topRight";
+  }
 
-  if (alignmentDirectional == AlignmentDirectional.topEnd) {
+  if (alignmentGeometry == AlignmentDirectional.bottomEnd) {
+    return "bottomEnd";
+  }
+  if (alignmentGeometry == AlignmentDirectional.bottomCenter) {
+    return "bottomCenter";
+  }
+  if (alignmentGeometry == AlignmentDirectional.bottomStart) {
+    return "bottomStart";
+  }
+  if (alignmentGeometry == AlignmentDirectional.center) {
+    return "center";
+  }
+  if (alignmentGeometry == AlignmentDirectional.centerStart) {
+    return "centerStart";
+  }
+  if (alignmentGeometry == AlignmentDirectional.centerEnd) {
+    return "centerEnd";
+  }
+  if (alignmentGeometry == AlignmentDirectional.topCenter) {
+    return "topCenter";
+  }
+  if (alignmentGeometry == AlignmentDirectional.topStart) {
+    return "topStart";
+  }
+  if (alignmentGeometry == AlignmentDirectional.topEnd) {
     return "topEnd";
   }
 
-  if (alignmentDirectional == AlignmentDirectional.topStart) {
-    return "topStart";
-  }
-
-  return "topStart";
-}
-
-String exportAlignment(Alignment? alignment) {
-  if (alignment == null) {
-    return "center";
-  }
-  if (alignment == Alignment.center) {
-    return "center";
-  }
-  if (alignment == Alignment.bottomRight) {
-    return "bottomRight";
-  }
-  if (alignment == Alignment.bottomCenter) {
-    return "bottomCenter";
-  }
-  if (alignment == Alignment.bottomLeft) {
-    return "bottomLeft";
-  }
-  if (alignment == Alignment.centerLeft) {
-    return "centerLeft";
-  }
-  if (alignment == Alignment.centerRight) {
-    return "centerRight";
-  }
-  if (alignment == Alignment.topCenter) {
-    return "topCenter";
-  }
-  if (alignment == Alignment.topLeft) {
-    return "topLeft";
-  }
-  if (alignment == Alignment.topRight) {
-    return "topRight";
-  }
-  if (alignment == Alignment.bottomRight) {
-    return "bottomRight";
-  }
-
-  return "center";
+  return null;
 }
 
 Map<String, dynamic> exportConstraints(BoxConstraints constraints) {

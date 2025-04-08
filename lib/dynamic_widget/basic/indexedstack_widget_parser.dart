@@ -9,7 +9,7 @@ class IndexedStackWidgetParser extends WidgetParser {
     return IndexedStack(
       index: map.containsKey("index") ? map["index"] : 0,
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])!
+          ? parseAlignmentGeometry(map["alignment"])!
           : AlignmentDirectional.topStart,
       textDirection: map.containsKey("textDirection")
           ? parseTextDirection(map["textDirection"])
@@ -28,7 +28,7 @@ class IndexedStackWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": widgetName,
       "index": realWidget.index,
-      "alignment": exportAlignment(realWidget.alignment as Alignment?),
+      "alignment": exportAlignment(realWidget.alignment),
       "textDirection": realWidget.textDirection != null
           ? exportTextDirection(realWidget.textDirection)
           : null,

@@ -82,7 +82,7 @@ class ElevatedButtonParser extends WidgetParser {
             ? WidgetStateProperty.all(parseTextStyle(map["textStyle"]))
             : null,
         alignment: map.containsKey("alignment")
-            ? parseAlignment(map["alignment"])
+            ? parseAlignmentGeometry(map["alignment"])
             : null,
       ),
       child: DynamicWidgetBuilder.buildFromMap(
@@ -178,7 +178,7 @@ class TextButtonParser extends WidgetParser {
             ? WidgetStateProperty.all(parseTextStyle(map["textStyle"]))
             : null,
         alignment: map.containsKey("alignment")
-            ? parseAlignment(map["alignment"])
+            ? parseAlignmentGeometry(map["alignment"])
             : null,
       ),
       child: DynamicWidgetBuilder.buildFromMap(

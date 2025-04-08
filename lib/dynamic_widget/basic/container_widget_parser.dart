@@ -6,7 +6,7 @@ class ContainerWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-    Alignment? alignment = parseAlignment(map['alignment']);
+    AlignmentGeometry? alignment = parseAlignmentGeometry(map['alignment']);
     Color? color = parseHexColor(map['color']);
     BoxConstraints constraints = parseBoxConstraints(map['constraints']);
     //TODO: decoration, foregroundDecoration and transform properties to be implemented.
@@ -55,7 +55,7 @@ class ContainerWidgetParser extends WidgetParser {
     return <String, dynamic>{
       "type": widgetName,
       "alignment": realWidget.alignment != null
-          ? exportAlignment(realWidget.alignment as Alignment?)
+          ? exportAlignment(realWidget.alignment)
           : null,
       "padding": padding != null
           ? "${padding.left},${padding.top},${padding.right},${padding.bottom}"

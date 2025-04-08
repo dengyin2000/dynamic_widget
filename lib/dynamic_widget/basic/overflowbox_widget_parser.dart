@@ -8,7 +8,7 @@ class OverflowBoxWidgetParser extends WidgetParser{
     OverflowBox realWidget = widget as OverflowBox;
     return <String, dynamic>{
       "type": widgetName,
-      "alignment": exportAlignment(realWidget.alignment as Alignment?),
+      "alignment": exportAlignment(realWidget.alignment),
       "minWidth": realWidget.minWidth,
       "maxWidth": realWidget.maxWidth,
       "minHeight": realWidget.minHeight,
@@ -21,7 +21,7 @@ class OverflowBoxWidgetParser extends WidgetParser{
   Widget parse(Map<String, dynamic> map, BuildContext buildContext, ClickListener? listener) {
     return OverflowBox(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])!
+          ? parseAlignmentGeometry(map["alignment"])!
           : Alignment.center,
       minWidth: map.containsKey("minWidth")?map['minWidth']:null,
       maxWidth: map.containsKey("maxWidth")?map['maxWidth']:null,
