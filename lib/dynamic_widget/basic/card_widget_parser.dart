@@ -14,11 +14,10 @@ class CardParser extends WidgetParser {
   Map<String, dynamic>? export(Widget? widget, BuildContext? buildContext) {
     if (widget != null && widget is Card) {
       final EdgeInsets? margin = widget.margin as EdgeInsets?;
-      final String? color = widget.color != null
-          ? widget.color!.toARGB32().toRadixString(16)
-          : null;
+      final String? color =
+          widget.color != null ? widget.color!.value.toRadixString(16) : null;
       final String? shadowColor = widget.shadowColor != null
-          ? widget.shadowColor!.toARGB32().toRadixString(16)
+          ? widget.shadowColor!.value.toRadixString(16)
           : null;
       final double? elevation = widget.elevation;
       final bool borderOnForeground = widget.borderOnForeground;

@@ -259,7 +259,7 @@ Map<String, dynamic>? exportTextStyle(TextStyle? textStyle) {
 
   return <String, dynamic>{
     "color": textStyle.color != null
-        ? textStyle.color!.toARGB32().toRadixString(16)
+        ? textStyle.color!.value.toRadixString(16)
         : null,
     "debugLabel": textStyle.debugLabel,
     "decoration": exportTextDecoration(textStyle.decoration),
@@ -1143,7 +1143,7 @@ Map<String, dynamic>? exportBorderSide(BorderSide borderSide) {
     return null;
   }
   return <String, dynamic>{
-    "color": borderSide.color.toARGB32().toRadixString(16),
+    "color": borderSide.color.value.toRadixString(16),
     "width": borderSide.width,
     "style": borderSide.style.index,
   };
