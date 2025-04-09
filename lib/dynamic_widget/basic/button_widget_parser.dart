@@ -30,16 +30,14 @@ class ElevatedButtonParser extends WidgetParser {
         : null;
     return <String, dynamic>{
       "type": widgetName,
-      "foregroundColor":
-          color != null ? color.toARGB32().toRadixString(16) : null,
+      "foregroundColor": color != null ? color.value.toRadixString(16) : null,
       "backgroundColor": backgroundColor != null
-          ? backgroundColor.toARGB32().toRadixString(16)
+          ? backgroundColor.value.toRadixString(16)
           : null,
-      "overlayColor": overlayColor != null
-          ? overlayColor.toARGB32().toRadixString(16)
-          : null,
+      "overlayColor":
+          overlayColor != null ? overlayColor.value.toRadixString(16) : null,
       "shadowColor":
-          shadowColor != null ? shadowColor.toARGB32().toRadixString(16) : null,
+          shadowColor != null ? shadowColor.value.toRadixString(16) : null,
       "elevation": elevation,
       "padding": edgeInsetsGeometry != null
           ? "${edgeInsetsGeometry.left},${edgeInsetsGeometry.top},${edgeInsetsGeometry.right},${edgeInsetsGeometry.bottom}"
@@ -125,16 +123,14 @@ class TextButtonParser extends WidgetParser {
         : null;
     var map = <String, dynamic>{
       "type": widgetName,
-      "foregroundColor":
-          color != null ? color.toARGB32().toRadixString(16) : null,
+      "foregroundColor": color != null ? color.value.toRadixString(16) : null,
       "backgroundColor": backgroundColor != null
-          ? backgroundColor.toARGB32().toRadixString(16)
+          ? backgroundColor.value.toRadixString(16)
           : null,
-      "overlayColor": overlayColor != null
-          ? overlayColor.toARGB32().toRadixString(16)
-          : null,
+      "overlayColor":
+          overlayColor != null ? overlayColor.value.toRadixString(16) : null,
       "shadowColor":
-          shadowColor != null ? shadowColor.toARGB32().toRadixString(16) : null,
+          shadowColor != null ? shadowColor.value.toRadixString(16) : null,
       "elevation": elevation,
       "padding": edgeInsetsGeometry != null
           ? "${edgeInsetsGeometry.left},${edgeInsetsGeometry.top},${edgeInsetsGeometry.right},${edgeInsetsGeometry.bottom}"

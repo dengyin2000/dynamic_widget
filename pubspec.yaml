@@ -12,9 +12,10 @@ dependencies:
 
   logging: ^1.0.1
 
-  http: ^0.13.1
+  
 
   font_awesome_flutter: ^9.0.0
+  http: ^1.3.0
 
 dev_dependencies:
   flutter_test:

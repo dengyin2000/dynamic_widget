@@ -93,7 +93,7 @@ class AssetImageWidgetParser extends WidgetParser {
         "width": realWidget.width,
         "height": realWidget.height,
         "color": realWidget.color != null
-            ? realWidget.color!.toARGB32().toRadixString(16)
+            ? realWidget.color!.value.toRadixString(16)
             : null,
         "colorBlendMode": realWidget.colorBlendMode != null
             ? exportBlendMode(realWidget.colorBlendMode)
@@ -128,7 +128,7 @@ class AssetImageWidgetParser extends WidgetParser {
         "width": realWidget.width,
         "height": realWidget.height,
         "color": realWidget.color != null
-            ? realWidget.color!.toARGB32().toRadixString(16)
+            ? realWidget.color!.value.toRadixString(16)
             : null,
         "colorBlendMode": realWidget.colorBlendMode != null
             ? exportBlendMode(realWidget.colorBlendMode)
@@ -272,7 +272,7 @@ class NetworkImageWidgetParser extends WidgetParser {
       "width": realWidget.width,
       "height": realWidget.height,
       "color": realWidget.color != null
-          ? realWidget.color!.toARGB32().toRadixString(16)
+          ? realWidget.color!.value.toRadixString(16)
           : null,
       "colorBlendMode": realWidget.colorBlendMode != null
           ? exportBlendMode(realWidget.colorBlendMode)

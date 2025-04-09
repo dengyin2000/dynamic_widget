@@ -22,7 +22,7 @@ class AppBarWidgetParser extends WidgetParser {
       "centerTitle": realWidget.centerTitle,
       "backgroundColor": realWidget.backgroundColor == null
           ? null
-          : realWidget.backgroundColor!.toARGB32().toRadixString(16),
+          : realWidget.backgroundColor!.value.toRadixString(16),
     };
   }
 
@@ -58,3 +58,4 @@ class AppBarWidgetParser extends WidgetParser {
   @override
   Type get widgetType => AppBar;
 }
+
