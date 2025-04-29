@@ -8,7 +8,7 @@ class AlignWidgetParser extends WidgetParser {
       ClickListener? listener) {
     return Align(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])!
+          ? parseAlignmentGeometry(map["alignment"])!
           : Alignment.center,
       widthFactor: map.containsKey("widthFactor")
           ? map["widthFactor"]?.toDouble()
@@ -29,7 +29,7 @@ class AlignWidgetParser extends WidgetParser {
     var realWidget = widget as Align;
     Map<String, dynamic> json = {
       "type": widgetName,
-      "alignment": exportAlignment(realWidget.alignment as Alignment?),
+      "alignment": exportAlignment(realWidget.alignment),
       "widthFactor": realWidget.widthFactor,
       "heightFactor": realWidget.heightFactor,
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)

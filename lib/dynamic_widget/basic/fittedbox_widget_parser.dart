@@ -8,7 +8,7 @@ class FittedBoxWidgetParser extends WidgetParser {
       ClickListener? listener) {
     return FittedBox(
       alignment: map.containsKey("alignment")
-          ? parseAlignment(map["alignment"])!
+          ? parseAlignmentGeometry(map["alignment"])!
           : Alignment.center,
       fit: map.containsKey("fit") ? parseBoxFit(map["fit"])! : BoxFit.contain,
       child: DynamicWidgetBuilder.buildFromMap(
@@ -24,7 +24,7 @@ class FittedBoxWidgetParser extends WidgetParser {
     var realWidget = widget as FittedBox;
     return <String, dynamic>{
       "type": widgetName,
-      "alignment":exportAlignment(realWidget.alignment as Alignment?),
+      "alignment":exportAlignment(realWidget.alignment),
       "fit": exportBoxFit(realWidget.fit),
       "child": DynamicWidgetBuilder.export(realWidget.child, buildContext)
     };
