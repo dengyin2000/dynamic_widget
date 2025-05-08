@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
       ),
-      home: const MyHomePage(title: 'Sequential Calculator')
+      home: const MyHomePage(title: 'Sequential Calculator'),
     );
   }
 }
@@ -56,9 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
               return Text('Error: ${snapshot.error}');
             }
             return DynamicWidget(snapshot.data!);
-          }
-        )
-      )
+          },
+        ),
+      ),
     );
   }
 }

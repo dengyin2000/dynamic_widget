@@ -28,7 +28,7 @@ class DropCap extends StatelessWidget {
     this.child,
     required this.width,
     required this.height,
-  })  : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
