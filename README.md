@@ -44,7 +44,7 @@ Widget type will be a type property, and widget's properties will be the json pr
 Add this to your package's pubspec.yaml file:
 ```
 dependencies:
-  dynamic_widget: ^3.0.3
+  dynamic_widget: ^6.0.0
 ```
 
 #### 2. Install it
@@ -68,6 +68,7 @@ You should use `DynamicWidgetBuilder().build` method to covert a json string int
 
 ```dart
 import 'package:dynamic_widget/dynamic_widget.dart';
+
 class PreviewPage extends StatelessWidget {
   final String jsonString;
 
@@ -81,9 +82,9 @@ class PreviewPage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text("Preview"),
       ),
-      body: FutureBuilder<Widget>(
+      body: FutureBuilder<Widget?>(
         future: _buildWidget(context),
-        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<Widget?> snapshot) {
           if (snapshot.hasError) {
             print(snapshot.error);
           }
@@ -97,8 +98,9 @@ class PreviewPage extends StatelessWidget {
     );
   }
 
-  Future<Widget> _buildWidget(BuildContext context) async {
-    return DynamicWidgetBuilder.build(jsonString, context, new DefaultClickListener());
+  Future<Widget?> _buildWidget(BuildContext context) async {
+    return DynamicWidgetBuilder.build(
+        jsonString, context, DefaultClickListener());
   }
 }
 ```
@@ -177,6 +179,7 @@ var raisedButton_json =
     }
   }
 }
+'''
 ```
 
 We suggest you'd better to use an URI to define the event, as the exmaple, it's a event for going to a product detail page.
@@ -188,7 +191,6 @@ class DefaultClickListener implements ClickListener{
   void onClicked(String event) {
     print("Receive click event: " + event);
   }
-
 }
 ```
 
@@ -321,9 +323,6 @@ Already completed widgets:
 * [SingleChildScrollView](https://github.com/dengyin2000/dynamic_widget/blob/master/WIDGETS.md#singlechildscrollview-widget)
 
 You can view [Currently support widgets and properties](WIDGETS.md) here.
-
-## Setup
-Checkout this project and run demo.
 
 ## Code Examples
 Checkout this project and run demo.
