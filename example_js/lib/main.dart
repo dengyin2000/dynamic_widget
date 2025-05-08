@@ -31,12 +31,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Future<String> _uiJsFuture;
+  late Future<String> _uiFuture;
 
   @override
   void initState() {
     super.initState();
-    _uiJsFuture = rootBundle.loadString("assets/ui.js");
+    _uiFuture = rootBundle.loadString("assets/ui.js");
   }
 
   @override
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: FutureBuilder<String>(
-          future: _uiJsFuture,
+          future: _uiFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const SizedBox();
