@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  jsf: ^0.6.1
+
   logging: ^1.0.1
 
   flutter_svg: ^2.0.17

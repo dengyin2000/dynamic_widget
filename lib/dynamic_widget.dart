@@ -13,6 +13,7 @@ import 'package:dynamic_widget/dynamic_widget/basic/colored_box_widget_parser.da
 import 'package:dynamic_widget/dynamic_widget/basic/container_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/divider_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/dropcaptext_widget_parser.dart';
+import 'package:dynamic_widget/dynamic_widget/basic/dynamic_widget_json_exportor.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/expanded_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/fittedbox_widget_parser.dart';
 import 'package:dynamic_widget/dynamic_widget/basic/flutter_svg_widget_parser.dart';
@@ -41,6 +42,7 @@ import 'package:dynamic_widget/dynamic_widget/scrolling/single_child_scroll_view
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
+import 'package:jsf/jsf.dart';
 
 import 'dynamic_widget/basic/cliprrect_widget_parser.dart';
 import 'dynamic_widget/basic/overflowbox_widget_parser.dart';
@@ -226,5 +228,66 @@ class NonResponseWidgetClickListener implements ClickListener {
   void onClicked(String? event) {
     log.info("receiver click event: " + event!);
     print("receiver click event: " + event);
+  }
+}
+
+class DynamicWidget extends StatefulWidget {
+  final String jsCode;
+
+  const DynamicWidget(this.jsCode);
+
+  @override
+  DynamicWidgetState createState() => DynamicWidgetState();
+}
+
+class DynamicWidgetState extends State<DynamicWidget> {
+  late JsRuntime _js;
+  late String jsCode;
+  late String jsonCode;
+
+  @override
+  void initState() {
+    super.initState();
+    _js = JsRuntime();
+    jsCode = widget.jsCode;
+    jsonCode = _js.eval("var App;$jsCode;JSON.stringify(App)");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Widget?>(
+      future: _buildWidget(context),
+      builder: (BuildContext context, AsyncSnapshot<Widget?> snapshot) {
+        return snapshot.hasData
+            ? DynamicWidgetJsonExportor(child: snapshot.data)
+            : SizedBox();
+      },
+    );
+  }
+
+  Future<Widget?> _buildWidget(BuildContext context) async {
+    return DynamicWidgetBuilder.build(
+      jsonCode,
+      context,
+      DefaultClickListener(onClick: _onClick),
+    );
+  }
+
+  void _onClick(String? event) {
+    setState(() {
+      _js.eval(event!);
+      jsonCode = _js.eval("JSON.stringify(App)");
+    });
+  }
+}
+
+class DefaultClickListener implements ClickListener {
+  final Function(String?) onClick;
+
+  DefaultClickListener({required this.onClick});
+
+  @override
+  void onClicked(String? event) {
+    onClick(event);
   }
 }

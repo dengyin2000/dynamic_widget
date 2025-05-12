@@ -44,7 +44,6 @@ class StackWidgetParser extends WidgetParser {
   @override
   Widget parse(Map<String, dynamic> map, BuildContext buildContext,
       ClickListener? listener) {
-
     return Stack(
       alignment: map.containsKey("alignment")
           ? parseAlignmentGeometry(map["alignment"])!
