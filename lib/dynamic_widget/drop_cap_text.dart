@@ -1,6 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 enum DropCapMode {
@@ -139,7 +137,8 @@ class DropCapText extends StatelessWidget {
       text: parseInlineMarkdown! ? null : restData,
       children: parseInlineMarkdown! ? mdRest!.toTextSpanList() : null,
       style: textStyle.apply(
-          fontSizeFactor: MediaQuery.of(context).textScaleFactor),
+        fontSizeFactor: MediaQuery.textScalerOf(context).scale(1.0),
+      ),
     );
 
     TextPainter textPainter = TextPainter(
@@ -257,8 +256,9 @@ class DropCapText extends StatelessWidget {
                             ? mdRest!.subchars(charIndexEnd).toTextSpanList()
                             : null,
                         style: textStyle.apply(
-                            fontSizeFactor:
-                                MediaQuery.of(context).textScaleFactor),
+                          fontSizeFactor:
+                              MediaQuery.textScalerOf(context).scale(1.0),
+                        ),
                       ),
                       scrollPhysics: NeverScrollableScrollPhysics(),
                       maxLines: maxLines != null && maxLines! > rows
@@ -276,8 +276,9 @@ class DropCapText extends StatelessWidget {
                             ? mdRest!.subchars(charIndexEnd).toTextSpanList()
                             : null,
                         style: textStyle.apply(
-                            fontSizeFactor:
-                                MediaQuery.of(context).textScaleFactor),
+                          fontSizeFactor:
+                              MediaQuery.textScalerOf(context).scale(1.0),
+                        ),
                       ),
                       overflow: overflow,
                       maxLines: maxLines != null && maxLines! > rows
@@ -308,7 +309,8 @@ class DropCapText extends StatelessWidget {
                 TextSpan(
                   children: mdData.subchars(dropCapChars).toTextSpanList(),
                   style: textStyle.apply(
-                      fontSizeFactor: MediaQuery.of(context).textScaleFactor),
+                    fontSizeFactor: MediaQuery.textScalerOf(context).scale(1.0),
+                  ),
                 ),
               ],
             ),
@@ -325,7 +327,8 @@ class DropCapText extends StatelessWidget {
                 TextSpan(
                   children: mdData.subchars(dropCapChars).toTextSpanList(),
                   style: textStyle.apply(
-                      fontSizeFactor: MediaQuery.of(context).textScaleFactor),
+                    fontSizeFactor: MediaQuery.textScalerOf(context).scale(1.0),
+                  ),
                 ),
               ],
             ),

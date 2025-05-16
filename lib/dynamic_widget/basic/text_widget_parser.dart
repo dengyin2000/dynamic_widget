@@ -31,7 +31,7 @@ class TextWidgetParser implements WidgetParser {
         softWrap: softWrap,
         textDirection: parseTextDirection(textDirectionString),
         style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
+        textScaler: TextScaler.linear(textScaleFactor ?? 1.0),
       );
     } else {
       return Text.rich(
@@ -43,7 +43,7 @@ class TextWidgetParser implements WidgetParser {
         softWrap: softWrap,
         textDirection: parseTextDirection(textDirectionString),
         style: map.containsKey('style') ? parseTextStyle(map['style']) : null,
-        textScaleFactor: textScaleFactor,
+        textScaler: TextScaler.linear(textScaleFactor ?? 1.0),
       );
     }
   }
@@ -67,7 +67,7 @@ class TextWidgetParser implements WidgetParser {
         "softWrap": realWidget.softWrap,
         "textDirection": exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),
-        "textScaleFactor": realWidget.textScaleFactor
+        "textScaler": realWidget.textScaler ?? TextScaler.linear(1.0),
       };
     } else {
       var parser = TextSpanParser();
@@ -83,7 +83,7 @@ class TextWidgetParser implements WidgetParser {
         "softWrap": realWidget.softWrap,
         "textDirection": exportTextDirection(realWidget.textDirection),
         "style": exportTextStyle(realWidget.style),
-        "textScaleFactor": realWidget.textScaleFactor
+        "textScaler": realWidget.textScaler ?? TextScaler.linear(1.0),
       };
     }
   }
